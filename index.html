@@ -104,6 +104,16 @@
   </style>
 </head>
 <body>
+  <audio id="bgmusic" autoplay loop>
+  <source src="Svět Carmen.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("click", function () {
+    const music = document.getElementById("bgmusic");
+    music.play().catch(() => {});
+}, { once: true });
+</script>
   <div class="intro">
     <h1>Vítej ve Světě Carmen.</h1>
     <p>Tady každý příběh začíná srdcem.</p>
