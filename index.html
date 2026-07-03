@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Svět Carmen</title>
+  <meta name="description" content="Vítej ve Světě Carmen. Tady každý příběh začíná srdcem.">
+  <style>
+    :root {
+      --pink:#ff7eb6;
+      --rose:#ffe4ef;
+      --dark:#241722;
+      --gold:#ffd27d;
+      --soft:#fff8fb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin:0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: linear-gradient(180deg, #fff7fb 0%, #ffe7f1 45%, #fff8ee 100%);
+      color: var(--dark);
+    }
+    header {
+      min-height:100vh;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:40px;
+      align-items:center;
+      padding:50px 7vw;
+    }
+    .hero-img {
+      width:100%;
+      border-radius:32px;
+      box-shadow: 0 30px 80px rgba(120, 37, 80, .25);
+    }
+    .badge {
+      display:inline-block;
+      background:rgba(255,126,182,.18);
+      border:1px solid rgba(255,126,182,.35);
+      padding:10px 16px;
+      border-radius:999px;
+      font-size:15px;
+      margin-bottom:22px;
+    }
+    h1 {
+      font-size: clamp(46px, 8vw, 96px);
+      line-height:.95;
+      margin:0 0 20px;
+      color:#b32f72;
+    }
+    .subtitle {
+      font-size: clamp(24px, 3vw, 42px);
+      line-height:1.15;
+      margin:0 0 28px;
+    }
+    p {
+      font-size:20px;
+      line-height:1.7;
+      max-width:720px;
+    }
+    .btn {
+      display:inline-block;
+      margin-top:18px;
+      background:#b32f72;
+      color:white;
+      text-decoration:none;
+      padding:16px 26px;
+      border-radius:999px;
+      font-weight:bold;
+      box-shadow: 0 15px 30px rgba(179,47,114,.25);
+    }
+    section {
+      padding:70px 7vw;
+    }
+    .card-grid {
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:22px;
+      margin-top:30px;
+    }
+    .card {
+      background:rgba(255,255,255,.75);
+      border:1px solid rgba(179,47,114,.12);
+      border-radius:28px;
+      padding:28px;
+      box-shadow: 0 18px 50px rgba(120, 37, 80, .08);
+    }
+    h2 {
+      font-size:42px;
+      color:#b32f72;
+      margin:0 0 16px;
+    }
+    h3 {
+      font-size:26px;
+      margin:0 0 10px;
+    }
+    .quote {
+      text-align:center;
+      background:linear-gradient(135deg, #b32f72, #f77db2);
+      color:white;
+      border-radius:36px;
+      padding:55px 30px;
+      box-shadow: 0 25px 80px rgba(179,47,114,.25);
+    }
+    .quote p { margin:0 auto; font-size:30px; line-height:1.35; }
+    footer {
+      text-align:center;
+      padding:40px 7vw;
+      color:#7d4964;
+    }
+    @media (max-width: 850px) {
+      header { grid-template-columns:1fr; padding-top:30px; }
+      .card-grid { grid-template-columns:1fr; }
+      section { padding:50px 6vw; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="badge">🌸 Zrozeno 3. 7. 2026</div>
+      <h1>Svět Carmen</h1>
+      <p class="subtitle">Vítej ve Světě Carmen.<br>Tady každý příběh začíná srdcem.</p>
+      <p>Svět komiksů, knih, ilustrací a skutečných příběhů o odvaze, zvířatech, naději a druhých začátcích.</p>
+      <a class="btn" href="#komiksy">Vstoupit do světa</a>
+    </div>
+    <div>
+      <img class="hero-img" src="svet-carmen-uvod.png" alt="Úvodní ilustrace Světa Carmen">
+    </div>
+  </header>
+
+  <section>
+    <h2>Kdo je Carmen?</h2>
+    <p>Carmen není dokonalá hrdinka. Je to žena, která padá, směje se, pláče, vstává a věří, že i jeden příběh může někomu dodat sílu.</p>
+  </section>
+
+  <section id="komiksy">
+    <h2>Co vzniká ve Světě Carmen</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>📚 Komiksy</h3>
+        <p>První příběhy, první stránky a první hrdinové, kteří mají srdce.</p>
+      </div>
+      <div class="card">
+        <h3>🐺 Mia a Čestmírek</h3>
+        <p>Zvířata, která nejsou jen mazlíčci. Jsou rodina, vzpomínka a láska.</p>
+      </div>
+      <div class="card">
+        <h3>✍️ Deník Carmen</h3>
+        <p>Zákulisí tvorby, úryvky z komiksů a cesta od nápadu ke knize.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="quote">
+      <p>„Každá jizva může být začátkem nového příběhu.“</p>
+    </div>
+  </section>
+
+  <footer>
+    © Svět Carmen · Příběhy, které mají srdce
+  </footer>
+</body>
+</html>
