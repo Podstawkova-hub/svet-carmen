@@ -83,3 +83,104 @@
     font-size: 18px;
   }
 }
+/* =========================
+   SVĚT CARMEN – HERO 3.0
+========================= */
+
+.hero-new {
+  min-height: 100vh;
+  padding: 28px 5% 60px;
+  background: linear-gradient(135deg, #fff1f8, #ffe7f1, #fff8ec);
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.brand {
+  font-size: 44px;
+  color: #d63d83;
+  font-weight: 800;
+}
+
+.nav-links a {
+  margin-left: 26px;
+  color: #38152f;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.hero-new-layout {
+  display: grid;
+  grid-template-columns: 36% 64%;
+  align-items: center;
+  gap: 34px;
+}
+
+.hero-new-text h1 {
+  font-size: clamp(44px, 5vw, 72px);
+  color: #38152f;
+  margin: 0 0 18px;
+  line-height: 1.05;
+}
+
+.hero-new-text h2 {
+  font-size: clamp(34px, 4vw, 56px);
+  color: #e83d86;
+  margin: 0 0 22px;
+  line-height: 1.05;
+}
+
+.hero-new-text p {
+  font-size: 22px;
+  line-height: 1.6;
+  color: #33192b;
+  margin-bottom: 32px;
+}
+
+.hero-new-btn {
+  display: inline-block;
+  padding: 18px 34px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e83d86, #ff7ab6);
+  color: white;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 800;
+  box-shadow: 0 14px 35px rgba(220, 61, 131, .35);
+}
+
+.hero-new-btn:hover {
+  transform: scale(1.04);
+}
+
+.hero-new-image img {
+  width: 100%;
+  display: block;
+  border-radius: 34px;
+  box-shadow: 0 25px 70px rgba(100, 30, 80, .25);
+}
+
+@media (max-width: 900px) {
+  .top-nav {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .nav-links a {
+    margin: 0 8px;
+    font-size: 14px;
+  }
+
+  .hero-new-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .brand {
+    font-size: 36px;
+  }
+}
