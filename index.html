@@ -101,6 +101,44 @@
       section{padding:52px 6vw}
       .wide{padding:28px}
     }
+    /* ===== Úvodní obrazovka ===== */
+
+.intro{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:url("navrh.png") center center/cover no-repeat;
+    transition:opacity 1s ease;
+}
+
+.intro::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.25);
+}
+
+.intro h1,
+.intro p{
+    position:relative;
+    z-index:2;
+    color:#fff6e8;
+    text-shadow:0 0 20px rgba(0,0,0,.45);
+}
+
+.intro h1{
+    font-size:clamp(60px,7vw,110px);
+}
+
+.intro p{
+    font-size:clamp(24px,2vw,38px);
+    margin-top:15px;
+}
   </style>
 </head>
 <body>
