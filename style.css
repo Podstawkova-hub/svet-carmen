@@ -184,3 +184,20 @@
     font-size: 36px;
   }
 }
+/* OPRAVA HLAVNÍ FOTKY */
+header img {
+  width: 100%;
+  max-width: 620px;
+  display: block;
+  border-radius: 36px;
+  box-shadow: 0 35px 90px rgba(122,35,84,.30);
+  transform: rotate(1deg);
+}
+
+/* MOBILNÍ VERZE */
+@media (max-width: 900px) {
+  header img {
+    max-width: 100%;
+    transform: none;
+  }
+}
