@@ -1,125 +1,626 @@
 <!doctype html>
 <html lang="cs">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Kdo je Carmen | Svět Carmen</title>
+  <title>Kdo je Carmen | Svět Carmen</title>
 
-<meta name="description" content="Poznej Carmen. Poznej člověka, který stojí za příběhy Světa Carmen.">
+  <meta
+    name="description"
+    content="Poznej Carmen, její hodnoty a důvod, proč vznikl Svět Carmen."
+  >
 
-<style>
+  <style>
+    :root{
+      --pink:#f36a9b;
+      --deep:#a52d6f;
+      --dark:#2d1b22;
+      --soft:#fff1f7;
+      --cream:#fffaf5;
+      --white:rgba(255,255,255,.88);
+      --border:rgba(165,45,111,.14);
+      --shadow:0 22px 60px rgba(89,38,63,.12);
+    }
 
-:root{
-    --pink:#f36a9b;
-    --dark:#2d1b22;
-    --light:#fff8f8;
-    --white:rgba(255,255,255,.82);
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    html{
+      scroll-behavior:smooth;
+    }
 
-html{
-    scroll-behavior:smooth;
-}
+    body{
+      font-family:Georgia,"Times New Roman",serif;
+      color:var(--dark);
+      background:
+        radial-gradient(circle at 15% 8%, rgba(243,106,155,.18), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(255,211,125,.22), transparent 28%),
+        linear-gradient(180deg,#fff9fb 0%,#ffedf5 50%,#fffaf5 100%);
+      overflow-x:hidden;
+    }
 
-body{
-    font-family:Georgia,"Times New Roman",serif;
-    background:linear-gradient(180deg,#fff9fb,#ffeef6,#fffaf5);
-    color:var(--dark);
-}
-.topbar{
-    position:sticky;
-    top:0;
-    z-index:20;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:24px;
-    padding:18px 7vw;
-    background:rgba(255,255,255,.88);
-    backdrop-filter:blur(14px);
-    border-bottom:1px solid rgba(243,106,155,.16);
-}
+    a{
+      color:inherit;
+    }
 
-.brand{
-    color:var(--dark);
-    text-decoration:none;
-    font-size:24px;
-    font-weight:bold;
-}
+    img{
+      max-width:100%;
+      display:block;
+    }
 
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:26px;
-}
+    /* Horní menu */
 
-.nav-links a{
-    color:var(--dark);
-    text-decoration:none;
-    font-size:16px;
-}
-
-.nav-links a.active{
-    color:var(--pink);
-    border-bottom:2px solid var(--pink);
-    padding-bottom:5px;
-}
-
-.support-btn{
-    border:0;
-    border-radius:999px;
-    padding:12px 20px;
-    background:linear-gradient(135deg,#d94f82,#f47aab);
-    color:white;
-    font:inherit;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-@media(max-width:760px){
     .topbar{
-        flex-wrap:wrap;
-        justify-content:center;
+      position:sticky;
+      top:0;
+      z-index:20;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      padding:17px 7vw;
+      background:rgba(255,255,255,.90);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
     }
 
     .brand{
-        width:100%;
-        text-align:center;
+      color:var(--deep);
+      text-decoration:none;
+      font-size:24px;
+      font-weight:bold;
     }
 
     .nav-links{
-        gap:16px;
+      display:flex;
+      align-items:center;
+      gap:26px;
+    }
+
+    .nav-links a{
+      color:var(--dark);
+      text-decoration:none;
+      font-size:16px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{
+      color:var(--deep);
+    }
+
+    .nav-links a.active{
+      padding-bottom:5px;
+      border-bottom:2px solid var(--pink);
     }
 
     .support-btn{
-        width:100%;
+      border:0;
+      border-radius:999px;
+      padding:12px 20px;
+      background:linear-gradient(135deg,var(--deep),var(--pink));
+      color:white;
+      font:inherit;
+      font-weight:bold;
+      cursor:pointer;
+      box-shadow:0 12px 28px rgba(165,45,111,.20);
     }
-}
-</style>
 
+    .support-btn.supported{
+      background:#fff;
+      color:var(--deep);
+      outline:2px solid var(--pink);
+    }
+
+    /* Společné rozložení */
+
+    main{
+      width:100%;
+    }
+
+    .section{
+      width:min(1200px,90%);
+      margin:0 auto;
+      padding:76px 0;
+    }
+
+    .section-title{
+      margin-bottom:24px;
+      color:var(--deep);
+      font-size:clamp(38px,5vw,58px);
+      line-height:1.1;
+      font-weight:normal;
+    }
+
+    .section-text{
+      max-width:860px;
+      font-size:20px;
+      line-height:1.8;
+    }
+
+    /* První část – Carmen */
+
+    .hero-carmen{
+      width:min(1320px,92%);
+      margin:0 auto;
+      padding:66px 0 82px;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(420px,1fr);
+      align-items:center;
+      gap:64px;
+    }
+
+    .hero-text{
+      max-width:630px;
+    }
+
+    .eyebrow{
+      margin-bottom:13px;
+      color:var(--pink);
+      font-size:25px;
+      font-style:italic;
+    }
+
+    .hero-text h1{
+      margin-bottom:27px;
+      color:var(--deep);
+      font-size:clamp(48px,6vw,78px);
+      line-height:1.04;
+      font-weight:normal;
+    }
+
+    .hero-lead{
+      margin-bottom:24px;
+      font-size:24px;
+      line-height:1.55;
+    }
+
+    .hero-quote{
+      margin:30px 0;
+      padding:22px 25px;
+      border-left:5px solid var(--pink);
+      background:rgba(255,255,255,.62);
+      border-radius:0 22px 22px 0;
+      font-size:25px;
+      line-height:1.55;
+    }
+
+    .hero-copy{
+      font-size:19px;
+      line-height:1.8;
+    }
+
+    .hero-image img{
+      width:100%;
+      border-radius:34px;
+      box-shadow:0 32px 80px rgba(65,29,48,.18);
+    }
+
+    /* Proč vznikl Svět Carmen */
+
+    .why{
+      padding:48px;
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:36px;
+      box-shadow:var(--shadow);
+    }
+
+    .why p{
+      margin-top:18px;
+      font-size:20px;
+      line-height:1.8;
+    }
+
+    .why strong{
+      color:var(--deep);
+    }
+
+    /* Pro koho Carmen tvoří */
+
+    .audience-heading{
+      max-width:780px;
+      margin-bottom:36px;
+      font-size:20px;
+      line-height:1.75;
+    }
+
+    .audience-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .audience-card{
+      padding:32px 28px;
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:30px;
+      box-shadow:0 16px 42px rgba(89,38,63,.08);
+    }
+
+    .audience-card h3{
+      margin-bottom:13px;
+      color:var(--deep);
+      font-size:27px;
+    }
+
+    .audience-card p{
+      font-size:18px;
+      line-height:1.7;
+    }
+
+    /* Hodnoty Carmen */
+
+    .values{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:50px;
+      align-items:start;
+    }
+
+    .values-intro{
+      font-size:21px;
+      line-height:1.8;
+    }
+
+    .values-list{
+      padding:36px 40px;
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+    }
+
+    .value{
+      padding:18px 0;
+      border-bottom:1px solid rgba(165,45,111,.11);
+      font-size:20px;
+      line-height:1.6;
+    }
+
+    .value:first-child{
+      padding-top:0;
+    }
+
+    .value:last-child{
+      padding-bottom:0;
+      border-bottom:0;
+    }
+
+    /* Závěr */
+
+    .closing{
+      width:min(1050px,90%);
+      margin:20px auto 80px;
+      padding:58px 36px;
+      text-align:center;
+      color:white;
+      background:linear-gradient(135deg,var(--deep),var(--pink));
+      border-radius:38px;
+      box-shadow:0 28px 75px rgba(165,45,111,.24);
+    }
+
+    .closing h2{
+      margin-bottom:20px;
+      font-size:clamp(36px,5vw,57px);
+      line-height:1.15;
+      font-weight:normal;
+    }
+
+    .closing p{
+      max-width:760px;
+      margin:0 auto;
+      font-size:21px;
+      line-height:1.75;
+    }
+
+    .story-btn{
+      display:inline-block;
+      margin-top:30px;
+      padding:16px 28px;
+      color:var(--deep);
+      background:white;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:bold;
+      box-shadow:0 14px 34px rgba(80,25,52,.18);
+    }
+
+    footer{
+      padding:35px 7vw 45px;
+      text-align:center;
+      color:#7d4964;
+      font-size:15px;
+    }
+
+    /* Mobil */
+
+    @media(max-width:950px){
+      .hero-carmen{
+        grid-template-columns:1fr;
+        gap:38px;
+        padding-top:45px;
+      }
+
+      .hero-text{
+        max-width:none;
+      }
+
+      .hero-image{
+        max-width:720px;
+        margin:0 auto;
+      }
+
+      .audience-grid{
+        grid-template-columns:1fr;
+      }
+
+      .values{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:760px){
+      .topbar{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:14px;
+        padding:14px 5vw;
+      }
+
+      .brand{
+        width:100%;
+        text-align:center;
+      }
+
+      .nav-links{
+        gap:16px;
+      }
+
+      .support-btn{
+        width:100%;
+      }
+
+      .hero-carmen{
+        width:min(90%,700px);
+      }
+
+      .hero-quote{
+        font-size:21px;
+      }
+
+      .section{
+        width:88%;
+        padding:52px 0;
+      }
+
+      .why{
+        padding:30px 25px;
+      }
+
+      .values-list{
+        padding:28px 25px;
+      }
+
+      .closing{
+        padding:44px 24px;
+      }
+    }
+  </style>
 </head>
 
-<body><nav class="topbar">
-  <a class="brand" href="index.html">Svět Carmen</a>
+<body>
 
-  <div class="nav-links">
-    <a href="index.html">Domů</a>
-    <a href="carmen.html" class="active">O Carmen</a>
-    <a href="svet.html">Příběhy</a>
-  </div>
+  <nav class="topbar">
+    <a class="brand" href="index.html">Svět Carmen</a>
 
-  <button class="support-btn" type="button" aria-label="Podpořit Svět Carmen">
-    ♡ Podpořit Svět Carmen
-  </button>
-</nav>
+    <div class="nav-links">
+      <a href="index.html">Domů</a>
+      <a href="carmen.html" class="active">O Carmen</a>
+      <a href="svet.html">Příběhy</a>
+    </div>
 
+    <button
+      class="support-btn"
+      id="supportButton"
+      type="button"
+      aria-label="Podpořit Svět Carmen"
+    >
+      ♡ Podpořit Svět Carmen
+    </button>
+  </nav>
 
+  <main>
+
+    <section class="hero-carmen">
+
+      <div class="hero-text">
+        <p class="eyebrow">Jmenuji se Carmen.</p>
+
+        <h1>Poznej člověka, který stojí za příběhy.</h1>
+
+        <p class="hero-lead">
+          Svět Carmen vznikl z touhy pomáhat a z víry,
+          že jediný příběh může změnit nejen den,
+          ale někdy i celý život.
+        </p>
+
+        <div class="hero-quote">
+          Nechci, aby se děti cítily samy.<br>
+          Chci, aby věděly, že je někdo slyší.
+        </div>
+
+        <p class="hero-copy">
+          Píšu proto, aby se děti, teenageři, dospělí i učitelé
+          mohli v některém z příběhů poznat a říct si:
+          „Tohle se děje i mně. Nejsem v tom sám.“
+        </p>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="carmen-fenix.png.png"
+          alt="Carmen píšící příběhy pod ochranou fénixe"
+        >
+      </div>
+
+    </section>
+
+    <section class="section">
+      <div class="why">
+        <h2 class="section-title">Proč vznikl Svět Carmen?</h2>
+
+        <p>
+          Svět Carmen není knihovna ani obyčejné místo,
+          kde si lidé jen vybírají komiksy.
+          Je to místo, kde mohou na chvíli zpomalit,
+          poznat člověka, který za příběhy stojí,
+          a pochopit, proč vůbec vznikly.
+        </p>
+
+        <p>
+          Každý příběh má svůj důvod.
+          Každý vzniká ze skutečné touhy někomu pomoci,
+          něco důležitého připomenout nebo podat ruku člověku,
+          který se právě necítí dobře.
+        </p>
+
+        <p>
+          <strong>
+            Možná se někdo v příběhu pozná.
+            Možná si uvědomí, že v tom není sám.
+            A možná právě tehdy najde sílu znovu vstát.
+          </strong>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Pro koho vznikají příběhy?</h2>
+
+      <p class="audience-heading">
+        Svět Carmen není určen pouze jedné skupině.
+        Každý člověk může potřebovat pochopení,
+        nový pohled nebo připomenutí, že jeho pocity mají význam.
+      </p>
+
+      <div class="audience-grid">
+
+        <article class="audience-card">
+          <h3>Pro děti a teenagery</h3>
+
+          <p>
+            Aby věděli, že jejich pocity nejsou zbytečné,
+            že nejsou sami a že existují lidé,
+            kteří jsou připraveni je vyslechnout.
+          </p>
+        </article>
+
+        <article class="audience-card">
+          <h3>Pro dospělé</h3>
+
+          <p>
+            Aby se někdy zastavili, podívali se na příběh
+            očima druhého člověka a nezapomněli,
+            jak důležité je naslouchat.
+          </p>
+        </article>
+
+        <article class="audience-card">
+          <h3>Pro učitele</h3>
+
+          <p>
+            Aby za známkami, chováním a každodenními povinnostmi
+            nepřestali vidět dítě, které může potřebovat pomoc,
+            pochopení nebo jen chvíli skutečné pozornosti.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section values">
+
+      <div>
+        <h2 class="section-title">Co vede každý příběh?</h2>
+
+        <p class="values-intro">
+          Nejde o dokonalost ani o rychlé soudy.
+          Jde o skutečné emoce, zkušenosti a chvíle,
+          ve kterých může někdo objevit kousek vlastního příběhu.
+        </p>
+      </div>
+
+      <div class="values-list">
+        <div class="value">Laskavost není slabost.</div>
+
+        <div class="value">
+          Každý člověk nese příběh, který ostatní nevidí.
+        </div>
+
+        <div class="value">
+          Děti i dospělí potřebují vědět, že je někdo slyší.
+        </div>
+
+        <div class="value">
+          Jeden příběh může změnit den, ale někdy i celý život.
+        </div>
+
+        <div class="value">
+          Dobro má stále své místo.
+        </div>
+
+        <div class="value">
+          Naděje je sen, který nám dává sílu pokračovat.
+        </div>
+      </div>
+
+    </section>
+
+    <section class="closing">
+      <h2>Jsem tu pro tebe.</h2>
+
+      <p>
+        Pokud se v některém z příběhů poznáš,
+        věř, že na to nejsi sám.
+        Možná právě jeden z nich čeká na tebe.
+      </p>
+
+      <a class="story-btn" href="svet.html">
+        Objev příběhy Světa Carmen
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    © Svět Carmen · Tady každý příběh začíná srdcem · Zrozeno 3. 7. 2026
+  </footer>
+
+  <script>
+    const supportButton = document.getElementById("supportButton");
+
+    if (localStorage.getItem("svetCarmenSupported") === "yes") {
+      supportButton.classList.add("supported");
+      supportButton.textContent = "♥ Děkuji za podporu";
+    }
+
+    supportButton.addEventListener("click", function () {
+      const isSupported = supportButton.classList.toggle("supported");
+
+      if (isSupported) {
+        supportButton.textContent = "♥ Děkuji za podporu";
+        localStorage.setItem("svetCarmenSupported", "yes");
+      } else {
+        supportButton.textContent = "♡ Podpořit Svět Carmen";
+        localStorage.removeItem("svetCarmenSupported");
+      }
+    });
+  </script>
 
 </body>
 </html>
