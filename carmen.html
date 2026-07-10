@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Kdo je Carmen | Svět Carmen</title>
+
+<meta name="description" content="Poznej Carmen. Poznej člověka, který stojí za příběhy Světa Carmen.">
+
+<style>
+
+:root{
+    --pink:#f36a9b;
+    --dark:#2d1b22;
+    --light:#fff8f8;
+    --white:rgba(255,255,255,.82);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia,"Times New Roman",serif;
+    background:linear-gradient(180deg,#fff9fb,#ffeef6,#fffaf5);
+    color:var(--dark);
+}
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding:18px 7vw;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(243,106,155,.16);
+}
+
+.brand{
+    color:var(--dark);
+    text-decoration:none;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:26px;
+}
+
+.nav-links a{
+    color:var(--dark);
+    text-decoration:none;
+    font-size:16px;
+}
+
+.nav-links a.active{
+    color:var(--pink);
+    border-bottom:2px solid var(--pink);
+    padding-bottom:5px;
+}
+
+.support-btn{
+    border:0;
+    border-radius:999px;
+    padding:12px 20px;
+    background:linear-gradient(135deg,#d94f82,#f47aab);
+    color:white;
+    font:inherit;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+@media(max-width:760px){
+    .topbar{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .brand{
+        width:100%;
+        text-align:center;
+    }
+
+    .nav-links{
+        gap:16px;
+    }
+
+    .support-btn{
+        width:100%;
+    }
+}
+</style>
+
+</head>
+
+<body><nav class="topbar">
+  <a class="brand" href="index.html">Svět Carmen</a>
+
+  <div class="nav-links">
+    <a href="index.html">Domů</a>
+    <a href="carmen.html" class="active">O Carmen</a>
+    <a href="svet.html">Příběhy</a>
+  </div>
+
+  <button class="support-btn" type="button" aria-label="Podpořit Svět Carmen">
+    ♡ Podpořit Svět Carmen
+  </button>
+</nav>
+
+
+
+</body>
+</html>
