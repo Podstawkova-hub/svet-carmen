@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Svět Carmen | Příběhy</title>
+
+  <meta
+    name="description"
+    content="Vstup do Světa Carmen a objev komiksy, knihy a skutečné příběhy tvořené srdcem."
+  >
+
+  <style>
+    :root{
+      --dark:#1f1420;
+      --pink:#ff74b8;
+      --deep:#a52d6f;
+      --gold:#ffd37d;
+      --white:rgba(255,255,255,.82);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--dark);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,116,184,.28), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(255,211,125,.35), transparent 28%),
+        linear-gradient(180deg,#fff7fb 0%,#ffe8f3 48%,#fff8ee 100%);
+      min-height:100vh;
+    }
+
+    nav{
+      position:sticky;
+      top:18px;
+      z-index:10;
+      width:max-content;
+      max-width:92%;
+      margin:18px auto 0;
+      padding:10px 18px;
+      background:rgba(255,255,255,.78);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(165,45,111,.14);
+      border-radius:999px;
+      box-shadow:0 18px 40px rgba(165,45,111,.14);
+    }
+
+    nav a{
+      color:var(--deep);
+      text-decoration:none;
+      margin:0 11px;
+      font-weight:bold;
+      font-size:15px;
+    }
+
+    header{
+      text-align:center;
+      padding:90px 7vw 55px;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:9px 16px;
+      margin-bottom:18px;
+      border-radius:999px;
+      background:rgba(255,116,184,.18);
+      border:1px solid rgba(255,116,184,.35);
+      color:#7b2354;
+      font-weight:bold;
+    }
+
+    h1{
+      margin:0 0 20px;
+      color:var(--deep);
+      font-size:clamp(50px,8vw,96px);
+      line-height:1;
+    }
+
+    .subtitle{
+      max-width:850px;
+      margin:0 auto;
+      font-size:clamp(23px,3vw,38px);
+      line-height:1.35;
+    }
+
+    main{
+      padding:20px 7vw 80px;
+    }
+
+    footer{
+      padding:42px 7vw;
+      text-align:center;
+      color:#7d4964;
+    }
+
+    @media(max-width:700px){
+      nav{
+        border-radius:24px;
+        text-align:center;
+      }
+
+      nav a{
+        display:inline-block;
+        margin:6px 7px;
+      }
+
+      header{
+        padding-top:65px;
+      }
+
+      main{
+        padding-left:5vw;
+        padding-right:5vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html">Carmen</a>
+    <a href="#projekty">Hlavní projekty</a>
+    <a href="#pripravujeme">Připravujeme</a>
+  </nav>
+
+  <header>
+    <div class="badge">🌸 Vítej mezi příběhy</div>
+
+    <h1>Svět Carmen</h1>
+
+    <p class="subtitle">
+      Vyber si příběh, který tě osloví.
+      Každý z nich vzniká srdcem.
+    </p>
+  </header>
+
+  <main>
+    <!-- Sem v dalším kroku vložíme tři hlavní projekty. -->
+  </main>
+
+  <footer>
+    © Svět Carmen · Příběhy, které mají srdce · Zrozeno 3. 7. 2026
+  </footer>
+
+</body>
+</html>
