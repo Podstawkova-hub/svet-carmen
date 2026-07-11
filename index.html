@@ -35,62 +35,37 @@
       overflow:hidden;
       color:var(--text);
       font-family:Georgia,"Times New Roman",serif;
-      background:#fff4f8;
+      background:#fff7f5;
     }
 
-.home{
-  position:relative;
-  min-height:100vh;
-  overflow:hidden;
-  isolation:isolate;
+    .home{
+      position:relative;
+      min-height:100vh;
+      overflow:hidden;
+      isolation:isolate;
 
-  background-image:url("uvod-svet-carmen.png.png");
-  background-repeat:no-repeat;
-  background-position:center;
-  background-size:cover;
-}
+      background-image:url("uvod-svet-carmen-wide.png");
+      background-repeat:no-repeat;
+      background-position:center center;
+      background-size:cover;
+    }
 
-/* Jemné rozmazané pozadí vyplní celou obrazovku */
-.home::after{
-  content:"";
-  position:absolute;
-  inset:-25px;
-  z-index:-2;
+    .home::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
 
-  background-image:url("uvod-svet-carmen.png.png");
-  background-repeat:no-repeat;
-  background-position:center;
-  background-size:cover;
-
-  filter:blur(18px);
-  transform:scale(1.06);
-  opacity:.52;
-}
-
-/* Celý originální obrázek bude vidět vpravo */
-.home::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(255,248,246,1) 0%,
-      rgba(255,248,246,.99) 20%,
-      rgba(255,248,246,.91) 31%,
-      rgba(255,248,246,.58) 42%,
-      rgba(255,248,246,.14) 52%,
-      transparent 61%
-    ),
-    url("uvod-svet-carmen.png.png");
-
-  background-repeat:no-repeat;
-  background-position:center, right center;
-  background-size:100% 100%, auto 100%;
-    );
+      background:linear-gradient(
+        90deg,
+        rgba(255,248,246,.99) 0%,
+        rgba(255,248,246,.97) 18%,
+        rgba(255,248,246,.86) 28%,
+        rgba(255,248,246,.55) 37%,
+        rgba(255,248,246,.18) 47%,
+        transparent 58%
+      );
     }
 
     .brand{
@@ -116,18 +91,23 @@
       top:28px;
       right:3vw;
       z-index:4;
+
       display:flex;
       align-items:center;
       gap:12px;
+
       padding:10px 13px 10px 18px;
       border:1px solid rgba(255,255,255,.30);
       border-radius:999px;
+
       color:white;
       background:rgba(45,23,34,.78);
       backdrop-filter:blur(10px);
+
       font-family:Arial,Helvetica,sans-serif;
       font-size:14px;
       cursor:pointer;
+
       box-shadow:0 11px 30px rgba(46,21,34,.25);
       transition:
         transform .2s ease,
@@ -142,11 +122,14 @@
     .music-icon{
       display:grid;
       place-items:center;
+
       width:34px;
       height:34px;
+
       border-radius:50%;
       color:var(--deep);
       background:white;
+
       font-size:14px;
       line-height:1;
     }
@@ -154,13 +137,16 @@
     .home-content{
       position:relative;
       z-index:2;
-      width:min(640px,42vw);
+
+      width:min(620px,40vw);
       min-height:100vh;
+
       display:flex;
       flex-direction:column;
       justify-content:center;
-      margin-left:3.2vw;
-      padding:110px 20px 70px 0;
+
+      margin-left:2.6vw;
+      padding:115px 20px 70px 0;
     }
 
     .welcome{
@@ -180,8 +166,9 @@
     }
 
     .motto{
-      max-width:600px;
+      max-width:590px;
       margin-bottom:14px;
+
       font-size:clamp(25px,2.35vw,37px);
       font-style:italic;
       line-height:1.25;
@@ -191,8 +178,10 @@
       display:flex;
       align-items:center;
       gap:12px;
-      width:min(470px,100%);
+
+      width:min(455px,100%);
       margin:3px 0 23px;
+
       color:var(--pink);
     }
 
@@ -205,26 +194,33 @@
     }
 
     .intro-text{
-      max-width:570px;
+      max-width:555px;
       margin-bottom:29px;
+
       font-size:clamp(18px,1.4vw,23px);
       line-height:1.55;
     }
 
     .enter-btn{
       align-self:flex-start;
+
       display:inline-flex;
       align-items:center;
       gap:18px;
+
       padding:17px 30px;
       border-radius:999px;
+
       color:white;
       background:linear-gradient(135deg,var(--deep),var(--pink));
+
       text-decoration:none;
       font-family:Arial,Helvetica,sans-serif;
       font-size:17px;
       font-weight:bold;
+
       box-shadow:0 15px 34px rgba(165,45,111,.29);
+
       transition:
         transform .22s ease,
         box-shadow .22s ease;
@@ -252,22 +248,21 @@
 
       .home{
         min-height:100svh;
-        padding-top:51vh;
+        padding-top:55vh;
         background-position:center top;
         background-size:auto 58vh;
         background-color:#fff8f5;
       }
 
       .home::before{
-        background:
-          linear-gradient(
-            180deg,
-            transparent 0%,
-            transparent 32%,
-            rgba(255,248,246,.58) 48%,
-            rgba(255,248,246,.94) 64%,
-            rgba(255,248,246,1) 100%
-          );
+        background:linear-gradient(
+          180deg,
+          transparent 0%,
+          transparent 34%,
+          rgba(255,248,246,.58) 48%,
+          rgba(255,248,246,.94) 65%,
+          rgba(255,248,246,1) 100%
+        );
       }
 
       .brand{
@@ -291,6 +286,7 @@
         min-height:auto;
         margin-left:0;
         padding:42px 7vw 55px;
+
         align-items:center;
         text-align:center;
       }
@@ -307,7 +303,7 @@
 
     @media(max-width:560px){
       .home{
-        padding-top:46vh;
+        padding-top:48vh;
         background-size:auto 52vh;
       }
 
