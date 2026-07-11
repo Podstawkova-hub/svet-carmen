@@ -17,11 +17,10 @@
       --pink-dark:#bd496f;
       --deep:#9f3d64;
       --text:#291e22;
-      --soft:#fff4f7;
-      --cream:#fffaf7;
-      --white:rgba(255,255,255,.84);
-      --line:rgba(189,73,111,.16);
-      --shadow:0 18px 48px rgba(117,58,79,.12);
+      --muted:#604b53;
+      --line:rgba(189,73,111,.18);
+      --soft-pink:#ffe8f0;
+      --soft-cream:#fff3e8;
     }
 
     *{
@@ -40,10 +39,27 @@
       color:var(--text);
       font-family:Arial,Helvetica,sans-serif;
       background:
-        radial-gradient(circle at 8% 12%,rgba(255,191,211,.28),transparent 25%),
-        radial-gradient(circle at 91% 18%,rgba(255,213,190,.32),transparent 27%),
-        radial-gradient(circle at 45% 92%,rgba(255,202,220,.20),transparent 32%),
-        linear-gradient(180deg,#fffaf8 0%,#fff3f6 52%,#fffaf7 100%);
+        radial-gradient(
+          circle at 8% 12%,
+          rgba(255,191,211,.32),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 91% 18%,
+          rgba(255,213,190,.34),
+          transparent 27%
+        ),
+        radial-gradient(
+          circle at 45% 92%,
+          rgba(255,202,220,.25),
+          transparent 32%
+        ),
+        linear-gradient(
+          180deg,
+          #fffaf8 0%,
+          #fff1f5 48%,
+          #fff7f3 100%
+        );
     }
 
     a{
@@ -71,7 +87,7 @@
       justify-content:space-between;
       gap:24px;
       padding:16px 5vw;
-      background:rgba(255,252,250,.92);
+      background:rgba(255,250,248,.92);
       backdrop-filter:blur(14px);
       border-bottom:1px solid var(--line);
     }
@@ -126,9 +142,22 @@
       border-radius:12px;
       padding:12px 20px;
       color:white;
-      background:linear-gradient(135deg,var(--pink-dark),var(--pink));
+      background:linear-gradient(
+        135deg,
+        var(--pink-dark),
+        var(--pink)
+      );
       cursor:pointer;
       box-shadow:0 10px 25px rgba(189,73,111,.18);
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+    }
+
+    .support-btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 13px 30px rgba(189,73,111,.23);
     }
 
     .support-btn.supported{
@@ -148,21 +177,22 @@
     /* Úvod Carmen */
 
     .hero{
-  display:grid;
-  grid-template-columns:.88fr 1.12fr;
-  min-height:570px;
-  align-items:center;
-  gap:45px;
-}
+      display:grid;
+      grid-template-columns:.88fr 1.12fr;
+      min-height:570px;
+      align-items:center;
+      gap:45px;
+      padding:24px 0 54px;
+    }
 
     .hero-content{
-    position:relative;
-    z-index:2;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:45px 20px 45px 35px;
-}
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:45px 20px 45px 35px;
+    }
 
     .welcome{
       margin-bottom:8px;
@@ -198,24 +228,23 @@
     .hero-intro{
       margin-bottom:18px;
       font-size:17px;
-      line-height:1.7;
+      line-height:1.75;
     }
 
     .hero-origin{
       padding-top:17px;
       border-top:1px solid var(--line);
-      color:#534047;
+      color:var(--muted);
       font-size:16px;
-      line-height:1.7;
+      line-height:1.75;
     }
 
-    ..hero-image{
-    position:relative;
-    min-height:570px;
-    overflow:hidden;
-    border-radius:32px;
-    box-shadow:0 20px 55px rgba(117,58,79,.14);
-
+    .hero-image{
+      position:relative;
+      min-height:570px;
+      overflow:hidden;
+      border-radius:32px;
+      box-shadow:0 20px 55px rgba(117,58,79,.14);
     }
 
     .hero-image::after{
@@ -239,16 +268,31 @@
       object-position:center;
     }
 
-    /* Společné bloky */
+    /* Společné části stránky */
 
-    .content-block{
-    margin-top:45px;
-    padding:38px 25px;
+    .section{
+      position:relative;
+      padding:76px 28px;
+    }
 
+    .section::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:50%;
+      width:min(900px,75%);
+      height:1px;
+      transform:translateX(-50%);
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(189,73,111,.25),
+        transparent
+      );
     }
 
     .section-title{
-      margin-bottom:28px;
+      margin-bottom:38px;
       text-align:center;
       color:var(--pink-dark);
       font-family:Georgia,"Times New Roman",serif;
@@ -260,9 +304,9 @@
 
     .why-grid{
       display:grid;
-      grid-template-columns:180px 1fr 290px;
+      grid-template-columns:170px 1fr 290px;
       align-items:center;
-      gap:34px;
+      gap:38px;
     }
 
     .heart-art{
@@ -274,14 +318,14 @@
       font-family:Georgia,"Times New Roman",serif;
       font-size:122px;
       line-height:1;
-      opacity:.72;
+      opacity:.66;
       transform:rotate(-7deg);
     }
 
     .why-text p{
-      margin-bottom:15px;
+      margin-bottom:17px;
       font-size:18px;
-      line-height:1.75;
+      line-height:1.8;
     }
 
     .why-text p:last-child{
@@ -294,18 +338,27 @@
 
     .speech-note{
       position:relative;
-      padding:32px 28px;
+      padding:34px 28px;
       text-align:center;
       color:#704054;
       background:
-        radial-gradient(circle at 32% 25%,rgba(255,255,255,.70),transparent 36%),
-        linear-gradient(145deg,#ffeaf0,#fff4f6);
-      border:1px solid rgba(223,105,140,.20);
+        radial-gradient(
+          circle at 32% 25%,
+          rgba(255,255,255,.76),
+          transparent 36%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(255,228,237,.86),
+          rgba(255,245,247,.88)
+        );
+      border:1px solid rgba(223,105,140,.18);
       border-radius:48% 52% 44% 56% / 54% 45% 55% 46%;
       font-family:Georgia,"Times New Roman",serif;
       font-size:21px;
       font-style:italic;
       line-height:1.55;
+      box-shadow:0 14px 34px rgba(117,58,79,.07);
     }
 
     .speech-note::after{
@@ -320,37 +373,61 @@
       transform:rotate(8deg);
     }
 
-    /* Bubliny pro koho */
+    /* Pro koho vznikají příběhy */
+
+    .audience-section{
+      padding-top:76px;
+      padding-bottom:84px;
+    }
+
+    .audience-intro{
+      max-width:720px;
+      margin:-20px auto 36px;
+      text-align:center;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+    }
 
     .audience{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:22px;
-      margin-top:24px;
+      gap:24px;
     }
 
     .audience-card{
       position:relative;
-      min-height:250px;
-      padding:36px 32px 30px;
+      min-height:255px;
+      padding:38px 32px 34px;
       overflow:hidden;
-      background:rgba(255,255,255,.75);
-      border:1px solid rgba(223,105,140,.16);
-      box-shadow:0 14px 35px rgba(117,58,79,.08);
+      border:1px solid rgba(223,105,140,.14);
+      box-shadow:0 14px 35px rgba(117,58,79,.07);
     }
 
     .audience-card:nth-child(1){
-      background:linear-gradient(145deg,#ffe7ef,#fff7f9);
+      background:linear-gradient(
+        145deg,
+        rgba(255,226,236,.88),
+        rgba(255,248,250,.76)
+      );
       border-radius:47% 53% 51% 49% / 44% 49% 51% 56%;
     }
 
     .audience-card:nth-child(2){
-      background:linear-gradient(145deg,#fff2e4,#fffaf5);
+      background:linear-gradient(
+        145deg,
+        rgba(255,237,218,.88),
+        rgba(255,250,245,.78)
+      );
       border-radius:53% 47% 45% 55% / 48% 52% 48% 52%;
     }
 
     .audience-card:nth-child(3){
-      background:linear-gradient(145deg,#ffeaf0,#fff8fa);
+      background:linear-gradient(
+        145deg,
+        rgba(255,228,237,.90),
+        rgba(255,249,251,.78)
+      );
       border-radius:48% 52% 54% 46% / 55% 45% 55% 45%;
     }
 
@@ -370,7 +447,7 @@
       margin-bottom:18px;
       padding-bottom:11px;
       color:#473039;
-      border-bottom:2px solid rgba(223,105,140,.45);
+      border-bottom:2px solid rgba(223,105,140,.38);
       font-family:Georgia,"Times New Roman",serif;
       font-size:26px;
       font-style:italic;
@@ -378,8 +455,9 @@
     }
 
     .audience-card p{
+      padding-right:15px;
       font-size:17px;
-      line-height:1.7;
+      line-height:1.72;
     }
 
     .audience-symbol{
@@ -387,51 +465,50 @@
       right:26px;
       bottom:22px;
       font-size:42px;
-      opacity:.62;
+      opacity:.58;
     }
 
     /* Hodnoty */
 
-    .values-block{
-      margin-top:28px;
-      padding:30px 30px 26px;
-      background:
-        linear-gradient(90deg,rgba(255,231,238,.84),rgba(255,248,245,.90));
-      border:1px solid rgba(223,105,140,.14);
-      border-radius:26px;
-      box-shadow:var(--shadow);
+    .values-section{
+      padding-top:78px;
+      padding-bottom:78px;
     }
 
     .values-layout{
       display:grid;
-      grid-template-columns:190px 1fr;
+      grid-template-columns:210px 1fr;
       align-items:center;
-      gap:22px;
+      gap:30px;
     }
 
     .values-heading{
-      padding-right:22px;
-      border-right:1px solid rgba(189,73,111,.18);
+      padding-right:28px;
+      color:#4c343d;
+      border-right:1px solid rgba(189,73,111,.22);
       font-family:Georgia,"Times New Roman",serif;
-      font-size:28px;
-      line-height:1.3;
+      font-size:31px;
+      line-height:1.35;
+      font-weight:normal;
     }
 
     .values-grid{
       display:grid;
-      grid-template-columns:repeat(6,1fr);
+      grid-template-columns:repeat(3,1fr);
+      column-gap:0;
+      row-gap:28px;
     }
 
     .value{
-      min-height:108px;
-      padding:8px 14px;
+      min-height:135px;
+      padding:12px 25px;
       text-align:center;
-      border-right:1px solid rgba(189,73,111,.13);
-      font-size:14px;
-      line-height:1.45;
+      border-right:1px solid rgba(189,73,111,.15);
+      font-size:15px;
+      line-height:1.55;
     }
 
-    .value:last-child{
+    .value:nth-child(3n){
       border-right:0;
     }
 
@@ -439,20 +516,45 @@
       display:block;
       margin-bottom:10px;
       color:var(--pink-dark);
-      font-size:31px;
+      font-size:33px;
     }
 
     .value strong{
       display:block;
-      margin-bottom:4px;
+      margin-bottom:5px;
+      color:#422d35;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:18px;
+      font-weight:normal;
+    }
+
+    .value-hope{
+      padding-left:34px;
+      padding-right:34px;
     }
 
     /* Závěr */
 
     .closing{
-      margin-top:28px;
-      padding:46px 25px 20px;
+      position:relative;
+      padding:86px 25px 36px;
       text-align:center;
+    }
+
+    .closing::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:50%;
+      width:min(900px,75%);
+      height:1px;
+      transform:translateX(-50%);
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(189,73,111,.25),
+        transparent
+      );
     }
 
     .closing p{
@@ -462,7 +564,7 @@
     }
 
     .closing h2{
-      margin-bottom:24px;
+      margin-bottom:28px;
       color:var(--pink);
       font-family:Georgia,"Times New Roman",serif;
       font-size:clamp(38px,4vw,55px);
@@ -474,12 +576,18 @@
       display:inline-block;
       padding:16px 32px;
       color:white;
-      background:linear-gradient(135deg,var(--pink-dark),var(--pink));
+      background:linear-gradient(
+        135deg,
+        var(--pink-dark),
+        var(--pink)
+      );
       border-radius:13px;
       text-decoration:none;
       font-weight:bold;
       box-shadow:0 13px 30px rgba(189,73,111,.20);
-      transition:transform .2s ease,box-shadow .2s ease;
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
     }
 
     .story-btn:hover{
@@ -503,6 +611,12 @@
 
       .hero{
         grid-template-columns:1fr;
+        gap:15px;
+      }
+
+      .hero-content{
+        max-width:820px;
+        padding-left:30px;
       }
 
       .hero-image{
@@ -516,7 +630,7 @@
       .speech-note{
         grid-column:1 / -1;
         width:min(520px,100%);
-        margin:0 auto;
+        margin:10px auto 0;
       }
 
       .values-layout{
@@ -524,23 +638,13 @@
       }
 
       .values-heading{
+        max-width:500px;
+        margin:0 auto;
         padding-right:0;
-        padding-bottom:18px;
+        padding-bottom:20px;
         text-align:center;
         border-right:0;
-        border-bottom:1px solid rgba(189,73,111,.18);
-      }
-
-      .values-grid{
-        grid-template-columns:repeat(3,1fr);
-      }
-
-      .value:nth-child(3){
-        border-right:0;
-      }
-
-      .value:nth-child(-n+3){
-        margin-bottom:18px;
+        border-bottom:1px solid rgba(189,73,111,.20);
       }
     }
 
@@ -581,11 +685,12 @@
 
       .hero{
         min-height:0;
-        border-radius:24px;
+        padding-top:10px;
+        padding-bottom:42px;
       }
 
       .hero-content{
-        padding:38px 27px;
+        padding:38px 15px;
       }
 
       .hero h1{
@@ -598,16 +703,16 @@
 
       .hero-image{
         min-height:390px;
+        border-radius:25px;
       }
 
-      .content-block{
-        padding:31px 23px;
-        border-radius:24px;
+      .section{
+        padding:60px 8px;
       }
 
       .why-grid{
         grid-template-columns:1fr;
-        gap:20px;
+        gap:22px;
       }
 
       .heart-art{
@@ -617,10 +722,11 @@
 
       .audience{
         grid-template-columns:1fr;
+        gap:28px;
       }
 
       .audience-card{
-        min-height:220px;
+        min-height:225px;
       }
 
       .values-grid{
@@ -628,30 +734,30 @@
       }
 
       .value{
-        border-right:1px solid rgba(189,73,111,.13);
-        margin-bottom:17px;
+        border-right:1px solid rgba(189,73,111,.15);
+        padding:12px 18px;
+      }
+
+      .value:nth-child(3n){
+        border-right:1px solid rgba(189,73,111,.15);
       }
 
       .value:nth-child(even){
         border-right:0;
       }
 
-      .value:nth-child(-n+3){
-        margin-bottom:17px;
-      }
-
       .closing{
-        padding-top:38px;
+        padding-top:68px;
       }
     }
 
-    @media(max-width:430px){
+    @media(max-width:480px){
       .hero h1{
         font-size:43px;
       }
 
       .hero-content{
-        padding:34px 22px;
+        padding:34px 8px;
       }
 
       .hero-image{
@@ -662,18 +768,39 @@
         font-size:34px;
       }
 
+      .why-text p{
+        font-size:17px;
+      }
+
+      .speech-note{
+        padding:30px 22px;
+        font-size:19px;
+      }
+
+      .audience-card{
+        padding:35px 27px 32px;
+      }
+
       .values-grid{
         grid-template-columns:1fr;
       }
 
       .value,
+      .value:nth-child(3n),
       .value:nth-child(even){
+        min-height:auto;
+        padding:22px 12px;
         border-right:0;
-        border-bottom:1px solid rgba(189,73,111,.13);
+        border-bottom:1px solid rgba(189,73,111,.15);
       }
 
       .value:last-child{
         border-bottom:0;
+      }
+
+      .story-btn{
+        width:100%;
+        padding:16px 20px;
       }
     }
   </style>
@@ -747,13 +874,17 @@
 
     </section>
 
-    <section class="content-block">
+    <section class="section">
 
-      <h2 class="section-title">Proč vznikl Svět Carmen?</h2>
+      <h2 class="section-title">
+        Proč vznikl Svět Carmen?
+      </h2>
 
       <div class="why-grid">
 
-        <div class="heart-art" aria-hidden="true">♡</div>
+        <div class="heart-art" aria-hidden="true">
+          ♡
+        </div>
 
         <div class="why-text">
 
@@ -791,53 +922,73 @@
 
     </section>
 
-    <section class="audience" aria-label="Pro koho vznikají příběhy">
+    <section class="section audience-section">
 
-      <article class="audience-card">
+      <h2 class="section-title">
+        Pro koho vznikají příběhy?
+      </h2>
 
-        <h3>Pro děti a teenagery</h3>
+      <p class="audience-intro">
+        Každý příběh může oslovit někoho jiného.
+        Dítě, dospělého i člověka, který každý den stojí
+        po boku druhých.
+      </p>
 
-        <p>
-          Aby věděli, že jejich pocity nejsou zbytečné,
-          že nejsou sami a že existují lidé,
-          kteří jsou připraveni je vyslechnout.
-        </p>
+      <div class="audience" aria-label="Pro koho vznikají příběhy">
 
-        <div class="audience-symbol" aria-hidden="true">🧸</div>
+        <article class="audience-card">
 
-      </article>
+          <h3>Pro děti a teenagery</h3>
 
-      <article class="audience-card">
+          <p>
+            Aby věděli, že jejich pocity nejsou zbytečné,
+            že nejsou sami a že existují lidé,
+            kteří jsou připraveni je vyslechnout.
+          </p>
 
-        <h3>Pro dospělé</h3>
+          <div class="audience-symbol" aria-hidden="true">
+            🧸
+          </div>
 
-        <p>
-          Aby se někdy zastavili, podívali se na příběh
-          očima druhého člověka a nezapomněli,
-          jak důležité je naslouchat.
-        </p>
+        </article>
 
-        <div class="audience-symbol" aria-hidden="true">☕</div>
+        <article class="audience-card">
 
-      </article>
+          <h3>Pro dospělé</h3>
 
-      <article class="audience-card">
+          <p>
+            Aby se někdy zastavili, podívali se na příběh
+            očima druhého člověka a nezapomněli,
+            jak důležité je naslouchat.
+          </p>
 
-        <h3>Pro učitele</h3>
+          <div class="audience-symbol" aria-hidden="true">
+            ☕
+          </div>
 
-        <p>
-          Aby za známkami, chováním a každodenními povinnostmi
-          nepřestali vidět dítě, které může potřebovat pomoc,
-          pochopení nebo jen chvíli skutečné pozornosti.
-        </p>
+        </article>
 
-        <div class="audience-symbol" aria-hidden="true">📚</div>
+        <article class="audience-card">
 
-      </article>
+          <h3>Pro učitele</h3>
+
+          <p>
+            Aby za známkami, chováním a každodenními povinnostmi
+            nepřestali vidět dítě, které může potřebovat pomoc,
+            pochopení nebo jen chvíli skutečné pozornosti.
+          </p>
+
+          <div class="audience-symbol" aria-hidden="true">
+            📚
+          </div>
+
+        </article>
+
+      </div>
 
     </section>
 
-    <section class="values-block">
+    <section class="section values-section">
 
       <div class="values-layout">
 
@@ -877,10 +1028,10 @@
             své místo.
           </div>
 
-          <div class="value">
+          <div class="value value-hope">
             <span class="value-icon">✧</span>
-            <strong>Naděje je sen,</strong>
-            protože žijeme.
+            <strong>Naděje je víra,</strong>
+            že i jeden malý krok dnes může jednou změnit celý život.
           </div>
 
         </div>
@@ -896,7 +1047,9 @@
         věř, že na to nejsi sám.
       </p>
 
-      <h2>Jsem tu pro tebe. ♡</h2>
+      <h2>
+        Jsem tu pro tebe. ♡
+      </h2>
 
       <a class="story-btn" href="svet.html">
         Objev příběhy Světa Carmen &nbsp; →
@@ -919,7 +1072,8 @@
     }
 
     supportButton.addEventListener("click", function () {
-      const isSupported = supportButton.classList.toggle("supported");
+      const isSupported =
+        supportButton.classList.toggle("supported");
 
       if (isSupported) {
         supportButton.textContent = "♥ Děkuji za podporu";
