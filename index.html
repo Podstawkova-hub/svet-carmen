@@ -5,7 +5,7 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
   >
 
   <title>Svět Carmen</title>
@@ -25,116 +25,99 @@
     html,
     body {
       width: 100%;
-      min-height: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #17090f;
     }
 
     body {
-      background: #15080f;
-      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    /*
-      Celý obrázek funguje jako jedna hlavní plocha.
-      Jeho výška se dopočítá automaticky,
-      takže se obrázek vůbec neořízne.
-    */
     .hero {
       position: relative;
-      width: 100%;
-      max-width: 2048px;
-      margin: 0 auto;
+      width: 100vw;
+      height: 100vh;
+      height: 100svh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+      background: #17090f;
     }
 
     .hero-image {
       display: block;
+
       width: 100%;
-      height: auto;
+      height: 100%;
+
+      object-fit: contain;
+      object-position: center;
 
       user-select: none;
       -webkit-user-drag: none;
     }
 
-    /*
-      Tlačítko je položené přes spodní část obrázku.
-    */
-    .enter-button {
+    .click-area {
       position: absolute;
+      display: block;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      z-index: 5;
+    }
 
-      left: 50%;
-      bottom: 3.2%;
-
-      transform: translateX(-50%);
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-
-      min-width: 285px;
-      padding: 16px 30px;
-
-      border: 1px solid rgba(255, 255, 255, 0.45);
+    .enter-link {
+      left: 3.2%;
+      top: 60.2%;
+      width: 21.6%;
+      height: 6.5%;
       border-radius: 999px;
-
-      background: linear-gradient(
-        135deg,
-        #d52d78,
-        #ed5795
-      );
-
-      color: #ffffff;
-
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      text-decoration: none;
-
-      box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.35),
-        0 0 25px rgba(234, 63, 137, 0.35);
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
     }
 
-    .enter-button:hover {
-      transform: translateX(-50%) scale(1.04);
-
-      box-shadow:
-        0 14px 38px rgba(0, 0, 0, 0.42),
-        0 0 32px rgba(234, 63, 137, 0.5);
+    .music-button {
+      left: 78.2%;
+      top: 3.2%;
+      width: 18.8%;
+      height: 5.2%;
+      border-radius: 999px;
     }
 
-    .enter-button:focus-visible {
+    .bottom-link {
+      left: 47.2%;
+      bottom: 0.8%;
+      width: 5.5%;
+      height: 7%;
+      border-radius: 50%;
+    }
+
+    .click-area:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .click-area:focus-visible {
       outline: 3px solid #ffffff;
-      outline-offset: 4px;
+      outline-offset: 3px;
     }
 
-    .arrow {
-      font-size: 23px;
-      line-height: 1;
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
-    /*
-      Mobilní zobrazení.
-    */
-    @media (max-width: 700px) {
-      .enter-button {
-        bottom: 2%;
-
-        min-width: 0;
-        width: calc(100% - 36px);
-        max-width: 340px;
-
-        padding: 14px 20px;
-        font-size: 15px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .enter-button {
-        transition: none;
+    @media (max-aspect-ratio: 3 / 2) {
+      .hero {
+        align-items: center;
       }
     }
   </style>
@@ -146,19 +129,81 @@
 
     <img
       class="hero-image"
-      src="uvod-svet-carmen.png"
-      alt="Svět Carmen s Carmen, fénixem, Miou a Čestmírkem"
+      src="uvod-final.png"
+      alt="Vítej ve Světě Carmen"
     >
 
     <a
-      class="enter-button"
-      href="o-carmen.html"
+      class="click-area enter-link"
+      href="svet.html"
+      aria-label="Vstoupit a poznat Carmen"
     >
-      <span>Vstoupit a poznat Carmen</span>
-      <span class="arrow" aria-hidden="true">→</span>
+      <span class="visually-hidden">
+        Vstoupit a poznat Carmen
+      </span>
     </a>
 
+    <button
+      class="click-area music-button"
+      id="musicButton"
+      type="button"
+      aria-label="Pustit hymnu Světa Carmen"
+      aria-pressed="false"
+    >
+      <span class="visually-hidden">
+        Pustit nebo zastavit hymnu Světa Carmen
+      </span>
+    </button>
+
+    <a
+      class="click-area bottom-link"
+      href="svet.html"
+      aria-label="Pokračovat dál"
+    >
+      <span class="visually-hidden">
+        Pokračovat dál
+      </span>
+    </a>
+
+    <audio
+      id="carmenMusic"
+      preload="metadata"
+      loop
+    >
+      <source
+        src="ladybug-little-bug.mp3.mp3"
+        type="audio/mpeg"
+      >
+    </audio>
+
   </main>
+
+  <script>
+    const musicButton = document.getElementById("musicButton");
+    const carmenMusic = document.getElementById("carmenMusic");
+
+    musicButton.addEventListener("click", async () => {
+      try {
+        if (carmenMusic.paused) {
+          await carmenMusic.play();
+          musicButton.setAttribute("aria-pressed", "true");
+          musicButton.setAttribute(
+            "aria-label",
+            "Zastavit hymnu Světa Carmen"
+          );
+        } else {
+          carmenMusic.pause();
+          musicButton.setAttribute("aria-pressed", "false");
+          musicButton.setAttribute(
+            "aria-label",
+            "Pustit hymnu Světa Carmen"
+          );
+        }
+      } catch (error) {
+        console.error("Hymnu se nepodařilo přehrát:", error);
+      }
+    });
+  </script>
 
 </body>
 </html>
