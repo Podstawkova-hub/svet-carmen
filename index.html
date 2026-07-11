@@ -38,34 +38,59 @@
       background:#fff4f8;
     }
 
-    .home{
-      position:relative;
-      min-height:100vh;
-      overflow:hidden;
-      isolation:isolate;
-     background-image:url("uvod-svet-carmen.png.png");
-      background-repeat:no-repeat;
-      background-position:center center;
-      background-size:cover;
-    }
+.home{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  isolation:isolate;
 
-    .home::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:-1;
-      pointer-events:none;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(255,248,246,1) 0%,
-          rgba(255,248,246,.99) 17%,
-          rgba(255,248,246,.95) 27%,
-          rgba(255,248,246,.78) 36%,
-          rgba(255,248,246,.43) 45%,
-          rgba(255,248,246,.12) 54%,
-          transparent 63%
-        );
+  background-image:url("uvod-svet-carmen.png.png");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+}
+
+/* Jemné rozmazané pozadí vyplní celou obrazovku */
+.home::after{
+  content:"";
+  position:absolute;
+  inset:-25px;
+  z-index:-2;
+
+  background-image:url("uvod-svet-carmen.png.png");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+
+  filter:blur(18px);
+  transform:scale(1.06);
+  opacity:.52;
+}
+
+/* Celý originální obrázek bude vidět vpravo */
+.home::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(255,248,246,1) 0%,
+      rgba(255,248,246,.99) 20%,
+      rgba(255,248,246,.91) 31%,
+      rgba(255,248,246,.58) 42%,
+      rgba(255,248,246,.14) 52%,
+      transparent 61%
+    ),
+    url("uvod-svet-carmen.png.png");
+
+  background-repeat:no-repeat;
+  background-position:center, right center;
+  background-size:100% 100%, auto 100%;
+    );
     }
 
     .brand{
