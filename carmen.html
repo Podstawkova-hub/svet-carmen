@@ -13,14 +13,15 @@
 
   <style>
     :root{
-      --pink:#f36a9b;
-      --deep:#a52d6f;
-      --dark:#2d1b22;
-      --soft:#fff1f7;
-      --cream:#fffaf5;
-      --white:rgba(255,255,255,.88);
-      --border:rgba(165,45,111,.14);
-      --shadow:0 22px 60px rgba(89,38,63,.12);
+      --pink:#df698c;
+      --pink-dark:#bd496f;
+      --deep:#9f3d64;
+      --text:#291e22;
+      --soft:#fff4f7;
+      --cream:#fffaf7;
+      --white:rgba(255,255,255,.84);
+      --line:rgba(189,73,111,.16);
+      --shadow:0 18px 48px rgba(117,58,79,.12);
     }
 
     *{
@@ -34,13 +35,15 @@
     }
 
     body{
-      font-family:Georgia,"Times New Roman",serif;
-      color:var(--dark);
-      background:
-        radial-gradient(circle at 15% 8%, rgba(243,106,155,.18), transparent 28%),
-        radial-gradient(circle at 85% 20%, rgba(255,211,125,.22), transparent 28%),
-        linear-gradient(180deg,#fff9fb 0%,#ffedf5 50%,#fffaf5 100%);
+      min-height:100vh;
       overflow-x:hidden;
+      color:var(--text);
+      font-family:Arial,Helvetica,sans-serif;
+      background:
+        radial-gradient(circle at 8% 12%,rgba(255,191,211,.28),transparent 25%),
+        radial-gradient(circle at 91% 18%,rgba(255,213,190,.32),transparent 27%),
+        radial-gradient(circle at 45% 92%,rgba(255,202,220,.20),transparent 32%),
+        linear-gradient(180deg,#fffaf8 0%,#fff3f6 52%,#fffaf7 100%);
     }
 
     a{
@@ -48,8 +51,13 @@
     }
 
     img{
-      max-width:100%;
       display:block;
+      max-width:100%;
+    }
+
+    button,
+    a{
+      font:inherit;
     }
 
     /* Horní menu */
@@ -62,313 +70,494 @@
       align-items:center;
       justify-content:space-between;
       gap:24px;
-      padding:17px 7vw;
-      background:rgba(255,255,255,.90);
+      padding:16px 5vw;
+      background:rgba(255,252,250,.92);
       backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--border);
+      border-bottom:1px solid var(--line);
     }
 
     .brand{
-      color:var(--deep);
+      color:var(--text);
       text-decoration:none;
-      font-size:24px;
-      font-weight:bold;
+      line-height:.95;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:21px;
+    }
+
+    .brand strong{
+      display:block;
+      color:var(--pink-dark);
+      font-size:27px;
+      font-style:italic;
+      font-weight:normal;
     }
 
     .nav-links{
       display:flex;
       align-items:center;
-      gap:26px;
+      justify-content:center;
+      gap:30px;
     }
 
     .nav-links a{
-      color:var(--dark);
+      position:relative;
+      padding:8px 0;
+      color:var(--text);
       text-decoration:none;
-      font-size:16px;
+      font-size:15px;
     }
 
     .nav-links a:hover,
     .nav-links a.active{
-      color:var(--deep);
+      color:var(--pink-dark);
     }
 
-    .nav-links a.active{
-      padding-bottom:5px;
-      border-bottom:2px solid var(--pink);
+    .nav-links a.active::after{
+      content:"♡";
+      position:absolute;
+      left:50%;
+      bottom:-12px;
+      transform:translateX(-50%);
+      font-size:13px;
     }
 
     .support-btn{
       border:0;
-      border-radius:999px;
+      border-radius:12px;
       padding:12px 20px;
-      background:linear-gradient(135deg,var(--deep),var(--pink));
       color:white;
-      font:inherit;
-      font-weight:bold;
+      background:linear-gradient(135deg,var(--pink-dark),var(--pink));
       cursor:pointer;
-      box-shadow:0 12px 28px rgba(165,45,111,.20);
+      box-shadow:0 10px 25px rgba(189,73,111,.18);
     }
 
     .support-btn.supported{
-      background:#fff;
-      color:var(--deep);
+      color:var(--pink-dark);
+      background:white;
       outline:2px solid var(--pink);
     }
 
-    /* Společné rozložení */
+    /* Hlavní obsah */
 
-    main{
-      width:100%;
-    }
-
-    .section{
-      width:min(1200px,90%);
+    .page{
+      width:min(1280px,94%);
       margin:0 auto;
-      padding:76px 0;
+      padding:32px 0 50px;
     }
 
-    .section-title{
-      margin-bottom:24px;
-      color:var(--deep);
-      font-size:clamp(38px,5vw,58px);
-      line-height:1.1;
-      font-weight:normal;
-    }
+    /* Úvod Carmen */
 
-    .section-text{
-      max-width:860px;
-      font-size:20px;
-      line-height:1.8;
-    }
-
-    /* První část – Carmen */
-
-    .hero-carmen{
-      width:min(1320px,92%);
-      margin:0 auto;
-      padding:66px 0 82px;
+    .hero{
       display:grid;
-      grid-template-columns:minmax(0,1fr) minmax(420px,1fr);
-      align-items:center;
-      gap:64px;
-    }
-
-    .hero-text{
-      max-width:630px;
-    }
-
-    .eyebrow{
-      margin-bottom:13px;
-      color:var(--pink);
-      font-size:25px;
-      font-style:italic;
-    }
-
-    .hero-text h1{
-      margin-bottom:27px;
-      color:var(--deep);
-      font-size:clamp(48px,6vw,78px);
-      line-height:1.04;
-      font-weight:normal;
-    }
-
-    .hero-lead{
-      margin-bottom:24px;
-      font-size:24px;
-      line-height:1.55;
-    }
-
-    .hero-quote{
-      margin:30px 0;
-      padding:22px 25px;
-      border-left:5px solid var(--pink);
-      background:rgba(255,255,255,.62);
-      border-radius:0 22px 22px 0;
-      font-size:25px;
-      line-height:1.55;
-    }
-
-    .hero-copy{
-      font-size:19px;
-      line-height:1.8;
-    }
-
-    .hero-image img{
-      width:100%;
-      border-radius:34px;
-      box-shadow:0 32px 80px rgba(65,29,48,.18);
-    }
-
-    /* Proč vznikl Svět Carmen */
-
-    .why{
-      padding:48px;
-      background:var(--white);
-      border:1px solid var(--border);
-      border-radius:36px;
-      box-shadow:var(--shadow);
-    }
-
-    .why p{
-      margin-top:18px;
-      font-size:20px;
-      line-height:1.8;
-    }
-
-    .why strong{
-      color:var(--deep);
-    }
-
-    /* Pro koho Carmen tvoří */
-
-    .audience-heading{
-      max-width:780px;
-      margin-bottom:36px;
-      font-size:20px;
-      line-height:1.75;
-    }
-
-    .audience-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-
-    .audience-card{
-      padding:32px 28px;
-      background:var(--white);
-      border:1px solid var(--border);
-      border-radius:30px;
-      box-shadow:0 16px 42px rgba(89,38,63,.08);
-    }
-
-    .audience-card h3{
-      margin-bottom:13px;
-      color:var(--deep);
-      font-size:27px;
-    }
-
-    .audience-card p{
-      font-size:18px;
-      line-height:1.7;
-    }
-
-    /* Hodnoty Carmen */
-
-    .values{
-      display:grid;
-      grid-template-columns:.9fr 1.1fr;
-      gap:50px;
-      align-items:start;
-    }
-
-    .values-intro{
-      font-size:21px;
-      line-height:1.8;
-    }
-
-    .values-list{
-      padding:36px 40px;
-      background:var(--white);
-      border:1px solid var(--border);
+      grid-template-columns:.88fr 1.12fr;
+      min-height:570px;
+      overflow:hidden;
+      background:rgba(255,255,255,.54);
+      border:1px solid rgba(255,255,255,.72);
       border-radius:32px;
       box-shadow:var(--shadow);
     }
 
-    .value{
-      padding:18px 0;
-      border-bottom:1px solid rgba(165,45,111,.11);
-      font-size:20px;
-      line-height:1.6;
+    .hero-content{
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:56px 54px;
+      background:
+        radial-gradient(circle at 24% 20%,rgba(255,255,255,.94),transparent 48%),
+        linear-gradient(90deg,rgba(255,252,250,.98),rgba(255,250,249,.88));
     }
 
-    .value:first-child{
-      padding-top:0;
+    .welcome{
+      margin-bottom:8px;
+      color:var(--deep);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:25px;
+      font-style:italic;
+    }
+
+    .hero h1{
+      margin-bottom:25px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(48px,5vw,76px);
+      line-height:.98;
+      font-weight:normal;
+    }
+
+    .hero h1 span{
+      display:block;
+      margin-top:8px;
+      color:var(--pink);
+      font-size:1.16em;
+      font-style:italic;
+    }
+
+    .hero-quote{
+      margin:8px 0 24px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:24px;
+      line-height:1.5;
+    }
+
+    .hero-intro{
+      margin-bottom:18px;
+      font-size:17px;
+      line-height:1.7;
+    }
+
+    .hero-origin{
+      padding-top:17px;
+      border-top:1px solid var(--line);
+      color:#534047;
+      font-size:16px;
+      line-height:1.7;
+    }
+
+    .hero-image{
+      position:relative;
+      min-height:570px;
+      background:#f6dfe5;
+    }
+
+    .hero-image::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:linear-gradient(
+        90deg,
+        rgba(255,250,248,.20),
+        transparent 25%,
+        transparent 78%,
+        rgba(255,246,246,.10)
+      );
+    }
+
+    .hero-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    /* Společné bloky */
+
+    .content-block{
+      margin-top:26px;
+      padding:38px 42px;
+      background:var(--white);
+      border:1px solid rgba(255,255,255,.88);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .section-title{
+      margin-bottom:28px;
+      text-align:center;
+      color:var(--pink-dark);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(32px,4vw,45px);
+      font-weight:normal;
+    }
+
+    /* Proč vznikl Svět Carmen */
+
+    .why-grid{
+      display:grid;
+      grid-template-columns:180px 1fr 290px;
+      align-items:center;
+      gap:34px;
+    }
+
+    .heart-art{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:180px;
+      color:var(--pink);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:122px;
+      line-height:1;
+      opacity:.72;
+      transform:rotate(-7deg);
+    }
+
+    .why-text p{
+      margin-bottom:15px;
+      font-size:18px;
+      line-height:1.75;
+    }
+
+    .why-text p:last-child{
+      margin-bottom:0;
+    }
+
+    .why-text strong{
+      color:var(--pink-dark);
+    }
+
+    .speech-note{
+      position:relative;
+      padding:32px 28px;
+      text-align:center;
+      color:#704054;
+      background:
+        radial-gradient(circle at 32% 25%,rgba(255,255,255,.70),transparent 36%),
+        linear-gradient(145deg,#ffeaf0,#fff4f6);
+      border:1px solid rgba(223,105,140,.20);
+      border-radius:48% 52% 44% 56% / 54% 45% 55% 46%;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:21px;
+      font-style:italic;
+      line-height:1.55;
+    }
+
+    .speech-note::after{
+      content:"";
+      position:absolute;
+      left:30px;
+      bottom:-16px;
+      width:38px;
+      height:32px;
+      background:#ffedf2;
+      clip-path:polygon(0 0,100% 0,0 100%);
+      transform:rotate(8deg);
+    }
+
+    /* Bubliny pro koho */
+
+    .audience{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:24px;
+    }
+
+    .audience-card{
+      position:relative;
+      min-height:250px;
+      padding:36px 32px 30px;
+      overflow:hidden;
+      background:rgba(255,255,255,.75);
+      border:1px solid rgba(223,105,140,.16);
+      box-shadow:0 14px 35px rgba(117,58,79,.08);
+    }
+
+    .audience-card:nth-child(1){
+      background:linear-gradient(145deg,#ffe7ef,#fff7f9);
+      border-radius:47% 53% 51% 49% / 44% 49% 51% 56%;
+    }
+
+    .audience-card:nth-child(2){
+      background:linear-gradient(145deg,#fff2e4,#fffaf5);
+      border-radius:53% 47% 45% 55% / 48% 52% 48% 52%;
+    }
+
+    .audience-card:nth-child(3){
+      background:linear-gradient(145deg,#ffeaf0,#fff8fa);
+      border-radius:48% 52% 54% 46% / 55% 45% 55% 45%;
+    }
+
+    .audience-card::after{
+      content:"";
+      position:absolute;
+      width:55px;
+      height:45px;
+      left:45px;
+      bottom:-24px;
+      background:inherit;
+      transform:rotate(18deg);
+      clip-path:polygon(0 0,100% 0,0 100%);
+    }
+
+    .audience-card h3{
+      margin-bottom:18px;
+      padding-bottom:11px;
+      color:#473039;
+      border-bottom:2px solid rgba(223,105,140,.45);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:26px;
+      font-style:italic;
+      font-weight:normal;
+    }
+
+    .audience-card p{
+      font-size:17px;
+      line-height:1.7;
+    }
+
+    .audience-symbol{
+      position:absolute;
+      right:26px;
+      bottom:22px;
+      font-size:42px;
+      opacity:.62;
+    }
+
+    /* Hodnoty */
+
+    .values-block{
+      margin-top:28px;
+      padding:30px 30px 26px;
+      background:
+        linear-gradient(90deg,rgba(255,231,238,.84),rgba(255,248,245,.90));
+      border:1px solid rgba(223,105,140,.14);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .values-layout{
+      display:grid;
+      grid-template-columns:190px 1fr;
+      align-items:center;
+      gap:22px;
+    }
+
+    .values-heading{
+      padding-right:22px;
+      border-right:1px solid rgba(189,73,111,.18);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:28px;
+      line-height:1.3;
+    }
+
+    .values-grid{
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+    }
+
+    .value{
+      min-height:108px;
+      padding:8px 14px;
+      text-align:center;
+      border-right:1px solid rgba(189,73,111,.13);
+      font-size:14px;
+      line-height:1.45;
     }
 
     .value:last-child{
-      padding-bottom:0;
-      border-bottom:0;
+      border-right:0;
+    }
+
+    .value-icon{
+      display:block;
+      margin-bottom:10px;
+      color:var(--pink-dark);
+      font-size:31px;
+    }
+
+    .value strong{
+      display:block;
+      margin-bottom:4px;
     }
 
     /* Závěr */
 
     .closing{
-      width:min(1050px,90%);
-      margin:20px auto 80px;
-      padding:58px 36px;
+      margin-top:28px;
+      padding:46px 25px 20px;
       text-align:center;
-      color:white;
-      background:linear-gradient(135deg,var(--deep),var(--pink));
-      border-radius:38px;
-      box-shadow:0 28px 75px rgba(165,45,111,.24);
-    }
-
-    .closing h2{
-      margin-bottom:20px;
-      font-size:clamp(36px,5vw,57px);
-      line-height:1.15;
-      font-weight:normal;
     }
 
     .closing p{
-      max-width:760px;
-      margin:0 auto;
-      font-size:21px;
-      line-height:1.75;
+      margin-bottom:10px;
+      font-size:19px;
+      line-height:1.65;
+    }
+
+    .closing h2{
+      margin-bottom:24px;
+      color:var(--pink);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(38px,4vw,55px);
+      font-style:italic;
+      font-weight:normal;
     }
 
     .story-btn{
       display:inline-block;
-      margin-top:30px;
-      padding:16px 28px;
-      color:var(--deep);
-      background:white;
-      border-radius:999px;
+      padding:16px 32px;
+      color:white;
+      background:linear-gradient(135deg,var(--pink-dark),var(--pink));
+      border-radius:13px;
       text-decoration:none;
       font-weight:bold;
-      box-shadow:0 14px 34px rgba(80,25,52,.18);
+      box-shadow:0 13px 30px rgba(189,73,111,.20);
+      transition:transform .2s ease,box-shadow .2s ease;
+    }
+
+    .story-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 17px 35px rgba(189,73,111,.26);
     }
 
     footer{
-      padding:35px 7vw 45px;
+      padding:25px 20px 40px;
       text-align:center;
-      color:#7d4964;
-      font-size:15px;
+      color:#805568;
+      font-size:14px;
+    }
+
+    /* Tablet */
+
+    @media(max-width:1050px){
+      .nav-links{
+        gap:18px;
+      }
+
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .hero-image{
+        min-height:500px;
+      }
+
+      .why-grid{
+        grid-template-columns:130px 1fr;
+      }
+
+      .speech-note{
+        grid-column:1 / -1;
+        width:min(520px,100%);
+        margin:0 auto;
+      }
+
+      .values-layout{
+        grid-template-columns:1fr;
+      }
+
+      .values-heading{
+        padding-right:0;
+        padding-bottom:18px;
+        text-align:center;
+        border-right:0;
+        border-bottom:1px solid rgba(189,73,111,.18);
+      }
+
+      .values-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .value:nth-child(3){
+        border-right:0;
+      }
+
+      .value:nth-child(-n+3){
+        margin-bottom:18px;
+      }
     }
 
     /* Mobil */
 
-    @media(max-width:950px){
-      .hero-carmen{
-        grid-template-columns:1fr;
-        gap:38px;
-        padding-top:45px;
-      }
-
-      .hero-text{
-        max-width:none;
-      }
-
-      .hero-image{
-        max-width:720px;
-        margin:0 auto;
-      }
-
-      .audience-grid{
-        grid-template-columns:1fr;
-      }
-
-      .values{
-        grid-template-columns:1fr;
-      }
-    }
-
     @media(max-width:760px){
       .topbar{
+        position:relative;
         flex-wrap:wrap;
         justify-content:center;
-        gap:14px;
+        gap:13px;
         padding:14px 5vw;
       }
 
@@ -378,36 +567,119 @@
       }
 
       .nav-links{
-        gap:16px;
+        width:100%;
+        flex-wrap:wrap;
+        gap:10px 18px;
+      }
+
+      .nav-links a{
+        font-size:14px;
       }
 
       .support-btn{
         width:100%;
       }
 
-      .hero-carmen{
-        width:min(90%,700px);
+      .page{
+        width:92%;
+        padding-top:18px;
+      }
+
+      .hero{
+        min-height:0;
+        border-radius:24px;
+      }
+
+      .hero-content{
+        padding:38px 27px;
+      }
+
+      .hero h1{
+        font-size:50px;
       }
 
       .hero-quote{
         font-size:21px;
       }
 
-      .section{
-        width:88%;
-        padding:52px 0;
+      .hero-image{
+        min-height:390px;
       }
 
-      .why{
-        padding:30px 25px;
+      .content-block{
+        padding:31px 23px;
+        border-radius:24px;
       }
 
-      .values-list{
-        padding:28px 25px;
+      .why-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+      }
+
+      .heart-art{
+        min-height:auto;
+        font-size:88px;
+      }
+
+      .audience{
+        grid-template-columns:1fr;
+      }
+
+      .audience-card{
+        min-height:220px;
+      }
+
+      .values-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .value{
+        border-right:1px solid rgba(189,73,111,.13);
+        margin-bottom:17px;
+      }
+
+      .value:nth-child(even){
+        border-right:0;
+      }
+
+      .value:nth-child(-n+3){
+        margin-bottom:17px;
       }
 
       .closing{
-        padding:44px 24px;
+        padding-top:38px;
+      }
+    }
+
+    @media(max-width:430px){
+      .hero h1{
+        font-size:43px;
+      }
+
+      .hero-content{
+        padding:34px 22px;
+      }
+
+      .hero-image{
+        min-height:330px;
+      }
+
+      .section-title{
+        font-size:34px;
+      }
+
+      .values-grid{
+        grid-template-columns:1fr;
+      }
+
+      .value,
+      .value:nth-child(even){
+        border-right:0;
+        border-bottom:1px solid rgba(189,73,111,.13);
+      }
+
+      .value:last-child{
+        border-bottom:0;
       }
     }
   </style>
@@ -416,12 +688,16 @@
 <body>
 
   <nav class="topbar">
-    <a class="brand" href="index.html">Svět Carmen</a>
+
+    <a class="brand" href="index.html">
+      Svět
+      <strong>Carmen♡</strong>
+    </a>
 
     <div class="nav-links">
       <a href="index.html">Domů</a>
-      <a href="carmen.html" class="active">O Carmen</a>
       <a href="svet.html">Příběhy</a>
+      <a href="carmen.html" class="active">O Carmen</a>
     </div>
 
     <button
@@ -432,181 +708,206 @@
     >
       ♡ Podpořit Svět Carmen
     </button>
+
   </nav>
 
-  <main>
+  <main class="page">
 
-    <section class="hero-carmen">
+    <section class="hero">
 
-      <div class="hero-text">
-        <p class="eyebrow">Jmenuji se Carmen.</p>
+      <div class="hero-content">
 
-        <h1>Poznej člověka, který stojí za příběhy.</h1>
-<h1>Poznej člověka, který stojí za příběhy.</h1>
+        <p class="welcome">Vítej.</p>
 
-<p class="hero-copy">
-  Nejsem jen autorkou příběhů. Jsem člověk,
-  který věří, že laskavost, pochopení a naděje
-  mohou změnit lidský život. Proto vznikl
-  Svět Carmen – místo, kde každý příběh
-  začíná srdcem.
-</p>
+        <h1>
+          Jmenuji se
+          <span>Carmen.</span>
+        </h1>
 
-<p class="hero-lead">
-  Svět Carmen vznikl z touhy pomáhat a z víry,
-  že jediný příběh může změnit nejen den,
-  ale někdy i celý život.
-</p>
-        <p class="hero-lead">
+        <div class="hero-quote">
+          „Nechci, aby se děti cítily samy.<br>
+          Chci, aby věděly, že je někdo slyší.“
+        </div>
+
+        <p class="hero-intro">
+          Nejsem jen autorkou příběhů. Jsem člověk, který věří,
+          že laskavost, pochopení a naděje mohou změnit lidský život.
+          Proto vznikl Svět Carmen – místo, kde každý příběh
+          začíná srdcem.
+        </p>
+
+        <p class="hero-origin">
           Svět Carmen vznikl z touhy pomáhat a z víry,
           že jediný příběh může změnit nejen den,
           ale někdy i celý život.
         </p>
 
-        <div class="hero-quote">
-          Nechci, aby se děti cítily samy.<br>
-          Chci, aby věděly, že je někdo slyší.
-        </div>
-
-        <p class="hero-copy">
-          Píšu proto, aby se děti, teenageři, dospělí i učitelé
-          mohli v některém z příběhů poznat a říct si:
-          „Tohle se děje i mně. Nejsem v tom sám.“
-        </p>
       </div>
 
       <div class="hero-image">
         <img
           src="carmen-fenix.png.png"
-          alt="Carmen píšící příběhy pod ochranou fénixe"
+          alt="Carmen se svobodným fénixem jako symbolem naděje a nových začátků"
         >
       </div>
 
     </section>
 
-    <section class="section">
-      <div class="why">
-        <h2 class="section-title">Proč vznikl Svět Carmen?</h2>
+    <section class="content-block">
 
-        <p>
-          Svět Carmen není knihovna ani obyčejné místo,
-          kde si lidé jen vybírají komiksy.
-          Je to místo, kde mohou na chvíli zpomalit,
-          poznat člověka, který za příběhy stojí,
-          a pochopit, proč vůbec vznikly.
-        </p>
+      <h2 class="section-title">Proč vznikl Svět Carmen?</h2>
 
-        <p>
-          Každý příběh má svůj důvod.
-          Každý vzniká ze skutečné touhy někomu pomoci,
-          něco důležitého připomenout nebo podat ruku člověku,
-          který se právě necítí dobře.
-        </p>
+      <div class="why-grid">
 
-        <p>
-          <strong>
-            Možná se někdo v příběhu pozná.
-            Možná si uvědomí, že v tom není sám.
-            A možná právě tehdy najde sílu znovu vstát.
-          </strong>
-        </p>
+        <div class="heart-art" aria-hidden="true">♡</div>
+
+        <div class="why-text">
+
+          <p>
+            Svět Carmen není knihovna ani obyčejné místo,
+            kde si lidé jen vybírají komiksy.
+            Je to místo, kde mohou na chvíli zpomalit,
+            poznat člověka, který za příběhy stojí,
+            a pochopit, proč vůbec vznikly.
+          </p>
+
+          <p>
+            Každý příběh má svůj důvod.
+            Každý příběh vzniká ze skutečné touhy někomu pomoci,
+            něco důležitého připomenout nebo podat ruku člověku,
+            který se právě necítí dobře.
+          </p>
+
+          <p>
+            <strong>
+              Možná se někdo v příběhu pozná.
+              Možná si uvědomí, že v tom není sám.
+              A možná právě tehdy najde sílu znovu vstát.
+            </strong>
+          </p>
+
+        </div>
+
+        <div class="speech-note">
+          Každý příběh má svůj důvod.<br>
+          A každý vzniká ze skutečné touhy někomu pomoci. ♡
+        </div>
+
       </div>
+
     </section>
 
-    <section class="section">
-      <h2 class="section-title">Pro koho vznikají příběhy?</h2>
+    <section class="audience" aria-label="Pro koho vznikají příběhy">
 
-      <p class="audience-heading">
-        Svět Carmen není určen pouze jedné skupině.
-        Každý člověk může potřebovat pochopení,
-        nový pohled nebo připomenutí, že jeho pocity mají význam.
-      </p>
+      <article class="audience-card">
 
-      <div class="audience-grid">
+        <h3>Pro děti a teenagery</h3>
 
-        <article class="audience-card">
-          <h3>Pro děti a teenagery</h3>
+        <p>
+          Aby věděli, že jejich pocity nejsou zbytečné,
+          že nejsou sami a že existují lidé,
+          kteří jsou připraveni je vyslechnout.
+        </p>
 
-          <p>
-            Aby věděli, že jejich pocity nejsou zbytečné,
-            že nejsou sami a že existují lidé,
-            kteří jsou připraveni je vyslechnout.
-          </p>
-        </article>
+        <div class="audience-symbol" aria-hidden="true">🧸</div>
 
-        <article class="audience-card">
-          <h3>Pro dospělé</h3>
+      </article>
 
-          <p>
-            Aby se někdy zastavili, podívali se na příběh
-            očima druhého člověka a nezapomněli,
-            jak důležité je naslouchat.
-          </p>
-        </article>
+      <article class="audience-card">
 
-        <article class="audience-card">
-          <h3>Pro učitele</h3>
+        <h3>Pro dospělé</h3>
 
-          <p>
-            Aby za známkami, chováním a každodenními povinnostmi
-            nepřestali vidět dítě, které může potřebovat pomoc,
-            pochopení nebo jen chvíli skutečné pozornosti.
-          </p>
-        </article>
+        <p>
+          Aby se někdy zastavili, podívali se na příběh
+          očima druhého člověka a nezapomněli,
+          jak důležité je naslouchat.
+        </p>
 
-      </div>
+        <div class="audience-symbol" aria-hidden="true">☕</div>
+
+      </article>
+
+      <article class="audience-card">
+
+        <h3>Pro učitele</h3>
+
+        <p>
+          Aby za známkami, chováním a každodenními povinnostmi
+          nepřestali vidět dítě, které může potřebovat pomoc,
+          pochopení nebo jen chvíli skutečné pozornosti.
+        </p>
+
+        <div class="audience-symbol" aria-hidden="true">📚</div>
+
+      </article>
+
     </section>
 
-    <section class="section values">
+    <section class="values-block">
 
-      <div>
-        <h2 class="section-title">Co vede každý příběh?</h2>
+      <div class="values-layout">
 
-        <p class="values-intro">
-          Nejde o dokonalost ani o rychlé soudy.
-          Jde o skutečné emoce, zkušenosti a chvíle,
-          ve kterých může někdo objevit kousek vlastního příběhu.
-        </p>
-      </div>
+        <h2 class="values-heading">
+          Co vede každý příběh?
+        </h2>
 
-      <div class="values-list">
-        <div class="value">Laskavost není slabost.</div>
+        <div class="values-grid">
 
-        <div class="value">
-          Každý člověk nese příběh, který ostatní nevidí.
+          <div class="value">
+            <span class="value-icon">♡</span>
+            <strong>Laskavost</strong>
+            není slabost.
+          </div>
+
+          <div class="value">
+            <span class="value-icon">♧</span>
+            <strong>Každý člověk</strong>
+            nese svůj příběh.
+          </div>
+
+          <div class="value">
+            <span class="value-icon">◌</span>
+            <strong>Děti potřebují</strong>
+            být slyšeny.
+          </div>
+
+          <div class="value">
+            <span class="value-icon">☆</span>
+            <strong>Příběh může</strong>
+            změnit den i život.
+          </div>
+
+          <div class="value">
+            <span class="value-icon">❧</span>
+            <strong>Dobro má stále</strong>
+            své místo.
+          </div>
+
+          <div class="value">
+            <span class="value-icon">✧</span>
+            <strong>Naděje je sen,</strong>
+            protože žijeme.
+          </div>
+
         </div>
 
-        <div class="value">
-          Děti i dospělí potřebují vědět, že je někdo slyší.
-        </div>
-
-        <div class="value">
-          Jeden příběh může změnit den, ale někdy i celý život.
-        </div>
-
-        <div class="value">
-          Dobro má stále své místo.
-        </div>
-
-        <div class="value">
-          Naděje je sen, který nám dává sílu pokračovat.
-        </div>
       </div>
 
     </section>
 
     <section class="closing">
-      <h2>Jsem tu pro tebe.</h2>
 
       <p>
-        Pokud se v některém z příběhů poznáš,
+        Pokud se v některém z příběhů poznáš,<br>
         věř, že na to nejsi sám.
-        Možná právě jeden z nich čeká na tebe.
       </p>
 
+      <h2>Jsem tu pro tebe. ♡</h2>
+
       <a class="story-btn" href="svet.html">
-        Objev příběhy Světa Carmen
+        Objev příběhy Světa Carmen &nbsp; →
       </a>
+
     </section>
 
   </main>
