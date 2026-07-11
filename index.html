@@ -5,7 +5,7 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
+    content="width=device-width, initial-scale=1"
   >
 
   <title>Svět Carmen</title>
@@ -16,108 +16,486 @@
   >
 
   <style>
+    :root {
+      --dark: #1f1420;
+      --pink: #ff74b8;
+      --deep: #a52d6f;
+      --gold: #ffd37d;
+      --white: rgba(255, 255, 255, 0.78);
+    }
+
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
 
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #17090f;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--dark);
+
+      background:
+        radial-gradient(
+          circle at 20% 10%,
+          rgba(255, 116, 184, 0.28),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(255, 211, 125, 0.35),
+          transparent 28%
+        ),
+        linear-gradient(
+          180deg,
+          #fff7fb 0%,
+          #ffe8f3 48%,
+          #fff8ee 100%
+        );
+
+      overflow-x: hidden;
     }
 
-    .hero {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      height: 100svh;
+    /* =====================================
+       1. KOUZELNÁ VSTUPNÍ BRÁNA
+       ===================================== */
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
 
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
 
-      overflow: hidden;
-      background: #17090f;
+      padding: 30px;
+      text-align: center;
+
+      background:
+        url("navrh.png")
+        center center / cover
+        no-repeat;
+
+      pointer-events: none;
+
+      animation:
+        introFade 1.3s ease forwards;
+
+      animation-delay: 3.2s;
     }
 
-    .hero-image {
+    .intro::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(20, 8, 17, 0.08),
+          rgba(20, 8, 17, 0.30)
+        );
+    }
+
+    .intro h1,
+    .intro p {
+      position: relative;
+      z-index: 2;
+
+      color: #fff6e8;
+
+      text-shadow:
+        0 3px 18px rgba(0, 0, 0, 0.65),
+        0 0 35px rgba(0, 0, 0, 0.30);
+
+      opacity: 0;
+
+      animation:
+        rise 0.9s ease forwards;
+    }
+
+    .intro h1 {
+      margin: 0;
+
+      font-size:
+        clamp(52px, 7vw, 110px);
+
+      line-height: 1;
+    }
+
+    .intro p {
+      margin: 18px 0 0;
+
+      font-size:
+        clamp(23px, 2.5vw, 38px);
+
+      animation-delay: 1.1s;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes introFade {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    /* =====================================
+       2. HLAVNÍ NAVIGACE
+       ===================================== */
+
+    nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      z-index: 10;
+
+      transform: translateX(-50%);
+
+      padding: 10px 18px;
+
+      background:
+        rgba(255, 255, 255, 0.72);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      border:
+        1px solid rgba(165, 45, 111, 0.14);
+
+      border-radius: 999px;
+
+      box-shadow:
+        0 18px 40px rgba(165, 45, 111, 0.14);
+    }
+
+    nav a {
+      margin: 0 10px;
+
+      color: var(--deep);
+
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #751c4d;
+    }
+
+    /* =====================================
+       3. HLAVNÍ OBRAZOVKA SVĚTA CARMEN
+       ===================================== */
+
+    header {
+      min-height: 100vh;
+
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+      gap: 42px;
+      align-items: center;
+
+      padding:
+        90px 7vw 60px;
+    }
+
+    .badge {
+      display: inline-block;
+
+      margin-bottom: 20px;
+      padding: 10px 16px;
+
+      color: #7b2354;
+      font-weight: bold;
+
+      background:
+        rgba(255, 116, 184, 0.18);
+
+      border:
+        1px solid rgba(255, 116, 184, 0.35);
+
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+
+      color: var(--deep);
+
+      font-size:
+        clamp(54px, 9vw, 112px);
+
+      line-height: 0.92;
+      letter-spacing: -2px;
+    }
+
+    .subtitle {
+      margin: 0 0 24px;
+
+      font-size:
+        clamp(25px, 3.2vw, 44px);
+
+      line-height: 1.18;
+    }
+
+    p {
+      max-width: 760px;
+
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    .hero-img {
       display: block;
 
       width: 100%;
-      height: 100%;
+      height: auto;
 
-      object-fit: contain;
-      object-position: center;
+      border-radius: 36px;
 
-      user-select: none;
-      -webkit-user-drag: none;
+      box-shadow:
+        0 35px 90px rgba(122, 35, 84, 0.30);
+
+      transform: rotate(1deg);
     }
 
-    .click-area {
-      position: absolute;
+    .btn {
+      display: inline-block;
+
+      margin-top: 18px;
+      padding: 16px 28px;
+
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--deep),
+          var(--pink)
+        );
+
+      border-radius: 999px;
+
+      box-shadow:
+        0 18px 38px rgba(165, 45, 111, 0.25);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 22px 45px rgba(165, 45, 111, 0.34);
+    }
+
+    /* =====================================
+       4. OBSAH A FILOZOFIE
+       ===================================== */
+
+    section {
+      padding: 76px 7vw;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+
+      color: var(--deep);
+
+      font-size:
+        clamp(36px, 5vw, 56px);
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 27px;
+    }
+
+    .wide {
+      padding: 44px;
+
+      background: var(--white);
+
+      border:
+        1px solid rgba(165, 45, 111, 0.14);
+
+      border-radius: 36px;
+
+      box-shadow:
+        0 20px 55px rgba(122, 35, 84, 0.10);
+    }
+
+    .quote {
+      padding: 58px 30px;
+
+      color: white;
+      text-align: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          #a52d6f,
+          #ff74b8
+        );
+
+      border-radius: 38px;
+
+      box-shadow:
+        0 28px 85px rgba(165, 45, 111, 0.25);
+    }
+
+    .quote p {
+      margin: 0 auto;
+
+      font-size:
+        clamp(27px, 4vw, 46px);
+
+      line-height: 1.3;
+    }
+
+    .diary {
+      margin-top: 28px;
+      padding-left: 26px;
+
+      border-left:
+        6px solid var(--pink);
+    }
+
+    .tiny {
+      color: #7d4964;
+      font-size: 16px;
+    }
+
+    footer {
+      padding: 44px 7vw;
+
+      color: #7d4964;
+      text-align: center;
+    }
+
+    /* =====================================
+       5. HYMNA SVĚTA CARMEN
+       ===================================== */
+
+    .music-player {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+
+      max-width: calc(100vw - 36px);
+
+      padding: 8px;
+
+      background:
+        rgba(255, 255, 255, 0.80);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      border:
+        1px solid rgba(165, 45, 111, 0.16);
+
+      border-radius: 999px;
+
+      box-shadow:
+        0 15px 40px rgba(122, 35, 84, 0.20);
+    }
+
+    .music-player audio {
       display: block;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-      z-index: 5;
+      width: 290px;
+      max-width: 100%;
+      height: 42px;
     }
 
-    .enter-link {
-      left: 3.2%;
-      top: 60.2%;
-      width: 21.6%;
-      height: 6.5%;
-      border-radius: 999px;
+    /* =====================================
+       6. MOBIL
+       ===================================== */
+
+    @media (max-width: 900px) {
+      nav {
+        display: none;
+      }
+
+      header {
+        min-height: auto;
+
+        grid-template-columns: 1fr;
+
+        padding:
+          55px 6vw 50px;
+      }
+
+      .hero-img {
+        transform: none;
+      }
+
+      section {
+        padding:
+          52px 6vw;
+      }
+
+      .wide {
+        padding: 28px;
+      }
+
+      .music-player {
+        position: static;
+
+        width:
+          calc(100% - 32px);
+
+        margin:
+          0 auto 24px;
+
+        border-radius: 24px;
+      }
+
+      .music-player audio {
+        width: 100%;
+      }
     }
 
-    .music-button {
-      left: 78.2%;
-      top: 3.2%;
-      width: 18.8%;
-      height: 5.2%;
-      border-radius: 999px;
-    }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
 
-    .bottom-link {
-      left: 47.2%;
-      bottom: 0.8%;
-      width: 5.5%;
-      height: 7%;
-      border-radius: 50%;
-    }
+      .intro {
+        animation-duration: 0.5s;
+      }
 
-    .click-area:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
+      .intro h1,
+      .intro p {
+        animation: none;
+        opacity: 1;
+      }
 
-    .click-area:focus-visible {
-      outline: 3px solid #ffffff;
-      outline-offset: 3px;
-    }
-
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    @media (max-aspect-ratio: 3 / 2) {
-      .hero {
-        align-items: center;
+      .btn {
+        transition: none;
       }
     }
   </style>
@@ -125,84 +503,237 @@
 
 <body>
 
-  <main class="hero">
+  <!--
+    Nejprve se na několik sekund zobrazí
+    kouzelná vstupní krajina.
+  -->
+  <div class="intro">
+    <h1>Vítej ve Světě Carmen.</h1>
 
-    <img
-      class="hero-image"
-      src="uvod-final.png"
-      alt="Vítej ve Světě Carmen"
-    >
+    <p>
+      Tady každý příběh začíná srdcem.
+    </p>
+  </div>
 
-    <a
-      class="click-area enter-link"
-      href="svet.html"
-      aria-label="Vstoupit a poznat Carmen"
-    >
-      <span class="visually-hidden">
+  <!-- Hlavní navigace -->
+  <nav>
+    <a href="#carmen">Carmen</a>
+    <a href="#vznik">Proč vznikl</a>
+    <a href="#denik">Deník</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
+  <!--
+    Po zmizení úvodní krajiny se ukáže
+    hlavní stránka Světa Carmen.
+  -->
+  <header>
+
+    <div>
+      <div class="badge">
+        🌸 Zrozeno 3. 7. 2026
+      </div>
+
+      <h1>Svět Carmen</h1>
+
+      <p class="subtitle">
+        Vítej ve Světě Carmen.<br>
+        Tady každý příběh začíná srdcem.
+      </p>
+
+      <p>
+        Svět komiksů, knih, ilustrací a skutečných příběhů
+        o odvaze, zvířatech, naději a druhých začátcích.
+      </p>
+
+      <!--
+        Správná cesta:
+        nejdřív návštěvník pozná Carmen.
+      -->
+      <a
+        class="btn"
+        href="carmen.html"
+      >
         Vstoupit a poznat Carmen
-      </span>
-    </a>
+      </a>
+    </div>
 
-    <button
-      class="click-area music-button"
-      id="musicButton"
-      type="button"
-      aria-label="Pustit hymnu Světa Carmen"
-      aria-pressed="false"
-    >
-      <span class="visually-hidden">
-        Pustit nebo zastavit hymnu Světa Carmen
-      </span>
-    </button>
+    <div>
+      <img
+        class="hero-img"
+        src="svet-carmen-uvod.png"
+        alt="Úvodní ilustrace Světa Carmen"
+      >
+    </div>
 
-    <a
-      class="click-area bottom-link"
-      href="svet.html"
-      aria-label="Pokračovat dál"
-    >
-      <span class="visually-hidden">
-        Pokračovat dál
-      </span>
-    </a>
+  </header>
+
+  <!-- Kdo je Carmen -->
+  <section id="carmen">
+    <div class="wide">
+
+      <h2>Kdo je Carmen?</h2>
+
+      <p>
+        Carmen není jen autorka příběhů.
+        Je člověk, který věří, že i jediný příběh
+        dokáže změnit lidské srdce.
+      </p>
+
+      <p>
+        Svět Carmen vznikl z lásky ke knihám,
+        dětem, zvířatům, přátelství a naději.
+        Každý komiks, každá kniha i každý obrázek
+        vzniká s jediným cílem – vykouzlit úsměv,
+        dodat odvahu nebo připomenout,
+        že na světě stále existuje dobro.
+      </p>
+
+      <p>
+        Nejde o dokonalost.
+        Jde o opravdovost.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Proč vznikl Svět Carmen -->
+  <section id="vznik">
+    <div class="wide">
+
+      <h2>Proč vznikl Svět Carmen?</h2>
+
+      <p>
+        Svět Carmen vznikl z přesvědčení,
+        že příběhy mají sílu spojovat lidi,
+        dávat naději a připomínat,
+        že v každém z nás je něco dobrého.
+      </p>
+
+      <p>
+        Každý komiks, každá kniha i každý příběh
+        vznikají s úctou k životu, přátelství,
+        odvaze a druhým šancím.
+      </p>
+
+      <p>
+        Pokud si alespoň jeden člověk díky některému
+        z nich řekne „nejsem na to sám“,
+        pak měl Svět Carmen smysl.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Hlavní myšlenka -->
+  <section>
+    <div class="quote">
+
+      <p>
+        „Každá jizva může být začátkem
+        nového příběhu.“
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Deník Carmen -->
+  <section id="denik">
+
+    <h2>📖 Deník Carmen</h2>
+
+    <div class="wide diary">
+
+      <h3>3. července 2026</h3>
+
+      <p>
+        Dnes vznikl Svět Carmen.
+      </p>
+
+      <p>
+        První stránka. První sen. První krok.
+      </p>
+
+      <p>
+        Děkujeme, že jste u toho s námi.
+        Toto je teprve první kapitola.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Kontakt a pokračování -->
+  <section id="kontakt">
+
+    <h2>💌 Přidej se do Světa Carmen</h2>
+
+    <p>
+      Svět Carmen postupně roste.
+      První vydaný komiks
+      <strong>Beruška a Brouček</strong>
+      už si můžete přečíst a další příběhy právě vznikají.
+    </p>
+
+    <p class="tiny">
+      Děkujeme, že jste součástí této cesty.
+      Každý nový příběh vzniká srdcem
+      a věříme, že si v něm každý najde něco,
+      co ho osloví.
+    </p>
+
+  </section>
+
+  <footer>
+    © Svět Carmen · Příběhy, které mají srdce ·
+    Zrozeno 3. 7. 2026
+  </footer>
+
+  <!-- Hymna Světa Carmen -->
+  <div class="music-player">
 
     <audio
-      id="carmenMusic"
-      preload="metadata"
+      id="bgmusic"
+      controls
       loop
+      preload="metadata"
     >
       <source
-        src="ladybug-little-bug.mp3.mp3"
+        src="Svět Carmen.mp3"
         type="audio/mpeg"
       >
+
+      Váš prohlížeč nepodporuje přehrávání zvuku.
     </audio>
 
-  </main>
+  </div>
 
   <script>
-    const musicButton = document.getElementById("musicButton");
-    const carmenMusic = document.getElementById("carmenMusic");
+    /*
+      Prohlížeče obvykle nepovolí automatické spuštění
+      hudby bez prvního kliknutí návštěvníka.
 
-    musicButton.addEventListener("click", async () => {
-      try {
-        if (carmenMusic.paused) {
-          await carmenMusic.play();
-          musicButton.setAttribute("aria-pressed", "true");
-          musicButton.setAttribute(
-            "aria-label",
-            "Zastavit hymnu Světa Carmen"
-          );
-        } else {
-          carmenMusic.pause();
-          musicButton.setAttribute("aria-pressed", "false");
-          musicButton.setAttribute(
-            "aria-label",
-            "Pustit hymnu Světa Carmen"
-          );
+      Po prvním kliknutí na stránku se proto hymna
+      jemně spustí.
+    */
+    document.addEventListener(
+      "click",
+      function () {
+        const music =
+          document.getElementById("bgmusic");
+
+        if (music && music.paused) {
+          music.volume = 0.35;
+
+          music.play().catch(function () {
+            /*
+              Pokud prohlížeč přehrání nepovolí,
+              návštěvník může použít ovládání přehrávače.
+            */
+          });
         }
-      } catch (error) {
-        console.error("Hymnu se nepodařilo přehrát:", error);
-      }
-    });
+      },
+      { once: true }
+    );
   </script>
 
 </body>
