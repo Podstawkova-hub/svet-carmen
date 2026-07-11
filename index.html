@@ -15,8 +15,7 @@
     :root{
       --deep:#a52d6f;
       --pink:#e45b91;
-      --text:#2c1d24;
-      --cream:#fff8f4;
+      --text:#2b1d24;
     }
 
     *{
@@ -36,9 +35,7 @@
       overflow:hidden;
       color:var(--text);
       font-family:Georgia,"Times New Roman",serif;
-      background:
-        radial-gradient(circle at 14% 28%,rgba(255,255,255,.95),transparent 33%),
-        linear-gradient(135deg,#fff8f4 0%,#ffeaf3 52%,#f6bfd2 100%);
+      background:#fff4f8;
     }
 
     .home{
@@ -46,20 +43,12 @@
       min-height:100vh;
       overflow:hidden;
       isolation:isolate;
+      background-image:url("uvod-svet-carmen.png");
+      background-repeat:no-repeat;
+      background-position:center center;
+      background-size:cover;
     }
 
-    /* Celý obrázek je vidět – není oříznutý jako při background-size:cover */
-    .hero-picture{
-      position:absolute;
-      inset:0 0 0 auto;
-      z-index:-2;
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      object-position:right center;
-    }
-
-    /* Jemné propojení světlé textové části s obrázkem */
     .home::before{
       content:"";
       position:absolute;
@@ -69,23 +58,24 @@
       background:
         linear-gradient(
           90deg,
-          rgba(255,249,246,1) 0%,
-          rgba(255,249,246,.99) 22%,
-          rgba(255,249,246,.94) 32%,
-          rgba(255,249,246,.70) 42%,
-          rgba(255,249,246,.22) 52%,
-          transparent 64%
+          rgba(255,248,246,1) 0%,
+          rgba(255,248,246,.99) 17%,
+          rgba(255,248,246,.95) 27%,
+          rgba(255,248,246,.78) 36%,
+          rgba(255,248,246,.43) 45%,
+          rgba(255,248,246,.12) 54%,
+          transparent 63%
         );
     }
 
     .brand{
       position:absolute;
-      top:30px;
-      left:4vw;
+      top:28px;
+      left:3vw;
       z-index:3;
       color:var(--text);
-      line-height:.9;
       font-size:22px;
+      line-height:.9;
     }
 
     .brand strong{
@@ -99,72 +89,75 @@
     .music-btn{
       position:absolute;
       top:28px;
-      right:3.5vw;
+      right:3vw;
       z-index:4;
       display:flex;
       align-items:center;
       gap:12px;
-      padding:11px 17px;
-      border:1px solid rgba(255,255,255,.28);
+      padding:10px 13px 10px 18px;
+      border:1px solid rgba(255,255,255,.30);
       border-radius:999px;
       color:white;
-      background:rgba(38,18,28,.76);
+      background:rgba(45,23,34,.78);
       backdrop-filter:blur(10px);
       font-family:Arial,Helvetica,sans-serif;
       font-size:14px;
       cursor:pointer;
-      box-shadow:0 10px 28px rgba(49,20,34,.23);
-      transition:transform .2s ease,background .2s ease;
+      box-shadow:0 11px 30px rgba(46,21,34,.25);
+      transition:
+        transform .2s ease,
+        background .2s ease;
     }
 
     .music-btn:hover{
       transform:translateY(-1px);
-      background:rgba(38,18,28,.88);
+      background:rgba(45,23,34,.90);
     }
 
     .music-icon{
       display:grid;
       place-items:center;
-      width:31px;
-      height:31px;
+      width:34px;
+      height:34px;
       border-radius:50%;
       color:var(--deep);
       background:white;
       font-size:14px;
+      line-height:1;
     }
 
     .home-content{
       position:relative;
       z-index:2;
-      width:min(660px,43vw);
+      width:min(640px,42vw);
       min-height:100vh;
       display:flex;
       flex-direction:column;
       justify-content:center;
-      margin-left:4vw;
+      margin-left:3.2vw;
       padding:110px 20px 70px 0;
     }
 
     .welcome{
       margin-bottom:2px;
-      font-size:clamp(43px,4vw,68px);
+      font-size:clamp(42px,4vw,66px);
       font-weight:normal;
       line-height:1.05;
     }
 
     h1{
-      margin-bottom:24px;
+      margin-bottom:26px;
       color:var(--deep);
-      font-size:clamp(58px,6vw,96px);
+      font-size:clamp(58px,6vw,94px);
       font-weight:normal;
-      line-height:.95;
+      line-height:.94;
       letter-spacing:-2px;
     }
 
     .motto{
-      max-width:620px;
-      margin-bottom:19px;
-      font-size:clamp(25px,2.3vw,37px);
+      max-width:600px;
+      margin-bottom:14px;
+      font-size:clamp(25px,2.35vw,37px);
       font-style:italic;
       line-height:1.25;
     }
@@ -173,8 +166,8 @@
       display:flex;
       align-items:center;
       gap:12px;
-      width:min(490px,100%);
-      margin:5px 0 24px;
+      width:min(470px,100%);
+      margin:3px 0 23px;
       color:var(--pink);
     }
 
@@ -187,9 +180,9 @@
     }
 
     .intro-text{
-      max-width:600px;
+      max-width:570px;
       margin-bottom:29px;
-      font-size:clamp(18px,1.45vw,24px);
+      font-size:clamp(18px,1.4vw,23px);
       line-height:1.55;
     }
 
@@ -198,26 +191,28 @@
       display:inline-flex;
       align-items:center;
       gap:18px;
-      padding:17px 29px;
+      padding:17px 30px;
+      border-radius:999px;
       color:white;
       background:linear-gradient(135deg,var(--deep),var(--pink));
-      border-radius:999px;
       text-decoration:none;
       font-family:Arial,Helvetica,sans-serif;
       font-size:17px;
       font-weight:bold;
-      box-shadow:0 15px 34px rgba(165,45,111,.27);
-      transition:transform .22s ease,box-shadow .22s ease;
+      box-shadow:0 15px 34px rgba(165,45,111,.29);
+      transition:
+        transform .22s ease,
+        box-shadow .22s ease;
     }
 
     .enter-btn:hover{
       transform:translateY(-2px);
-      box-shadow:0 20px 43px rgba(165,45,111,.34);
+      box-shadow:0 20px 44px rgba(165,45,111,.35);
     }
 
     .enter-btn:focus-visible,
     .music-btn:focus-visible{
-      outline:3px solid rgba(255,116,184,.55);
+      outline:3px solid rgba(255,116,184,.58);
       outline-offset:4px;
     }
 
@@ -232,13 +227,10 @@
 
       .home{
         min-height:100svh;
-        padding-top:54vh;
-      }
-
-      .hero-picture{
-        width:100%;
-        height:58vh;
-        object-position:center top;
+        padding-top:51vh;
+        background-position:center top;
+        background-size:auto 58vh;
+        background-color:#fff8f5;
       }
 
       .home::before{
@@ -246,25 +238,22 @@
           linear-gradient(
             180deg,
             transparent 0%,
-            transparent 36%,
-            rgba(255,249,246,.66) 50%,
-            rgba(255,249,246,.97) 66%,
-            rgba(255,249,246,1) 100%
+            transparent 32%,
+            rgba(255,248,246,.58) 48%,
+            rgba(255,248,246,.94) 64%,
+            rgba(255,248,246,1) 100%
           );
       }
 
       .brand{
         top:18px;
         left:22px;
-      }
-
-      .brand{
         color:white;
-        text-shadow:0 2px 12px rgba(0,0,0,.35);
+        text-shadow:0 2px 12px rgba(0,0,0,.38);
       }
 
       .brand strong{
-        color:#ffd4e4;
+        color:#ffd6e5;
       }
 
       .music-btn{
@@ -276,9 +265,9 @@
         width:100%;
         min-height:auto;
         margin-left:0;
-        padding:40px 7vw 55px;
-        text-align:center;
+        padding:42px 7vw 55px;
         align-items:center;
+        text-align:center;
       }
 
       .divider{
@@ -293,11 +282,8 @@
 
     @media(max-width:560px){
       .home{
-        padding-top:48vh;
-      }
-
-      .hero-picture{
-        height:52vh;
+        padding-top:46vh;
+        background-size:auto 52vh;
       }
 
       .brand{
@@ -309,13 +295,13 @@
       }
 
       .music-btn{
-        padding:8px 11px;
+        padding:8px;
         font-size:0;
       }
 
       .music-icon{
-        width:32px;
-        height:32px;
+        width:34px;
+        height:34px;
         font-size:15px;
       }
 
@@ -351,17 +337,6 @@
 <body>
 
   <main class="home">
-
-    <!--
-      DŮLEŽITÉ:
-      Nahraj nový úvodní obrázek na GitHub pod názvem:
-      uvod-svet-carmen.png
-    -->
-    <img
-      class="hero-picture"
-      src="uvod-svet-carmen.png.png"
-      alt="Svět Carmen – Carmen, fénix, Mia, Čestmírek a příběhy plné naděje"
-    >
 
     <div class="brand" aria-label="Svět Carmen">
       Svět
@@ -421,8 +396,10 @@
       if (music.paused) {
         try {
           await music.play();
+
           musicText.textContent = "Pozastavit hymnu";
           musicIcon.textContent = "❚❚";
+
           musicButton.setAttribute("aria-pressed", "true");
           musicButton.setAttribute(
             "aria-label",
@@ -434,8 +411,10 @@
         }
       } else {
         music.pause();
+
         musicText.textContent = "Pustit hymnu Světa Carmen";
         musicIcon.textContent = "▶";
+
         musicButton.setAttribute("aria-pressed", "false");
         musicButton.setAttribute(
           "aria-label",
