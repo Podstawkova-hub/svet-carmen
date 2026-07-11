@@ -29,61 +29,60 @@
     }
 
     body {
-      background: #16090f;
-      font-family: Georgia, "Times New Roman", serif;
+      background: #15080f;
       overflow-x: hidden;
     }
 
+    /*
+      Celý obrázek funguje jako jedna hlavní plocha.
+      Jeho výška se dopočítá automaticky,
+      takže se obrázek vůbec neořízne.
+    */
     .hero {
       position: relative;
       width: 100%;
-      min-height: 100vh;
-      min-height: 100svh;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      overflow: hidden;
-      background: #16090f;
+      max-width: 2048px;
+      margin: 0 auto;
     }
 
     .hero-image {
       display: block;
       width: 100%;
-      height: 100vh;
-      height: 100svh;
-
-      object-fit: cover;
-      object-position: center;
+      height: auto;
 
       user-select: none;
       -webkit-user-drag: none;
     }
 
+    /*
+      Tlačítko je položené přes spodní část obrázku.
+    */
     .enter-button {
       position: absolute;
+
       left: 50%;
-      bottom: 34px;
+      bottom: 3.2%;
+
       transform: translateX(-50%);
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
+      gap: 12px;
 
-      min-width: 280px;
-      padding: 17px 30px;
+      min-width: 285px;
+      padding: 16px 30px;
 
-      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 999px;
+
       background: linear-gradient(
         135deg,
-        rgba(207, 39, 112, 0.96),
-        rgba(235, 82, 139, 0.96)
+        #d52d78,
+        #ed5795
       );
 
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 999px;
+      color: #ffffff;
 
       font-family: Arial, Helvetica, sans-serif;
       font-size: 17px;
@@ -91,8 +90,8 @@
       text-decoration: none;
 
       box-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.35),
-        0 0 24px rgba(255, 76, 149, 0.28);
+        0 10px 30px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(234, 63, 137, 0.35);
 
       transition:
         transform 0.2s ease,
@@ -103,8 +102,8 @@
       transform: translateX(-50%) scale(1.04);
 
       box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.42),
-        0 0 30px rgba(255, 76, 149, 0.42);
+        0 14px 38px rgba(0, 0, 0, 0.42),
+        0 0 32px rgba(234, 63, 137, 0.5);
     }
 
     .enter-button:focus-visible {
@@ -113,44 +112,23 @@
     }
 
     .arrow {
-      font-size: 24px;
+      font-size: 23px;
       line-height: 1;
     }
 
+    /*
+      Mobilní zobrazení.
+    */
     @media (max-width: 700px) {
-      .hero {
-        min-height: auto;
-        align-items: flex-start;
-        overflow: visible;
-      }
-
-      .hero-image {
-        width: 100%;
-        height: auto;
-        min-height: 100vh;
-        min-height: 100svh;
-
-        object-fit: cover;
-        object-position: center;
-      }
-
       .enter-button {
-        position: fixed;
-        left: 18px;
-        right: 18px;
-        bottom: 18px;
-
-        transform: none;
+        bottom: 2%;
 
         min-width: 0;
-        width: auto;
+        width: calc(100% - 36px);
+        max-width: 340px;
 
-        padding: 15px 22px;
+        padding: 14px 20px;
         font-size: 15px;
-      }
-
-      .enter-button:hover {
-        transform: scale(1.02);
       }
     }
 
