@@ -13,10 +13,9 @@
 
   <style>
     :root{
-      --dark:#2d1d25;
-      --pink:#d53b7d;
-      --pink-dark:#ad2867;
-      --background:#fff8f8;
+      --pink:#d83f83;
+      --pink-dark:#a92768;
+      --text:#311f28;
     }
 
     *{
@@ -25,116 +24,137 @@
       box-sizing:border-box;
     }
 
-    html{
+    html,
+    body{
       width:100%;
       min-height:100%;
     }
 
     body{
-      width:100%;
-      min-height:100vh;
-      overflow-x:hidden;
-
-      color:var(--dark);
+      overflow:hidden;
       font-family:Georgia, "Times New Roman", serif;
-
-      background:
-        radial-gradient(
-          circle at 80% 50%,
-          rgba(255,154,190,.40) 0%,
-          rgba(255,202,219,.25) 29%,
-          rgba(255,235,241,.13) 48%,
-          transparent 68%
-        ),
-        linear-gradient(
-          90deg,
-          #fffaf9 0%,
-          #fff8f8 31%,
-          #fff1f4 55%,
-          #ffdfe9 100%
-        );
+      background:#f7c9d8;
+      color:var(--text);
     }
 
-    a,
-    button{
+    button,
+    a{
       -webkit-tap-highlight-color:transparent;
     }
 
-    .home{
+    .hero{
       position:relative;
       width:100%;
-      min-height:100vh;
+      height:100vh;
+      min-height:650px;
       overflow:hidden;
       isolation:isolate;
     }
 
     /*
-      Jemné světlo za celou pravou částí.
+      Rozmazaná kopie obrazu vyplní celou obrazovku.
+      Nevzniknou bílé nebo prázdné plochy.
     */
-    .home::before{
-      content:"";
+    .hero-background{
       position:absolute;
-      z-index:-3;
+      inset:-35px;
+      z-index:-4;
 
-      top:-15%;
-      right:-9%;
-      width:78vw;
-      height:135vh;
+      background-image:url("uvod-svet-carmen.png.png");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
 
-      pointer-events:none;
-
-      background:
-        radial-gradient(
-          ellipse at center,
-          rgba(255,103,162,.27) 0%,
-          rgba(255,173,204,.20) 35%,
-          rgba(255,224,234,.09) 58%,
-          transparent 75%
-        );
-
-      filter:blur(28px);
+      filter:blur(35px) brightness(.92) saturate(.92);
+      transform:scale(1.09);
     }
 
     /*
-      Přechod mezi textem a obrázkem.
+      Jemné zklidnění levé strany pod textem.
+      Není to karta ani rámeček.
     */
-    .home::after{
-      content:"";
+    .hero-shade{
       position:absolute;
-      z-index:3;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,249,248,.98) 0%,
+          rgba(255,246,247,.92) 17%,
+          rgba(255,239,244,.67) 30%,
+          rgba(255,224,235,.28) 43%,
+          transparent 57%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.12) 0%,
+          transparent 25%,
+          transparent 78%,
+          rgba(76,17,45,.12) 100%
+        );
+    }
+
+    /*
+      Ostrý originální obraz.
+      contain = vždy celý, nikdy se neořízne.
+    */
+    .main-image{
+      position:absolute;
+      z-index:-3;
+
+      top:0;
+      right:0;
+
+      width:76%;
+      height:100%;
+
+      object-fit:contain;
+      object-position:right center;
+
+      filter:
+        drop-shadow(-18px 0 34px rgba(75,20,45,.18))
+        drop-shadow(0 22px 34px rgba(45,9,27,.25));
+    }
+
+    /*
+      Jemné rozpuštění pouze na levém okraji ostrého obrazu.
+    */
+    .image-blend{
+      position:absolute;
+      z-index:-1;
 
       top:0;
       bottom:0;
-      left:27%;
-      width:27%;
+      left:24%;
+      width:25%;
 
       pointer-events:none;
 
       background:linear-gradient(
         90deg,
-        rgba(255,250,249,1) 0%,
-        rgba(255,248,248,.97) 23%,
-        rgba(255,243,246,.78) 52%,
-        rgba(255,231,239,.38) 76%,
+        rgba(255,247,247,.94) 0%,
+        rgba(255,241,245,.68) 30%,
+        rgba(255,224,235,.26) 67%,
         transparent 100%
       );
     }
 
     .brand{
       position:absolute;
-      z-index:20;
-
       top:25px;
       left:3vw;
+      z-index:10;
 
-      color:var(--dark);
-      font-size:19px;
-      line-height:.95;
+      color:var(--text);
+      font-size:18px;
+      line-height:.92;
     }
 
     .brand strong{
       display:block;
-
       color:var(--pink-dark);
       font-size:31px;
       font-style:italic;
@@ -143,42 +163,34 @@
 
     .music-btn{
       position:absolute;
-      z-index:20;
-
       top:22px;
       right:3vw;
+      z-index:10;
 
       display:flex;
       align-items:center;
       gap:10px;
 
       padding:9px 10px 9px 17px;
-
-      border:1px solid rgba(255,255,255,.30);
+      border:1px solid rgba(255,255,255,.3);
       border-radius:999px;
 
       color:#fff;
-      background:rgba(52,31,41,.83);
+      background:rgba(48,28,38,.82);
       backdrop-filter:blur(10px);
 
       font-family:Arial, Helvetica, sans-serif;
       font-size:13px;
       font-weight:600;
-
       cursor:pointer;
 
-      box-shadow:
-        0 10px 25px rgba(52,23,38,.24),
-        0 0 22px rgba(255,114,171,.13);
-
-      transition:
-        transform .2s ease,
-        background .2s ease;
+      box-shadow:0 10px 28px rgba(38,14,26,.25);
+      transition:.2s ease;
     }
 
     .music-btn:hover{
       transform:translateY(-2px);
-      background:rgba(52,31,41,.94);
+      background:rgba(48,28,38,.94);
     }
 
     .music-icon{
@@ -187,78 +199,62 @@
 
       width:32px;
       height:32px;
-
       border-radius:50%;
 
       color:var(--pink-dark);
       background:#fff;
-
       font-size:13px;
     }
 
-    .hero{
-      position:relative;
-      width:100%;
-      min-height:100vh;
-    }
-
     /*
-      Textová část vlevo.
+      Malý text, který obraz nepřebíjí.
     */
     .hero-content{
-      position:relative;
-      z-index:10;
+      position:absolute;
+      z-index:5;
 
-      width:39%;
-      min-height:100vh;
+      top:50%;
+      left:clamp(26px,3vw,64px);
+      transform:translateY(-46%);
 
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-
-      padding:
-        115px
-        20px
-        65px
-        clamp(42px,3vw,68px);
+      width:min(430px,32vw);
     }
 
     .welcome{
-      font-size:clamp(43px,3.2vw,61px);
+      margin-bottom:2px;
+      font-size:clamp(30px,2.7vw,47px);
       line-height:1;
       font-weight:normal;
     }
 
     h1{
-      margin-top:2px;
-      margin-bottom:22px;
+      margin-bottom:16px;
 
       color:var(--pink-dark);
-
-      font-size:clamp(61px,5vw,88px);
+      font-size:clamp(45px,4vw,69px);
       line-height:.94;
-      letter-spacing:-2px;
+      letter-spacing:-1.5px;
       font-weight:normal;
     }
 
     .motto{
-      max-width:590px;
-      margin-bottom:17px;
+      max-width:420px;
+      margin-bottom:14px;
 
-      font-size:clamp(25px,2vw,35px);
-      line-height:1.25;
+      font-size:clamp(20px,1.65vw,28px);
+      line-height:1.3;
       font-style:italic;
     }
 
     .divider{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:11px;
 
-      width:min(470px,100%);
-      margin:0 0 22px;
+      width:min(340px,100%);
+      margin-bottom:17px;
 
-      color:#e45d95;
+      color:#e25c95;
     }
 
     .divider::before,
@@ -266,273 +262,116 @@
       content:"";
       height:1px;
       flex:1;
-
-      background:rgba(222,80,143,.43);
+      background:rgba(215,67,132,.42);
     }
 
     .intro{
-      max-width:560px;
-      margin-bottom:27px;
+      max-width:410px;
+      margin-bottom:22px;
 
-      font-size:clamp(18px,1.25vw,22px);
+      font-size:clamp(15px,1.05vw,18px);
       line-height:1.55;
     }
 
     .enter-btn{
-      align-self:flex-start;
-
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:18px;
+      gap:17px;
 
-      padding:16px 27px;
-
+      padding:14px 24px;
       border-radius:999px;
 
       color:#fff;
       background:linear-gradient(
         135deg,
         var(--pink-dark),
-        #e95e97
+        #e65d97
       );
 
       text-decoration:none;
-
       font-family:Arial, Helvetica, sans-serif;
-      font-size:16px;
+      font-size:14px;
       font-weight:700;
 
       box-shadow:
-        0 14px 30px rgba(173,40,103,.28),
-        0 0 22px rgba(233,94,151,.13);
+        0 13px 28px rgba(169,39,104,.31),
+        0 0 22px rgba(230,93,151,.14);
 
-      transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+      transition:.2s ease;
     }
 
     .enter-btn:hover{
       transform:translateY(-2px);
-
       box-shadow:
-        0 18px 38px rgba(173,40,103,.35),
-        0 0 28px rgba(233,94,151,.18);
-    }
-
-    /*
-      Celý obraz vpravo.
-    */
-    .hero-art{
-      position:absolute;
-      z-index:2;
-
-      top:0;
-      right:0;
-
-      width:69%;
-      height:100vh;
-      min-height:690px;
-
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-
-      padding:
-        70px
-        clamp(5px,1vw,18px)
-        18px
-        0;
-    }
-
-    /*
-      Záře za obrazem.
-    */
-    .hero-art::before{
-      content:"";
-      position:absolute;
-      z-index:-2;
-
-      top:8%;
-      right:-5%;
-      bottom:2%;
-      left:2%;
-
-      pointer-events:none;
-
-      background:
-        radial-gradient(
-          ellipse at 62% 48%,
-          rgba(255,190,211,.58) 0%,
-          rgba(255,139,180,.24) 40%,
-          rgba(255,105,165,.10) 62%,
-          transparent 78%
-        );
-
-      filter:blur(27px);
-    }
-
-    /*
-      Obrázek je celý.
-      Nepoužíváme cover, takže se nic neořízne.
-      Maska rozpouští pouze jeho krajní okraje.
-    */
-    .hero-image{
-      display:block;
-
-      width:auto;
-      height:auto;
-
-      max-width:100%;
-      max-height:calc(100vh - 88px);
-
-      object-fit:contain;
-      object-position:right center;
-
-      filter:
-        drop-shadow(0 23px 31px rgba(65,18,39,.22))
-        drop-shadow(0 0 22px rgba(255,102,158,.14));
-
-      -webkit-mask-image:
-        linear-gradient(
-          to right,
-          transparent 0%,
-          rgba(0,0,0,.17) 1.5%,
-          rgba(0,0,0,.72) 4%,
-          #000 8%,
-          #000 100%
-        ),
-        linear-gradient(
-          to bottom,
-          transparent 0%,
-          #000 2.5%,
-          #000 96.5%,
-          transparent 100%
-        );
-
-      -webkit-mask-composite:source-in;
-
-      mask-image:
-        linear-gradient(
-          to right,
-          transparent 0%,
-          rgba(0,0,0,.17) 1.5%,
-          rgba(0,0,0,.72) 4%,
-          #000 8%,
-          #000 100%
-        ),
-        linear-gradient(
-          to bottom,
-          transparent 0%,
-          #000 2.5%,
-          #000 96.5%,
-          transparent 100%
-        );
-
-      mask-composite:intersect;
-    }
-
-    /*
-      Další jemné světlo přes levý okraj obrazu.
-      Tím se obraz propojí s textovou částí.
-    */
-    .image-blend{
-      position:absolute;
-      z-index:4;
-
-      top:0;
-      bottom:0;
-      left:0;
-      width:20%;
-
-      pointer-events:none;
-
-      background:linear-gradient(
-        90deg,
-        rgba(255,248,248,.97) 0%,
-        rgba(255,244,247,.72) 35%,
-        rgba(255,232,240,.28) 70%,
-        transparent 100%
-      );
+        0 18px 36px rgba(169,39,104,.38),
+        0 0 27px rgba(230,93,151,.18);
     }
 
     audio{
       display:none;
     }
 
-    @media(max-width:1250px){
-      .hero-content{
-        width:41%;
-        padding-left:35px;
+    /*
+      Menší notebooky.
+    */
+    @media(max-width:1200px){
+      .main-image{
+        width:72%;
       }
 
-      .hero-art{
-        width:67%;
+      .hero-content{
+        width:35vw;
       }
 
       h1{
-        font-size:69px;
-      }
-
-      .motto{
-        font-size:27px;
+        font-size:58px;
       }
     }
 
-    @media(max-width:1000px){
-      .home{
-        overflow:visible;
-      }
-
-      .home::after{
-        display:none;
+    /*
+      Mobil a tablet:
+      obraz zůstává celý nahoře, text je pod ním.
+    */
+    @media(max-width:850px){
+      body{
+        overflow:auto;
       }
 
       .hero{
-        display:flex;
-        flex-direction:column;
+        min-height:100svh;
+        height:auto;
+        overflow:visible;
+        padding-top:72px;
       }
 
-      .hero-art{
-        position:relative;
-        order:1;
+      .hero-background{
+        position:fixed;
+      }
 
+      .hero-shade{
+        position:fixed;
+        background:rgba(255,246,248,.58);
+        backdrop-filter:blur(4px);
+      }
+
+      .main-image{
+        position:relative;
         top:auto;
         right:auto;
 
+        display:block;
+
         width:100%;
         height:auto;
-        min-height:0;
+        max-height:70svh;
 
-        justify-content:center;
+        object-fit:contain;
+        object-position:center;
 
-        padding:
-          80px
-          14px
-          0;
-      }
+        margin:0 auto;
 
-      .hero-image{
-        max-width:min(100%,690px);
-        max-height:72svh;
-
-        -webkit-mask-image:
-          linear-gradient(
-            to bottom,
-            transparent 0%,
-            #000 2%,
-            #000 97%,
-            transparent 100%
-          );
-
-        mask-image:
-          linear-gradient(
-            to bottom,
-            transparent 0%,
-            #000 2%,
-            #000 97%,
-            transparent 100%
-          );
+        filter:drop-shadow(0 18px 30px rgba(55,14,34,.26));
       }
 
       .image-blend{
@@ -540,20 +379,16 @@
       }
 
       .hero-content{
-        order:2;
+        position:relative;
+        top:auto;
+        left:auto;
+        transform:none;
 
         width:100%;
-        min-height:auto;
-        max-width:760px;
-
-        align-items:center;
+        max-width:650px;
 
         margin:0 auto;
-
-        padding:
-          36px
-          7vw
-          60px;
+        padding:30px 25px 55px;
 
         text-align:center;
       }
@@ -563,28 +398,24 @@
         margin-right:auto;
       }
 
-      .enter-btn{
-        align-self:center;
-      }
-
       .brand{
-        top:17px;
+        top:16px;
         left:20px;
       }
 
       .music-btn{
-        top:16px;
-        right:18px;
+        top:15px;
+        right:17px;
       }
     }
 
-    @media(max-width:560px){
+    @media(max-width:520px){
       .brand{
         font-size:15px;
       }
 
       .brand strong{
-        font-size:25px;
+        font-size:24px;
       }
 
       .music-btn{
@@ -597,84 +428,69 @@
         height:34px;
       }
 
-      .hero-art{
-        padding:
-          72px
-          5px
-          0;
-      }
-
-      .hero-image{
-        width:100%;
+      .main-image{
         max-height:none;
       }
 
       .hero-content{
-        padding:
-          28px
-          22px
-          45px;
+        padding-top:25px;
       }
 
       .welcome{
-        font-size:39px;
+        font-size:34px;
       }
 
       h1{
-        font-size:53px;
-        letter-spacing:-1px;
+        font-size:49px;
       }
 
       .motto{
-        font-size:24px;
+        font-size:22px;
       }
 
       .intro{
-        font-size:18px;
+        font-size:17px;
       }
 
       .enter-btn{
         width:100%;
-        max-width:350px;
+        max-width:340px;
       }
     }
 
-    @media(min-width:1001px) and (max-height:760px){
+    /*
+      Nízké monitory.
+    */
+    @media(min-width:851px) and (max-height:720px){
       .hero-content{
-        padding-top:85px;
-        padding-bottom:30px;
+        transform:translateY(-42%);
       }
 
       .welcome{
-        font-size:39px;
+        font-size:34px;
       }
 
       h1{
-        margin-bottom:16px;
-        font-size:62px;
+        margin-bottom:12px;
+        font-size:52px;
       }
 
       .motto{
-        margin-bottom:12px;
-        font-size:25px;
+        margin-bottom:10px;
+        font-size:22px;
       }
 
       .divider{
-        margin-bottom:15px;
+        margin-bottom:12px;
       }
 
       .intro{
-        margin-bottom:20px;
-        font-size:18px;
+        margin-bottom:17px;
+        font-size:15px;
       }
 
-      .hero-art{
-        padding-top:58px;
-        padding-bottom:10px;
-      }
-
-      .hero-image{
-        max-height:calc(100vh - 68px);
+      .enter-btn{
+        padding:12px 21px;
       }
     }
   </style>
@@ -682,7 +498,28 @@
 
 <body>
 
-  <main class="home">
+  <main class="hero">
+
+    <div
+      class="hero-background"
+      aria-hidden="true"
+    ></div>
+
+    <img
+      class="main-image"
+      src="uvod-svet-carmen.png.png"
+      alt="Carmen s fénixem, Miou, Čestmírkem a světem příběhů"
+    >
+
+    <div
+      class="hero-shade"
+      aria-hidden="true"
+    ></div>
+
+    <div
+      class="image-blend"
+      aria-hidden="true"
+    ></div>
 
     <div class="brand" aria-label="Svět Carmen">
       Svět
@@ -709,63 +546,41 @@
       </span>
     </button>
 
-    <div class="hero">
+    <section class="hero-content">
 
-      <section class="hero-content">
+      <p class="welcome">
+        Vítej ve
+      </p>
 
-        <p class="welcome">
-          Vítej ve
-        </p>
+      <h1>
+        Světě Carmen.
+      </h1>
 
-        <h1>
-          Světě Carmen.
-        </h1>
+      <p class="motto">
+        Tady každý příběh začíná srdcem.
+      </p>
 
-        <p class="motto">
-          Tady každý příběh začíná srdcem.
-        </p>
-
-        <div
-          class="divider"
-          aria-hidden="true"
-        >
-          ♡
-        </div>
-
-        <p class="intro">
-          Příběhy o odvaze, přátelství, zvířatech,
-          naději a druhých začátcích.
-        </p>
-
-        <a
-          class="enter-btn"
-          href="carmen.html"
-        >
-          Vstoupit a poznat Carmen
-          <span aria-hidden="true">→</span>
-        </a>
-
-      </section>
-
-      <section
-        class="hero-art"
-        aria-label="Hlavní obraz Světa Carmen"
+      <div
+        class="divider"
+        aria-hidden="true"
       >
+        ♡
+      </div>
 
-        <img
-          class="hero-image"
-          src="uvod-svet-carmen.png.png"
-          alt="Carmen s fénixem, Miou, Čestmírkem a světem příběhů"
-        >
+      <p class="intro">
+        Příběhy o odvaze, přátelství, zvířatech,
+        naději a druhých začátcích.
+      </p>
 
-        <div
-          class="image-blend"
-          aria-hidden="true"
-        ></div>
+      <a
+        class="enter-btn"
+        href="carmen.html"
+      >
+        Vstoupit a poznat Carmen
+        <span aria-hidden="true">→</span>
+      </a>
 
-      </section>
-
-    </div>
+    </section>
 
   </main>
 
