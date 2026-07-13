@@ -204,19 +204,26 @@
        3. HLAVNÍ OBRAZOVKA SVĚTA CARMEN
        ===================================== */
 
-    header {
-      min-height: 100vh;
+  header {
+  min-height: 100vh;
 
-      display: grid;
-      grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
+  display: flex;
+  align-items: center;
 
-      gap: 42px;
-      align-items: center;
+  padding: 90px 7vw 60px;
 
-      padding:
-        90px 7vw 60px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,247,251,.98) 0%,
+      rgba(255,247,251,.88) 32%,
+      rgba(255,247,251,.45) 52%,
+      rgba(255,247,251,.08) 72%,
+      rgba(255,247,251,0) 100%
+    ),
+    url("uvod-svet-carmen.png")
+    center right / cover no-repeat;
+
     }
 
     .badge {
@@ -549,17 +556,7 @@ transform: none;
       </a>
     </div>
 
-    <div>
-      <img
-        class="hero-img"
-        src="uvod-svet-carmen.png"
-        alt="Úvodní ilustrace Světa Carmen"
-      >
-    </div>
-
-  </header>
-
- 
+   
 
      
   
