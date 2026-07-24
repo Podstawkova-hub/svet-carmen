@@ -212,17 +212,7 @@
 
   padding: 90px 7vw 60px;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255,247,251,.98) 0%,
-      rgba(255,247,251,.88) 32%,
-      rgba(255,247,251,.45) 52%,
-      rgba(255,247,251,.08) 72%,
-      rgba(255,247,251,0) 100%
-    ),
-    url("uvod-svet-carmen.png")
-    right center / 60% auto no-repeat;
+  background: #fff7fb;
 
     }
 
@@ -243,7 +233,16 @@
 
       border-radius: 999px;
     }
+.hero-text {
+    width: 40%;
+}
 
+.hero-photo {
+    width: 60%;
+    min-height: 700px;
+    background: url("uvod-svet-carmen.png")
+                center center / contain no-repeat;
+}
     h1 {
       margin: 0 0 20px;
 
@@ -527,8 +526,9 @@ transform: none;
   -->
   <header>
 
-    <div>
-      <div class="badge">
+    
+     <div class="hero-text">
+        <div class="badge">
         🌸 Zrozeno 3. 7. 2026
       </div>
 
@@ -556,6 +556,7 @@ transform: none;
       </a>
     </div>
 
+<div class="hero-photo"></div>
    
 
      
