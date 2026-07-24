@@ -2,661 +2,462 @@
 <html lang="cs">
 <head>
   <meta charset="utf-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vítej ve Světě Carmen. Tady každý příběh začíná srdcem.">
   <title>Svět Carmen</title>
 
-  <meta
-    name="description"
-    content="Vítej ve Světě Carmen. Tady každý příběh začíná srdcem."
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --dark: #1f1420;
-      --pink: #ff74b8;
-      --deep: #a52d6f;
-      --gold: #ffd37d;
-      --white: rgba(255, 255, 255, 0.78);
+      --ink: #2a1724;
+      --deep: #9f2f6c;
+      --pink: #ef78ad;
+      --soft-pink: #fff2f8;
+      --cream: #fffaf6;
+      --line: rgba(159, 47, 108, 0.14);
+      --shadow: 0 24px 60px rgba(105, 37, 78, 0.14);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--dark);
-
+      color: var(--ink);
+      font-family: "Inter", Arial, sans-serif;
       background:
-        radial-gradient(
-          circle at 20% 10%,
-          rgba(255, 116, 184, 0.28),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 80% 20%,
-          rgba(255, 211, 125, 0.35),
-          transparent 28%
-        ),
-        linear-gradient(
-          180deg,
-          #fff7fb 0%,
-          #ffe8f3 48%,
-          #fff8ee 100%
-        );
-
+        radial-gradient(circle at 15% 5%, rgba(239,120,173,.16), transparent 28%),
+        linear-gradient(180deg, #fffafc 0%, #fff3f8 68%, #fffaf5 100%);
       overflow-x: hidden;
     }
 
-    /* =====================================
-       1. KOUZELNÁ VSTUPNÍ BRÁNA
-       ===================================== */
-
+    /* ÚVODNÍ KRAJINA */
     .intro {
       position: fixed;
       inset: 0;
       z-index: 9999;
-
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-
+      justify-content: center;
       padding: 30px;
       text-align: center;
-
-      background:
-        url("navrh.png")
-        center center / cover
-        no-repeat;
-
+      color: #fff7ec;
+      background: url("navrh.png") center/cover no-repeat;
       pointer-events: none;
-
-      animation:
-        introFade 1.3s ease forwards;
-
-      animation-delay: 3.2s;
+      animation: introFade 1.2s ease forwards 3.1s;
     }
 
     .intro::before {
       content: "";
       position: absolute;
       inset: 0;
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(20, 8, 17, 0.08),
-          rgba(20, 8, 17, 0.30)
-        );
+      background: linear-gradient(180deg, rgba(20,8,17,.08), rgba(20,8,17,.34));
     }
 
     .intro h1,
     .intro p {
       position: relative;
-      z-index: 2;
-
-      color: #fff6e8;
-
-      text-shadow:
-        0 3px 18px rgba(0, 0, 0, 0.65),
-        0 0 35px rgba(0, 0, 0, 0.30);
-
+      z-index: 1;
+      margin: 0;
+      text-shadow: 0 4px 24px rgba(0,0,0,.55);
       opacity: 0;
-
-      animation:
-        rise 0.9s ease forwards;
+      animation: rise .9s ease forwards;
     }
 
     .intro h1 {
-      margin: 0;
-
-      font-size:
-        clamp(52px, 7vw, 110px);
-
-      line-height: 1;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(52px, 7vw, 108px);
+      line-height: .98;
     }
 
     .intro p {
-      margin: 18px 0 0;
-
-      font-size:
-        clamp(23px, 2.5vw, 38px);
-
-      animation-delay: 1.1s;
+      margin-top: 18px;
+      font-size: clamp(22px, 2.3vw, 36px);
+      animation-delay: .9s;
     }
 
     @keyframes rise {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes introFade {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
+      to { opacity: 0; visibility: hidden; }
     }
 
-    /* =====================================
-       2. HLAVNÍ NAVIGACE
-       ===================================== */
-
-    nav {
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      z-index: 10;
-
-      transform: translateX(-50%);
-
-      padding: 10px 18px;
-
-      background:
-        rgba(255, 255, 255, 0.72);
-
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-
-      border:
-        1px solid rgba(165, 45, 111, 0.14);
-
-      border-radius: 999px;
-
-      box-shadow:
-        0 18px 40px rgba(165, 45, 111, 0.14);
+    /* HORNÍ NAVIGACE */
+    .site-nav {
+      position: relative;
+      z-index: 20;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(28px, 5vw, 88px);
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
     }
 
-    nav a {
-      margin: 0 10px;
-
+    .brand {
       color: var(--deep);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(24px, 2vw, 33px);
+      font-weight: 700;
+      text-decoration: none;
+    }
 
+    .nav-links {
+      display: flex;
+      gap: clamp(18px, 2.2vw, 38px);
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #7d375e;
       font-size: 15px;
-      font-weight: bold;
+      font-weight: 600;
       text-decoration: none;
+      transition: color .2s ease;
     }
 
-    nav a:hover {
-      color: #751c4d;
+    .nav-links a:hover { color: var(--deep); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 650px;
+      height: calc(100vh - 76px);
+      max-height: 820px;
+      display: grid;
+      grid-template-columns: 43% 57%;
+      overflow: hidden;
+      background: linear-gradient(90deg, #fff6fa 0%, #fff3f8 44%, #fceef5 100%);
     }
 
-    /* =====================================
-       3. HLAVNÍ OBRAZOVKA SVĚTA CARMEN
-       ===================================== */
-
-  header {
-  min-height: 100vh;
-
-  display: flex;
-  align-items: center;
-
-  padding: 90px 7vw 60px;
-
-  background: #fff7fb;
-
+    .hero-copy {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px 36px 54px clamp(30px, 6vw, 104px);
     }
 
-    .badge {
-      display: inline-block;
-
+    .eyebrow {
+      align-self: flex-start;
       margin-bottom: 20px;
-      padding: 10px 16px;
-
-      color: #7b2354;
-      font-weight: bold;
-
-      background:
-        rgba(255, 116, 184, 0.18);
-
-      border:
-        1px solid rgba(255, 116, 184, 0.35);
-
+      padding: 9px 15px;
+      color: #87315d;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      background: rgba(239,120,173,.18);
+      border: 1px solid rgba(239,120,173,.32);
       border-radius: 999px;
     }
-.hero-text {
-    width: 40%;
-}
 
-.hero-photo {
-    width: 60%;
-    min-height: 700px;
-    background: url("uvod-svet-carmen.png")
-                center center / contain no-repeat;
-}
-    h1 {
-      margin: 0 0 20px;
-
+    .hero h1 {
+      margin: 0;
       color: var(--deep);
-
-      font-size:
-        clamp(54px, 9vw, 112px);
-
-      line-height: 0.92;
-      letter-spacing: -2px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(58px, 6.3vw, 104px);
+      line-height: .92;
+      letter-spacing: -0.045em;
     }
 
-    .subtitle {
-      margin: 0 0 24px;
-
-      font-size:
-        clamp(25px, 3.2vw, 44px);
-
-      line-height: 1.18;
+    .hero .subtitle {
+      margin: 24px 0 18px;
+      max-width: 620px;
+      color: #2c1b28;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(24px, 2.35vw, 38px);
+      line-height: 1.16;
+      font-weight: 600;
     }
 
-    p {
-      max-width: 760px;
-
-      font-size: 20px;
-      line-height: 1.7;
+    .hero .intro-text {
+      max-width: 620px;
+      margin: 0;
+      color: #4b3945;
+      font-size: clamp(17px, 1.25vw, 20px);
+      line-height: 1.65;
     }
 
-    .hero-img {
-      display: block;
-
-      width: 100%;
-      height: auto;
-
-border-radius: 8px;
-
-box-shadow:
-    0 18px 40px rgba(122, 35, 84, 0.18);
-
-transform: none;
-    }
-
-    .btn {
-      display: inline-block;
-
-      margin-top: 18px;
-      padding: 16px 28px;
-
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--deep),
-          var(--pink)
-        );
-
-      border-radius: 999px;
-
-      box-shadow:
-        0 18px 38px rgba(165, 45, 111, 0.25);
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-
-      box-shadow:
-        0 22px 45px rgba(165, 45, 111, 0.34);
-    }
-
-    /* =====================================
-       4. OBSAH A FILOZOFIE
-       ===================================== */
-
-    section {
-      padding: 76px 7vw;
-    }
-
-    h2 {
-      margin: 0 0 18px;
-
-      color: var(--deep);
-
-      font-size:
-        clamp(36px, 5vw, 56px);
-    }
-
-    h3 {
-      margin: 0 0 10px;
-      font-size: 27px;
-    }
-
-   .wide {
-    padding: 10px 0;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-
-    }
-
- .quote {
-  padding: 20px 0;
-  text-align: center;
-}
-
-.quote p {
-  margin: 0 auto;
-
-  color: var(--deep);
-
-  font-family: "Marck Script", cursive;
-
-  font-size: clamp(40px, 5vw, 64px);
-
-  font-weight: 700;
-
-  line-height: 1.18;
-
-  letter-spacing: 0.3px;
-
-    }
-
-    .diary {
+    .hero-button {
+      align-self: flex-start;
       margin-top: 28px;
-      padding-left: 26px;
-
-      border-left:
-        6px solid var(--pink);
+      padding: 15px 26px;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      background: linear-gradient(135deg, #9f2f6c, #ec72aa);
+      border-radius: 999px;
+      box-shadow: 0 15px 34px rgba(159,47,108,.24);
+      transition: transform .2s ease, box-shadow .2s ease;
     }
 
-    .tiny {
-      color: #7d4964;
-      font-size: 16px;
+    .hero-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(159,47,108,.31);
     }
 
-    footer {
-      padding: 44px 7vw;
+    .hero-visual {
+      position: relative;
+      min-width: 0;
+      background: url("uvod-svet-carmen.png") center center/cover no-repeat;
+    }
 
-      color: #7d4964;
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg,
+          #fff3f8 0%,
+          rgba(255,243,248,.96) 4%,
+          rgba(255,243,248,.68) 12%,
+          rgba(255,243,248,.28) 22%,
+          rgba(255,243,248,0) 36%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.03));
+      pointer-events: none;
+    }
+
+    /* CITÁT */
+    .quote-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 150px;
+      padding: 24px 7vw;
+      background: rgba(255,255,255,.24);
+      border-top: 1px solid rgba(159,47,108,.07);
+      border-bottom: 1px solid rgba(159,47,108,.07);
+    }
+
+    .quote-section p {
+      margin: 0;
+      color: var(--deep);
+      font-family: "Marck Script", cursive;
+      font-size: clamp(42px, 4.2vw, 68px);
+      font-weight: 700;
+      line-height: 1.05;
       text-align: center;
     }
 
-    /* =====================================
-       5. HYMNA SVĚTA CARMEN
-       ===================================== */
+    /* DENÍK */
+    .diary-section {
+      padding: 54px clamp(28px, 7vw, 120px) 58px;
+    }
 
+    .diary-heading {
+      margin: 0 0 28px;
+      color: var(--deep);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(38px, 4vw, 58px);
+    }
+
+    .diary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: clamp(26px, 5vw, 90px);
+      align-items: start;
+    }
+
+    .diary-entry {
+      padding-left: 24px;
+      border-left: 5px solid var(--pink);
+    }
+
+    .diary-entry h3 {
+      margin: 0 0 16px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 25px;
+    }
+
+    .diary-entry p,
+    .diary-note p {
+      margin: 0 0 10px;
+      color: #493945;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .diary-note {
+      padding: 24px 28px;
+      background: rgba(255,255,255,.58);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .diary-note strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--deep);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 23px;
+    }
+
+    footer {
+      padding: 24px 7vw 92px;
+      color: #7d4964;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* HYMNA */
     .music-player {
       position: fixed;
       right: 18px;
       bottom: 18px;
-      z-index: 20;
-
+      z-index: 30;
       max-width: calc(100vw - 36px);
-
-      padding: 8px;
-
-      background:
-        rgba(255, 255, 255, 0.80);
-
+      padding: 7px;
+      background: rgba(255,255,255,.85);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-
-      border:
-        1px solid rgba(165, 45, 111, 0.16);
-
+      border: 1px solid rgba(159,47,108,.14);
       border-radius: 999px;
-
-      box-shadow:
-        0 15px 40px rgba(122, 35, 84, 0.20);
+      box-shadow: 0 15px 40px rgba(105,37,78,.17);
     }
 
     .music-player audio {
       display: block;
-      width: 290px;
+      width: 270px;
       max-width: 100%;
-      height: 42px;
+      height: 40px;
     }
 
-    /* =====================================
-       6. MOBIL
-       ===================================== */
-
-    @media (max-width: 900px) {
-      nav {
-        display: none;
-      }
-
-      header {
-        min-height: auto;
-
+    @media (max-width: 980px) {
+      .site-nav { padding: 0 24px; }
+      .nav-links { gap: 16px; }
+      .hero {
+        height: auto;
+        max-height: none;
+        min-height: 0;
         grid-template-columns: 1fr;
-
-        padding:
-          55px 6vw 50px;
       }
-
-      .hero-img {
-        transform: none;
+      .hero-copy {
+        padding: 64px 7vw 38px;
       }
-
-      section {
-        padding:
-          52px 6vw;
+      .hero-visual {
+        min-height: 520px;
+        background-size: cover;
+        background-position: center;
       }
-
-      .wide {
-        padding: 28px;
+      .hero-visual::before {
+        background: linear-gradient(180deg, #fff3f8 0%, rgba(255,243,248,.55) 14%, rgba(255,243,248,0) 34%);
       }
+      .diary-grid { grid-template-columns: 1fr; }
+    }
 
+    @media (max-width: 700px) {
+      .site-nav {
+        height: 68px;
+      }
+      .nav-links { display: none; }
+      .hero-copy { padding: 48px 6vw 34px; }
+      .hero h1 { font-size: clamp(54px, 18vw, 76px); }
+      .hero-visual { min-height: 380px; }
+      .quote-section { min-height: 125px; }
+      .quote-section p { font-size: clamp(37px, 10vw, 54px); }
+      .diary-section { padding: 44px 6vw 46px; }
       .music-player {
         position: static;
-
-        width:
-          calc(100% - 32px);
-
-        margin:
-          0 auto 24px;
-
-        border-radius: 24px;
+        width: calc(100% - 32px);
+        margin: 0 auto 22px;
+        border-radius: 20px;
       }
-
-      .music-player audio {
-        width: 100%;
-      }
+      .music-player audio { width: 100%; }
+      footer { padding-bottom: 28px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .intro {
-        animation-duration: 0.5s;
-      }
-
+      html { scroll-behavior: auto; }
+      .intro { animation-duration: .4s; }
       .intro h1,
-      .intro p {
-        animation: none;
-        opacity: 1;
-      }
-
-      .btn {
-        transition: none;
-      }
+      .intro p { animation: none; opacity: 1; }
+      .hero-button { transition: none; }
     }
   </style>
 </head>
 
 <body>
-
-  <!--
-    Nejprve se na několik sekund zobrazí
-    kouzelná vstupní krajina.
-  -->
   <div class="intro">
     <h1>Vítej ve Světě Carmen.</h1>
-
-    <p>
-      Tady každý příběh začíná srdcem.
-    </p>
+    <p>Tady každý příběh začíná srdcem.</p>
   </div>
 
-  <!-- Hlavní navigace -->
-  <nav>
-    <a href="#carmen">Carmen</a>
-    <a href="#vznik">Proč vznikl</a>
-    <a href="#denik">Deník</a>
-    <a href="#kontakt">Kontakt</a>
+  <nav class="site-nav" aria-label="Hlavní navigace">
+    <a class="brand" href="#top">Svět Carmen</a>
+    <div class="nav-links">
+      <a href="carmen.html">O Carmen</a>
+      <a href="svet.html">Svět příběhů</a>
+      <a href="#denik">Deník Carmen</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
   </nav>
 
-  <!--
-    Po zmizení úvodní krajiny se ukáže
-    hlavní stránka Světa Carmen.
-  -->
-  <header>
-
-    
-     <div class="hero-text">
-        <div class="badge">
-        🌸 Zrozeno 3. 7. 2026
+  <main id="top">
+    <header class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">🌸 Zrozeno 3. 7. 2026</div>
+        <h1>Svět Carmen</h1>
+        <p class="subtitle">Vítej ve Světě Carmen.<br>Tady každý příběh začíná srdcem.</p>
+        <p class="intro-text">Svět komiksů, knih, ilustrací a skutečných příběhů o odvaze, zvířatech, naději a druhých začátcích.</p>
+        <a class="hero-button" href="carmen.html">Vstoupit a poznat Carmen</a>
       </div>
+      <div class="hero-visual" aria-label="Carmen se zvířaty a fénixem"></div>
+    </header>
 
-      <h1>Svět Carmen</h1>
+    <section class="quote-section" aria-label="Citát Světa Carmen">
+      <p>„Každá jizva může být začátkem nového příběhu.“</p>
+    </section>
 
-      <p class="subtitle">
-        Vítej ve Světě Carmen.<br>
-        Tady každý příběh začíná srdcem.
-      </p>
+    <section class="diary-section" id="denik">
+      <h2 class="diary-heading">📖 Deník Carmen</h2>
+      <div class="diary-grid">
+        <article class="diary-entry">
+          <h3>3. července 2026</h3>
+          <p>Dnes vznikl Svět Carmen.</p>
+          <p>První stránka. První sen. První krok.</p>
+          <p>Děkujeme, že jste u toho s námi. Toto je teprve první kapitola.</p>
+        </article>
 
-      <p>
-        Svět komiksů, knih, ilustrací a skutečných příběhů
-        o odvaze, zvířatech, naději a druhých začátcích.
-      </p>
+        <aside class="diary-note">
+          <strong>Nové kapitoly právě vznikají</strong>
+          <p>Deník Carmen bude místem skutečných příběhů, malých vítězství a druhých začátků.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
 
-      <!--
-        Správná cesta:
-        nejdřív návštěvník pozná Carmen.
-      -->
-      <a
-        class="btn"
-        href="carmen.html"
-      >
-        Vstoupit a poznat Carmen
-      </a>
-    </div>
-
-<div class="hero-photo"></div>
-   
-
-     
-  
-
- 
-  
-</header>
-  <!-- Hlavní myšlenka -->
-  <section>
-    <div class="quote">
-
-      <p>
-        „Každá jizva může být začátkem
-        nového příběhu.“
-      </p>
-
-    </div>
-  </section>
-
-  <!-- Deník Carmen -->
-  <section id="denik">
-
-    <h2>📖 Deník Carmen</h2>
-
-    <div class="wide diary">
-
-      <h3>3. července 2026</h3>
-
-      <p>
-        Dnes vznikl Svět Carmen.
-      </p>
-
-      <p>
-        První stránka. První sen. První krok.
-      </p>
-
-      <p>
-        Děkujeme, že jste u toho s námi.
-        Toto je teprve první kapitola.
-      </p>
-
-    </div>
-
- 
-
-  
-
-  <footer>
-    © Svět Carmen · Příběhy, které mají srdce ·
-    Zrozeno 3. 7. 2026
+  <footer id="kontakt">
+    © Svět Carmen · Příběhy, které mají srdce · Zrozeno 3. 7. 2026
   </footer>
 
-  <!-- Hymna Světa Carmen -->
   <div class="music-player">
-
-    <audio
-      id="bgmusic"
-      controls
-      loop
-      preload="metadata"
-    >
-      <source
-        src="Svět Carmen.mp3"
-        type="audio/mpeg"
-      >
-
+    <audio id="bgmusic" controls loop preload="metadata">
+      <source src="Svět Carmen.mp3" type="audio/mpeg">
       Váš prohlížeč nepodporuje přehrávání zvuku.
     </audio>
-
   </div>
 
   <script>
-    /*
-      Prohlížeče obvykle nepovolí automatické spuštění
-      hudby bez prvního kliknutí návštěvníka.
-
-      Po prvním kliknutí na stránku se proto hymna
-      jemně spustí.
-    */
-    document.addEventListener(
-      "click",
-      function () {
-        const music =
-          document.getElementById("bgmusic");
-
-        if (music && music.paused) {
-          music.volume = 0.35;
-
-          music.play().catch(function () {
-            /*
-              Pokud prohlížeč přehrání nepovolí,
-              návštěvník může použít ovládání přehrávače.
-            */
-          });
-        }
-      },
-      { once: true }
-    );
+    document.addEventListener("click", function () {
+      const music = document.getElementById("bgmusic");
+      if (music && music.paused) {
+        music.volume = 0.35;
+        music.play().catch(function () {});
+      }
+    }, { once: true });
   </script>
-
 </body>
 </html>
