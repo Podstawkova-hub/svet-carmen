@@ -61,27 +61,41 @@
                 var(--pozadi);
         }
 
+        img {
+            max-width: 100%;
+        }
+
         a {
             color: inherit;
             text-decoration: none;
         }
 
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
         .obal {
-            width: min(1120px, calc(100% - 40px));
+            width: min(1180px, calc(100% - 40px));
             margin: 0 auto;
         }
 
-        /* Horní část */
+        /* HLAVIČKA */
 
         header {
+            position: relative;
+            z-index: 20;
             padding: 24px 0;
+            background: rgba(255, 249, 251, 0.94);
+            border-bottom: 1px solid rgba(157, 72, 107, 0.08);
+            backdrop-filter: blur(14px);
         }
 
         .navigace {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 25px;
+            gap: 28px;
         }
 
         .logo {
@@ -89,6 +103,7 @@
             font-size: 2rem;
             font-weight: 700;
             color: var(--ruzova-tmava);
+            white-space: nowrap;
         }
 
         .logo span {
@@ -105,6 +120,7 @@
 
         .menu a {
             position: relative;
+            display: inline-block;
             padding: 8px 0;
             font-size: 0.88rem;
             font-weight: 500;
@@ -120,6 +136,7 @@
             content: "";
             background: var(--ruzova-tmava);
             transform: scaleX(0);
+            transform-origin: center;
             transition: transform 0.2s ease;
         }
 
@@ -133,181 +150,355 @@
             transform: scaleX(1);
         }
 
-        /* Úvod deníku */
+        /* HERO DENÍKU */
 
-        .uvod {
-            padding: 70px 0 85px;
-            text-align: center;
+        .hero-denik {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 46%) minmax(0, 54%);
+            width: 100%;
+            min-height: 590px;
+            overflow: hidden;
+            background: #fff8fa;
         }
 
-        .maly-nadpis {
-            margin-bottom: 14px;
-            font-size: 0.74rem;
-            font-weight: 600;
+        .hero-denik-text {
+            position: relative;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 680px;
+            padding:
+                82px
+                60px
+                82px
+                max(40px, calc((100vw - 1180px) / 2));
+        }
+
+        .hero-maly {
+            display: block;
+            margin-bottom: 18px;
+            font-size: 0.75rem;
+            font-weight: 700;
             color: var(--ruzova-tmava);
             letter-spacing: 0.2em;
             text-transform: uppercase;
         }
 
-        .uvod h1 {
+        .hero-denik-text h1 {
+            margin-bottom: 26px;
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(4rem, 10vw, 7.5rem);
+            font-size: clamp(3.8rem, 6vw, 6.3rem);
             font-weight: 600;
-            line-height: 0.9;
+            line-height: 0.92;
+            letter-spacing: -0.035em;
+            color: var(--text);
         }
 
-        .uvod h1 span {
-            display: block;
+        .hero-denik-text h1 .ruzova {
             color: var(--ruzova-tmava);
             font-style: italic;
             font-weight: 500;
         }
 
-        .uvodni-text {
-            max-width: 720px;
-            margin: 30px auto 0;
+        .hero-denik-text p {
+            max-width: 500px;
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(1.3rem, 3vw, 1.75rem);
+            font-size: clamp(1.3rem, 2vw, 1.65rem);
             line-height: 1.55;
             color: var(--text-jemny);
         }
 
-        .uvodni-linka {
-            width: 80px;
-            height: 1px;
-            margin: 34px auto 0;
-            background: var(--ruzova);
-        }
-
-        /* Nejnovější zápis */
-
-        .nejnovejsi {
-            padding-bottom: 95px;
-        }
-
-        .nadpis-sekce {
-            margin-bottom: 28px;
-        }
-
-        .nadpis-sekce h2 {
+        .hero-srdce {
+            margin-top: 30px;
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(2.4rem, 5vw, 3.7rem);
-            font-weight: 600;
+            font-size: 2.1rem;
+            color: var(--ruzova);
         }
 
-        .karta {
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
+        .hero-denik-foto {
+            position: relative;
+            min-width: 0;
+            min-height: 590px;
             overflow: hidden;
-            border: 1px solid rgba(157, 72, 107, 0.1);
-            border-radius: 30px;
+        }
+
+        .hero-denik-foto::before {
+            position: absolute;
+            inset: 0 auto 0 0;
+            z-index: 3;
+            width: 38%;
+            content: "";
+            pointer-events: none;
+            background: linear-gradient(
+                to right,
+                #fff8fa 0%,
+                rgba(255, 248, 250, 0.96) 15%,
+                rgba(255, 248, 250, 0.72) 43%,
+                rgba(255, 248, 250, 0.28) 72%,
+                rgba(255, 248, 250, 0) 100%
+            );
+        }
+
+        .hero-denik-foto img {
+            width: 100%;
+            height: 100%;
+            min-height: 590px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 0;
+        }
+
+        /* OBSAH DENÍKU */
+
+        .denik-obsah {
+            padding: 88px 0 96px;
+        }
+
+        .denik-layout {
+            display: grid;
+            grid-template-columns: 290px minmax(0, 1fr);
+            gap: 48px;
+            align-items: start;
+        }
+
+        /* ARCHIV */
+
+        .archiv-panel {
+            position: sticky;
+            top: 24px;
+            padding: 30px;
+            border: 1px solid rgba(157, 72, 107, 0.12);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.76);
+            box-shadow: 0 15px 35px rgba(111, 66, 84, 0.08);
+            backdrop-filter: blur(12px);
+        }
+
+        .archiv-panel h2 {
+            margin-bottom: 26px;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--ruzova-tmava);
+        }
+
+        .archiv-rok {
+            margin-bottom: 24px;
+        }
+
+        .archiv-rok > h3 {
+            margin-bottom: 15px;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.45rem;
+            color: var(--text);
+        }
+
+        .archiv-mesic h4 {
+            margin-bottom: 15px;
+            font-size: 0.78rem;
+            color: var(--ruzova-tmava);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .archiv-seznam {
+            list-style: none;
+        }
+
+        .archiv-seznam li + li {
+            margin-top: 6px;
+        }
+
+        .archiv-seznam a {
+            display: block;
+            padding: 11px 0 11px 15px;
+            border-left: 2px solid rgba(220, 145, 173, 0.4);
+            color: var(--text-jemny);
+            transition:
+                color 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .archiv-seznam a:hover,
+        .archiv-seznam a.aktivni {
+            color: var(--ruzova-tmava);
+            border-left-color: var(--ruzova-tmava);
+            transform: translateX(4px);
+        }
+
+        .archiv-seznam span {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+        }
+
+        .archiv-seznam strong {
+            display: block;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.08rem;
+            line-height: 1.2;
+        }
+
+        .archiv-zavreny {
+            padding: 13px 0;
+            border-top: 1px solid var(--linka);
+            font-size: 0.82rem;
+            color: var(--ruzova-tmava);
+        }
+
+        /* KAPITOLY */
+
+        .kapitoly {
+            min-width: 0;
+        }
+
+        .nadpis-kapitol {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 34px;
+        }
+
+        .nadpis-kapitol::before,
+        .nadpis-kapitol::after {
+            flex: 1;
+            height: 1px;
+            content: "";
+            background: var(--linka);
+        }
+
+        .nadpis-kapitol h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(2.5rem, 5vw, 3.6rem);
+            font-weight: 600;
+            color: var(--ruzova-tmava);
+            text-align: center;
+        }
+
+        .hlavni-kapitola {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+            overflow: hidden;
+            border: 1px solid rgba(157, 72, 107, 0.12);
+            border-radius: 28px;
             background: rgba(255, 255, 255, 0.82);
             box-shadow: var(--stin);
         }
 
-        .karta-obraz {
-            display: flex;
-            min-height: 430px;
-            align-items: center;
-            justify-content: center;
-            padding: 45px;
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(244, 210, 224, 0.9),
-                    rgba(255, 248, 251, 0.95)
-                );
-        }
-
-        .kniha-symbol {
-            font-size: clamp(7rem, 16vw, 11rem);
-            filter: drop-shadow(0 15px 18px rgba(111, 66, 84, 0.12));
-        }
-
-        .karta-text {
+        .hlavni-kapitola-text {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: clamp(38px, 7vw, 76px);
+            padding: clamp(40px, 6vw, 70px);
         }
 
         .datum {
             margin-bottom: 18px;
-            font-size: 0.74rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--ruzova-tmava);
             letter-spacing: 0.14em;
             text-transform: uppercase;
         }
 
-        .karta-text h3 {
+        .hlavni-kapitola h3 {
             margin-bottom: 22px;
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(2.6rem, 5vw, 4.2rem);
+            font-size: clamp(2.8rem, 5vw, 4.6rem);
             font-weight: 600;
-            line-height: 1;
+            line-height: 0.98;
+            color: var(--text);
         }
 
-        .karta-text p {
+        .hlavni-kapitola p {
             line-height: 1.85;
             color: var(--text-jemny);
         }
 
-        .stav-kapitoly {
+        .otevrit-knihu {
             display: inline-flex;
             width: fit-content;
+            align-items: center;
+            gap: 10px;
             margin-top: 30px;
-            padding: 12px 18px;
-            border: 1px solid rgba(157, 72, 107, 0.22);
+            padding: 13px 19px;
+            border: 1px solid rgba(157, 72, 107, 0.26);
             border-radius: 999px;
             font-size: 0.76rem;
             font-weight: 600;
             color: var(--ruzova-tmava);
             letter-spacing: 0.08em;
             text-transform: uppercase;
+            transition:
+                color 0.2s ease,
+                background 0.2s ease,
+                transform 0.2s ease;
         }
 
-        /* Archiv */
-
-        .archiv {
-            padding-bottom: 100px;
+        .otevrit-knihu:hover {
+            color: var(--bila);
+            background: var(--ruzova-tmava);
+            transform: translateY(-2px);
         }
 
-        .mesic {
-            padding: 42px 0;
-            border-top: 1px solid var(--linka);
-            border-bottom: 1px solid var(--linka);
+        .hlavni-kapitola-obraz {
+            position: relative;
+            min-height: 460px;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 30% 25%,
+                    rgba(255, 255, 255, 0.78),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    145deg,
+                    rgba(244, 210, 224, 0.92),
+                    rgba(255, 248, 251, 0.98)
+                );
         }
 
-        .mesic-hlavicka {
-            display: grid;
-            grid-template-columns: 170px 1fr;
-            gap: 35px;
-            margin-bottom: 30px;
+        .hlavni-kapitola-obraz::before {
+            position: absolute;
+            inset: 0;
+            content: "";
+            background:
+                linear-gradient(
+                    135deg,
+                    transparent 0 48%,
+                    rgba(157, 72, 107, 0.05) 49% 51%,
+                    transparent 52% 100%
+                );
         }
 
-        .rok {
-            padding-top: 9px;
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: var(--ruzova-tmava);
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
+        .kniha-symbol {
+            position: absolute;
+            inset: 50% auto auto 50%;
+            font-size: clamp(7rem, 13vw, 10rem);
+            filter: drop-shadow(0 15px 18px rgba(111, 66, 84, 0.12));
+            transform: translate(-50%, -50%);
         }
 
-        .mesic-hlavicka h3 {
+        /* STARŠÍ KAPITOLY */
+
+        .starsi-kapitoly {
+            margin-top: 58px;
+        }
+
+        .starsi-kapitoly h3 {
+            margin-bottom: 24px;
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-size: 2.4rem;
             font-weight: 600;
+            color: var(--text);
         }
 
         .seznam-kapitol {
-            display: grid;
-            grid-template-columns: 170px 1fr;
-            gap: 35px;
-        }
-
-        .kapitoly {
             display: grid;
             gap: 12px;
         }
@@ -317,7 +508,7 @@
             grid-template-columns: 95px minmax(0, 1fr) auto;
             align-items: center;
             gap: 22px;
-            padding: 22px 24px;
+            padding: 21px 22px;
             border: 1px solid transparent;
             border-radius: 20px;
             transition:
@@ -334,27 +525,27 @@
             transform: translateY(-2px);
         }
 
-        .den {
+        .kapitola-datum {
             font-family: "Cormorant Garamond", serif;
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--ruzova-tmava);
         }
 
-        .popis-kapitoly h4 {
+        .kapitola-text h4 {
             margin-bottom: 5px;
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(1.6rem, 3vw, 2.05rem);
+            font-size: clamp(1.55rem, 3vw, 2rem);
             font-weight: 600;
         }
 
-        .popis-kapitoly p {
+        .kapitola-text p {
             font-size: 0.86rem;
             line-height: 1.55;
             color: var(--text-jemny);
         }
 
-        .tecka {
+        .kapitola-tecka {
             width: 10px;
             height: 10px;
             border-radius: 50%;
@@ -362,10 +553,10 @@
             box-shadow: 0 0 0 7px rgba(220, 145, 173, 0.12);
         }
 
-        /* Citát */
+        /* CITÁT */
 
         .citat {
-            padding: 100px 0;
+            padding: 34px 0 110px;
             text-align: center;
         }
 
@@ -382,23 +573,24 @@
             z-index: -1;
             border-radius: 50% 45% 52% 48% / 42% 48% 52% 58%;
             content: "";
-            background: rgba(247, 211, 225, 0.6);
+            background: rgba(247, 211, 225, 0.62);
             transform: rotate(-1deg);
         }
 
         .citat blockquote {
             font-family: "Caveat", cursive;
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2.1rem, 5vw, 3.6rem);
             font-weight: 600;
             line-height: 1.25;
             color: var(--ruzova-tmava);
         }
 
-        /* Patička */
+        /* PATIČKA */
 
         footer {
             padding: 34px 0 42px;
             border-top: 1px solid var(--linka);
+            background: rgba(255, 255, 255, 0.28);
         }
 
         .paticka {
@@ -414,213 +606,119 @@
             color: var(--ruzova-tmava);
         }
 
-        /* Mobil */
-  
+        /* RESPONSIVITA */
 
+        @media (max-width: 980px) {
+            .hero-denik {
+                grid-template-columns: 1fr;
+            }
 
-/* ===== NOVÝ DENÍK ===== */
+            .hero-denik-text {
+                max-width: none;
+                padding: 68px 32px 46px;
+            }
 
-.denik-obsah{
-    padding:70px 0;
-}
+            .hero-denik-foto {
+                min-height: 460px;
+            }
 
-.denik-layout{
-    max-width:1400px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:300px 1fr;
-    gap:40px;
-    align-items:start;
-}
+            .hero-denik-foto img {
+                min-height: 460px;
+            }
 
-.archiv{
-    background:#fff8f8;
-    border:1px solid #f2d7de;
-    border-radius:26px;
-    padding:30px;
-    box-shadow:0 15px 35px rgba(0,0,0,.06);
-    position:sticky;
-    top:120px;
-}
+            .hero-denik-foto::before {
+                inset: 0 0 auto 0;
+                width: 100%;
+                height: 32%;
+                background: linear-gradient(
+                    to bottom,
+                    #fff8fa 0%,
+                    rgba(255, 248, 250, 0.82) 35%,
+                    rgba(255, 248, 250, 0) 100%
+                );
+            }
 
-.archiv h2{
-    margin:0 0 25px;
-    color:var(--ruzova-tmava);
-    font-size:1.7rem;
-}
+            .denik-layout {
+                grid-template-columns: 1fr;
+            }
 
-.rok h3,
-.mesic h4{
-    margin:18px 0;
-    color:var(--ruzova-tmava);
-}
+            .archiv-panel {
+                position: static;
+            }
+        }
 
-.archiv ul{
-    list-style:none;
-    margin:0;
-    padding-left:20px;
-}
-
-.archiv li{
-    margin:18px 0;
-    padding-left:18px;
-    border-left:2px solid #efc4d2;
-    font-size:.95rem;
-    color:#555;
-}
-
-.archiv li span{
-    display:block;
-    color:var(--ruzova-tmava);
-    font-size:.82rem;
-    margin-bottom:4px;
-}
-
-.archiv li strong{
-    display:block;
-    color:#7b2b4f;
-}
-
-.archiv .aktivni{
-    font-weight:700;
-}
-
-.rok-zavreny{
-    margin-top:18px;
-    color:#9b4c6b;
-    cursor:pointer;
-}
-
-.kapitoly{
-    min-width:0;
-}
-
-.nadpis-kapitol{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:18px;
-    margin-bottom:35px;
-}
-
-.nadpis-kapitol h2{
-    margin:0;
-    font-size:2.5rem;
-    color:var(--ruzova-tmava);
-}
-.hero-denik{
-    max-width:1400px;
-    margin:0 auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    align-items:center;
-    min-height:560px;
-    padding:70px 40px;
-    gap:40px;
-    background:linear-gradient(to right,#fff8fa,#fdeff3);
-}
-
-.hero-denik-text{
-    max-width:560px;
-}
-
-.hero-maly{
-    display:block;
-    color:#b24c78;
-    font-weight:700;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    margin-bottom:18px;
-}
-
-.hero-denik-text h1{
-    font-size:4rem;
-    line-height:1.05;
-    color:#7d2952;
-    margin-bottom:20px;
-}
-
-.hero-denik-text p{
-    font-size:1.2rem;
-    line-height:1.8;
-    color:#5b4b50;
-}
-
-.hero-linka{
-    margin-top:35px;
-    font-size:2rem;
-    color:#d86b9a;
-}
-
-.hero-denik-foto{
-    display:flex;
-    justify-content:flex-end;
-}
-
-.hero-denik-foto img{
-    width:100%;
-    max-width:700px;
-    border-radius:26px;
-    display:block;
-}
-        @media (max-width: 850px) {
+        @media (max-width: 820px) {
             .menu {
                 display: none;
             }
 
-            .uvod {
-                padding-top: 45px;
-            }
-
-            .karta {
+            .hlavni-kapitola {
                 grid-template-columns: 1fr;
             }
 
-            .karta-obraz {
-                min-height: 300px;
-            }
-
-            .mesic-hlavicka,
-            .seznam-kapitol {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .prazdne-misto {
-                display: none;
+            .hlavni-kapitola-obraz {
+                min-height: 340px;
             }
         }
 
         @media (max-width: 600px) {
             .obal {
-                width: min(100% - 24px, 1120px);
+                width: min(100% - 24px, 1180px);
             }
 
-            .uvod {
-                padding-bottom: 60px;
+            header {
+                padding: 18px 0;
             }
 
-            .nejnovejsi,
-            .archiv {
-                padding-bottom: 72px;
+            .logo {
+                font-size: 1.75rem;
             }
 
-            .karta-text {
-                padding: 35px 25px 40px;
+            .hero-denik-text {
+                padding: 56px 24px 38px;
+            }
+
+            .hero-denik-text h1 {
+                font-size: clamp(3.1rem, 15vw, 4.6rem);
+            }
+
+            .hero-denik-foto,
+            .hero-denik-foto img {
+                min-height: 360px;
+            }
+
+            .denik-obsah {
+                padding: 62px 0 72px;
+            }
+
+            .archiv-panel {
+                padding: 24px;
+            }
+
+            .nadpis-kapitol {
+                gap: 10px;
+            }
+
+            .hlavni-kapitola-text {
+                padding: 38px 26px 42px;
             }
 
             .kapitola {
-                grid-template-columns: 65px minmax(0, 1fr) 10px;
+                grid-template-columns: 68px minmax(0, 1fr) 10px;
                 gap: 12px;
                 padding: 18px 12px;
             }
 
-            .den {
-                font-size: 1.15rem;
+            .kapitola-datum {
+                font-size: 1.14rem;
             }
 
-            .popis-kapitoly p {
+            .kapitola-text p {
                 font-size: 0.78rem;
+            }
+
+            .citat {
+                padding-bottom: 80px;
             }
 
             .paticka {
@@ -654,138 +752,200 @@
 
     <main>
 
-      <section class="hero-denik">
-    <div class="hero-denik-text">
-        <span class="hero-maly">Deník Carmen</span>
+        <section class="hero-denik">
 
-        <h1>Skutečné příběhy.<br>
-        Malé kroky.<br>
-        Druhé šance.</h1>
+            <div class="hero-denik-text">
 
-        <p>
-            Místo, kde se z obyčejných dnů stávají kapitoly.
-            Každý zápis je další krok na cestě.
-        </p>
+                <span class="hero-maly">Deník Carmen</span>
 
-        <div class="hero-linka">
-            ❤
-        </div>
-    </div>
+                <h1>
+                    Skutečné příběhy.<br>
+                    <span class="ruzova">Malé kroky.</span><br>
+                    Druhé šance.
+                </h1>
 
-    <div class="hero-denik-foto">
-        <img src="denik-banner.png.png" alt="Deník Carmen">
-    </div>
-</section>
-    
+                <p>
+                    Místo, kde se z obyčejných dnů stávají kapitoly.
+                    Každý zápis je další krok na cestě.
+                </p>
 
-</section>
+                <div class="hero-srdce" aria-hidden="true">♡</div>
+
+            </div>
+
+            <div class="hero-denik-foto">
+                <img src="denik-banner.png.png" alt="Deník Carmen">
+            </div>
+
+        </section>
 
         <section class="denik-obsah">
 
-    <div class="obal denik-layout">
+            <div class="obal denik-layout">
 
-        <!-- LEVÝ ARCHIV -->
-        <aside class="archiv">
+                <aside class="archiv-panel">
 
-            <h2>📅 Archiv</h2>
+                    <h2>Archiv</h2>
 
-            <div class="rok">
-                <h3>▼ 2026</h3>
+                    <div class="archiv-rok">
 
-                <div class="mesic">
-                    <h4>▼ Červenec</h4>
+                        <h3>2026</h3>
 
-                    <ul>
+                        <div class="archiv-mesic">
 
-                        <li class="aktivni">
-                            <span>25. 7. 2026</span>
-                            <strong>Procházka, která léčila</strong>
-                        </li>
+                            <h4>Červenec</h4>
 
-                        <li>
-                            <span>23. 7. 2026</span>
-                            Nové malé rituály
-                        </li>
+                            <ul class="archiv-seznam">
 
-                        <li>
-                            <span>22. 7. 2026</span>
-                            Malý krok ven
-                        </li>
+                                <li>
+                                    <a class="aktivni" href="#">
+                                        <span>25. 7. 2026</span>
+                                        <strong>Procházka, která léčila</strong>
+                                    </a>
+                                </li>
 
-                        <li>
-                            <span>21. 7. 2026</span>
-                            Bitva pokračuje doma
-                        </li>
+                                <li>
+                                    <a href="#">
+                                        <span>23. 7. 2026</span>
+                                        <strong>Nové malé rituály</strong>
+                                    </a>
+                                </li>
 
-                        <li>
-                            <span>13. 7. 2026</span>
-                            Noc, která všechno změnila
-                        </li>
+                                <li>
+                                    <a href="#">
+                                        <span>22. 7. 2026</span>
+                                        <strong>Malý krok ven</strong>
+                                    </a>
+                                </li>
 
-                        <li>
-                            <span>3. 7. 2026</span>
-                            Zrození Světa Carmen
-                        </li>
+                                <li>
+                                    <a href="#">
+                                        <span>21. 7. 2026</span>
+                                        <strong>Bitva pokračuje doma</strong>
+                                    </a>
+                                </li>
 
-                    </ul>
+                                <li>
+                                    <a href="#">
+                                        <span>13. 7. 2026</span>
+                                        <strong>Noc, která všechno změnila</strong>
+                                    </a>
+                                </li>
 
-                </div>
+                                <li>
+                                    <a href="#">
+                                        <span>3. 7. 2026</span>
+                                        <strong>Zrození Světa Carmen</strong>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                    <div class="archiv-zavreny">Srpen</div>
+                    <div class="archiv-zavreny">Září</div>
+                    <div class="archiv-zavreny">2027</div>
+
+                </aside>
+
+                <section class="kapitoly">
+
+                    <div class="nadpis-kapitol">
+                        <h2>Kapitoly mého života</h2>
+                    </div>
+
+                    <article class="hlavni-kapitola">
+
+                        <div class="hlavni-kapitola-text">
+
+                            <p class="datum">25. července 2026</p>
+
+                            <h3>Procházka, která léčila</h3>
+
+                            <p>
+                                Poklidná cesta parkem Klamovka, chvíle odpočinku
+                                a společný čas s maminkou. Další malý krok
+                                v uzdravování.
+                            </p>
+
+                            <a class="otevrit-knihu" href="#">
+                                Otevřít knihu <span aria-hidden="true">📖</span>
+                            </a>
+
+                        </div>
+
+                        <div class="hlavni-kapitola-obraz" aria-hidden="true">
+                            <div class="kniha-symbol">📖</div>
+                        </div>
+
+                    </article>
+
+                    <div class="starsi-kapitoly">
+
+                        <h3>Starší kapitoly</h3>
+
+                        <div class="seznam-kapitol">
+
+                            <a class="kapitola" href="#">
+                                <span class="kapitola-datum">23. 7.</span>
+                                <span class="kapitola-text">
+                                    <h4>Nové malé rituály</h4>
+                                    <p>Každodenní drobnosti, které pomáhají tělu i mysli znovu najít klid.</p>
+                                </span>
+                                <span class="kapitola-tecka" aria-hidden="true"></span>
+                            </a>
+
+                            <a class="kapitola" href="#">
+                                <span class="kapitola-datum">22. 7.</span>
+                                <span class="kapitola-text">
+                                    <h4>Malý krok ven</h4>
+                                    <p>Krátká procházka s maminkou a připomínka, že uzdravování není závod.</p>
+                                </span>
+                                <span class="kapitola-tecka" aria-hidden="true"></span>
+                            </a>
+
+                            <a class="kapitola" href="#">
+                                <span class="kapitola-datum">21. 7.</span>
+                                <span class="kapitola-text">
+                                    <h4>Bitva pokračuje doma</h4>
+                                    <p>Některé bitvy skončí na operačním sále. Ty nejtěžší začínají doma.</p>
+                                </span>
+                                <span class="kapitola-tecka" aria-hidden="true"></span>
+                            </a>
+
+                            <a class="kapitola" href="#">
+                                <span class="kapitola-datum">13. 7.</span>
+                                <span class="kapitola-text">
+                                    <h4>Noc, která všechno změnila</h4>
+                                    <p>Okamžik, kdy se zastavil čas a začala úplně nová kapitola.</p>
+                                </span>
+                                <span class="kapitola-tecka" aria-hidden="true"></span>
+                            </a>
+
+                            <a class="kapitola" href="#">
+                                <span class="kapitola-datum">3. 7.</span>
+                                <span class="kapitola-text">
+                                    <h4>Zrození Světa Carmen</h4>
+                                    <p>Den, kdy se z jedné myšlenky stal svět příběhů psaných srdcem.</p>
+                                </span>
+                                <span class="kapitola-tecka" aria-hidden="true"></span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </section>
 
             </div>
 
-            <div class="rok-zavreny">▶ Srpen</div>
-            <div class="rok-zavreny">▶ Září</div>
-            <div class="rok-zavreny">▶ 2027</div>
-
-        </aside>
-
-        <!-- PRAVÁ ČÁST -->
-        <main class="kapitoly">
-
-            <div class="nadpis-kapitol">
-                <span>❦</span>
-                <h2>Kapitoly mého života</h2>
-                <span>❦</span>
-            </div>
-
-            <article class="hlavni-kapitola">
-
-                <div class="text">
-
-                    <p class="datum">
-                        📅 25. července 2026
-                    </p>
-
-                    <h2>Procházka, která léčila</h2>
-
-                    <p>
-                        Poklidná cesta parkem Klamovka,
-                        chvíle odpočinku a společný čas
-                        s maminkou. Další malý krok
-                        v uzdravování.
-                    </p>
-
-                    <a href="#">
-                        Otevřít knihu 📖
-                    </a>
-
-                </div>
-
-                <div class="obrazek">
-
-                    <!-- sem později přijde naše fotka knihy -->
-
-                </div>
-
-            </article>
-
-        </main>
-
-    </div>
-
-</section>
+        </section>
 
         <section class="citat">
+
             <div class="obal">
 
                 <div class="citat-box">
@@ -796,11 +956,13 @@
                 </div>
 
             </div>
+
         </section>
 
     </main>
 
     <footer>
+
         <div class="obal paticka">
 
             <p>© 2026 Svět Carmen</p>
@@ -810,6 +972,7 @@
             <a href="index.html">Zpět na hlavní stránku</a>
 
         </div>
+
     </footer>
 
 </body>
