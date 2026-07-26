@@ -3,29 +3,709 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deník Carmen</title>
+
+    <title>Deník Carmen | Svět Carmen</title>
+
+    <meta
+        name="description"
+        content="Deník Carmen je kronikou malých kroků, uzdravování a okamžiků, které stojí za uchování."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --pozadi: #fff9fb;
+            --bila: #ffffff;
+            --ruzova-svetla: #fbe8ef;
+            --ruzova: #dc91ad;
+            --ruzova-tmava: #9d486b;
+            --text: #3d3238;
+            --text-jemny: #766870;
+            --linka: rgba(157, 72, 107, 0.18);
+            --stin: 0 18px 45px rgba(111, 66, 84, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: "Montserrat", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(247, 211, 225, 0.72),
+                    transparent 34%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(233, 204, 220, 0.5),
+                    transparent 32%
+                ),
+                var(--pozadi);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .obal {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* Horní část */
+
+        header {
+            padding: 24px 0;
+        }
+
+        .navigace {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ruzova-tmava);
+        }
+
+        .logo span {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .menu a {
+            position: relative;
+            padding: 8px 0;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-jemny);
+        }
+
+        .menu a::after {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            content: "";
+            background: var(--ruzova-tmava);
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+        }
+
+        .menu a:hover,
+        .menu a.aktivni {
+            color: var(--ruzova-tmava);
+        }
+
+        .menu a:hover::after,
+        .menu a.aktivni::after {
+            transform: scaleX(1);
+        }
+
+        /* Úvod deníku */
+
+        .uvod {
+            padding: 70px 0 85px;
+            text-align: center;
+        }
+
+        .maly-nadpis {
+            margin-bottom: 14px;
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--ruzova-tmava);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .uvod h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(4rem, 10vw, 7.5rem);
+            font-weight: 600;
+            line-height: 0.9;
+        }
+
+        .uvod h1 span {
+            display: block;
+            color: var(--ruzova-tmava);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .uvodni-text {
+            max-width: 720px;
+            margin: 30px auto 0;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(1.3rem, 3vw, 1.75rem);
+            line-height: 1.55;
+            color: var(--text-jemny);
+        }
+
+        .uvodni-linka {
+            width: 80px;
+            height: 1px;
+            margin: 34px auto 0;
+            background: var(--ruzova);
+        }
+
+        /* Nejnovější zápis */
+
+        .nejnovejsi {
+            padding-bottom: 95px;
+        }
+
+        .nadpis-sekce {
+            margin-bottom: 28px;
+        }
+
+        .nadpis-sekce h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(2.4rem, 5vw, 3.7rem);
+            font-weight: 600;
+        }
+
+        .karta {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            overflow: hidden;
+            border: 1px solid rgba(157, 72, 107, 0.1);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: var(--stin);
+        }
+
+        .karta-obraz {
+            display: flex;
+            min-height: 430px;
+            align-items: center;
+            justify-content: center;
+            padding: 45px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(244, 210, 224, 0.9),
+                    rgba(255, 248, 251, 0.95)
+                );
+        }
+
+        .kniha-symbol {
+            font-size: clamp(7rem, 16vw, 11rem);
+            filter: drop-shadow(0 15px 18px rgba(111, 66, 84, 0.12));
+        }
+
+        .karta-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(38px, 7vw, 76px);
+        }
+
+        .datum {
+            margin-bottom: 18px;
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--ruzova-tmava);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .karta-text h3 {
+            margin-bottom: 22px;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(2.6rem, 5vw, 4.2rem);
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .karta-text p {
+            line-height: 1.85;
+            color: var(--text-jemny);
+        }
+
+        .stav-kapitoly {
+            display: inline-flex;
+            width: fit-content;
+            margin-top: 30px;
+            padding: 12px 18px;
+            border: 1px solid rgba(157, 72, 107, 0.22);
+            border-radius: 999px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--ruzova-tmava);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* Archiv */
+
+        .archiv {
+            padding-bottom: 100px;
+        }
+
+        .mesic {
+            padding: 42px 0;
+            border-top: 1px solid var(--linka);
+            border-bottom: 1px solid var(--linka);
+        }
+
+        .mesic-hlavicka {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 35px;
+            margin-bottom: 30px;
+        }
+
+        .rok {
+            padding-top: 9px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--ruzova-tmava);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .mesic-hlavicka h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 600;
+        }
+
+        .seznam-kapitol {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 35px;
+        }
+
+        .kapitoly {
+            display: grid;
+            gap: 12px;
+        }
+
+        .kapitola {
+            display: grid;
+            grid-template-columns: 95px minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 22px;
+            padding: 22px 24px;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .kapitola:hover {
+            border-color: rgba(157, 72, 107, 0.12);
+            background: rgba(255, 255, 255, 0.75);
+            box-shadow: 0 12px 30px rgba(112, 67, 84, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .den {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--ruzova-tmava);
+        }
+
+        .popis-kapitoly h4 {
+            margin-bottom: 5px;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(1.6rem, 3vw, 2.05rem);
+            font-weight: 600;
+        }
+
+        .popis-kapitoly p {
+            font-size: 0.86rem;
+            line-height: 1.55;
+            color: var(--text-jemny);
+        }
+
+        .tecka {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--ruzova);
+            box-shadow: 0 0 0 7px rgba(220, 145, 173, 0.12);
+        }
+
+        /* Citát */
+
+        .citat {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .citat-box {
+            position: relative;
+            max-width: 930px;
+            margin: 0 auto;
+            padding: clamp(50px, 8vw, 80px);
+        }
+
+        .citat-box::before {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            border-radius: 50% 45% 52% 48% / 42% 48% 52% 58%;
+            content: "";
+            background: rgba(247, 211, 225, 0.6);
+            transform: rotate(-1deg);
+        }
+
+        .citat blockquote {
+            font-family: "Caveat", cursive;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.25;
+            color: var(--ruzova-tmava);
+        }
+
+        /* Patička */
+
+        footer {
+            padding: 34px 0 42px;
+            border-top: 1px solid var(--linka);
+        }
+
+        .paticka {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            font-size: 0.78rem;
+            color: var(--text-jemny);
+        }
+
+        .paticka a {
+            color: var(--ruzova-tmava);
+        }
+
+        /* Mobil */
+
+        @media (max-width: 850px) {
+            .menu {
+                display: none;
+            }
+
+            .uvod {
+                padding-top: 45px;
+            }
+
+            .karta {
+                grid-template-columns: 1fr;
+            }
+
+            .karta-obraz {
+                min-height: 300px;
+            }
+
+            .mesic-hlavicka,
+            .seznam-kapitol {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .prazdne-misto {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .obal {
+                width: min(100% - 24px, 1120px);
+            }
+
+            .uvod {
+                padding-bottom: 60px;
+            }
+
+            .nejnovejsi,
+            .archiv {
+                padding-bottom: 72px;
+            }
+
+            .karta-text {
+                padding: 35px 25px 40px;
+            }
+
+            .kapitola {
+                grid-template-columns: 65px minmax(0, 1fr) 10px;
+                gap: 12px;
+                padding: 18px 12px;
+            }
+
+            .den {
+                font-size: 1.15rem;
+            }
+
+            .popis-kapitoly p {
+                font-size: 0.78rem;
+            }
+
+            .paticka {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>📖 Deník Carmen</h1>
+    <header>
+        <div class="obal navigace">
 
-    <p>
-        „Každý den je novou stránkou našeho příběhu.“
-    </p>
+            <a class="logo" href="index.html">
+                Svět <span>Carmen</span>
+            </a>
 
-    <hr>
+            <nav aria-label="Hlavní navigace">
+                <ul class="menu">
+                    <li><a href="index.html">Domů</a></li>
+                    <li><a href="carmen.html">Kdo je Carmen</a></li>
+                    <li><a href="svet.html">Svět příběhů</a></li>
+                    <li><a class="aktivni" href="denik.html">Deník Carmen</a></li>
+                </ul>
+            </nav>
 
-    <h2>Brzy zde přibudou první kapitoly...</h2>
+        </div>
+    </header>
 
-    <ul>
-        <li>3. 7. 2026 – Zrození Světa Carmen</li>
-        <li>13. 7. 2026 – Druhá šance</li>
-        <li>24. 7. 2026 – Nový začátek</li>
-    </ul>
+    <main>
 
-    <br>
+        <section class="uvod">
+            <div class="obal">
 
-    <a href="index.html">← Zpět na hlavní stránku</a>
+                <p class="maly-nadpis">Kronika malých kroků</p>
+
+                <h1>
+                    Deník
+                    <span>Carmen</span>
+                </h1>
+
+                <p class="uvodni-text">
+                    Místo pro okamžiky, které by možná jinak zmizely.
+                    Pro malé radosti, tiché obavy, obyčejné dny
+                    i kroky, které byly větší, než se na první pohled zdálo.
+                </p>
+
+                <div class="uvodni-linka"></div>
+
+            </div>
+        </section>
+
+        <section class="nejnovejsi">
+            <div class="obal">
+
+                <div class="nadpis-sekce">
+                    <p class="maly-nadpis">Nejnovější kapitola</p>
+                    <h2>Poslední zápis</h2>
+                </div>
+
+                <article class="karta">
+
+                    <div class="karta-obraz">
+                        <span class="kniha-symbol" aria-hidden="true">📖</span>
+                    </div>
+
+                    <div class="karta-text">
+
+                        <p class="datum">25. července 2026</p>
+
+                        <h3>Procházka, která léčila</h3>
+
+                        <p>
+                            Poklidná cesta parkem Klamovka, chvíle odpočinku
+                            a společný čas s maminkou. Další malý krok
+                            v uzdravování, který připomněl, že léčba
+                            není jen o těle.
+                        </p>
+
+                        <span class="stav-kapitoly">
+                            Kapitolu právě připravujeme
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+        </section>
+
+        <section class="archiv">
+            <div class="obal">
+
+                <div class="nadpis-sekce">
+                    <p class="maly-nadpis">Archiv vzpomínek</p>
+                    <h2>Jednotlivé kapitoly</h2>
+                </div>
+
+                <section class="mesic">
+
+                    <div class="mesic-hlavicka">
+                        <p class="rok">Rok 2026</p>
+                        <h3>Červenec</h3>
+                    </div>
+
+                    <div class="seznam-kapitol">
+
+                        <div class="prazdne-misto"></div>
+
+                        <div class="kapitoly">
+
+                            <article class="kapitola">
+                                <span class="den">25. 7.</span>
+
+                                <div class="popis-kapitoly">
+                                    <h4>Procházka, která léčila</h4>
+                                    <p>
+                                        Poklidné odpoledne s maminkou
+                                        v parku Klamovka.
+                                    </p>
+                                </div>
+
+                                <span class="tecka"></span>
+                            </article>
+
+                            <article class="kapitola">
+                                <span class="den">23. 7.</span>
+
+                                <div class="popis-kapitoly">
+                                    <h4>Nové malé rituály</h4>
+                                    <p>
+                                        Zelený čaj, nové plány a návrat
+                                        k obyčejným radostem.
+                                    </p>
+                                </div>
+
+                                <span class="tecka"></span>
+                            </article>
+
+                            <article class="kapitola">
+                                <span class="den">22. 7.</span>
+
+                                <div class="popis-kapitoly">
+                                    <h4>Malý krok ven</h4>
+                                    <p>
+                                        Krátká procházka, chvíle slabosti
+                                        a správný čas zastavit se.
+                                    </p>
+                                </div>
+
+                                <span class="tecka"></span>
+                            </article>
+
+                            <article class="kapitola">
+                                <span class="den">21. 7.</span>
+
+                                <div class="popis-kapitoly">
+                                    <h4>Bitva pokračuje doma</h4>
+                                    <p>
+                                        Návrat z nemocnice a začátek
+                                        skutečné cesty k uzdravení.
+                                    </p>
+                                </div>
+
+                                <span class="tecka"></span>
+                            </article>
+
+                            <article class="kapitola">
+                                <span class="den">13. 7.</span>
+
+                                <div class="popis-kapitoly">
+                                    <h4>Noc, která všechno změnila</h4>
+                                    <p>
+                                        Okamžik, kdy bylo potřeba přestat
+                                        bojovat sama a přijmout pomoc.
+                                    </p>
+                                </div>
+
+                                <span class="tecka"></span>
+                            </article>
+
+                            <article class="kapitola">
+                                <span class="den">3. 7.</span>
+
+                                <div class="popis-kapitoly">
+                                    <h4>Zrození Světa Carmen</h4>
+                                    <p>
+                                        Den, kdy se otevřely dveře
+                                        do nového světa příběhů.
+                                    </p>
+                                </div>
+
+                                <span class="tecka"></span>
+                            </article>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+        </section>
+
+        <section class="citat">
+            <div class="obal">
+
+                <div class="citat-box">
+                    <blockquote>
+                        Uzdravování není jen cesta zpátky ke zdraví.
+                        Je to také cesta k lidem, které máme nejraději.
+                    </blockquote>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="obal paticka">
+
+            <p>© 2026 Svět Carmen</p>
+
+            <p>Tady každý příběh začíná srdcem.</p>
+
+            <a href="index.html">Zpět na hlavní stránku</a>
+
+        </div>
+    </footer>
 
 </body>
 </html>
