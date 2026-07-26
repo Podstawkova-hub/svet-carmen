@@ -415,20 +415,9 @@
         }
 
         /* Mobil */
-        .hero-denik {
-    width: 100%;
-    height: 420px;
-    overflow: hidden;
-}
-.hero-denik img {
+  
 
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center;
-    display:block;
 
-}
 /* ===== NOVÝ DENÍK ===== */
 
 .denik-obsah{
@@ -519,7 +508,61 @@
     font-size:2.5rem;
     color:var(--ruzova-tmava);
 }
+.hero-denik{
+    max-width:1400px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    min-height:560px;
+    padding:70px 40px;
+    gap:40px;
+    background:linear-gradient(to right,#fff8fa,#fdeff3);
+}
 
+.hero-denik-text{
+    max-width:560px;
+}
+
+.hero-maly{
+    display:block;
+    color:#b24c78;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+.hero-denik-text h1{
+    font-size:4rem;
+    line-height:1.05;
+    color:#7d2952;
+    margin-bottom:20px;
+}
+
+.hero-denik-text p{
+    font-size:1.2rem;
+    line-height:1.8;
+    color:#5b4b50;
+}
+
+.hero-linka{
+    margin-top:35px;
+    font-size:2rem;
+    color:#d86b9a;
+}
+
+.hero-denik-foto{
+    display:flex;
+    justify-content:flex-end;
+}
+
+.hero-denik-foto img{
+    width:100%;
+    max-width:700px;
+    border-radius:26px;
+    display:block;
+}
         @media (max-width: 850px) {
             .menu {
                 display: none;
@@ -611,12 +654,29 @@
 
     <main>
 
-       <section class="hero-denik">
+      <section class="hero-denik">
+    <div class="hero-denik-text">
+        <span class="hero-maly">Deník Carmen</span>
 
-    <img
-        src="denik-banner.png.png"
-        alt="Deník Carmen"
-    >
+        <h1>Skutečné příběhy.<br>
+        Malé kroky.<br>
+        Druhé šance.</h1>
+
+        <p>
+            Místo, kde se z obyčejných dnů stávají kapitoly.
+            Každý zápis je další krok na cestě.
+        </p>
+
+        <div class="hero-linka">
+            ❤
+        </div>
+    </div>
+
+    <div class="hero-denik-foto">
+        <img src="denik-banner.png.png" alt="Deník Carmen">
+    </div>
+</section>
+    
 
 </section>
 
