@@ -256,7 +256,43 @@
             object-fit: cover;
            object-position:36% 48%;
         }
+.hero-hudba{
+    margin-top:35px;
+    max-width:420px;
+}
 
+.hudba-nadpis{
+    margin-bottom:12px;
+    font-size:.85rem;
+    letter-spacing:.08em;
+    color:var(--ruzova-tmava);
+    font-weight:600;
+}
+
+.hero-hudba audio{
+    width:100%;
+    border-radius:30px;
+}
+
+.tlacitko-denik{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:28px;
+    width:fit-content;
+    padding:16px 30px;
+    border-radius:999px;
+    background:var(--ruzova-tmava);
+    color:white;
+    font-weight:600;
+    transition:.25s;
+    box-shadow:0 12px 30px rgba(166,70,110,.25);
+}
+
+.tlacitko-denik:hover{
+    transform:translateY(-3px);
+    background:#8d3357;
+}
         /* HLAVNÍ OBSAH */
 
         .denik-obsah {
@@ -879,7 +915,34 @@
                 </p>
 
                 <div class="hero-podpis">psáno srdcem</div>
+                <div class="hero-hudba">
 
+    <p class="hudba-nadpis">🎵 Hudba Deníku Carmen</p>
+
+    <audio controls preload="metadata">
+        <source src="Denik Carmen.mp3" type="audio/mpeg">
+        Tvůj prohlížeč nepodporuje přehrávání zvuku.
+    </audio>
+
+</div>
+
+<a href="archiv-deniku.html" class="tlacitko-denik">
+    📖 Vstoupit do deníku
+</a>
+<div class="hero-hudba">
+
+    <p class="hudba-nadpis">🎵 Hudba Deníku Carmen</p>
+
+    <audio controls preload="metadata">
+        <source src="denik-carmen.mp3" type="audio/mpeg">
+        Tvůj prohlížeč nepodporuje přehrávání zvuku.
+    </audio>
+
+</div>
+
+<a href="archiv-deniku.html" class="tlacitko-denik">
+    📖 Vstoupit do deníku
+</a>
             </div>
 
             <div class="hero-denik-foto">
