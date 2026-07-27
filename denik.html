@@ -728,90 +728,242 @@
     background:rgba(166,70,110,.35);
 }
 
-.utržky{
-    margin-top:55px;
-
+   .utržky{
+    position:relative;
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:34px;
+    grid-template-columns:repeat(12,1fr);
+    align-items:center;
+    gap:18px 10px;
+    max-width:1180px;
+    margin:42px auto 0;
+    padding:15px 10px 5px;
 }
 
 .utrzek{
-
-    padding:26px;
-
-    border-radius:20px;
-
-    background:
-        rgba(255,247,249,.92);
-
-    box-shadow:
-        0 10px 30px rgba(111,43,77,.08);
-
-    transform:rotate(-1deg);
-
-    transition:.25s;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    min-height:82px;
+    padding:12px 15px;
+    background:transparent;
+    box-shadow:none;
+    border-radius:0;
+    text-align:center;
+    transform:none;
+    isolation:isolate;
 }
 
-.utrzek:nth-child(even){
-    transform:rotate(1.2deg);
+/* Jemný akvarelový otisk pod textem */
+.utrzek::before{
+    position:absolute;
+    inset:15px 7px;
+    z-index:-1;
+    content:"";
+    border-radius:48% 52% 45% 55% / 58% 43% 57% 42%;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(248,220,231,.72) 0%,
+            rgba(250,230,237,.48) 45%,
+            rgba(255,250,252,0) 76%
+        );
+    filter:blur(.3px);
+    transform:rotate(-2deg);
+}
+
+/* Každý útržek trochu jiný */
+.utrzek:nth-child(2)::before,
+.utrzek:nth-child(5)::before,
+.utrzek:nth-child(8)::before{
+    transform:rotate(2deg);
+    border-radius:56% 44% 58% 42% / 45% 55% 45% 55%;
+}
+
+.utrzek:nth-child(3)::before,
+.utrzek:nth-child(6)::before{
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(251,226,217,.62) 0%,
+            rgba(248,220,231,.34) 52%,
+            rgba(255,250,252,0) 78%
+        );
 }
 
 .utrzek:hover{
-    transform:translateY(-5px) rotate(0deg);
+    transform:translateY(-3px);
+}
+
+/* První řada – šest útržků */
+.utrzek:nth-child(1){
+    grid-column:1 / span 2;
+}
+
+.utrzek:nth-child(2){
+    grid-column:3 / span 2;
+}
+
+.utrzek:nth-child(3){
+    grid-column:5 / span 2;
+}
+
+.utrzek:nth-child(4){
+    grid-column:7 / span 2;
+}
+
+.utrzek:nth-child(5){
+    grid-column:9 / span 2;
+}
+
+.utrzek:nth-child(6){
+    grid-column:11 / span 2;
+}
+
+/* Druhá řada – tři útržky uprostřed */
+.utrzek:nth-child(7){
+    grid-column:3 / span 3;
+}
+
+.utrzek:nth-child(8){
+    grid-column:6 / span 3;
+}
+
+.utrzek:nth-child(9){
+    grid-column:9 / span 3;
 }
 
 .utrzek-ikona{
     display:block;
-    margin-bottom:12px;
+    flex:0 0 auto;
+    margin:0;
+    font-family:"Cormorant Garamond",serif;
     font-size:2rem;
+    line-height:1;
+    color:var(--ruzova-tmava);
+    filter:saturate(.75);
 }
 
 .utrzek p{
+    margin:0;
     font-family:"Cormorant Garamond",serif;
-    font-size:2rem;
-    line-height:1.15;
+    font-size:1.28rem;
+    font-weight:600;
+    line-height:1.05;
     color:var(--text);
 }
 
+/* Drobné ozdoby kolem kompozice */
+.utržky::before,
+.utržky::after{
+    position:absolute;
+    z-index:-1;
+    content:"♡  ·  ♡";
+    font-family:"Caveat",cursive;
+    font-size:1.5rem;
+    color:rgba(217,142,170,.6);
+    letter-spacing:.35em;
+}
+
+.utržky::before{
+    top:4px;
+    left:25%;
+    transform:rotate(-8deg);
+}
+
+.utržky::after{
+    right:18%;
+    bottom:0;
+    transform:rotate(7deg);
+}
+
+/* Tlačítko blíž ke kompozici */
 .denik-spodni-tlacitko{
-
-    margin:65px auto 0;
-
+    margin:30px auto 0;
     display:inline-flex;
-
     align-items:center;
-
     gap:12px;
-
-    padding:18px 34px;
-
-    border-radius:999px;
-
+    padding:14px 28px;
+    border-radius:6px;
     background:var(--ruzova-tmava);
-
     color:#fff;
-
+    font-size:.76rem;
     font-weight:600;
-
-    box-shadow:0 15px 35px rgba(166,70,110,.25);
-
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    box-shadow:0 12px 28px rgba(166,70,110,.22);
     transition:.25s;
 }
 
 .denik-spodni-tlacitko:hover{
-
     transform:translateY(-3px);
-
     background:#8f3458;
 }
 
-@media(max-width:900px){
+@media(max-width:1050px){
 
     .utržky{
-
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:repeat(6,1fr);
+        gap:16px 8px;
     }
+
+    .utrzek:nth-child(1),
+    .utrzek:nth-child(4),
+    .utrzek:nth-child(7){
+        grid-column:1 / span 2;
+    }
+
+    .utrzek:nth-child(2),
+    .utrzek:nth-child(5),
+    .utrzek:nth-child(8){
+        grid-column:3 / span 2;
+    }
+
+    .utrzek:nth-child(3),
+    .utrzek:nth-child(6),
+    .utrzek:nth-child(9){
+        grid-column:5 / span 2;
+    }
+}
+
+@media(max-width:700px){
+
+    .denik-najdes{
+        padding:35px 0 65px;
+    }
+
+    .utržky{
+        grid-template-columns:repeat(2,1fr);
+        gap:14px 5px;
+        margin-top:30px;
+    }
+
+    .utrzek:nth-child(n){
+        grid-column:auto;
+    }
+
+    .utrzek{
+        min-height:95px;
+        flex-direction:column;
+        gap:4px;
+        padding:10px 5px;
+    }
+
+    .utrzek-ikona{
+        font-size:1.65rem;
+    }
+
+    .utrzek p{
+        font-size:1.15rem;
+    }
+
+    .utrzek:nth-child(9){
+        grid-column:1 / -1;
+        width:55%;
+        justify-self:center;
+    }
+}
 
 }
 
@@ -1088,52 +1240,54 @@
             </div>
         </div>
 
-        <div class="utržky">
+       <div class="utržky">
 
-            <div class="utrzek utrzek-1">
-                <span class="utrzek-ikona">🪶</span>
-                <p>Skutečné<br>příběhy</p>
-            </div>
+    <div class="utrzek">
+        <span class="utrzek-ikona">🪶</span>
+        <p>Skutečné<br>příběhy</p>
+    </div>
 
-            <div class="utrzek utrzek-2">
-                <span class="utrzek-ikona">👣</span>
-                <p>Malé kroky<br>uzdravování</p>
-            </div>
+    <div class="utrzek">
+        <span class="utrzek-ikona">👣</span>
+        <p>Malé kroky<br>uzdravování</p>
+    </div>
 
-            <div class="utrzek utrzek-3">
-                <span class="utrzek-ikona">☀</span>
-                <p>Radosti<br>obyčejných dnů</p>
-            </div>
+    <div class="utrzek">
+        <span class="utrzek-ikona">☀</span>
+        <p>Radosti<br>obyčejných dnů</p>
+    </div>
 
-            <div class="utrzek utrzek-4">
-                <span class="utrzek-ikona">♡</span>
-                <p>Chvíle<br>s maminkou</p>
-            </div>
+    <div class="utrzek">
+        <span class="utrzek-ikona">♡</span>
+        <p>Lidé, které<br>miluji</p>
+    </div>
 
-            <div class="utrzek utrzek-5">
-                <span class="utrzek-ikona">🐾</span>
-                <p>Miu a<br>Čestmíra</p>
-            </div>
+    <div class="utrzek">
+        <span class="utrzek-ikona">❧</span>
+        <p>Střípky<br>minulosti</p>
+    </div>
 
-            <div class="utrzek utrzek-6">
-                <span class="utrzek-ikona">🔥</span>
-                <p>Sílu<br>fénixe</p>
-            </div>
+    <div class="utrzek">
+        <span class="utrzek-ikona">🔥</span>
+        <p>Nové<br>začátky</p>
+    </div>
 
-            <div class="utrzek utrzek-7">
-                <span class="utrzek-ikona">♡</span>
-                <p>Přátelství,<br>které nikdy<br>nezmizelo</p>
-            </div>
+    <div class="utrzek">
+        <span class="utrzek-ikona">♡</span>
+        <p>Přátelství,<br>které zůstalo</p>
+    </div>
 
-            <div class="utrzek utrzek-8">
-                <span class="utrzek-ikona">♫</span>
-                <p>Hudbu,<br>která provází<br>příběh</p>
-            </div>
+    <div class="utrzek">
+        <span class="utrzek-ikona">♫</span>
+        <p>Hudbu<br>příběhů</p>
+    </div>
 
-            <div class="utrzek utrzek-9">
-                <span class="utrzek-ikona">📖</span>
-                <p>Každou<br>kapitolu mé<br>cesty</p>
-            </div>
+    <div class="utrzek">
+        <span class="utrzek-ikona">📖</span>
+        <p>Každou kapitolu<br>mé cesty</p>
+    </div>
+
+
 
         </div>
 
