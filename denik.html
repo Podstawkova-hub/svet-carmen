@@ -698,31 +698,131 @@
             transform: translateX(4px);
         }
 
-        /* CITÁT */
+      /* ===== SPODEK DENÍKU ===== */
 
-        .citat {
-            padding: 18px 0 118px;
-        }
+.denik-najdes{
+    padding:40px 0 90px;
+    text-align:center;
+}
 
-        .citat-box {
-            position: relative;
-            max-width: 970px;
-            margin: 0 auto;
-            padding: 82px 70px;
-            text-align: center;
-        }
+.denik-najdes-hlavicka h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(2.8rem,4vw,4rem);
+    color:var(--bordo);
+    font-weight:600;
+}
 
-        .citat-box::before {
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            border-radius: 48% 52% 46% 54% / 55% 43% 57% 45%;
-            content: "";
-            background: rgba(248, 220, 231, 0.62);
-            transform: rotate(-1.2deg);
-        }
+.denik-ozdoba{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    color:var(--ruzova);
+    font-size:1.2rem;
+}
 
-        .citat blockquote {
+.denik-ozdoba span{
+    width:70px;
+    height:1px;
+    background:rgba(166,70,110,.35);
+}
+
+.utržky{
+    margin-top:55px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:34px;
+}
+
+.utrzek{
+
+    padding:26px;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,247,249,.92);
+
+    box-shadow:
+        0 10px 30px rgba(111,43,77,.08);
+
+    transform:rotate(-1deg);
+
+    transition:.25s;
+}
+
+.utrzek:nth-child(even){
+    transform:rotate(1.2deg);
+}
+
+.utrzek:hover{
+    transform:translateY(-5px) rotate(0deg);
+}
+
+.utrzek-ikona{
+    display:block;
+    margin-bottom:12px;
+    font-size:2rem;
+}
+
+.utrzek p{
+    font-family:"Cormorant Garamond",serif;
+    font-size:2rem;
+    line-height:1.15;
+    color:var(--text);
+}
+
+.denik-spodni-tlacitko{
+
+    margin:65px auto 0;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:18px 34px;
+
+    border-radius:999px;
+
+    background:var(--ruzova-tmava);
+
+    color:#fff;
+
+    font-weight:600;
+
+    box-shadow:0 15px 35px rgba(166,70,110,.25);
+
+    transition:.25s;
+}
+
+.denik-spodni-tlacitko:hover{
+
+    transform:translateY(-3px);
+
+    background:#8f3458;
+}
+
+@media(max-width:900px){
+
+    .utržky{
+
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:650px){
+
+    .utržky{
+
+        grid-template-columns:1fr;
+    }
+
+}
             font-family: "Caveat", cursive;
             font-size: clamp(2.3rem, 5vw, 3.9rem);
             font-weight: 600;
@@ -1149,20 +1249,80 @@
 
         </section>
 
-        <section class="citat">
+      
 
-            <div class="obal">
+       <section class="denik-najdes">
 
-                <div class="citat-box">
-                    <blockquote>
-                        Uzdravování není jen cesta zpátky ke zdraví.
-                        Je to také cesta k lidem, které máme nejraději.
-                    </blockquote>
-                </div>
+    <div class="obal">
 
+        <div class="denik-najdes-hlavicka">
+            <h2>V Deníku Carmen najdeš...</h2>
+
+            <div class="denik-ozdoba">
+                <span></span>
+                ♡
+                <span></span>
+            </div>
+        </div>
+
+        <div class="utržky">
+
+            <div class="utrzek utrzek-1">
+                <span class="utrzek-ikona">🪶</span>
+                <p>Skutečné<br>příběhy</p>
             </div>
 
-        </section>
+            <div class="utrzek utrzek-2">
+                <span class="utrzek-ikona">👣</span>
+                <p>Malé kroky<br>uzdravování</p>
+            </div>
+
+            <div class="utrzek utrzek-3">
+                <span class="utrzek-ikona">☀</span>
+                <p>Radosti<br>obyčejných dnů</p>
+            </div>
+
+            <div class="utrzek utrzek-4">
+                <span class="utrzek-ikona">♡</span>
+                <p>Chvíle<br>s maminkou</p>
+            </div>
+
+            <div class="utrzek utrzek-5">
+                <span class="utrzek-ikona">🐾</span>
+                <p>Miu a<br>Čestmíra</p>
+            </div>
+
+            <div class="utrzek utrzek-6">
+                <span class="utrzek-ikona">🔥</span>
+                <p>Sílu<br>fénixe</p>
+            </div>
+
+            <div class="utrzek utrzek-7">
+                <span class="utrzek-ikona">♡</span>
+                <p>Přátelství,<br>které nikdy<br>nezmizelo</p>
+            </div>
+
+            <div class="utrzek utrzek-8">
+                <span class="utrzek-ikona">♫</span>
+                <p>Hudbu,<br>která provází<br>příběh</p>
+            </div>
+
+            <div class="utrzek utrzek-9">
+                <span class="utrzek-ikona">📖</span>
+                <p>Každou<br>kapitolu mé<br>cesty</p>
+            </div>
+
+        </div>
+
+        <a href="archiv-deniku.html" class="denik-spodni-tlacitko">
+            <span>▢</span>
+            Vstoupit do deníku
+            <span>↓</span>
+        </a>
+
+    </div>
+
+</section>
 
     </main>
 
