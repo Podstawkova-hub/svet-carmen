@@ -701,39 +701,43 @@
       /* ===== SPODEK DENÍKU ===== */
 
 /* ===== AKVARELOVÝ SPODEK DENÍKU ===== */
-background:
-    radial-gradient(
-        ellipse at 4% 18%,
-        rgba(226,133,164,.26) 0%,
-        rgba(246,196,214,.19) 18%,
-        transparent 42%
-    ),
-    radial-gradient(
-        ellipse at 96% 82%,
-        rgba(224,121,156,.28) 0%,
-        rgba(248,206,220,.18) 22%,
-        transparent 46%
-    ),
-    radial-gradient(
-        ellipse at 12% 92%,
-        rgba(249,211,198,.28) 0%,
-        transparent 34%
-    ),
-    radial-gradient(
-        ellipse at 86% 10%,
-        rgba(250,221,209,.26) 0%,
-        transparent 30%
-    ),
-    linear-gradient(
-        180deg,
-        #fff9fb 0%,
-        #fffdfb 48%,
-        #fff8fa 100%
-    );
-    
+.denik-najdes{
+    position:relative;
+    isolation:isolate;
+    overflow:hidden;
+    padding:48px 0 72px;
+    text-align:center;
+    background:
+        radial-gradient(
+            ellipse at 4% 18%,
+            rgba(226,133,164,.26) 0%,
+            rgba(246,196,214,.19) 18%,
+            transparent 42%
+        ),
+        radial-gradient(
+            ellipse at 96% 82%,
+            rgba(224,121,156,.28) 0%,
+            rgba(248,206,220,.18) 22%,
+            transparent 46%
+        ),
+        radial-gradient(
+            ellipse at 12% 92%,
+            rgba(249,211,198,.28) 0%,
+            transparent 34%
+        ),
+        radial-gradient(
+            ellipse at 86% 10%,
+            rgba(250,221,209,.26) 0%,
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #fff9fb 0%,
+            #fffdfb 48%,
+            #fff8fa 100%
+        );
 }
 
-/* Velké akvarelové skvrny po stranách */
 .denik-najdes::before,
 .denik-najdes::after{
     position:absolute;
@@ -741,9 +745,7 @@ background:
     content:"";
     width:360px;
     height:360px;
-    border-radius:
-        52% 48% 58% 42% /
-        45% 55% 45% 55%;
+    border-radius:52% 48% 58% 42% / 45% 55% 45% 55%;
     filter:blur(2px);
     opacity:.55;
     pointer-events:none;
@@ -752,26 +754,24 @@ background:
 .denik-najdes::before{
     top:115px;
     left:-185px;
-    background:
-        radial-gradient(
-            circle at 58% 45%,
-            rgba(218,112,151,.40),
-            rgba(246,190,209,.25) 38%,
-            transparent 72%
-        );
+    background:radial-gradient(
+        circle at 58% 45%,
+        rgba(218,112,151,.40),
+        rgba(246,190,209,.25) 38%,
+        transparent 72%
+    );
     transform:rotate(-14deg);
 }
 
 .denik-najdes::after{
     right:-170px;
     bottom:-125px;
-    background:
-        radial-gradient(
-            circle at 40% 38%,
-            rgba(210,94,140,.38),
-            rgba(247,184,205,.25) 40%,
-            transparent 73%
-        );
+    background:radial-gradient(
+        circle at 40% 38%,
+        rgba(210,94,140,.38),
+        rgba(247,184,205,.25) 40%,
+        transparent 73%
+    );
     transform:rotate(18deg);
 }
 
@@ -814,7 +814,6 @@ background:
     );
 }
 
-/* Celá volná kompozice */
 .utržky{
     position:relative;
     display:grid;
@@ -826,7 +825,6 @@ background:
     padding:20px 15px 8px;
 }
 
-/* Drobné létající ozdoby */
 .utržky::before{
     position:absolute;
     top:-5px;
@@ -851,7 +849,6 @@ background:
     transform:rotate(4deg);
 }
 
-/* Jednotlivé zápisy – žádné kartičky */
 .utrzek{
     position:relative;
     isolation:isolate;
@@ -869,111 +866,61 @@ background:
     transition:transform .25s ease;
 }
 
-/* Akvarelová stopa pod každým textem */
 .utrzek::before{
     position:absolute;
     inset:14px 2px;
     z-index:-1;
     content:"";
-    border-radius:
-        57% 43% 52% 48% /
-        45% 56% 44% 55%;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(246,197,211,.55) 0%,
-            rgba(250,222,230,.38) 43%,
-            rgba(255,250,252,0) 76%
-        );
-
+    border-radius:57% 43% 52% 48% / 45% 56% 44% 55%;
+    background:radial-gradient(
+        ellipse at center,
+        rgba(246,197,211,.55) 0%,
+        rgba(250,222,230,.38) 43%,
+        rgba(255,250,252,0) 76%
+    );
     filter:blur(.4px);
     transform:rotate(-2deg);
 }
 
-/* Každá skvrna trochu jiná */
 .utrzek:nth-child(2)::before,
 .utrzek:nth-child(5)::before,
 .utrzek:nth-child(8)::before{
-    border-radius:
-        44% 56% 47% 53% /
-        58% 43% 57% 42%;
+    border-radius:44% 56% 47% 53% / 58% 43% 57% 42%;
     transform:rotate(2deg);
 }
 
 .utrzek:nth-child(3)::before,
 .utrzek:nth-child(6)::before,
 .utrzek:nth-child(9)::before{
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(248,207,194,.52) 0%,
-            rgba(251,228,218,.30) 48%,
-            transparent 78%
-        );
+    background:radial-gradient(
+        ellipse at center,
+        rgba(248,207,194,.52) 0%,
+        rgba(251,228,218,.30) 48%,
+        transparent 78%
+    );
 }
 
 .utrzek:hover{
     transform:translateY(-4px) scale(1.025);
 }
 
-/* Rozložení – šest nahoře */
-.utrzek:nth-child(1){
-    grid-column:1 / span 2;
-    transform:rotate(-1.5deg);
-}
+.utrzek:nth-child(1){grid-column:1 / span 2; transform:rotate(-1.5deg);}
+.utrzek:nth-child(2){grid-column:3 / span 2; transform:translateY(6px);}
+.utrzek:nth-child(3){grid-column:5 / span 2; transform:rotate(1deg);}
+.utrzek:nth-child(4){grid-column:7 / span 2; transform:translateY(-3px);}
+.utrzek:nth-child(5){grid-column:9 / span 2; transform:rotate(-1deg);}
+.utrzek:nth-child(6){grid-column:11 / span 2; transform:translateY(5px);}
+.utrzek:nth-child(7){grid-column:3 / span 3; transform:rotate(-1deg);}
+.utrzek:nth-child(8){grid-column:6 / span 3; transform:translateY(5px);}
+.utrzek:nth-child(9){grid-column:9 / span 3; transform:rotate(1deg);}
 
-.utrzek:nth-child(2){
-    grid-column:3 / span 2;
-    transform:translateY(6px);
-}
-
-.utrzek:nth-child(3){
-    grid-column:5 / span 2;
-    transform:rotate(1deg);
-}
-
-.utrzek:nth-child(4){
-    grid-column:7 / span 2;
-    transform:translateY(-3px);
-}
-
-.utrzek:nth-child(5){
-    grid-column:9 / span 2;
-    transform:rotate(-1deg);
-}
-
-.utrzek:nth-child(6){
-    grid-column:11 / span 2;
-    transform:translateY(5px);
-}
-
-/* Tři dole */
-.utrzek:nth-child(7){
-    grid-column:3 / span 3;
-    transform:rotate(-1deg);
-}
-
-.utrzek:nth-child(8){
-    grid-column:6 / span 3;
-    transform:translateY(5px);
-}
-
-.utrzek:nth-child(9){
-    grid-column:9 / span 3;
-    transform:rotate(1deg);
-}
-
-/* Ikony větší a jemnější */
 .utrzek-ikona{
     display:block;
     flex:0 0 auto;
     margin:0;
     font-size:2.15rem;
     line-height:1;
-    filter:
-        saturate(.72)
-        drop-shadow(0 3px 5px rgba(166,70,110,.12));
+    filter:saturate(.72) drop-shadow(0 3px 5px rgba(166,70,110,.12));
 }
 
 .utrzek p{
@@ -985,7 +932,6 @@ background:
     color:#3e2933;
 }
 
-/* Jemná srdíčka kolem některých zápisů */
 .utrzek:nth-child(1)::after,
 .utrzek:nth-child(4)::after,
 .utrzek:nth-child(7)::after,
@@ -998,30 +944,11 @@ background:
     color:rgba(214,105,145,.68);
 }
 
-.utrzek:nth-child(1)::after{
-    top:2px;
-    right:12px;
-    transform:rotate(12deg);
-}
+.utrzek:nth-child(1)::after{top:2px; right:12px; transform:rotate(12deg);}
+.utrzek:nth-child(4)::after{top:3px; left:12px; transform:rotate(-10deg);}
+.utrzek:nth-child(7)::after{right:20px; bottom:0;}
+.utrzek:nth-child(9)::after{right:15px; bottom:2px; transform:rotate(9deg);}
 
-.utrzek:nth-child(4)::after{
-    top:3px;
-    left:12px;
-    transform:rotate(-10deg);
-}
-
-.utrzek:nth-child(7)::after{
-    right:20px;
-    bottom:0;
-}
-
-.utrzek:nth-child(9)::after{
-    right:15px;
-    bottom:2px;
-    transform:rotate(9deg);
-}
-
-/* Tlačítko */
 .denik-spodni-tlacitko{
     position:relative;
     z-index:3;
@@ -1032,76 +959,42 @@ background:
     margin:31px auto 0;
     padding:15px 31px;
     border-radius:8px;
-    background:
-        linear-gradient(
-            135deg,
-            #b43f72,
-            #9f315e
-        );
+    background:linear-gradient(135deg,#b43f72,#9f315e);
     color:#fff;
     font-size:.76rem;
     font-weight:600;
     letter-spacing:.08em;
     text-transform:uppercase;
-    box-shadow:
-        0 13px 28px rgba(166,70,110,.24),
-        inset 0 1px 0 rgba(255,255,255,.2);
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
+    box-shadow:0 13px 28px rgba(166,70,110,.24), inset 0 1px 0 rgba(255,255,255,.2);
+    transition:transform .25s ease, box-shadow .25s ease;
 }
 
 .denik-spodni-tlacitko:hover{
     transform:translateY(-3px);
-    box-shadow:
-        0 18px 34px rgba(166,70,110,.30),
-        inset 0 1px 0 rgba(255,255,255,.2);
+    box-shadow:0 18px 34px rgba(166,70,110,.30), inset 0 1px 0 rgba(255,255,255,.2);
 }
 
-/* Tablet */
 @media(max-width:1050px){
-
     .utržky{
         grid-template-columns:repeat(6,1fr);
         gap:14px 5px;
     }
-
     .utrzek:nth-child(1),
     .utrzek:nth-child(4),
-    .utrzek:nth-child(7){
-        grid-column:1 / span 2;
-    }
-
+    .utrzek:nth-child(7){grid-column:1 / span 2;}
     .utrzek:nth-child(2),
     .utrzek:nth-child(5),
-    .utrzek:nth-child(8){
-        grid-column:3 / span 2;
-    }
-
+    .utrzek:nth-child(8){grid-column:3 / span 2;}
     .utrzek:nth-child(3),
     .utrzek:nth-child(6),
-    .utrzek:nth-child(9){
-        grid-column:5 / span 2;
-    }
+    .utrzek:nth-child(9){grid-column:5 / span 2;}
 }
 
-/* Mobil */
 @media(max-width:700px){
-
-    .denik-najdes{
-        padding:40px 0 62px;
-    }
-
+    .denik-najdes{padding:40px 0 62px;}
     .denik-najdes::before,
-    .denik-najdes::after{
-        width:240px;
-        height:240px;
-    }
-
-    .denik-najdes-hlavicka h2{
-        font-size:clamp(2.4rem,11vw,3.3rem);
-    }
-
+    .denik-najdes::after{width:240px; height:240px;}
+    .denik-najdes-hlavicka h2{font-size:clamp(2.4rem,11vw,3.3rem);}
     .utržky{
         grid-template-columns:repeat(2,1fr);
         gap:10px 2px;
@@ -1109,129 +1002,28 @@ background:
         padding-right:0;
         padding-left:0;
     }
-
-    .utrzek:nth-child(n){
-        grid-column:auto;
-        transform:none;
-    }
-
+    .utrzek:nth-child(n){grid-column:auto; transform:none;}
     .utrzek{
         min-height:105px;
         flex-direction:column;
         gap:4px;
         padding:12px 4px;
     }
-
-    .utrzek-ikona{
-        font-size:1.8rem;
-    }
-
-    .utrzek p{
-        font-size:1.16rem;
-    }
-
+    .utrzek-ikona{font-size:1.8rem;}
+    .utrzek p{font-size:1.16rem;}
     .utrzek:nth-child(9){
         grid-column:1 / -1;
         width:58%;
         justify-self:center;
     }
-
-    .utržky::before{
-        left:2%;
-        font-size:1rem;
-    }
-
-    .utržky::after{
-        right:1%;
-        font-size:1.25rem;
-    }
-
+    .utržky::before{left:2%; font-size:1rem;}
+    .utržky::after{right:1%; font-size:1.25rem;}
     .denik-spodni-tlacitko{
         margin-top:24px;
         padding:14px 23px;
         font-size:.7rem;
     }
 }
-@media(max-width:1050px){
-
-    .utržky{
-        grid-template-columns:repeat(6,1fr);
-        gap:16px 8px;
-    }
-
-    .utrzek:nth-child(1),
-    .utrzek:nth-child(4),
-    .utrzek:nth-child(7){
-        grid-column:1 / span 2;
-    }
-
-    .utrzek:nth-child(2),
-    .utrzek:nth-child(5),
-    .utrzek:nth-child(8){
-        grid-column:3 / span 2;
-    }
-
-    .utrzek:nth-child(3),
-    .utrzek:nth-child(6),
-    .utrzek:nth-child(9){
-        grid-column:5 / span 2;
-    }
-}
-
-@media(max-width:700px){
-
-    .denik-najdes{
-        padding:35px 0 65px;
-    }
-
-    .utržky{
-        grid-template-columns:repeat(2,1fr);
-        gap:14px 5px;
-        margin-top:30px;
-    }
-
-    .utrzek:nth-child(n){
-        grid-column:auto;
-    }
-
-    .utrzek{
-        min-height:95px;
-        flex-direction:column;
-        gap:4px;
-        padding:10px 5px;
-    }
-
-    .utrzek-ikona{
-        font-size:1.65rem;
-    }
-
-    .utrzek p{
-        font-size:1.15rem;
-    }
-
-    .utrzek:nth-child(9){
-        grid-column:1 / -1;
-        width:55%;
-        justify-self:center;
-    }
-}
-
-}
-
-@media(max-width:650px){
-
-    .utržky{
-
-        grid-template-columns:1fr;
-    }
-
-}
-            font-family: "Caveat", cursive;
-            font-size: clamp(2.3rem, 5vw, 3.9rem);
-            font-weight: 600;
-            line-height: 1.18;
-            color: var(--ruzova-tmava);
-        }
 
         /* PATIČKA */
 
@@ -1452,7 +1244,7 @@ background:
         Tvůj prohlížeč nepodporuje přehrávání zvuku.
     </audio>
 
-
+            </div>
 
             </div>
 
@@ -1462,18 +1254,7 @@ background:
 
         </section>
 
-      
-                    </section>
-
-                </div>
-
-            </div>
-
-        </section>
-
-      
-
-       <section class="denik-najdes">
+        <section class="denik-najdes">
 
     <div class="obal">
 
