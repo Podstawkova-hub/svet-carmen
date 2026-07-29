@@ -205,6 +205,9 @@ header img {
 
 .music-player{
     margin-top:20px;
+  position: static;
+right: auto;
+bottom: auto;
 }
 
 .music-player audio{
