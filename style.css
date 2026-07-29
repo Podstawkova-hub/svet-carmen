@@ -201,3 +201,13 @@ header img {
     transform: none;
   }
 }
+
+
+.music-player{
+    margin-top:20px;
+}
+
+.music-player audio{
+    width:320px;
+    max-width:100%;
+}
