@@ -810,6 +810,59 @@
     line-height: 1.25;
 }
 
+
+        /* ===== KAPITOLA II – SOUVISLÉ VYPRÁVĚNÍ ===== */
+
+        .story-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .story-page .chapter-title {
+            margin-bottom: 20px;
+        }
+
+        .story-text {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(1rem, 1.18vw, 1.1rem);
+            line-height: 1.56;
+        }
+
+        .story-text p {
+            margin: 0 0 15px;
+        }
+
+        .story-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .story-emphasis {
+            color: var(--bordo);
+            font-family: "Caveat", cursive;
+            font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+            font-weight: 700;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .story-divider {
+            width: 74px;
+            height: 1px;
+            margin: 18px auto;
+            background: rgba(217, 91, 145, 0.35);
+        }
+
+        .final-darkness {
+            margin-top: 18px;
+            color: var(--bordo);
+            font-family: "Caveat", cursive;
+            font-size: clamp(1.7rem, 2.6vw, 2.25rem);
+            font-weight: 700;
+            line-height: 1.2;
+            text-align: center;
+        }
+
         /* ===== LISTOVÁNÍ ===== */
 
         .book-navigation {
@@ -1011,11 +1064,19 @@
                     <p>kapitoly mé cesty</p>
                 </div>
 
-                <button class="archive-item" type="button">
+                <button class="archive-item" type="button" data-start-page="0">
                     <span class="archive-item-icon">🔥</span>
                     <span>
                         <strong>Proč vznikl Svět Carmen</strong>
                         <small>3. 7. 2026 · Kapitola 1</small>
+                    </span>
+                </button>
+
+                <button class="archive-item" type="button" data-start-page="3">
+                    <span class="archive-item-icon">🚑</span>
+                    <span>
+                        <strong>Osudný den</strong>
+                        <small>13. 7. 2026 · Kapitola 2</small>
                     </span>
                 </button>
 
@@ -1208,6 +1269,262 @@
 
                     </section>
 
+
+                    <!-- KAPITOLA II · DVOJSTRANA 1 -->
+                    <section class="spread" data-page="3">
+
+                        <div class="book-page left story-page">
+                            <div class="chapter-number">02</div>
+
+                            <div class="chapter-label">kapitola Deníku Carmen</div>
+
+                            <h2 class="chapter-title">Osudný den</h2>
+
+                            <div class="chapter-date">📅 13. července 2026</div>
+
+                            <blockquote class="chapter-quote">
+                                Někdy stačí jediný den, aby se změnil celý život.
+                            </blockquote>
+
+                            <div class="story-text">
+                                <p>
+                                    Pondělí začalo úplně obyčejně. Tak obyčejně,
+                                    že by mě ani ve snu nenapadlo, jak skončí.
+                                </p>
+
+                                <p>
+                                    Bylo 13. července 2026. Ve středu v půl deváté ráno
+                                    mě čekala plánovaná artroskopie kolene. V úterý měli
+                                    přijet rodiče a maminka mě měla po narkóze odvézt domů.
+                                </p>
+
+                                <p>
+                                    S Eny, Silvou, Dájou a Pájou Diwi jsme si o operaci psaly.
+                                    Uklidňovaly mě, že to zvládnu a že na mě budou myslet.
+                                    Právě jsem obědvala a měla před sebou úplně obyčejný den.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="book-page right-photo-page">
+                            <figure class="photo-frame">
+                                <img
+                                    class="chapter-photo"
+                                    src="imagesosudny-den-01.jpg.png"
+                                    alt="Carmen při obědě a psaní s přáteli v den, kdy se všechno změnilo"
+                                >
+                                <figcaption class="photo-caption">
+                                    Ještě jsem netušila, že za několik hodin bude všechno jinak.
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                    </section>
+
+                    <!-- KAPITOLA II · DVOJSTRANA 2 -->
+                    <section class="spread" data-page="4">
+
+                        <div class="book-page left story-page">
+                            <div class="chapter-label">Osudný den</div>
+                            <h2 class="chapter-title">První bolest</h2>
+
+                            <div class="story-text">
+                                <p>
+                                    Kolem třetí hodiny odpoledne mě začalo bolet břicho.
+                                    Nejdřív jsem tomu nevěnovala velkou pozornost. Myslela jsem,
+                                    že si jen lehnu na gauč, chvíli si odpočinu a bolest přejde.
+                                </p>
+
+                                <p>
+                                    Jenže nepřešla. Minuty ubíhaly a bolest byla stále silnější.
+                                    Z obyčejného pobolívání se stávalo něco, co už nešlo ignorovat.
+                                </p>
+
+                                <p>
+                                    Snažila jsem se najít polohu, ve které by se mi alespoň trochu
+                                    ulevilo. Žádná taková ale nebyla. Tělo mi dávalo jasně najevo,
+                                    že tentokrát nejde o nic obyčejného.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="book-page story-page">
+                            <div class="story-text">
+                                <p>
+                                    Psala jsem si hlavně s Eny a Pájou Diwi. Popisovala jsem jim,
+                                    jak moc mě břicho bolí a že se můj stav rychle zhoršuje.
+                                </p>
+
+                                <p>
+                                    Eny mi stále opakovala, že musím zavolat sanitku.
+                                    Já se tomu zpočátku bránila. Pořád jsem doufala, že to zvládnu
+                                    sama a že bolest za chvíli ustoupí.
+                                </p>
+
+                                <p>
+                                    Místo úlevy ale přišlo zvracení. Bolest byla nesnesitelná
+                                    a začínalo mi docházet, že už nemám na co čekat.
+                                </p>
+
+                                <div class="story-divider"></div>
+
+                                <p class="story-emphasis">
+                                    „Zavolej sanitku.“
+                                </p>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <!-- KAPITOLA II · DVOJSTRANA 3 -->
+                    <section class="spread" data-page="5">
+
+                        <div class="book-page left story-page">
+                            <div class="chapter-label">Rozhodnutí</div>
+                            <h2 class="chapter-title">Telefonát mamince</h2>
+
+                            <div class="story-text">
+                                <p>
+                                    Než jsem vytočila číslo záchranné služby, zavolala jsem mamince.
+                                    Řekla jsem jí, že je mi strašně špatně a že budu nejspíš volat sanitku.
+                                </p>
+
+                                <p>
+                                    Pak jsem skutečně zavolala pomoc. Protože se do domu vcházelo
+                                    přes čip, museli mi sousedé otevřít. Každá minuta se zdála
+                                    nekonečně dlouhá.
+                                </p>
+
+                                <p>
+                                    Když záchranáři konečně přišli, napojili mi infuzi
+                                    a dali léky proti bolesti. Ani ty ale nedokázaly všechno utišit.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="book-page timeline-page">
+                            <div class="big-date">🚑</div>
+
+                            <div class="timeline-card">
+                                <h3>Sanitka</h3>
+                                <p>
+                                    Odvezli mě do Fakultní nemocnice Motol. Cestou i po příjezdu
+                                    jsem opakovaně zvracela. V té chvíli už nebylo pochyb,
+                                    že se děje něco vážného.
+                                </p>
+                            </div>
+
+                            <blockquote class="chapter-quote">
+                                Ještě ráno jsem se bála operace kolene.
+                                Večer už šlo o něco úplně jiného.
+                            </blockquote>
+                        </div>
+
+                    </section>
+
+                    <!-- KAPITOLA II · DVOJSTRANA 4 -->
+                    <section class="spread" data-page="6">
+
+                        <div class="book-page left story-page">
+                            <div class="chapter-label">Motol</div>
+                            <h2 class="chapter-title">Vyšetření</h2>
+
+                            <div class="story-text">
+                                <p>
+                                    Na urgentním příjmu následovalo jedno vyšetření za druhým.
+                                    Bolest nepolevovala a já byla vyčerpaná, vyděšená a bezmocná.
+                                </p>
+
+                                <p>
+                                    Lékaři mě poslali na CT s kontrastní látkou. Ležela jsem
+                                    v přístroji a čekala, co snímky ukážou. Všechno kolem mě
+                                    působilo neskutečně, jako by se to dělo někomu jinému.
+                                </p>
+
+                                <p>
+                                    Výsledek ale přišel rychle. Měla jsem neprůchodné,
+                                    zauzlené tenké střevo. Nebyl čas čekat.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="book-page story-page">
+                            <div class="story-text">
+                                <p>
+                                    Lékaři mi oznámili, že musím okamžitě na operaci.
+                                    Vysvětlili mi také, že pokud část střeva odumřela,
+                                    může být nutné ji odstranit a vytvořit vývod.
+                                </p>
+
+                                <p>
+                                    V tu chvíli jsem se rozplakala. Měla jsem strach.
+                                    Nevěděla jsem, co mě po probuzení čeká, ani jak moc
+                                    se můj život během několika hodin změnil.
+                                </p>
+
+                                <p>
+                                    Ještě před chvílí jsem plánovala středeční artroskopii.
+                                    Teď mě připravovali na akutní operaci břicha.
+                                </p>
+
+                                <div class="story-divider"></div>
+
+                                <p class="story-emphasis">
+                                    Nebyl čas se připravit. Zbývalo jen věřit.
+                                </p>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <!-- KAPITOLA II · DVOJSTRANA 5 -->
+                    <section class="spread" data-page="7">
+
+                        <div class="book-page left story-page">
+                            <div class="chapter-label">Cesta na sál</div>
+                            <h2 class="chapter-title">Chodba</h2>
+
+                            <div class="story-text">
+                                <p>
+                                    Vezli mě dlouhou nemocniční chodbou. Nad sebou jsem sledovala
+                                    světla na stropě, která jedno po druhém mizela za mou hlavou.
+                                </p>
+
+                                <p>
+                                    Snažila jsem se modlit. Myslela jsem na domov,
+                                    na své blízké a hlavně na maminku.
+                                </p>
+
+                                <p>
+                                    Dveře operačního sálu se otevřely. Uviděla jsem ostrá světla,
+                                    přístroje a lidi, kteří se připravovali zachránit mi život.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="book-page ending-page">
+                            <div class="phoenix-symbol">🔥</div>
+
+                            <div class="ending-card">
+                                <h3>Poslední myšlenka</h3>
+                                <p>
+                                    Ležela jsem pod světly operačního sálu a věděla,
+                                    že už nic dalšího nemohu ovlivnit.
+                                </p>
+                            </div>
+
+                            <blockquote class="chapter-quote">
+                                „Maminko, mám tě ráda.“
+                            </blockquote>
+
+                            <div class="final-darkness">
+                                Pak už byla tma.
+                            </div>
+                        </div>
+
+                    </section>
+
+
                 </article>
 
                 <div class="book-navigation">
@@ -1297,6 +1614,17 @@
             if (currentPage < spreads.length - 1) {
                 showPage(currentPage + 1);
             }
+        });
+
+
+        document.querySelectorAll(".archive-item[data-start-page]").forEach((button) => {
+            button.addEventListener("click", () => {
+                const startPage = Number(button.dataset.startPage);
+
+                if (Number.isInteger(startPage) && startPage >= 0 && startPage < spreads.length) {
+                    showPage(startPage);
+                }
+            });
         });
 
         showPage(0);
