@@ -513,6 +513,7 @@
 
         .entry-block p {
             margin: 0;
+            white-space: pre-line;
             font-family: "Cormorant Garamond", serif;
             font-size: clamp(1.04rem, 1.5vw, 1.2rem);
             line-height: 1.66;
@@ -645,10 +646,10 @@
             cursor: not-allowed;
         }
 
-        /* HUDBA – ZATÍM PŘIPRAVENÁ, ALE SKRYTÁ */
+        /* HYMNA DENÍKU CARMEN */
 
         .diary-music {
-            display: none;
+            display: block;
             width: min(620px, calc(100% - 40px));
             margin: 0 auto 45px;
             padding: 22px;
@@ -842,39 +843,20 @@
 
     <header class="hero">
 
-        <div class="hero-content">
-
-            <span class="hero-small">Skutečný příběh psaný srdcem</span>
-
-            <h1>Deník Carmen</h1>
-
-            <div class="hero-divider">
-                <span>♡</span>
-            </div>
-
-            <p class="hero-motto">
-                Můj příběh. Moje cesta. Moje síla.<br>
-                Každý den je krokem zpět k sobě.
-            </p>
-
-        </div>
-
     </header>
 
 
     <main class="diary-area">
 
-        <!-- HUDBU SEM POZDĚJI DOPLNÍME -->
+        <!-- HYMNA DENÍKU CARMEN -->
 
-        <section class="diary-music">
-            <h2>🎵 Hudba Deníku Carmen</h2>
+        <section class="diary-music" aria-labelledby="diaryMusicTitle">
+            <h2 id="diaryMusicTitle">🎵 Hymna Deníku Carmen</h2>
 
-            <!--
             <audio controls preload="metadata">
-                <source src="NAZEV-BUDOUCI-PISNICKY.mp3" type="audio/mpeg">
+                <source src="Hymna Deniku Carmen.mp3.mp3" type="audio/mpeg">
                 Tvůj prohlížeč nepodporuje přehrávání zvuku.
             </audio>
-            -->
         </section>
 
 
@@ -928,11 +910,11 @@
                         </div>
 
                         <h2 class="chapter-title" id="chapterTitle">
-                            Náhlá bolest břicha
+                            Proč vznikl Svět Carmen
                         </h2>
 
                         <div class="chapter-date" id="chapterDate">
-                            📅 13. července 2026
+                            📅 3. července 2026
                         </div>
 
                         <div class="entry-block">
@@ -969,8 +951,8 @@
                             <img
                                 id="chapterPhoto"
                                 class="chapter-photo"
-                                src="hero-denik-carmen.png.png"
-                                alt="Fotografie ke kapitole Deníku Carmen"
+                                src="kapitola1.png.png"
+                                alt="Filmová scéna k první kapitole Proč vznikl Svět Carmen"
                             >
 
                             <span class="photo-tape two"></span>
@@ -1048,218 +1030,20 @@
         const chapters = [
             {
                 number: "01",
-                icon: "⚡",
-                shortDate: "13. 7. 2026",
-                date: "13. července 2026",
-                title: "Náhlá bolest břicha",
+                icon: "🔥",
+                shortDate: "3. 7. 2026",
+                date: "3. července 2026",
+                title: "Proč vznikl Svět Carmen",
                 story:
-                    "Ráno ještě začalo průjmem, ale během dne se všechno změnilo. Přišla obrovská bolest břicha, zvracení a větry přestaly odcházet. Bolest nepovolovala a bylo jasné, že tentokrát se děje něco vážného.",
+                    "Odjakživa jsem snila o tom, že jednou budu psát knihy. První příběhy vznikaly díky Mie, mé sibiřské husky, a později také díky Čestmírkovi. Oba byli důležitou součástí mého života a dodnes mi neskutečně chybí.\n\nStále pracuji jako učitelka a zároveň studuji na Karlově univerzitě. Děti, škola, studium a každodenní povinnosti mi dlouho nechávaly jen málo času na psaní. Přesto ve mně ten sen pořád zůstával.\n\nSport byl vždy velkou součástí mého života. Nejvíc fotbal – na fotbalovém hřišti jsem nechala srdce a nikdy jsem se nebála bojovat až do konce. Dne 31. března 2026 jsem však při hodině tělesné výchovy, když jsem dětem ukazovala trojskok z místa, utrpěla pracovní úraz. Následovala diagnóza prasklého menisku a poškozených postranních vazů. Ocitla jsem se na pracovní neschopnosti a čekala mě operace.\n\nNajednou jsem musela zastavit. Člověk, který byl celý život v pohybu, dostal čas, který si nikdy neplánoval. A právě tehdy jsem se znovu vrátila ke svému dávnému snu.\n\nZačala jsem tvořit komiks o Mie a Čestmírkovi. Postupně jsem však zjistila, jak složité může být dostat vlastní knihy mezi čtenáře. Nechtěla jsem, aby příběhy zůstaly schované v počítači. Chtěla jsem, aby je lidé mohli číst hned.\n\nA tak vznikl Svět Carmen – místo pro knihy, komiksy, skutečné příběhy a druhé začátky. Místo, kde každý příběh začíná srdcem.",
                 feeling:
-                    "Cítila jsem strach, bezmoc a nejistotu. Nevěděla jsem, co se se mnou děje, ale věděla jsem, že potřebuji pomoc.",
+                    "Když přišel úraz, cítila jsem bolest, zklamání a nejistotu. Najednou jsem nemohla dělat to, co jsem milovala. Zároveň se ale v tom nečekaném zastavení otevřel prostor pro něco, co jsem si dlouho přála.",
                 step:
-                    "Přijala jsem, že to sama nezvládnu, a dovolila jsem ostatním, aby se o mě postarali.",
+                    "Místo abych svůj sen znovu odložila, začala jsem psát, tvořit a stavět místo, kde mohou mé příběhy skutečně žít.",
                 quote:
-                    "Někdy je největší odvahou říct si o pomoc.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "Den, kdy se všechno změnilo."
-            },
-
-            {
-                number: "02",
-                icon: "🚑",
-                shortDate: "13./14. 7.",
-                date: "Noc z 13. na 14. července 2026",
-                title: "Sanitka a nemocnice",
-                story:
-                    "Přijela sanitka a cesta pokračovala do nemocnice. Vyšetření ukázala zauzlené tenké střevo se srůsty. Během několika hodin se obyčejný den změnil v boj o zdraví.",
-                feeling:
-                    "Byla jsem vyčerpaná, vyděšená a zároveň vděčná, že jsem v rukou lidí, kteří věděli, co dělat.",
-                step:
-                    "Zůstala jsem klidná a důvěřovala lékařům, i když jsem netušila, co mě čeká.",
-                quote:
-                    "I v nejtemnější noci může začít cesta k novému ránu.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "Cesta, kterou jsem si nevybrala, ale musela jsem jí projít."
-            },
-
-            {
-                number: "03",
-                icon: "✂️",
-                shortDate: "14. 7. 2026",
-                date: "14. července 2026",
-                title: "Akutní operace",
-                story:
-                    "V noci jsem podstoupila urgentní operaci. Lékaři řešili zauzlené tenké střevo a srůsty. Plánovaná operace kolene musela stranou, protože najednou šlo o něco mnohem důležitějšího.",
-                feeling:
-                    "Po probuzení jsem byla slabá, unavená a zmatená. Současně jsem věděla, že nejtěžší okamžik je za mnou.",
-                step:
-                    "Probudila jsem se a začala znovu – jedním nádechem, jedním pohybem a jedním dnem.",
-                quote:
-                    "Některé bitvy skončí na operačním sále. Ty nejtěžší začínají doma.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "Začátek nové kapitoly."
-            },
-
-            {
-                number: "04",
-                icon: "🥣",
-                shortDate: "15. 7. 2026",
-                date: "15. července 2026",
-                title: "První jídlo – vývar",
-                story:
-                    "Po operaci přišel první vývar. Bylo to obyčejné jídlo, ale pro mě znamenalo důležitý okamžik – tělo se pomalu probouzelo a začínalo znovu přijímat potravu.",
-                feeling:
-                    "Měla jsem obavy, jak bude břicho reagovat. Zároveň jsem cítila radost z každé malé věci, která se podařila.",
-                step:
-                    "Snědla jsem několik opatrných lžiček a dala tělu čas.",
-                quote:
-                    "Velké návraty někdy začínají jednou lžičkou vývaru.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "První malé vítězství."
-            },
-
-            {
-                number: "05",
-                icon: "🏠",
-                shortDate: "17. 7. 2026",
-                date: "17. července 2026",
-                title: "Návrat domů",
-                story:
-                    "Po dnech v nemocnici jsem se konečně vrátila domů. Čekala mě lehká strava, malé porce, voda po doušcích, krátké procházky a hlavně hodně odpočinku.",
-                feeling:
-                    "Byla jsem šťastná, že jsem doma, ale zároveň jsem měla respekt z toho, že uzdravování teď bude na mně a mé rodině.",
-                step:
-                    "Přijala jsem pomalejší tempo a dovolila si odpočívat bez výčitek.",
-                quote:
-                    "Uzdravování není závod.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "Domov byl tentokrát začátkem, ne cílem."
-            },
-
-            {
-                number: "06",
-                icon: "🩺",
-                shortDate: "20. 7. 2026",
-                date: "20. července 2026",
-                title: "Kontrola u doktorky",
-                story:
-                    "Na kontrole bylo potvrzeno, že rána vypadá dobře. Dozvěděla jsem se také více o srůstech a o tom, co se v mém břiše vlastně stalo.",
-                feeling:
-                    "Cítila jsem úlevu, ale také respekt k vlastnímu tělu. Uvědomila jsem si, že potřebuje čas a klid.",
-                step:
-                    "Přestala jsem na sebe spěchat a začala více poslouchat své tělo.",
-                quote:
-                    "Tělo někdy šeptá. Já se ho učím znovu poslouchat.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "Kontrola, která přinesla klid."
-            },
-
-            {
-                number: "07",
-                icon: "🚶‍♀️",
-                shortDate: "22. 7. 2026",
-                date: "22. července 2026",
-                title: "První krátká procházka",
-                story:
-                    "Vyšla jsem s maminkou na první krátkou procházku. Trochu se mi motala hlava kvůli nízkému tlaku, a proto jsme šly pomalu a po návratu jsem odpočívala.",
-                feeling:
-                    "Byla jsem unavená, ale zároveň šťastná, že jsem zase udělala pár kroků venku.",
-                step:
-                    "Vyšla jsem ven, i když to bylo jen na chvíli.",
-                quote:
-                    "I malý krok může změnit celý den.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "První cesta ven."
-            },
-
-            {
-                number: "08",
-                icon: "🩹",
-                shortDate: "24. 7. 2026",
-                date: "24. července 2026",
-                title: "Betadine a klidový den",
-                story:
-                    "U horní svorky se po nárazu objevil drobný výtok světle žluté tekutiny. Ránu jsme ošetřily Betadinem a procházku jsem ten den raději vynechala.",
-                feeling:
-                    "Trochu mě to vystrašilo, ale zároveň jsem věděla, že ránu sledujeme a zacházíme s ní opatrně.",
-                step:
-                    "Místo plánované aktivity jsem si vybrala odpočinek.",
-                quote:
-                    "Odpočinek není krok zpět. Je součástí cesty.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "Den, kdy bylo nejdůležitější nic neuspěchat."
-            },
-
-            {
-                number: "09",
-                icon: "🌿",
-                shortDate: "25. 7. 2026",
-                date: "25. července 2026",
-                title: "Procházka na Klamovce",
-                story:
-                    "S maminkou jsme se prošly na Klamovce a na chvíli si sedly na pití. Nebyla to dlouhá cesta, ale byl to jeden z důležitých milníků návratu do běžného života.",
-                feeling:
-                    "Cítila jsem radost, klid a vděčnost, že na tu cestu nejsem sama.",
-                step:
-                    "Zvládla jsem další procházku a dovolila si ji opravdu prožít.",
-                quote:
-                    "Uzdravování není jen cesta zpátky ke zdraví. Je to také cesta k lidem, které máme nejraději.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "Klamovka – jeden z prvních velkých malých kroků."
-            },
-
-            {
-                number: "10",
-                icon: "🍗",
-                shortDate: "26. 7. 2026",
-                date: "26. července 2026",
-                title: "První vaření v horkovzdušce",
-                story:
-                    "Poprvé jsem připravovala kuřecí prso s bramborami a mrkví v nové horkovzdušné troubě. Cílem bylo mít jídlo měkké, šťavnaté a šetrné k břichu.",
-                feeling:
-                    "Měla jsem radost, že se postupně vracím k běžným věcem a můžu znovu něco vytvářet.",
-                step:
-                    "Připravila jsem si vlastní lehké jídlo a zvládla další kus samostatnosti.",
-                quote:
-                    "Někdy chutná návrat k životu jako první doma připravený oběd.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "První vaření po operaci."
-            },
-
-            {
-                number: "11",
-                icon: "⭐",
-                shortDate: "28. 7. 2026",
-                date: "28. července 2026",
-                title: "Vytažení svorek",
-                story:
-                    "Přišla kontrola a svorky byly konečně venku. Rána se dál hojila a začala další fáze uzdravování.",
-                feeling:
-                    "Cítila jsem úlevu, radost a trochu obav z otevřeného místa. Přesto jsem věděla, že jsem zase o krok dál.",
-                step:
-                    "Zvládla jsem další důležitou kontrolu a přijala nový vzhled své jizvy.",
-                quote:
-                    "Každá jizva může být začátkem nového příběhu.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "Další kapitola hojení."
-            },
-
-            {
-                number: "12",
-                icon: "💗",
-                shortDate: "30. 7. 2026",
-                date: "30. července 2026",
-                title: "Zpátky u Světa Carmen",
-                story:
-                    "Navzdory únavě, hojení a bolesti jsem se znovu pustila do práce na webu. Opravila jsem zabezpečení domény, doplnila Hymnu Světa Carmen a začala stavět skutečný Archiv Deníku Carmen.",
-                feeling:
-                    "Byla jsem unavená, ale pyšná. Cítila jsem, že se vracím sama k sobě a ke svému snu.",
-                step:
-                    "Nevzdala jsem svůj sen. Pokračovala jsem v něm pomalu, ale srdcem.",
-                quote:
-                    "Někdy se uzdravujeme právě tím, že znovu tvoříme.",
-                photo: "hero-denik-carmen.png.png",
-                caption: "Den, kdy začal vznikat opravdový Archiv Deníku Carmen."
+                    "Někdy nás život zastaví, abychom konečně vykročili směrem ke svému snu.",
+                photo: "kapitola1.png.png",
+                caption: "Okamžik, kdy se dávný sen začal měnit ve skutečnost."
             }
         ];
 
