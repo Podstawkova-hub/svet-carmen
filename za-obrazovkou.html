@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Za obrazovkou | Svět Carmen</title>
+
+  <meta
+    name="description"
+    content="Archiv příběhů inspirovaných skutečnými událostmi ze sociálních sítí."
+  >
+
+  <style>
+    :root{
+      --dark:#0d0d12;
+      --dark-soft:#17141c;
+      --dark-card:#211c25;
+      --pink:#ff74b8;
+      --deep:#b43878;
+      --light-pink:#ffd9eb;
+      --gold:#ffd37d;
+      --white:#fff8fc;
+      --muted:#d5c8d0;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top, rgba(180,56,120,.18), transparent 35%),
+        linear-gradient(180deg,#100d13,#17121a,#0c0b0f);
+      color:var(--white);
+      min-height:100vh;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    /* HORNÍ MENU – STEJNÝ MUSTER JAKO SVĚT CARMEN */
+
+    nav{
+      position:sticky;
+      top:18px;
+      z-index:20;
+      width:max-content;
+      max-width:92%;
+      margin:18px auto 0;
+      padding:10px 18px;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(165,45,111,.18);
+      border-radius:999px;
+      box-shadow:0 18px 40px rgba(0,0,0,.28);
+    }
+
+    nav a{
+      display:inline-block;
+      margin:0 11px;
+      color:var(--deep);
+      font-size:15px;
+      font-weight:bold;
+    }
+
+    nav a:hover{
+      color:#741e4d;
+    }
+
+    /* HORNÍ PŮLFOTKA */
+
+    .hero{
+      position:relative;
+      width:min(1450px,100%);
+      min-height:520px;
+      margin:-55px auto 0;
+      padding:170px 7vw 80px;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(6,6,10,.94) 0%,
+          rgba(8,7,12,.78) 46%,
+          rgba(8,7,12,.24) 100%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(13,13,18,1) 0%,
+          rgba(13,13,18,.08) 50%
+        ),
+        url("hero-za-obrazovkou.png") center/cover no-repeat;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:110px;
+      background:linear-gradient(transparent,#0d0d12);
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:min(760px,100%);
+    }
+
+    .hero-badge{
+      display:inline-block;
+      margin-bottom:18px;
+      padding:9px 16px;
+      color:var(--light-pink);
+      font-weight:bold;
+      background:rgba(255,116,184,.14);
+      border:1px solid rgba(255,116,184,.38);
+      border-radius:999px;
+    }
+
+    h1{
+      margin-bottom:22px;
+      color:white;
+      font-size:clamp(52px,8vw,104px);
+      line-height:.95;
+      text-shadow:0 6px 30px rgba(0,0,0,.8);
+    }
+
+    .hero-subtitle{
+      max-width:700px;
+      color:#f6dce9;
+      font-size:clamp(22px,3vw,34px);
+      line-height:1.45;
+      text-shadow:0 3px 18px rgba(0,0,0,.9);
+    }
+
+    .hero-subtitle strong{
+      color:var(--pink);
+    }
+
+    /* ARCHIV */
+
+    main{
+      position:relative;
+      z-index:3;
+    }
+
+    .archive{
+      width:min(1200px,92%);
+      margin:35px auto 90px;
+    }
+
+    .archive-heading{
+      margin-bottom:48px;
+      text-align:center;
+    }
+
+    .archive-heading span{
+      display:inline-block;
+      margin-bottom:14px;
+      color:var(--pink);
+      font-size:16px;
+      font-weight:bold;
+      letter-spacing:3px;
+      text-transform:uppercase;
+    }
+
+    .archive-heading h2{
+      margin-bottom:18px;
+      color:white;
+      font-size:clamp(38px,5vw,58px);
+    }
+
+    .archive-heading p{
+      max-width:760px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:20px;
+      line-height:1.7;
+    }
+
+    .cases-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:34px;
+    }
+
+    .case-card{
+      position:relative;
+      overflow:hidden;
+      min-height:470px;
+      display:flex;
+      flex-direction:column;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),
+        var(--dark-card);
+      border:1px solid rgba(255,116,184,.17);
+      border-radius:24px;
+      box-shadow:0 25px 55px rgba(0,0,0,.34);
+      transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+
+    .case-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(255,116,184,.5);
+      box-shadow:0 35px 70px rgba(0,0,0,.5);
+    }
+
+    .case-image{
+      position:relative;
+      height:225px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at center,rgba(255,116,184,.18),transparent 50%),
+        linear-gradient(135deg,#28212c,#0d0c11);
+    }
+
+    .case-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.8;
+      transition:transform .5s ease;
+    }
+
+    .case-card:hover .case-image img{
+      transform:scale(1.04);
+    }
+
+    .case-image::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(transparent,rgba(33,28,37,.9));
+    }
+
+    .case-number{
+      position:absolute;
+      z-index:2;
+      top:18px;
+      left:18px;
+      padding:8px 13px;
+      border-radius:999px;
+      color:white;
+      background:rgba(9,8,12,.75);
+      border:1px solid rgba(255,255,255,.16);
+      font-size:13px;
+      font-weight:bold;
+      letter-spacing:1px;
+    }
+
+    .case-new{
+      position:absolute;
+      z-index:2;
+      top:18px;
+      right:18px;
+      padding:8px 13px;
+      border-radius:999px;
+      color:white;
+      background:linear-gradient(90deg,#b43878,#ff74b8);
+      font-size:13px;
+      font-weight:bold;
+    }
+
+    .case-content{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      padding:28px;
+    }
+
+    .case-content h3{
+      margin-bottom:15px;
+      color:var(--pink);
+      font-size:32px;
+    }
+
+    .case-content p{
+      margin-bottom:26px;
+      color:#e4d8df;
+      font-size:17px;
+      line-height:1.7;
+    }
+
+    .case-btn{
+      align-self:flex-start;
+      margin-top:auto;
+      padding:14px 24px;
+      color:white;
+      background:linear-gradient(90deg,#b43878,#ff74b8);
+      border-radius:999px;
+      font-weight:bold;
+      box-shadow:0 12px 25px rgba(180,56,120,.25);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .case-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 32px rgba(180,56,120,.42);
+    }
+
+    .case-card.soon{
+      opacity:.68;
+    }
+
+    .case-card.soon .case-image{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .soon-symbol{
+      position:relative;
+      z-index:2;
+      color:var(--pink);
+      font-size:65px;
+      letter-spacing:8px;
+    }
+
+    .soon-label{
+      display:inline-block;
+      align-self:flex-start;
+      margin-top:auto;
+      padding:11px 18px;
+      color:#d9cbd3;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:999px;
+      font-weight:bold;
+    }
+
+    /* ZÁVĚREČNÁ MYŠLENKA */
+
+    .message{
+      width:min(1050px,92%);
+      margin:0 auto 90px;
+      padding:50px 35px;
+      text-align:center;
+      background:
+        linear-gradient(135deg,rgba(180,56,120,.13),rgba(255,116,184,.04)),
+        #151118;
+      border:1px solid rgba(255,116,184,.2);
+      border-radius:28px;
+      box-shadow:0 25px 55px rgba(0,0,0,.28);
+    }
+
+    .message p{
+      color:#f0dce6;
+      font-size:clamp(25px,3.5vw,40px);
+      line-height:1.45;
+    }
+
+    .message strong{
+      color:var(--pink);
+    }
+
+    footer{
+      padding:28px 7vw 40px;
+      text-align:center;
+      color:#bbaeb6;
+      border-top:1px solid rgba(255,255,255,.07);
+    }
+
+    footer a{
+      color:var(--pink);
+      font-weight:bold;
+    }
+
+    @media(max-width:700px){
+      nav{
+        border-radius:24px;
+        text-align:center;
+      }
+
+      nav a{
+        margin:6px 7px;
+      }
+
+      .hero{
+        min-height:480px;
+        margin-top:-70px;
+        padding:175px 7vw 60px;
+        background-position:65% center;
+      }
+
+      .hero-subtitle{
+        font-size:21px;
+      }
+
+      .archive{
+        margin-top:20px;
+      }
+
+      .archive-heading p{
+        font-size:18px;
+      }
+
+      .cases-grid{
+        grid-template-columns:1fr;
+      }
+
+      .message{
+        padding:38px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html">Carmen</a>
+    <a href="svet.html">Hlavní projekty</a>
+    <a href="#archiv">Archiv případů</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+
+      <div class="hero-badge">Příběhy ze sociálních sítí</div>
+
+      <h1>Za obrazovkou</h1>
+
+      <p class="hero-subtitle">
+        Internet ukáže jen několik vteřin.<br>
+        <strong>Skutečný příběh bývá mnohem delší.</strong>
+      </p>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="archive" id="archiv">
+
+      <div class="archive-heading">
+
+        <span>Svět Carmen představuje</span>
+
+        <h2>Archiv případů</h2>
+
+        <p>
+          Příběhy inspirované skutečnými zkušenostmi lidí,
+          kteří na sociálních sítích poznali přátelství,
+          důvěru, lásku, ale také manipulaci a lež.
+        </p>
+
+      </div>
+
+      <div class="cases-grid">
+
+        <!-- PŘÍPAD 001 -->
+
+        <article class="case-card">
+
+          <div class="case-image">
+
+            <img
+              src="maska-duvery.png"
+              alt="Příběh Maska důvěry"
+            >
+
+            <span class="case-number">PŘÍPAD 001</span>
+            <span class="case-new">NOVINKA</span>
+
+          </div>
+
+          <div class="case-content">
+
+            <h3>Maska důvěry</h3>
+
+            <p>
+              Dlouholeté přátelství. Opakované prosby o pomoc.
+              A den, kdy se začali ozývat další lidé se stejným příběhem.
+            </p>
+
+            <a class="case-btn" href="maska-duvery.html">
+              Otevřít případ
+            </a>
+
+          </div>
+
+        </article>
+
+        <!-- PŘÍPAD 002 -->
+
+        <article class="case-card soon">
+
+          <div class="case-image">
+
+            <div class="soon-symbol">•••</div>
+            <span class="case-number">PŘÍPAD 002</span>
+
+          </div>
+
+          <div class="case-content">
+
+            <h3>Další příběh</h3>
+
+            <p>
+              Další příběh, který ukáže, že ne všechno,
+              co vidíme na internetu, je úplné.
+            </p>
+
+            <span class="soon-label">Připravujeme</span>
+
+          </div>
+
+        </article>
+
+        <!-- PŘÍPAD 003 -->
+
+        <article class="case-card soon">
+
+          <div class="case-image">
+
+            <div class="soon-symbol">•••</div>
+            <span class="case-number">PŘÍPAD 003</span>
+
+          </div>
+
+          <div class="case-content">
+
+            <h3>Další příběh</h3>
+
+            <p>
+              Za každým profilem je člověk.
+              Jeho skutečný příběh ale nemusíme na první pohled vidět.
+            </p>
+
+            <span class="soon-label">Připravujeme</span>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <section class="message">
+
+      <p>
+        Ne každý člověk za obrazovkou je tím,
+        <strong>za koho se vydává.</strong>
+      </p>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <a href="svet.html">← Zpět do Světa příběhů</a>
+  </footer>
+
+</body>
+</html>
