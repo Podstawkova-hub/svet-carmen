@@ -1016,26 +1016,62 @@
             .chapter-title {
                 font-size: 2.8rem;
             }
-        }
+   .support-btn {
+    border: 0;
+    border-radius: 11px;
+    padding: 12px 21px;
+    color: white;
+    background: linear-gradient(
+        135deg,
+        #bd496f,
+        #dc638b
+    );
+    cursor: pointer;
+    box-shadow: 0 9px 23px rgba(189, 73, 111, .21);
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    white-space: nowrap;
+    font: inherit;
+}
+
+.support-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 13px 28px rgba(189, 73, 111, .26);
+}
+
+.support-btn.supported {
+    color: #bd496f;
+    background: white;
+    outline: 2px solid #dc638b;
+     }
     </style>
 </head>
 
 <body>
 
-    <nav class="site-nav" aria-label="Hlavní navigace">
-        <a href="index.html" class="brand">
-            <span class="brand-symbol">🔥</span>
-            Svět Carmen
-        </a>
+   <nav class="site-nav" aria-label="Hlavní navigace">
+    <a href="index.html" class="brand">
+        <span class="brand-symbol">🔥</span>
+        Svět Carmen
+    </a>
 
-        <div class="nav-links">
-            <a href="index.html">Domů</a>
-            <a href="carmen.html">Kdo je Carmen</a>
-            <a href="svet.html">Svět příběhů</a>
-            <a href="denik.html" class="active">Deník Carmen</a>
-           <a href="podpora.html" class="support-btn">🤍 Podpořit Svět Carmen</a>
-        </div>
-    </nav>
+    <div class="nav-links">
+        <a href="index.html">Domů</a>
+        <a href="carmen.html">Kdo je Carmen</a>
+        <a href="svet.html">Svět příběhů</a>
+        <a href="denik.html" class="active">Deník Carmen</a>
+    </div>
+
+    <button
+        class="support-btn"
+        id="supportButton"
+        type="button"
+        aria-label="Podpořit Svět Carmen"
+    >
+        ♡ Podpořit Svět Carmen
+    </button>
+</nav>
 
     <header class="hero" aria-label="Úvodní fotografie Deníku Carmen"></header>
 
