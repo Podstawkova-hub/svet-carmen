@@ -1045,21 +1045,140 @@
     background: white;
     outline: 2px solid #dc638b;
      }
+     /* Jednotná horní navigace Světa Carmen */
+
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:28px;
+    min-height:72px;
+    padding:12px 4vw;
+    background:rgba(255,250,248,.95);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(189,73,111,.14);
+}
+
+.topbar .brand{
+    display:block;
+    color:#2e2026;
+    text-decoration:none;
+    line-height:.92;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:19px;
+}
+
+.topbar .brand strong{
+    display:block;
+    color:#bd496f;
+    font-size:27px;
+    font-style:italic;
+    font-weight:normal;
+}
+
+.topbar .nav-links{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:38px;
+}
+
+.topbar .nav-links a{
+    position:relative;
+    padding:8px 0;
+    color:#2e2026;
+    text-decoration:none;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:16px;
+}
+
+.topbar .nav-links a:hover,
+.topbar .nav-links a.active{
+    color:#bd496f;
+}
+
+.topbar .nav-links a.active::after{
+    content:"♡";
+    position:absolute;
+    left:50%;
+    bottom:-10px;
+    transform:translateX(-50%);
+    color:#dc638b;
+    font-size:13px;
+}
+
+.support-btn{
+    border:0;
+    border-radius:11px;
+    padding:12px 21px;
+    color:white;
+    background:linear-gradient(
+        135deg,
+        #bd496f,
+        #dc638b
+    );
+    cursor:pointer;
+    box-shadow:0 9px 23px rgba(189,73,111,.21);
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    white-space:nowrap;
+    font:inherit;
+}
+
+.support-btn:hover{
+    transform:translateY(-1px);
+    box-shadow:0 13px 28px rgba(189,73,111,.26);
+}
+
+.support-btn.supported{
+    color:#bd496f;
+    background:white;
+    outline:2px solid #dc638b;
+}
+
+@media(max-width:900px){
+    .topbar{
+        position:relative;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:13px;
+        padding:14px 5vw;
+    }
+
+    .topbar .brand{
+        width:100%;
+        text-align:center;
+    }
+
+    .topbar .nav-links{
+        width:100%;
+        flex-wrap:wrap;
+        gap:10px 28px;
+    }
+
+    .support-btn{
+        width:100%;
+    }      
     </style>
 </head>
 
 <body>
 
-   <nav class="site-nav" aria-label="Hlavní navigace">
-    <a href="index.html" class="brand">
-        <span class="brand-symbol">🔥</span>
-        Svět Carmen
+ <nav class="topbar">
+
+    <a class="brand" href="index.html">
+        Svět
+        <strong>Carmen♡</strong>
     </a>
 
     <div class="nav-links">
         <a href="index.html">Domů</a>
-        <a href="carmen.html">Kdo je Carmen</a>
-        <a href="svet.html">Svět příběhů</a>
+        <a href="svet.html">Příběhy</a>
+        <a href="carmen.html">O Carmen</a>
         <a href="denik.html" class="active">Deník Carmen</a>
     </div>
 
@@ -1071,6 +1190,7 @@
     >
         ♡ Podpořit Svět Carmen
     </button>
+
 </nav>
 
     <header class="hero" aria-label="Úvodní fotografie Deníku Carmen"></header>
@@ -1665,6 +1785,26 @@
 
         showPage(0);
     </script>
+<script>
+    const supportButton = document.getElementById("supportButton");
 
+    if (localStorage.getItem("svetCarmenSupported") === "yes") {
+        supportButton.classList.add("supported");
+        supportButton.textContent = "♥ Děkuji za podporu";
+    }
+
+    supportButton.addEventListener("click", function () {
+        const isSupported =
+            supportButton.classList.toggle("supported");
+
+        if (isSupported) {
+            supportButton.textContent = "♥ Děkuji za podporu";
+            localStorage.setItem("svetCarmenSupported", "yes");
+        } else {
+            supportButton.textContent = "♡ Podpořit Svět Carmen";
+            localStorage.removeItem("svetCarmenSupported");
+        }
+    });
+</script>
 </body>
 </html>
