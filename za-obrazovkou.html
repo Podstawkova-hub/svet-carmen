@@ -521,7 +521,7 @@ rgba(13,13,18,0) 55%
       aria-label="Dát projektu Za obrazovkou srdce"
       disabled
     >
-      ♡ Líbí se mi tento příběh…
+      ♡ Líbí se mi
     </button>
   </nav>
 
@@ -718,8 +718,8 @@ rgba(13,13,18,0) 55%
       }
 
       function showReady(count) {
-        likeButton.textContent =
-          `♡ Líbí se mi tento příběh ${Number(count) || 0}`;
+       likeButton.textContent =
+`♡ Líbí se mi ${Number(count) || 0}`;
 
         likeButton.disabled = false;
         likeButton.classList.remove("is-liked");
@@ -744,7 +744,7 @@ rgba(13,13,18,0) 55%
           }
         } catch (error) {
           console.error("Počet srdcí se nepodařilo načíst:", error);
-          likeButton.textContent = "♡ Líbí se mi tento příběh";
+          likeButton.textContent = "♡ Líbí se mi";
           likeButton.disabled = false;
         }
       }
