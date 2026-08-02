@@ -128,6 +128,39 @@
 
     .nav-links a:hover { color: var(--deep); }
 
+    .top-like-btn{
+      border:0;
+      border-radius:11px;
+      padding:12px 21px;
+      color:white;
+      background:linear-gradient(
+        135deg,
+        var(--deep),
+        var(--pink)
+      );
+      cursor:pointer;
+      box-shadow:0 9px 23px rgba(159,47,108,.21);
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+      white-space:nowrap;
+    }
+
+    .top-like-btn:hover:not(:disabled){
+      transform:translateY(-1px);
+      box-shadow:0 13px 28px rgba(159,47,108,.26);
+    }
+
+    .top-like-btn.is-liked{
+      color:var(--deep);
+      background:white;
+      outline:2px solid var(--pink);
+    }
+
+    .top-like-btn:disabled{
+      cursor:default;
+    }
+
     /* HERO */
     .hero {
       position: relative;
@@ -420,9 +453,18 @@ width: fit-content;
       <a href="carmen.html">O Carmen</a>
       <a href="svet.html">Svět příběhů</a>
       <a href="#denik">Deník Carmen</a>
-    <a href="kontakt.html">Kontakt</a>
+      <a href="kontakt.html">Kontakt</a>
     </div>
-    <div class="carmen-like" data-page="index"></div>
+
+    <button
+      class="top-like-btn"
+      id="likeButton"
+      type="button"
+      aria-label="Dát hlavní stránce Světa Carmen srdce"
+      disabled
+    >
+      ♡ Líbí se mi…
+    </button>
   </nav>
 
   <main id="top">
@@ -505,5 +547,100 @@ width: fit-content;
       }
     }, { once: true });
   </script>
+  <script>
+    (function () {
+      "use strict";
+
+      const SUPABASE_URL = "https://lggboavbzzvoomveewtl.supabase.co";
+      const SUPABASE_KEY = "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+      const PAGE_ID = "index";
+
+      const likeButton = document.getElementById("likeButton");
+      const storageKey = `svetCarmenLike_${PAGE_ID}`;
+
+      function getToday() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      }
+
+      async function callSupabase(functionName) {
+        const response = await fetch(
+          `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
+          {
+            method: "POST",
+            headers: {
+              apikey: SUPABASE_KEY,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              requested_page_id: PAGE_ID
+            })
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(await response.text());
+        }
+
+        return response.json();
+      }
+
+      function showReady(count) {
+        likeButton.textContent = `♡ Líbí se mi ${Number(count) || 0}`;
+        likeButton.disabled = false;
+        likeButton.classList.remove("is-liked");
+      }
+
+      function showThankYou(count) {
+        likeButton.textContent = `♥ Děkujeme ${Number(count) || 0}`;
+        likeButton.disabled = true;
+        likeButton.classList.add("is-liked");
+      }
+
+      async function loadLikes() {
+        try {
+          const count = await callSupabase("get_page_likes");
+
+          if (localStorage.getItem(storageKey) === getToday()) {
+            showThankYou(count);
+          } else {
+            showReady(count);
+          }
+        } catch (error) {
+          console.error("Počet srdcí se nepodařilo načíst:", error);
+          likeButton.textContent = "♡ Líbí se mi";
+          likeButton.disabled = false;
+        }
+      }
+
+      likeButton.addEventListener("click", async function () {
+        if (
+          likeButton.disabled ||
+          localStorage.getItem(storageKey) === getToday()
+        ) {
+          return;
+        }
+
+        likeButton.disabled = true;
+        likeButton.textContent = "♡ Odesílám…";
+
+        try {
+          const newCount = await callSupabase("add_page_like");
+          localStorage.setItem(storageKey, getToday());
+          showThankYou(newCount);
+        } catch (error) {
+          console.error("Srdce se nepodařilo odeslat:", error);
+          likeButton.textContent = "♡ Zkusit znovu";
+          likeButton.disabled = false;
+        }
+      });
+
+      loadLikes();
+    })();
+  </script>
+
 </body>
 </html>
