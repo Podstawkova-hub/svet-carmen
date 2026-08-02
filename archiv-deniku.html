@@ -1044,12 +1044,20 @@
         Svět Carmen
     </a>
 
-    <div class="nav-links">
-        <a href="index.html">Domů</a>
-        <a href="carmen.html">Kdo je Carmen</a>
-        <a href="svet.html">Svět příběhů</a>
-        <a href="denik.html" class="active">Deník Carmen</a>
-    </div>
+   <div class="nav-links">
+    <a href="index.html">Domů</a>
+    <a href="carmen.html">Kdo je Carmen</a>
+    <a href="svet.html">Svět příběhů</a>
+    <a href="denik.html" class="active">Deník Carmen</a>
+
+    <button
+        class="support-btn"
+        id="likeButton"
+        type="button"
+        aria-label="Líbí se mi">
+        ♡ Líbí se mi <span id="likeCount">0</span>
+    </button>
+</div>
 
   
 </nav>
@@ -2572,6 +2580,10 @@
 
         showPage(0);
     </script>
+<script src="likes.js"></script>
 
+<script>
+initLikes("archiv-deniku");
+</script>
 </body>
 </html>
