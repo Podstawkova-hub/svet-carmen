@@ -469,6 +469,109 @@
 
     }
 
+
+    /* UPOZORNĚNÍ, ZÁZNAMY A ARCHIVNÍ ZNAČKA */
+
+    .notice-card {
+      position: relative;
+      margin-bottom: 52px;
+      padding: 38px 40px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(31, 28, 23, 0.98),
+          rgba(14, 14, 14, 0.98)
+        );
+      border: 1px solid rgba(224, 188, 111, 0.32);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.42);
+    }
+
+    .notice-card h2 {
+      margin-bottom: 20px;
+      color: #e7c679;
+      font-size: clamp(28px, 4vw, 40px);
+    }
+
+    .notice-card p {
+      margin-bottom: 18px;
+      color: #dedede;
+      font-size: 17px;
+    }
+
+    .notice-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .notice-brand {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(224, 188, 111, 0.28);
+      color: #e0bc6f;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .case-note {
+      margin-top: 30px;
+      padding: 24px 26px;
+      color: #f1dbab;
+      background: rgba(224, 188, 111, 0.055);
+      border-left: 3px solid #b99550;
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    .case-note strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #e7c679;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .archive-stamp {
+      margin-top: 48px;
+      padding: 30px;
+      color: #d8d8d8;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(224, 188, 111, 0.28);
+      font-family: "Courier New", Courier, monospace;
+      font-size: 15px;
+      line-height: 1.75;
+      text-align: left;
+    }
+
+    .archive-stamp .stamp-line {
+      color: #b99550;
+      letter-spacing: 1px;
+    }
+
+    .archive-stamp strong {
+      color: #ffffff;
+    }
+
+    @media (max-width: 760px) {
+      .notice-card {
+        padding: 31px 22px;
+      }
+
+      .case-note {
+        padding: 22px 20px;
+        font-size: 17px;
+      }
+
+      .archive-stamp {
+        padding: 24px 20px;
+        font-size: 14px;
+      }
+    }
+
   </style>
 
 </head>
@@ -515,6 +618,49 @@
   </header>
 
   <main class="page">
+
+
+    <!-- UPOZORNĚNÍ -->
+
+    <section class="notice-card">
+
+      <span class="section-kicker">
+        Projekt Za obrazovkou · Spis č. 001
+      </span>
+
+      <h2>⚠️ Upozornění</h2>
+
+      <p>
+        Tento spis vznikl na základě výpovědí více osob,
+        veřejně sdílených zkušeností a osobních svědectví.
+      </p>
+
+      <p>
+        Cílem projektu <strong>Za obrazovkou</strong> není kohokoli odsoudit
+        ani nahrazovat práci orgánů činných v trestním řízení.
+        Jeho smyslem je upozornit na rizika manipulace,
+        zneužití důvěry a důležitost kritického myšlení
+        v online prostředí.
+      </p>
+
+      <p>
+        Některé okolnosti, časové údaje a identifikační znaky
+        byly záměrně upraveny nebo vynechány,
+        aby byla chráněna identita zúčastněných osob.
+      </p>
+
+      <p>
+        <strong>
+          Každý čtenář by si měl vytvořit vlastní názor
+          na základě dostupných informací a ověřených skutečností.
+        </strong>
+      </p>
+
+      <div class="notice-brand">
+        Svět Carmen · Projekt Za obrazovkou · www.svetcarmen.cz
+      </div>
+
+    </section>
 
     <!-- HUDBA MUSÍ BÝT HNED POD HLAVNÍM OBRÁZKEM -->
 
@@ -623,10 +769,97 @@
 
       <h2>Začátek důvěry</h2>
 
-      <div class="text-placeholder">
-        Sem vložíme přesný schválený text první kapitoly,
-        beze změn a bez domýšlení.
+
+      <p>
+        Na internetu není těžké získat důvěru.
+      </p>
+
+      <p>
+        Stačí několik úsměvů, pár laskavých slov,
+        fotografie z každodenního života a pravidelná živá vysílání.
+        Člověk na druhé straně obrazovky začne působit,
+        jako bychom ho znali celé roky.
+      </p>
+
+      <p>
+        Jenže internet ukazuje jen to,
+        co nám jeho uživatel dovolí vidět.
+      </p>
+
+      <p>
+        Příběh tohoto spisu nezačal hádkou.
+        Nezačal ani nenávistí nebo touhou někoho poškodit.
+      </p>
+
+      <p>
+        Začal obyčejnou lidskou důvěrou.
+      </p>
+
+      <p>
+        Mnoho lidí věřilo jedné ženě,
+        která vystupovala na sociálních sítích.
+        Působila mile, ochotně a kolem sebe vytvořila komunitu lidí,
+        kteří ji podporovali. Pro některé byla inspirací,
+        pro jiné blízkou kamarádkou.
+      </p>
+
+      <p>
+        Také já jsem její vysílání občas sledovala.
+      </p>
+
+      <p>
+        Na rozdíl od většiny jsem však od samého začátku
+        cítila zvláštní neklid. Nedokázala jsem vysvětlit proč.
+        Nebyl za tím jediný důkaz ani konkrétní událost.
+        Jen tichý pocit, že něco nehraje.
+      </p>
+
+      <p>
+        Lidé kolem mě často nechápali, proč si držím odstup.
+        Proč se nechci stát součástí její komunity.
+        Proč jí nevěřím stejně jako ostatní.
+      </p>
+
+      <p>
+        Odpověď jsem tehdy neznala.
+      </p>
+
+      <p>
+        Jen jsem měla pocit, že za obrazem,
+        který každý den ukazuje internetu, existuje ještě druhá tvář.
+        Taková, kterou běžný divák nikdy neuvidí.
+      </p>
+
+      <p>
+        Zatímco většina lidí sledovala úsměvy na obrazovce,
+        v zákulisí se pomalu odehrával příběh,
+        o kterém téměř nikdo netušil.
+      </p>
+
+      <p>
+        Jedna mladá dívka s dětskou mozkovou obrnou
+        tuto ženu znala mnohem déle než ostatní.
+        Nebylo to jen internetové přátelství.
+        Setkávaly se osobně, navštěvovaly se
+        a žena poznala i její maminku.
+      </p>
+
+      <p>
+        Právě proto byla důvěra mezi nimi tak silná.
+      </p>
+
+      <p>
+        Nikdo tehdy netušil, že právě tato důvěra
+        se jednou stane tím nejcennějším,
+        o co může člověk přijít.
+      </p>
+
+      <div class="case-note">
+        <strong>📁 Záznam do spisu</strong>
+        Každá manipulace začíná důvěrou.
+        Bez ní by nikdy nemohla vzniknout.
       </div>
+
 
     </section>
 
@@ -642,11 +875,86 @@
         Kapitola druhá
       </span>
 
-      <h2>Prosby o pomoc</h2>
+      <h2>Když důvěra otevře dveře</h2>
 
-      <div class="text-placeholder">
-        Sem vložíme přesný schválený text druhé kapitoly.
+
+      <p>
+        Důvěra nevzniká během jednoho dne.
+      </p>
+
+      <p>
+        Buduje se týdny, měsíce a někdy i roky.
+        Čím déle člověka známe, tím méně pochybujeme o jeho úmyslech.
+        Přestáváme přemýšlet, protože máme pocit,
+        že ho přece dobře známe.
+      </p>
+
+      <p>
+        Stejně to bylo i v tomto příběhu.
+      </p>
+
+      <p>
+        Žena si postupně získala důvěru lidí kolem sebe.
+        Někteří ji znali pouze z internetu,
+        jiní se s ní scházeli osobně.
+        Přátelství působilo opravdově a nic nenasvědčovalo tomu,
+        že by se mělo stát něco,
+        co změní pohled mnoha lidí.
+      </p>
+
+      <p>
+        Podle výpovědí několika osob začaly časem
+        přicházet prosby o finanční pomoc.
+      </p>
+
+      <p>
+        Nejdříve šlo o částky, které nepůsobily nijak neobvykle.
+        Objevovala se vysvětlení o těžké životní situaci,
+        nečekaných výdajích nebo příslib,
+        že peníze budou brzy vráceny.
+      </p>
+
+      <p>
+        Lidé pomáhali, protože věřili.
+      </p>
+
+      <p>
+        Nikdo totiž nepůjčuje peníze cizímu člověku.
+        Půjčuje je někomu, komu důvěřuje.
+      </p>
+
+      <p>
+        Jednou z těchto osob byla i mladá dívka
+        s dětskou mozkovou obrnou.
+        Věřila, že pomáhá kamarádce.
+        Netušila, že každá další půjčka může mít
+        mnohem vážnější následky, než si dokázala představit.
+      </p>
+
+      <p>
+        Zvenčí přitom všechno působilo stejně jako dřív.
+      </p>
+
+      <p>
+        Úsměvy na obrazovce pokračovaly.
+        Živá vysílání běžela dál.
+        Diváci tleskali, psali podporující komentáře
+        a nic nenasvědčovalo tomu,
+        že se za kulisami začíná odehrávat úplně jiný příběh.
+      </p>
+
+      <p>
+        První praskliny na dokonale vytvořené masce
+        zatím viděl jen málokdo.
+      </p>
+
+      <div class="case-note">
+        <strong>📁 Záznam do spisu</strong>
+        Manipulace nezačíná žádostí o peníze.
+        Začíná tím, že člověk uvěří,
+        že pomáhá někomu, komu může bez obav důvěřovat.
       </div>
+
 
     </section>
 
@@ -662,11 +970,111 @@
         Kapitola třetí
       </span>
 
-      <h2>První pochybnosti</h2>
+      <h2>Den, kdy se všechno změnilo</h2>
 
-      <div class="text-placeholder">
-        Sem vložíme přesný schválený text třetí kapitoly.
+
+      <p>
+        Některé pravdy se neodhalí najednou.
+      </p>
+
+      <p>
+        Přicházejí pomalu. Jeden střípek za druhým.
+        Až nakonec vytvoří obraz, který už nejde přehlédnout.
+      </p>
+
+      <p>
+        Podle výpovědí lidí, kteří se později svěřili
+        se svými zkušenostmi, nastal zlom ve chvíli,
+        kdy mladá dívka s dětskou mozkovou obrnou
+        potřebovala zaplatit nový mechanický vozík.
+      </p>
+
+      <p>
+        Na ten si dlouhou dobu šetřila.
+      </p>
+
+      <p>
+        Jenže když přišel čas peníze použít,
+        čekalo ji bolestivé zjištění.
+      </p>
+
+      <p>
+        Na účtu chyběla část úspor.
+      </p>
+
+      <p>
+        Teprve tehdy se své mamince přiznala,
+        že během předchozí doby opakovaně posílala peníze ženě,
+        které bezvýhradně důvěřovala.
+        Věřila jejím prosbám a byla přesvědčená,
+        že jde jen o dočasnou pomoc.
+      </p>
+
+      <p>
+        Místo radosti z nového vozíku přišel šok.
+      </p>
+
+      <p>
+        Rodina začala zjišťovat, co se vlastně stalo.
+      </p>
+
+      <p>
+        A právě v této chvíli se začal celý příběh rozplétat.
+      </p>
+
+      <p>
+        Jakmile se o celé situaci dozvěděli další lidé,
+        začaly se postupně ozývat další podobné zkušenosti.
+        Někteří popsali, že také poskytli finanční pomoc.
+        Jiní uvedli, že peníze už nikdy neviděli zpět.
+        Někteří o tom dodnes veřejně nemluví.
+      </p>
+
+      <p>
+        Každé nové svědectví přidalo další dílek do skládačky.
+      </p>
+
+      <p>
+        To, co ještě nedávno působilo jako ojedinělá událost,
+        začalo podle těchto výpovědí vytvářet obraz
+        opakujícího se vzorce.
+      </p>
+
+      <p>
+        A přesto…
+      </p>
+
+      <p>
+        Na obrazovce se téměř nic nezměnilo.
+      </p>
+
+      <p>
+        Úsměvy pokračovaly.
+      </p>
+
+      <p>
+        Živá vysílání běžela dál.
+      </p>
+
+      <p>
+        Pro většinu diváků byl svět stále stejný.
+      </p>
+
+      <p>
+        Jen ti, kteří znali zákulisí, už věděli,
+        že za pečlivě vytvořenou tváří
+        může existovat úplně jiný příběh.
+      </p>
+
+      <div class="case-note">
+        <strong>📁 Záznam do spisu</strong>
+        Nejtěžší není přijít o peníze.
+        Nejtěžší je uvědomit si,
+        že člověk, kterému jste věřili,
+        možná nikdy nebyl tím,
+        za koho jste ho považovali.
       </div>
+
 
     </section>
 
@@ -682,11 +1090,104 @@
         Kapitola čtvrtá
       </span>
 
-      <h2>Když se začali ozývat další</h2>
+      <h2>Když začnou mluvit i ostatní</h2>
 
-      <div class="text-placeholder">
-        Sem vložíme přesný schválený text čtvrté kapitoly.
+
+      <p>
+        Některé příběhy zůstávají dlouho skryté.
+      </p>
+
+      <p>
+        Ne proto, že by neexistovaly.
+        Ale proto, že lidé mají strach.
+        Stydí se přiznat, že někomu uvěřili.
+        Bojí se, že jim ostatní řeknou:
+        „Jak jsi na to mohl naletět?“
+      </p>
+
+      <p>
+        Jenže právě mlčení často umožňuje,
+        aby stejný příběh pokračoval dál.
+      </p>
+
+      <p>
+        Když se začalo řešit, co se stalo mladé dívce
+        s dětskou mozkovou obrnou,
+        ozvali se podle výpovědí další lidé.
+      </p>
+
+      <p>
+        Jeden po druhém.
+      </p>
+
+      <p>
+        Každý přinesl jinou část příběhu.
+      </p>
+
+      <p>
+        Někdo popsal půjčené peníze, které se nikdy nevrátily.
+        Jiný mluvil o opakovaných slibech,
+        že vše bude brzy vyřešeno.
+        Další přiznal, že o své zkušenosti dlouho mlčel,
+        protože už nevěřil, že by se něco změnilo.
+      </p>
+
+      <p>
+        Nešlo přitom jen o finance.
+      </p>
+
+      <p>
+        Objevovaly se také příběhy o zklamané důvěře,
+        neupřímnosti a dvojím životě.
+        Někteří lidé tvrdili, že postupně zjistili,
+        že žena vedla současně několik partnerských vztahů,
+        aniž o sobě jednotliví partneři věděli.
+      </p>
+
+      <p>
+        Bylo těžké poznat,
+        kde končí pravda a kde začíná pečlivě vytvořená role.
+      </p>
+
+      <p>
+        Každé nové svědectví ale zapadalo do mozaiky,
+        která začínala dávat smysl.
+      </p>
+
+      <p>
+        A přesto…
+      </p>
+
+      <p>
+        Na obrazovce se téměř nic nezměnilo.
+      </p>
+
+      <p>
+        Úsměvy pokračovaly.
+      </p>
+
+      <p>
+        Vysílání běžela dál.
+      </p>
+
+      <p>
+        Pro nové diváky byl její svět stále plný pohody,
+        humoru a milých slov.
+      </p>
+
+      <p>
+        Jen lidé, kteří znali příběhy z druhé strany obrazovky,
+        se na stejný úsměv začali dívat úplně jinýma očima.
+      </p>
+
+      <div class="case-note">
+        <strong>📁 Záznam do spisu</strong>
+        Manipulace často nepadne ve chvíli,
+        kdy promluví první člověk.
+        Začne se hroutit teprve tehdy,
+        když zjistí, že ve svém příběhu není sám.
       </div>
+
 
     </section>
 
@@ -702,11 +1203,103 @@
         Kapitola pátá
       </span>
 
-      <h2>Maska začíná padat</h2>
+      <h2>Maska nikdy nevydrží věčně</h2>
 
-      <div class="text-placeholder">
-        Sem vložíme přesný schválený text páté kapitoly.
+
+      <p>
+        Čas plynul dál.
+      </p>
+
+      <p>
+        Někteří lidé odešli.
+        Jiní zůstali.
+        Někteří stále čekali na odpovědi,
+        které nikdy nepřišly.
+      </p>
+
+      <p>
+        A internet?
+      </p>
+
+      <p>
+        Ten jel dál, jako by se nic nestalo.
+      </p>
+
+      <p>
+        Po čase se žena znovu objevila na živých vysíláních.
+        Opět se usmívala, bavila své diváky
+        a vytvářela dojem, že je všechno v pořádku.
+        Pro nové sledující byla jen další tváří na obrazovce.
+        Neměli důvod pochybovat.
+      </p>
+
+      <p>
+        Vždyť neznali příběhy,
+        které se odehrály mimo záběr kamery.
+      </p>
+
+      <p>
+        Možná právě proto je tak snadné začít znovu.
+      </p>
+
+      <p>
+        Na internetu totiž často neexistuje minulost.
+        Stačí nový úsměv, nové vysílání a noví lidé,
+        kteří netuší, co se odehrálo dříve.
+      </p>
+
+      <p>
+        Tento spis ale nevznikl proto,
+        aby někoho odsoudil.
+      </p>
+
+      <p>
+        Vznikl jako připomínka,
+        že důvěra je jedním z největších darů,
+        které může člověk druhému dát.
+        A právě proto bychom ji měli svěřovat jen těm,
+        kteří si ji svými činy opravdu zaslouží.
+      </p>
+
+      <p>
+        Ne všechno, co na internetu působí laskavě,
+        je skutečně laskavé.
+      </p>
+
+      <p>
+        Ne každý úsměv znamená upřímnost.
+      </p>
+
+      <p>
+        A ne každý příběh končí tak,
+        jak na začátku vypadal.
+      </p>
+
+      <p>
+        Možná právě proto bychom se měli naučit
+        jednu jednoduchou věc.
+      </p>
+
+      <p>
+        Neposuzovat lidi jen podle toho,
+        co ukazují na obrazovce.
+      </p>
+
+      <p>
+        Protože skutečný život se často odehrává
+        až ve chvíli, kdy kamera zhasne.
+      </p>
+
+      <div class="case-note">
+        <strong>📁 Závěrečný záznam</strong>
+        Tento spis není rozsudkem nad jedním člověkem.
+        Je připomínkou, že kritické myšlení není projev nedůvěry.
+        Je to způsob, jak chránit sebe i druhé.
+        <br><br>
+        Internet ukáže jen několik vteřin.
+        Skutečný příběh bývá mnohem delší.
       </div>
+
 
     </section>
 
@@ -761,6 +1354,22 @@
         Než někomu bezmezně uvěřím nebo někoho odsoudím,
         zkusím se zastavit a podívat se i za obrazovku.
       </p>
+
+
+      <div class="archive-stamp">
+        <div class="stamp-line">────────────────────────────────</div>
+        <br>
+        📁 <strong>ZA OBRAZOVKOU</strong><br>
+        <strong>SPIS č. 001</strong>
+        <br><br>
+        ✓ Archivováno<br>
+        ✓ Spis uzavřen
+        <br><br>
+        Svět Carmen<br>
+        www.svetcarmen.cz
+        <br><br>
+        <div class="stamp-line">────────────────────────────────</div>
+      </div>
 
       <a class="back-button" href="za-obrazovkou.html">
         ← Zpět do archivu
