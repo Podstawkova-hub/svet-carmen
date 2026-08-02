@@ -1,61 +1,483 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
 
-<title>SPIS 001 | Maska důvěry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-content="První případ projektu Za obrazovkou. Příběh o důvěře, přátelství a chvíli, kdy maska začala padat.">
+  <title>SPIS 001 | Maska důvěry</title>
+
+  <meta
+    name="description"
+    content="První případ projektu Za obrazovkou. Příběh o důvěře, přátelství a chvíli, kdy maska začala padat."
+  >
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top, rgba(88, 65, 30, 0.14), transparent 35%),
+        #080808;
+      color: #eeeeee;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 82vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 70px 24px;
+      text-align: center;
+      background-image:
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.20),
+          rgba(0, 0, 0, 0.76) 72%,
+          #080808 100%
+        ),
+        url("spis-001-maska-duvery-hero.png.png");
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid rgba(224, 188, 111, 0.22);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .case-label {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 8px 18px;
+      border: 1px solid rgba(224, 188, 111, 0.65);
+      color: #e0bc6f;
+      background: rgba(0, 0, 0, 0.55);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin-bottom: 12px;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(42px, 8vw, 88px);
+      font-weight: 800;
+      letter-spacing: 8px;
+      line-height: 1.05;
+      text-shadow: 0 5px 30px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero h2 {
+      color: #e0bc6f;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: normal;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-intro {
+      max-width: 720px;
+      margin: 26px auto 0;
+      color: #dddddd;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .page {
+      width: min(1080px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 65px 0 90px;
+    }
+
+    .file-card {
+      position: relative;
+      margin-bottom: 45px;
+      padding: 42px;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(32, 29, 24, 0.98),
+          rgba(15, 15, 15, 0.98)
+        );
+      border: 1px solid rgba(224, 188, 111, 0.24);
+      border-radius: 4px;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .file-card::before {
+      content: "SPIS 001";
+      position: absolute;
+      top: 18px;
+      right: -28px;
+      padding: 7px 38px;
+      transform: rotate(35deg);
+      background: rgba(128, 21, 21, 0.78);
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .section-kicker {
+      display: block;
+      margin-bottom: 8px;
+      color: #a88b52;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .file-card h2 {
+      margin-bottom: 22px;
+      color: #e7c679;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.25;
+    }
+
+    .file-card p {
+      margin-bottom: 20px;
+      color: #dddddd;
+      font-size: 18px;
+    }
+
+    .file-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .summary-box {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.035);
+      border-left: 3px solid #9c7d43;
+    }
+
+    .summary-box span {
+      display: block;
+      margin-bottom: 7px;
+      color: #9c7d43;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .summary-box strong {
+      color: #f2f2f2;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .quote {
+      margin: 38px 0 0;
+      padding: 26px 30px;
+      background: rgba(224, 188, 111, 0.06);
+      border-top: 1px solid rgba(224, 188, 111, 0.35);
+      border-bottom: 1px solid rgba(224, 188, 111, 0.35);
+      color: #f1dfb5;
+      font-size: 22px;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .music-card {
+      text-align: center;
+    }
+
+    .music-card p {
+      max-width: 700px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    audio {
+      width: min(680px, 100%);
+      margin-top: 18px;
+      filter: sepia(25%) saturate(70%);
+    }
+
+    .continuation {
+      padding: 55px 30px;
+      text-align: center;
+      border: 1px dashed rgba(224, 188, 111, 0.35);
+      background: rgba(224, 188, 111, 0.035);
+    }
+
+    .continuation h2 {
+      margin-bottom: 15px;
+      color: #e0bc6f;
+      font-size: clamp(28px, 4vw, 40px);
+    }
+
+    .continuation p {
+      color: #bbbbbb;
+      font-size: 17px;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 32px;
+      padding: 14px 24px;
+      border: 1px solid rgba(224, 188, 111, 0.6);
+      background: transparent;
+      color: #e0bc6f;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+    }
+
+    .back-button:hover {
+      background: #e0bc6f;
+      color: #111111;
+    }
+
+    footer {
+      padding: 25px 20px 45px;
+      color: #777777;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+
+      .hero {
+        min-height: 70vh;
+        padding-bottom: 48px;
+      }
+
+      .hero h1 {
+        letter-spacing: 4px;
+      }
+
+      .hero-intro {
+        font-size: 16px;
+      }
+
+      .page {
+        width: min(100% - 22px, 1080px);
+        padding-top: 38px;
+      }
+
+      .file-card {
+        padding: 30px 22px;
+      }
+
+      .file-card p {
+        font-size: 17px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      .quote {
+        padding: 22px 18px;
+        font-size: 19px;
+      }
+
+    }
+
+  </style>
 
 </head>
 
 <body>
 
-<h1>📁 SPIS 001</h1>
+  <header class="hero">
 
-<h2>Maska důvěry</h2>
+    <div class="hero-content">
 
-<p><strong>
-Dlouholeté přátelství.
-Opakované prosby o pomoc.
-A den, kdy se začali ozývat další lidé se stejným příběhem.
-</strong></p>
+      <span class="case-label">Projekt Za obrazovkou</span>
 
-<hr>
+      <h1>SPIS 001</h1>
 
-<h3>Úvod</h3>
+      <h2>Maska důvěry</h2>
 
-<p>
-Na internetu je snadné vytvořit obraz člověka, kterého ostatní obdivují.
-Úsměvy, fotografie, příběhy a slova mohou působit naprosto opravdově.
-Jenže skutečný charakter člověka se neukazuje na obrazovce.
-Ukazuje se ve chvílích, kdy nikdo jiný nekouká.
-</p>
+      <p class="hero-intro">
+        Dlouholeté přátelství. Opakované prosby o pomoc.
+        A den, kdy se začali ozývat další lidé se stejným příběhem.
+      </p>
 
-<p>
-Tento spis není o pomstě.
-Není ani o hledání viníka.
-Je o tom, jak snadno může důvěra zakrýt pravdu
-a jak těžké je připustit si,
-že člověk, kterému jsme věřili,
-nemusel být takový,
-jakého jsme si celé roky představovali.
-</p>
+    </div>
 
-<hr>
+  </header>
 
-<p>
-🎵 Zde bude hymna projektu Za obrazovkou.
-</p>
+  <main class="page">
 
-<hr>
+    <section class="file-card">
 
-<p>
-Příběh pokračuje…
-</p>
+      <span class="section-kicker">Základní informace</span>
+
+      <h2>Záznam případu</h2>
+
+      <div class="summary">
+
+        <div class="summary-box">
+          <span>Číslo spisu</span>
+          <strong>001</strong>
+        </div>
+
+        <div class="summary-box">
+          <span>Název případu</span>
+          <strong>Maska důvěry</strong>
+        </div>
+
+        <div class="summary-box">
+          <span>Stav</span>
+          <strong>Příběh se odkrývá</strong>
+        </div>
+
+      </div>
+
+      <div class="quote">
+        „Ne všechno je na internetu takové, jak se zdá.“
+      </div>
+
+    </section>
+
+    <section class="file-card">
+
+      <span class="section-kicker">Úvod do případu</span>
+
+      <h2>Za obrazovkou</h2>
+
+      <p>
+        Na internetu je snadné vytvořit obraz člověka,
+        kterého ostatní obdivují.
+        Úsměvy, fotografie, příběhy a slova mohou působit
+        naprosto opravdově.
+      </p>
+
+      <p>
+        Jenže skutečný charakter člověka se neukazuje
+        na obrazovce.
+        Ukazuje se ve chvílích, kdy nikdo jiný nekouká.
+      </p>
+
+      <p>
+        Internet ukáže jen několik vteřin.
+        Skutečný příběh bývá mnohem delší.
+      </p>
+
+    </section>
+
+    <section class="file-card">
+
+      <span class="section-kicker">Smysl spisu</span>
+
+      <h2>Není to příběh o pomstě</h2>
+
+      <p>
+        Tento spis není o pomstě.
+        Není ani o hledání viníka.
+      </p>
+
+      <p>
+        Je o tom, jak snadno může důvěra zakrýt pravdu
+        a jak těžké je připustit si,
+        že člověk, kterému jsme věřili,
+        nemusel být takový,
+        jakého jsme si celé roky představovali.
+      </p>
+
+      <p>
+        Je také o chvíli, kdy se jednotlivé zkušenosti
+        začnou spojovat a člověk pochopí,
+        že jeho příběh možná nebyl jediný.
+      </p>
+
+    </section>
+
+    <section class="file-card music-card">
+
+      <span class="section-kicker">Zvuková stopa</span>
+
+      <h2>🎵 Hudba spisu</h2>
+
+      <p>
+        Hudba patří k atmosféře případu.
+        Pusť si ji a vstup do příběhu,
+        ve kterém pravda postupně vystupuje ze stínu.
+      </p>
+
+      <audio controls preload="metadata">
+
+        <source
+          src="spis-001-theme.mp3.mpeg"
+          type="audio/mpeg"
+        >
+
+        Váš prohlížeč nepodporuje přehrávání audia.
+
+      </audio>
+
+    </section>
+
+    <section class="continuation">
+
+      <h2>Příběh pokračuje…</h2>
+
+      <p>
+        Další části spisu budeme postupně odkrývat.
+      </p>
+
+      <a class="back-button" href="za-obrazovkou.html">
+        ← Zpět do archivu
+      </a>
+
+    </section>
+
+  </main>
+
+  <footer>
+    © Svět Carmen · Projekt Za obrazovkou · Spis 001
+  </footer>
 
 </body>
+
 </html>
