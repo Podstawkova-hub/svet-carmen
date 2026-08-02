@@ -28,9 +28,9 @@
 
     body {
       background:
-        radial-gradient(circle at top, rgba(88, 65, 30, 0.14), transparent 35%),
-        #080808;
-      color: #eeeeee;
+        radial-gradient(circle at top, rgba(110, 80, 30, 0.12), transparent 34%),
+        #070707;
+      color: #ededed;
       font-family: Georgia, "Times New Roman", serif;
       line-height: 1.8;
     }
@@ -40,6 +40,8 @@
       text-decoration: none;
     }
 
+    /* HLAVNÍ FILMOVÝ OBRÁZEK */
+
     .hero {
       position: relative;
       min-height: 82vh;
@@ -48,86 +50,139 @@
       justify-content: center;
       padding: 70px 24px;
       text-align: center;
+
       background-image:
         linear-gradient(
           to bottom,
-          rgba(0, 0, 0, 0.20),
-          rgba(0, 0, 0, 0.76) 72%,
-          #080808 100%
+          rgba(0, 0, 0, 0.12),
+          rgba(0, 0, 0, 0.58) 62%,
+          #070707 100%
         ),
         url("spis-001-maska-duvery-hero.png.png");
+
       background-size: cover;
       background-position: center;
-      border-bottom: 1px solid rgba(224, 188, 111, 0.22);
+      border-bottom: 1px solid rgba(224, 188, 111, 0.28);
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 900px;
+      max-width: 950px;
     }
 
     .case-label {
       display: inline-block;
-      margin-bottom: 20px;
-      padding: 8px 18px;
-      border: 1px solid rgba(224, 188, 111, 0.65);
+      margin-bottom: 22px;
+      padding: 9px 20px;
+      border: 1px solid rgba(224, 188, 111, 0.7);
+      background: rgba(5, 5, 5, 0.7);
       color: #e0bc6f;
-      background: rgba(0, 0, 0, 0.55);
       font-family: Arial, Helvetica, sans-serif;
       font-size: 13px;
-      font-weight: bold;
+      font-weight: 700;
       letter-spacing: 4px;
       text-transform: uppercase;
     }
 
     .hero h1 {
-      margin-bottom: 12px;
       color: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
-      font-size: clamp(42px, 8vw, 88px);
+      font-size: clamp(48px, 8vw, 90px);
       font-weight: 800;
-      letter-spacing: 8px;
+      letter-spacing: 9px;
       line-height: 1.05;
-      text-shadow: 0 5px 30px rgba(0, 0, 0, 0.9);
+      text-shadow: 0 5px 30px rgba(0, 0, 0, 0.95);
     }
 
     .hero h2 {
-      color: #e0bc6f;
-      font-size: clamp(28px, 5vw, 48px);
+      margin-top: 16px;
+      color: #e7c679;
+      font-size: clamp(32px, 5vw, 52px);
       font-weight: normal;
-      letter-spacing: 2px;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+      letter-spacing: 1px;
+      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.95);
     }
 
     .hero-intro {
-      max-width: 720px;
-      margin: 26px auto 0;
-      color: #dddddd;
+      max-width: 760px;
+      margin: 28px auto 0;
+      color: #eeeeee;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 18px;
-      line-height: 1.7;
+      line-height: 1.65;
+      text-shadow: 0 3px 12px #000000;
     }
 
+    /* HLAVNÍ OBSAH */
+
     .page {
-      width: min(1080px, calc(100% - 36px));
+      width: min(1120px, calc(100% - 36px));
       margin: 0 auto;
-      padding: 65px 0 90px;
+      padding: 55px 0 90px;
     }
+
+    /* HUDBA HNED POD HERO OBRÁZKEM */
+
+    .music-section {
+      margin-bottom: 52px;
+      padding: 40px 30px;
+      text-align: center;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(35, 31, 24, 0.98),
+          rgba(14, 14, 14, 0.98)
+        );
+      border: 1px solid rgba(224, 188, 111, 0.3);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.42);
+    }
+
+    .section-kicker {
+      display: block;
+      margin-bottom: 8px;
+      color: #b99550;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .music-section h2 {
+      margin-bottom: 12px;
+      color: #e7c679;
+      font-size: clamp(30px, 4vw, 44px);
+    }
+
+    .music-section p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #d5d5d5;
+      font-size: 17px;
+    }
+
+    audio {
+      width: min(720px, 100%);
+      margin-top: 24px;
+      filter: sepia(24%) saturate(70%);
+    }
+
+    /* KARTY SPISU */
 
     .file-card {
       position: relative;
-      margin-bottom: 45px;
-      padding: 42px;
+      margin-bottom: 48px;
+      padding: 44px;
       overflow: hidden;
       background:
         linear-gradient(
           145deg,
-          rgba(32, 29, 24, 0.98),
-          rgba(15, 15, 15, 0.98)
+          rgba(31, 28, 23, 0.98),
+          rgba(14, 14, 14, 0.98)
         );
-      border: 1px solid rgba(224, 188, 111, 0.24);
+      border: 1px solid rgba(224, 188, 111, 0.25);
       border-radius: 4px;
       box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
     }
@@ -135,39 +190,29 @@
     .file-card::before {
       content: "SPIS 001";
       position: absolute;
-      top: 18px;
-      right: -28px;
-      padding: 7px 38px;
-      transform: rotate(35deg);
-      background: rgba(128, 21, 21, 0.78);
+      top: 19px;
+      right: -31px;
+      padding: 8px 42px;
+      transform: rotate(36deg);
+      background: rgba(138, 22, 22, 0.86);
       color: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 10px;
-      font-weight: bold;
+      font-weight: 700;
       letter-spacing: 2px;
     }
 
-    .section-kicker {
-      display: block;
-      margin-bottom: 8px;
-      color: #a88b52;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
     .file-card h2 {
-      margin-bottom: 22px;
+      margin-bottom: 23px;
+      padding-right: 70px;
       color: #e7c679;
-      font-size: clamp(28px, 4vw, 40px);
+      font-size: clamp(30px, 4vw, 43px);
       line-height: 1.25;
     }
 
     .file-card p {
-      margin-bottom: 20px;
-      color: #dddddd;
+      margin-bottom: 21px;
+      color: #e0e0e0;
       font-size: 18px;
     }
 
@@ -175,95 +220,115 @@
       margin-bottom: 0;
     }
 
+    /* ZÁZNAM PŘÍPADU */
+
     .summary {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 17px;
       margin-top: 30px;
     }
 
     .summary-box {
-      padding: 20px;
+      padding: 22px;
       background: rgba(255, 255, 255, 0.035);
-      border-left: 3px solid #9c7d43;
+      border-left: 3px solid #a28449;
     }
 
     .summary-box span {
       display: block;
-      margin-bottom: 7px;
-      color: #9c7d43;
+      margin-bottom: 8px;
+      color: #b5914b;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 11px;
-      font-weight: bold;
+      font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     .summary-box strong {
-      color: #f2f2f2;
+      color: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 15px;
       line-height: 1.5;
     }
 
     .quote {
-      margin: 38px 0 0;
-      padding: 26px 30px;
-      background: rgba(224, 188, 111, 0.06);
+      margin-top: 38px;
+      padding: 27px 30px;
+      color: #f1dbab;
+      background: rgba(224, 188, 111, 0.055);
       border-top: 1px solid rgba(224, 188, 111, 0.35);
       border-bottom: 1px solid rgba(224, 188, 111, 0.35);
-      color: #f1dfb5;
       font-size: 22px;
       font-style: italic;
       text-align: center;
     }
 
-    .music-card {
+    /* KAPITOLY */
+
+    .chapter-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      height: 48px;
+      margin-bottom: 18px;
+      padding: 0 14px;
+      border: 1px solid rgba(224, 188, 111, 0.52);
+      color: #e7c679;
+      background: rgba(224, 188, 111, 0.055);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .text-placeholder {
+      margin-top: 28px;
+      padding: 25px;
+      color: #bdb7aa;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px dashed rgba(224, 188, 111, 0.3);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
       text-align: center;
     }
 
-    .music-card p {
-      max-width: 700px;
-      margin-right: auto;
-      margin-left: auto;
-    }
+    /* ZÁVĚR */
 
-    audio {
-      width: min(680px, 100%);
-      margin-top: 18px;
-      filter: sepia(25%) saturate(70%);
-    }
-
-    .continuation {
-      padding: 55px 30px;
+    .closing {
+      padding: 55px 34px;
       text-align: center;
-      border: 1px dashed rgba(224, 188, 111, 0.35);
       background: rgba(224, 188, 111, 0.035);
+      border: 1px dashed rgba(224, 188, 111, 0.38);
     }
 
-    .continuation h2 {
-      margin-bottom: 15px;
-      color: #e0bc6f;
-      font-size: clamp(28px, 4vw, 40px);
+    .closing h2 {
+      margin-bottom: 18px;
+      color: #e7c679;
+      font-size: clamp(30px, 4vw, 44px);
     }
 
-    .continuation p {
-      color: #bbbbbb;
-      font-size: 17px;
+    .closing p {
+      max-width: 780px;
+      margin: 0 auto 20px;
+      color: #d5d5d5;
+      font-size: 18px;
     }
 
     .back-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-top: 32px;
-      padding: 14px 24px;
-      border: 1px solid rgba(224, 188, 111, 0.6);
-      background: transparent;
+      margin-top: 25px;
+      padding: 14px 25px;
+      border: 1px solid rgba(224, 188, 111, 0.62);
       color: #e0bc6f;
+      background: transparent;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 13px;
-      font-weight: bold;
+      font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
       transition: 0.25s ease;
@@ -275,7 +340,7 @@
     }
 
     footer {
-      padding: 25px 20px 45px;
+      padding: 26px 20px 45px;
       color: #777777;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 12px;
@@ -283,11 +348,13 @@
       text-align: center;
     }
 
+    /* MOBIL */
+
     @media (max-width: 760px) {
 
       .hero {
         min-height: 70vh;
-        padding-bottom: 48px;
+        padding: 52px 18px;
       }
 
       .hero h1 {
@@ -299,12 +366,20 @@
       }
 
       .page {
-        width: min(100% - 22px, 1080px);
-        padding-top: 38px;
+        width: min(100% - 22px, 1120px);
+        padding-top: 34px;
+      }
+
+      .music-section {
+        padding: 31px 20px;
       }
 
       .file-card {
-        padding: 30px 22px;
+        padding: 31px 22px;
+      }
+
+      .file-card h2 {
+        padding-right: 40px;
       }
 
       .file-card p {
@@ -320,6 +395,10 @@
         font-size: 19px;
       }
 
+      .closing {
+        padding: 42px 22px;
+      }
+
     }
 
   </style>
@@ -328,11 +407,15 @@
 
 <body>
 
+  <!-- HLAVNÍ FILMOVÝ OBRÁZEK -->
+
   <header class="hero">
 
     <div class="hero-content">
 
-      <span class="case-label">Projekt Za obrazovkou</span>
+      <span class="case-label">
+        Projekt Za obrazovkou
+      </span>
 
       <h1>SPIS 001</h1>
 
@@ -349,9 +432,41 @@
 
   <main class="page">
 
+    <!-- HUDBA MUSÍ BÝT HNED POD HLAVNÍM OBRÁZKEM -->
+
+    <section class="music-section">
+
+      <span class="section-kicker">
+        Zvuková stopa případu
+      </span>
+
+      <h2>🎵 Hudba spisu</h2>
+
+      <p>
+        Pusť si hudbu a vstup do příběhu,
+        ve kterém se pravda pomalu vynořuje ze stínu.
+      </p>
+
+      <audio controls preload="metadata">
+
+        <source
+          src="spis-001-theme.mp3.mpeg"
+          type="audio/mpeg"
+        >
+
+        Váš prohlížeč nepodporuje přehrávání audia.
+
+      </audio>
+
+    </section>
+
+    <!-- ZÁZNAM PŘÍPADU -->
+
     <section class="file-card">
 
-      <span class="section-kicker">Základní informace</span>
+      <span class="section-kicker">
+        Základní informace
+      </span>
 
       <h2>Záznam případu</h2>
 
@@ -369,7 +484,7 @@
 
         <div class="summary-box">
           <span>Stav</span>
-          <strong>Příběh se odkrývá</strong>
+          <strong>Odhalování pravdy</strong>
         </div>
 
       </div>
@@ -380,9 +495,13 @@
 
     </section>
 
+    <!-- ÚVOD -->
+
     <section class="file-card">
 
-      <span class="section-kicker">Úvod do případu</span>
+      <span class="section-kicker">
+        Úvod do případu
+      </span>
 
       <h2>Za obrazovkou</h2>
 
@@ -406,9 +525,114 @@
 
     </section>
 
+    <!-- KAPITOLA 1 -->
+
     <section class="file-card">
 
-      <span class="section-kicker">Smysl spisu</span>
+      <div class="chapter-number">
+        01
+      </div>
+
+      <span class="section-kicker">
+        Kapitola první
+      </span>
+
+      <h2>Začátek důvěry</h2>
+
+      <div class="text-placeholder">
+        Sem vložíme přesný schválený text první kapitoly,
+        beze změn a bez domýšlení.
+      </div>
+
+    </section>
+
+    <!-- KAPITOLA 2 -->
+
+    <section class="file-card">
+
+      <div class="chapter-number">
+        02
+      </div>
+
+      <span class="section-kicker">
+        Kapitola druhá
+      </span>
+
+      <h2>Prosby o pomoc</h2>
+
+      <div class="text-placeholder">
+        Sem vložíme přesný schválený text druhé kapitoly.
+      </div>
+
+    </section>
+
+    <!-- KAPITOLA 3 -->
+
+    <section class="file-card">
+
+      <div class="chapter-number">
+        03
+      </div>
+
+      <span class="section-kicker">
+        Kapitola třetí
+      </span>
+
+      <h2>První pochybnosti</h2>
+
+      <div class="text-placeholder">
+        Sem vložíme přesný schválený text třetí kapitoly.
+      </div>
+
+    </section>
+
+    <!-- KAPITOLA 4 -->
+
+    <section class="file-card">
+
+      <div class="chapter-number">
+        04
+      </div>
+
+      <span class="section-kicker">
+        Kapitola čtvrtá
+      </span>
+
+      <h2>Když se začali ozývat další</h2>
+
+      <div class="text-placeholder">
+        Sem vložíme přesný schválený text čtvrté kapitoly.
+      </div>
+
+    </section>
+
+    <!-- KAPITOLA 5 -->
+
+    <section class="file-card">
+
+      <div class="chapter-number">
+        05
+      </div>
+
+      <span class="section-kicker">
+        Kapitola pátá
+      </span>
+
+      <h2>Maska začíná padat</h2>
+
+      <div class="text-placeholder">
+        Sem vložíme přesný schválený text páté kapitoly.
+      </div>
+
+    </section>
+
+    <!-- SMYSL SPISU -->
+
+    <section class="file-card">
+
+      <span class="section-kicker">
+        Smysl spisu
+      </span>
 
       <h2>Není to příběh o pomstě</h2>
 
@@ -433,37 +657,25 @@
 
     </section>
 
-    <section class="file-card music-card">
+    <!-- ZÁVĚREČNÉ ZAMYŠLENÍ -->
 
-      <span class="section-kicker">Zvuková stopa</span>
+    <section class="closing">
 
-      <h2>🎵 Hudba spisu</h2>
+      <span class="section-kicker">
+        Závěrečné zamyšlení
+      </span>
+
+      <h2>Počkám, než někoho odsoudím</h2>
 
       <p>
-        Hudba patří k atmosféře případu.
-        Pusť si ji a vstup do příběhu,
-        ve kterém pravda postupně vystupuje ze stínu.
+        Internet nám často ukáže jen úryvek.
+        Jednu fotografii, jednu větu nebo několik vteřin videa.
+        Skutečný příběh ale může být mnohem složitější.
       </p>
 
-      <audio controls preload="metadata">
-
-        <source
-          src="spis-001-theme.mp3.mpeg"
-          type="audio/mpeg"
-        >
-
-        Váš prohlížeč nepodporuje přehrávání audia.
-
-      </audio>
-
-    </section>
-
-    <section class="continuation">
-
-      <h2>Příběh pokračuje…</h2>
-
       <p>
-        Další části spisu budeme postupně odkrývat.
+        Než někomu bezmezně uvěřím nebo někoho odsoudím,
+        zkusím se zastavit a podívat se i za obrazovku.
       </p>
 
       <a class="back-button" href="za-obrazovkou.html">
