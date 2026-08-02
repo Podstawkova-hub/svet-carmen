@@ -146,7 +146,7 @@
       font-size:13px;
     }
 
-    .support-btn{
+    .top-like-btn{
       border:0;
       border-radius:11px;
       padding:12px 21px;
@@ -163,15 +163,19 @@
         box-shadow .2s ease;
     }
 
-    .support-btn:hover{
+    .top-like-btn:hover:not(:disabled){
       transform:translateY(-1px);
       box-shadow:0 13px 28px rgba(189,73,111,.26);
     }
 
-    .support-btn.supported{
+    .top-like-btn.is-liked{
       color:var(--pink-dark);
       background:white;
       outline:2px solid var(--pink);
+    }
+
+    .top-like-btn:disabled{
+      cursor:default;
     }
 
     /* Úvodní obraz Carmen */
@@ -654,7 +658,7 @@
         gap:10px 28px;
       }
 
-      .support-btn{
+      .top-like-btn{
         width:100%;
       }
 
@@ -844,12 +848,13 @@
     </div>
 
     <button
-      class="support-btn"
-      id="supportButton"
+      class="top-like-btn"
+      id="likeButton"
       type="button"
-      aria-label="Podpořit Svět Carmen"
+      aria-label="Dát stránce O Carmen srdce"
+      disabled
     >
-      ♡ Podpořit Svět Carmen
+      ♡ Líbí se mi…
     </button>
 
   </nav>
@@ -892,11 +897,6 @@
       </div>
 
     </section>
-<section class="likes-section">
-  <div class="carmen-like" data-page="carmen">
-    <p>❤️ Pokud se vám tato stránka líbila, můžete jí dát své srdce.</p>
-  </div>
-</section>
     <section class="section why-section">
 
       <div class="section-inner">
@@ -1084,9 +1084,7 @@
       <a class="story-btn" href="svet.html">
         Objev příběhy Světa Carmen &nbsp; →
       </a>
-      
-<div class="carmen-like" data-page="carmen"></div>
-      
+
     </section>
 
   </main>
@@ -1096,29 +1094,99 @@
   </footer>
 
   <script>
-    const supportButton = document.getElementById("supportButton");
+    (function () {
+      "use strict";
 
-    if (localStorage.getItem("svetCarmenSupported") === "yes") {
-      supportButton.classList.add("supported");
-      supportButton.textContent = "♥ Děkuji za podporu";
-    }
+      const SUPABASE_URL = "https://lggboavbzzvoomveewtl.supabase.co";
+      const SUPABASE_KEY = "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+      const PAGE_ID = "carmen";
 
-    supportButton.addEventListener("click", function () {
-      const isSupported =
-        supportButton.classList.toggle("supported");
+      const likeButton = document.getElementById("likeButton");
+      const storageKey = `svetCarmenLike_${PAGE_ID}`;
 
-      if (isSupported) {
-        supportButton.textContent = "♥ Děkuji za podporu";
-        localStorage.setItem("svetCarmenSupported", "yes");
-      } else {
-        supportButton.textContent = "♡ Podpořit Svět Carmen";
-        localStorage.removeItem("svetCarmenSupported");
+      function getToday() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
       }
-    });
-  </script>
-  
 
-  <script src="likes.js?v=1"></script>
+      async function callSupabase(functionName) {
+        const response = await fetch(
+          `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
+          {
+            method: "POST",
+            headers: {
+              apikey: SUPABASE_KEY,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              requested_page_id: PAGE_ID
+            })
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(await response.text());
+        }
+
+        return response.json();
+      }
+
+      function showReady(count) {
+        likeButton.textContent = `♡ Líbí se mi ${Number(count) || 0}`;
+        likeButton.disabled = false;
+        likeButton.classList.remove("is-liked");
+      }
+
+      function showThankYou(count) {
+        likeButton.textContent = `♥ Děkujeme ${Number(count) || 0}`;
+        likeButton.disabled = true;
+        likeButton.classList.add("is-liked");
+      }
+
+      async function loadLikes() {
+        try {
+          const count = await callSupabase("get_page_likes");
+
+          if (localStorage.getItem(storageKey) === getToday()) {
+            showThankYou(count);
+          } else {
+            showReady(count);
+          }
+        } catch (error) {
+          console.error("Počet srdcí se nepodařilo načíst:", error);
+          likeButton.textContent = "♡ Líbí se mi";
+          likeButton.disabled = false;
+        }
+      }
+
+      likeButton.addEventListener("click", async function () {
+        if (
+          likeButton.disabled ||
+          localStorage.getItem(storageKey) === getToday()
+        ) {
+          return;
+        }
+
+        likeButton.disabled = true;
+        likeButton.textContent = "♡ Odesílám…";
+
+        try {
+          const newCount = await callSupabase("add_page_like");
+          localStorage.setItem(storageKey, getToday());
+          showThankYou(newCount);
+        } catch (error) {
+          console.error("Srdce se nepodařilo odeslat:", error);
+          likeButton.textContent = "♡ Zkusit znovu";
+          likeButton.disabled = false;
+        }
+      });
+
+      loadLikes();
+    })();
+  </script>
 
 </body>
 </html>
