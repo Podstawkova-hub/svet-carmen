@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Kontakt | Svět Carmen</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: #2a1724;
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(239, 120, 173, 0.2),
+          transparent 35%
+        ),
+        linear-gradient(
+          180deg,
+          #fffafc,
+          #fff1f7
+        );
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .contact-card {
+      width: min(600px, 100%);
+      padding: 52px 30px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(159, 47, 108, 0.18);
+      border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(105, 37, 78, 0.14);
+    }
+
+    h1 {
+      margin: 0 0 26px;
+      color: #9f2f6c;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 6vw, 58px);
+      font-weight: normal;
+    }
+
+    .email {
+      margin: 0;
+      color: #2a1724;
+      font-size: clamp(20px, 3vw, 28px);
+      overflow-wrap: anywhere;
+      user-select: text;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 34px;
+      padding: 13px 24px;
+      color: #ffffff;
+      background: linear-gradient(
+        135deg,
+        #9f2f6c,
+        #ef78ad
+      );
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="contact-card">
+
+    <h1>Kontakt</h1>
+
+    <p class="email">
+      stihy913@gmail.com
+    </p>
+
+    <a class="back" href="index.html">
+      ← Zpět na hlavní stránku
+    </a>
+
+  </main>
+
+</body>
+</html>
