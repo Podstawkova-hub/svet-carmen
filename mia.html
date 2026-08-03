@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>MIA | Svět Carmen</title>
+
+  <meta
+    name="description"
+    content="MIA – skutečný příběh, který zachránil dva životy."
+  >
+
+  <style>
+    :root {
+      --pink: #d33286;
+      --pink-light: #ff6bb5;
+      --pink-soft: #fff0f6;
+      --cream: #fffaf5;
+      --gold: #b77a1e;
+      --gold-soft: #ffe8ad;
+      --text: #33242b;
+      --muted: #6e5962;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(255, 190, 220, 0.38),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 90% 30%,
+          rgba(255, 226, 180, 0.30),
+          transparent 34%
+        ),
+        linear-gradient(
+          180deg,
+          #fff1f7 0%,
+          #fffaf7 48%,
+          #fff0f6 100%
+        );
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* Horní menu */
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 72px;
+      padding: 12px 5vw;
+      background: rgba(255, 250, 248, 0.95);
+      border-bottom: 1px solid rgba(211, 50, 134, 0.14);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      color: var(--text);
+      text-decoration: none;
+      line-height: 0.95;
+      font-size: 18px;
+    }
+
+    .brand strong {
+      display: block;
+      color: var(--pink);
+      font-size: 27px;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: var(--pink);
+    }
+
+    /* Hlavní část */
+
+    .page {
+      width: min(1120px, 92%);
+      margin: 42px auto 80px;
+    }
+
+    .hero {
+      overflow: hidden;
+      background: var(--white);
+      border-radius: 34px;
+      box-shadow:
+        0 22px 70px rgba(87, 44, 65, 0.16);
+    }
+
+    .cover-wrap {
+      padding: 18px 18px 0;
+    }
+
+    .cover {
+      width: 100%;
+      max-height: 680px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 26px 26px 10px 10px;
+      background: #241c1b;
+    }
+
+    .hero-content {
+      max-width: 780px;
+      padding: 48px 54px 58px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 27px;
+      padding: 12px 20px;
+      color: #8c5b13;
+      background: linear-gradient(
+        90deg,
+        #fff0bd,
+        #ffe3a2
+      );
+      border-radius: 999px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      box-shadow: 0 8px 24px rgba(170, 112, 25, 0.12);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #b72c76;
+      font-size: clamp(48px, 8vw, 84px);
+      line-height: 1;
+      letter-spacing: 2px;
+    }
+
+    .main-subtitle {
+      margin-bottom: 28px;
+      color: var(--text);
+      font-size: clamp(24px, 4vw, 38px);
+      line-height: 1.25;
+      font-style: italic;
+    }
+
+    .claim {
+      margin-bottom: 30px;
+      color: var(--pink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .intro {
+      color: var(--text);
+      font-size: clamp(19px, 2.2vw, 24px);
+      line-height: 1.8;
+    }
+
+    .intro p + p {
+      margin-top: 22px;
+    }
+
+    .intro strong {
+      color: #23171d;
+    }
+
+    .read-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 38px;
+      padding: 16px 30px;
+      color: var(--white);
+      background: linear-gradient(
+        90deg,
+        var(--pink),
+        var(--pink-light)
+      );
+      border-radius: 999px;
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 12px 28px rgba(211, 50, 134, 0.26);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .read-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(211, 50, 134, 0.34);
+    }
+
+    .closing {
+      margin-top: 34px;
+      color: var(--muted);
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    /* Mobil */
+
+    @media (max-width: 720px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 5vw 15px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .page {
+        width: min(94%, 620px);
+        margin-top: 24px;
+      }
+
+      .hero {
+        border-radius: 24px;
+      }
+
+      .cover-wrap {
+        padding: 9px 9px 0;
+      }
+
+      .cover {
+        border-radius: 18px 18px 8px 8px;
+      }
+
+      .hero-content {
+        padding: 34px 26px 42px;
+      }
+
+      .badge {
+        margin-bottom: 22px;
+        padding: 10px 16px;
+      }
+
+      .intro {
+        line-height: 1.7;
+      }
+
+      .read-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      Svět
+      <strong>Carmen♡</strong>
+    </a>
+
+    <nav class="nav-links" aria-label="Hlavní menu">
+      <a href="index.html">Domů</a>
+      <a href="svet.html">Svět příběhů</a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <article class="hero">
+
+      <div class="cover-wrap">
+        <img
+          class="cover"
+          src="obalka-mia.png.png"
+          alt="Obálka skutečného příběhu MIA"
+        >
+      </div>
+
+      <div class="hero-content">
+
+        <div class="badge">
+          🐾 Skutečný příběh
+        </div>
+
+        <h1>MIA</h1>
+
+        <p class="main-subtitle">
+          Příběh, který napsal sám život.
+        </p>
+
+        <p class="claim">
+          Skutečný příběh, který zachránil dva životy.
+        </p>
+
+        <div class="intro">
+
+          <p>
+            Některé příběhy vzniknou v lidské fantazii.
+            Jiné napíše sám život.
+          </p>
+
+          <p>
+            Tohle není pohádka.
+          </p>
+
+          <p>
+            Je to skutečný příběh o malé fence,
+            která změnila svět člověku.
+            A o člověku, který změnil svět jí.
+          </p>
+
+          <p>
+            Příběh o naději, druhé šanci
+            a přátelství, které nelze popsat slovy.
+          </p>
+
+          <p>
+            A o tom, že někdy stačí jediný pohled,
+            aby se změnil celý život.
+          </p>
+
+        </div>
+
+        <a class="read-button" href="#kniha">
+          📖 Začít číst
+        </a>
+
+        <p class="closing">
+          Možná v tomto příběhu najdeš
+          i kousek svého vlastního života.
+        </p>
+
+      </div>
+
+    </article>
+
+  </main>
+
+</body>
+</html>
