@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Prolog – Než přišla Mia | Svět Carmen</title>
+
+  <meta
+    name="description"
+    content="Prolog skutečného příběhu MIA – Než přišla Mia."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --pink: #df4b91;
+      --pink-light: #ff77b8;
+      --pink-dark: #ae2d6d;
+      --paper: #fffaf6;
+      --cream: #fff2f7;
+      --text: #322129;
+      --muted: #755e68;
+      --dark: #1d1118;
+
+      --serif:
+        "Playfair Display",
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      --hand:
+        "Caveat",
+        "Segoe Print",
+        cursive;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(
+          circle at 8% 10%,
+          rgba(255, 179, 215, 0.23),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 92% 12%,
+          rgba(255, 221, 172, 0.22),
+          transparent 28%
+        ),
+        linear-gradient(
+          180deg,
+          #fff9fc 0%,
+          #fff1f7 55%,
+          #fff9f1 100%
+        );
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      border: 0;
+      font: inherit;
+    }
+
+    /* ===================================
+       HORNÍ MUSTR SVĚTA CARMEN
+       =================================== */
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 76px;
+      padding: 10px 5vw;
+      background: rgba(255, 250, 248, 0.97);
+      border-bottom: 1px solid rgba(174, 45, 109, 0.12);
+      box-shadow: 0 8px 25px rgba(74, 31, 51, 0.06);
+      backdrop-filter: blur(15px);
+    }
+
+    .brand {
+      justify-self: start;
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 0.9;
+    }
+
+    .brand strong {
+      display: block;
+      color: var(--pink);
+      font-size: 29px;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .home-link {
+      justify-self: center;
+      color: #69545e;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+
+    .home-link:hover {
+      color: var(--pink-dark);
+    }
+
+    .like-button {
+      justify-self: end;
+      min-width: 145px;
+      padding: 11px 18px;
+      color: #fff;
+      background:
+        linear-gradient(
+          135deg,
+          var(--pink-dark),
+          var(--pink-light)
+        );
+      border-radius: 999px;
+      box-shadow:
+        0 10px 25px rgba(174, 45, 109, 0.23);
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .like-button.is-liked {
+      color: var(--pink-dark);
+      background: #fff;
+      outline: 2px solid var(--pink-light);
+    }
+
+    .like-button:disabled {
+      cursor: default;
+    }
+
+    /* ===================================
+       HLAVNÍ OBSAH
+       =================================== */
+
+    .page {
+      width: min(1420px, 95%);
+      margin: 24px auto 44px;
+    }
+
+    /* HERO */
+
+    .hero {
+      overflow: hidden;
+      background: #fff;
+      border-radius: 30px;
+      box-shadow:
+        0 25px 70px rgba(70, 31, 49, 0.16);
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* HUDBA PROLOGU */
+
+    .music-section {
+      display: grid;
+      grid-template-columns:
+        minmax(240px, 0.8fr)
+        minmax(320px, 1.2fr);
+      align-items: center;
+      gap: 36px;
+      margin-top: 24px;
+      padding:
+        clamp(25px, 4vw, 40px)
+        clamp(24px, 6vw, 70px);
+      background:
+        linear-gradient(
+          135deg,
+          #fffdf9 0%,
+          #fff1f7 100%
+        );
+      border: 1px solid rgba(174, 45, 109, 0.1);
+      border-radius: 28px;
+      box-shadow:
+        0 18px 48px rgba(75, 33, 52, 0.09);
+    }
+
+    .music-copy h2 {
+      margin-bottom: 8px;
+      color: var(--pink-dark);
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.08;
+    }
+
+    .music-copy p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .music-soon {
+      display: flex;
+      min-height: 68px;
+      padding: 15px 24px;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      color: #fff;
+      background:
+        linear-gradient(
+          135deg,
+          #291720,
+          #4a2033
+        );
+      border-radius: 999px;
+      box-shadow:
+        0 13px 32px rgba(59, 25, 42, 0.2);
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* KRÁTKÝ PROLOG */
+
+    .prolog-text {
+      max-width: 900px;
+      margin: 26px auto 0;
+      padding:
+        clamp(35px, 6vw, 60px)
+        clamp(25px, 7vw, 75px);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(174, 45, 109, 0.1);
+      border-radius: 28px;
+      box-shadow:
+        0 18px 50px rgba(74, 31, 51, 0.09);
+      text-align: center;
+    }
+
+    .prolog-text h1 {
+      margin-bottom: 23px;
+      color: var(--pink-dark);
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.15;
+    }
+
+    .prolog-text p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #49333d;
+      font-size: clamp(19px, 2vw, 23px);
+      line-height: 1.8;
+    }
+
+    .prolog-text p + p {
+      margin-top: 18px;
+    }
+
+    .closing-line {
+      margin-top: 28px !important;
+      color: var(--pink-dark) !important;
+      font-family: var(--hand);
+      font-size: clamp(27px, 3.3vw, 40px) !important;
+      font-weight: 700;
+      line-height: 1.15 !important;
+    }
+
+    .back-button {
+      display: inline-flex;
+      margin-top: 34px;
+      padding: 14px 25px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      color: #fff;
+      background:
+        linear-gradient(
+          90deg,
+          var(--pink-dark),
+          var(--pink-light)
+        );
+      border-radius: 999px;
+      box-shadow:
+        0 13px 30px rgba(174, 45, 109, 0.24);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .back-button:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 18px 38px rgba(174, 45, 109, 0.33);
+    }
+
+    /* ===================================
+       MOBIL
+       =================================== */
+
+    @media (max-width: 850px) {
+      .music-section {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar {
+        grid-template-columns: 1fr auto;
+        min-height: 70px;
+        padding: 9px 4vw;
+      }
+
+      .brand {
+        font-size: 14px;
+      }
+
+      .brand strong {
+        font-size: 25px;
+      }
+
+      .home-link {
+        display: none;
+      }
+
+      .like-button {
+        min-width: 0;
+        max-width: 132px;
+        padding: 10px 13px;
+        overflow: hidden;
+        font-size: 12px;
+        text-overflow: ellipsis;
+      }
+
+      .page {
+        width: 100%;
+        margin-top: 0;
+      }
+
+      .hero {
+        border-radius: 0;
+      }
+
+      .music-section,
+      .prolog-text {
+        margin-right: 14px;
+        margin-left: 14px;
+      }
+
+      .music-section {
+        padding: 27px 20px;
+      }
+
+      .music-soon {
+        border-radius: 22px;
+      }
+
+      .prolog-text {
+        padding: 38px 23px;
+      }
+
+      .back-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+
+    <a class="brand" href="index.html">
+      Svět
+      <strong>Carmen♡</strong>
+    </a>
+
+    <a class="home-link" href="index.html">
+      Domů
+    </a>
+
+    <button
+      class="like-button"
+      id="likeButton"
+      type="button"
+      aria-label="Dát Prologu MIA srdce"
+      disabled
+    >
+      ♡ Líbí se mi…
+    </button>
+
+  </header>
+
+  <main class="page">
+
+    <!-- HERO PROLOGU -->
+
+    <section class="hero">
+
+      <img
+        src="prolog-hero.png"
+        alt="Prolog – Než přišla Mia"
+      >
+
+    </section>
+
+    <!-- HUDBA PROLOGU -->
+
+    <section class="music-section">
+
+      <div class="music-copy">
+
+        <h2>
+          🎵 Hudba Prologu
+        </h2>
+
+        <p>
+          Filmová píseň o konci jednoho snu
+          a začátku nové cesty.
+        </p>
+
+      </div>
+
+      <div class="music-soon">
+        🎼 Hudbu Prologu právě připravujeme
+      </div>
+
+    </section>
+
+    <!-- KRÁTKÝ TEXT -->
+
+    <section class="prolog-text">
+
+      <h1>
+        Každý příběh má svůj začátek
+      </h1>
+
+      <p>
+        Ne ten, který si pamatujeme nejvíc.
+        Ale ten, který nás potichu připravoval
+        na všechno, co mělo přijít.
+      </p>
+
+      <p>
+        Než přišla Mia, existoval jiný sen.
+        Fotbal nebyl jen hra.
+        Byl to můj svět, moje cesta
+        a místo, kde jsem přesně věděla, kým jsem.
+      </p>
+
+      <p>
+        Ten sen neskončil proto,
+        že jsem se vzdala.
+        Skončil proto,
+        že už nešlo pokračovat.
+      </p>
+
+      <p class="closing-line">
+        A právě jeho konec otevřel dveře
+        tomu nejkrásnějšímu.
+      </p>
+
+      <a
+        class="back-button"
+        href="mia.html"
+      >
+        ← Zpět na MIA
+      </a>
+
+    </section>
+
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const SUPABASE_URL =
+        "https://lggboavbzzvoomveewtl.supabase.co";
+
+      const SUPABASE_KEY =
+        "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+
+      const PAGE_ID = "mia-prolog";
+
+      const likeButton =
+        document.getElementById("likeButton");
+
+      const storageKey =
+        `svetCarmenLike_${PAGE_ID}`;
+
+      function getToday() {
+        const now = new Date();
+
+        const year =
+          now.getFullYear();
+
+        const month =
+          String(now.getMonth() + 1)
+            .padStart(2, "0");
+
+        const day =
+          String(now.getDate())
+            .padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+      }
+
+      async function callSupabase(
+        functionName
+      ) {
+        const response = await fetch(
+          `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
+          {
+            method: "POST",
+            headers: {
+              apikey: SUPABASE_KEY,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              requested_page_id: PAGE_ID
+            })
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            await response.text()
+          );
+        }
+
+        return response.json();
+      }
+
+      function showReady(count) {
+        likeButton.textContent =
+          `♡ Líbí se mi ${Number(count) || 0}`;
+
+        likeButton.disabled = false;
+
+        likeButton.classList.remove(
+          "is-liked"
+        );
+      }
+
+      function showThankYou(count) {
+        likeButton.textContent =
+          `♥ Děkujeme ${Number(count) || 0}`;
+
+        likeButton.disabled = true;
+
+        likeButton.classList.add(
+          "is-liked"
+        );
+      }
+
+      async function loadLikes() {
+        try {
+          const count =
+            await callSupabase(
+              "get_page_likes"
+            );
+
+          if (
+            localStorage.getItem(storageKey) ===
+            getToday()
+          ) {
+            showThankYou(count);
+          } else {
+            showReady(count);
+          }
+        } catch (error) {
+          console.error(
+            "Počet srdcí se nepodařilo načíst:",
+            error
+          );
+
+          likeButton.textContent =
+            "♡ Líbí se mi";
+
+          likeButton.disabled = false;
+        }
+      }
+
+      likeButton.addEventListener(
+        "click",
+        async function () {
+          if (
+            likeButton.disabled ||
+            localStorage.getItem(storageKey) ===
+              getToday()
+          ) {
+            return;
+          }
+
+          likeButton.disabled = true;
+          likeButton.textContent =
+            "♡ Odesílám…";
+
+          try {
+            const newCount =
+              await callSupabase(
+                "add_page_like"
+              );
+
+            localStorage.setItem(
+              storageKey,
+              getToday()
+            );
+
+            showThankYou(newCount);
+          } catch (error) {
+            console.error(
+              "Srdce se nepodařilo odeslat:",
+              error
+            );
+
+            likeButton.textContent =
+              "♡ Zkusit znovu";
+
+            likeButton.disabled = false;
+          }
+        }
+      );
+
+      loadLikes();
+    })();
+  </script>
+
+</body>
+</html>
