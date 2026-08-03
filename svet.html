@@ -6,15 +6,42 @@
 
 <title>Svět Carmen | Příběhy</title>
 
-<meta name="description" content="Vstup do Světa Carmen a objev komiksy, knihy a skutečné příběhy tvořené srdcem.">
+<meta
+  name="description"
+  content="Vstup do Světa Carmen a objev komiksy, knihy a skutečné příběhy tvořené srdcem."
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+  rel="stylesheet"
+>
 
 <style>
 :root{
-  --dark:#1f1420;
-  --pink:#ff74b8;
+  --dark:#21131c;
+  --dark-soft:#38222f;
+
+  --pink:#f35ca8;
+  --pink-light:#ff92c8;
+  --pink-pale:#fff0f7;
   --deep:#a52d6f;
+
   --gold:#ffd37d;
-  --white:rgba(255,255,255,.82);
+  --cream:#fff9f2;
+
+  --serif:
+    "Playfair Display",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  --hand:
+    "Caveat",
+    "Segoe Print",
+    cursive;
 }
 
 *{
@@ -28,67 +55,182 @@ html{
 }
 
 body{
-  font-family:Georgia, "Times New Roman", serif;
-  background:linear-gradient(180deg,#fff5fb,#ffe8f3,#fff8ef);
+  min-height:100vh;
+  overflow-x:hidden;
+
   color:#2d1c28;
+
+  background:
+    radial-gradient(
+      circle at 10% 7%,
+      rgba(255,166,207,.22),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 92% 13%,
+      rgba(255,218,166,.22),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #fff8fb 0%,
+      #ffeaf4 46%,
+      #fff8ef 100%
+    );
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 }
 
 a{
-  text-decoration:none;
   color:inherit;
+  text-decoration:none;
 }
 
 img{
-  max-width:100%;
   display:block;
+  max-width:100%;
 }
 
-nav{
+button{
+  border:0;
+  font:inherit;
+}
+
+/* ==================================================
+   HORNÍ LIŠTA
+   ================================================== */
+
+.topbar{
   position:sticky;
-  top:18px;
-  z-index:10;
-  width:max-content;
-  max-width:92%;
-  margin:18px auto 0;
-  padding:10px 18px;
+  top:0;
+  z-index:1000;
+
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+
+  min-height:78px;
+  padding:10px 5vw;
+
+  background:rgba(255,251,248,.95);
+  border-bottom:1px solid rgba(165,45,111,.12);
+
+  box-shadow:
+    0 10px 35px rgba(89,39,67,.08);
+
+  backdrop-filter:blur(16px);
+}
+
+.brand{
+  justify-self:start;
+
+  color:#322129;
+
+  font-family:var(--serif);
+  font-size:16px;
+  line-height:.9;
+}
+
+.brand strong{
+  display:block;
+
+  color:var(--pink);
+
+  font-size:29px;
+  font-style:italic;
+  font-weight:500;
+}
+
+.main-nav{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:4px;
-  background:rgba(255,255,255,.78);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(165,45,111,.14);
-  border-radius:999px;
-  box-shadow:0 18px 40px rgba(165,45,111,.14);
+  gap:30px;
+
+  font-family:Arial, Helvetica, sans-serif;
 }
 
-nav a{
-  display:inline-block;
-  margin:0 11px;
-  color:var(--deep);
+.main-nav a{
+  position:relative;
+
+  color:#624b57;
+
   font-size:15px;
-  font-weight:bold;
+  font-weight:700;
+
+  transition:color .2s ease;
+}
+
+.main-nav a::after{
+  position:absolute;
+  right:50%;
+  bottom:-10px;
+  left:50%;
+
+  height:2px;
+
+  content:"";
+
+  background:linear-gradient(
+    90deg,
+    var(--deep),
+    var(--pink)
+  );
+
+  transition:
+    right .25s ease,
+    left .25s ease;
+}
+
+.main-nav a:hover{
+  color:var(--deep);
+}
+
+.main-nav a:hover::after{
+  right:0;
+  left:0;
 }
 
 .top-like-btn{
-  margin-left:10px;
-  padding:10px 18px;
-  border:0;
-  border-radius:999px;
+  justify-self:end;
+
+  min-width:145px;
+  padding:11px 18px;
+
   color:#fff;
-  background:linear-gradient(135deg,var(--deep),var(--pink));
+
+  background:linear-gradient(
+    135deg,
+    var(--deep),
+    var(--pink)
+  );
+
+  border-radius:999px;
+
+  box-shadow:
+    0 10px 25px rgba(165,45,111,.24);
+
   cursor:pointer;
-  box-shadow:0 9px 23px rgba(165,45,111,.21);
-  transition:transform .2s ease, box-shadow .2s ease;
+
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:14px;
+  font-weight:700;
+
   white-space:nowrap;
-  font:inherit;
-  font-size:15px;
-  font-weight:bold;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
 }
 
 .top-like-btn:hover:not(:disabled){
-  transform:translateY(-1px);
-  box-shadow:0 13px 28px rgba(165,45,111,.27);
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 15px 33px rgba(165,45,111,.32);
 }
 
 .top-like-btn.is-liked{
@@ -101,134 +243,698 @@ nav a{
   cursor:default;
 }
 
-header{
-  padding:85px 7vw 55px;
+/* ==================================================
+   ÚVODNÍ FILMOVÝ HERO
+   ================================================== */
+
+.hero{
+  position:relative;
+  isolation:isolate;
+
+  display:grid;
+  min-height:520px;
+  place-items:center;
+
+  overflow:hidden;
+
+  padding:
+    clamp(70px,9vw,120px)
+    7vw
+    clamp(85px,10vw,140px);
+
   text-align:center;
+}
+
+.hero::before{
+  position:absolute;
+  z-index:-3;
+  inset:0;
+
+  content:"";
+
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(255,255,255,.88),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 18% 42%,
+      rgba(255,126,184,.2),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 82% 34%,
+      rgba(255,211,125,.24),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255,245,250,.95),
+      rgba(255,225,239,.88)
+    );
+}
+
+.hero::after{
+  position:absolute;
+  z-index:-2;
+  right:0;
+  bottom:0;
+  left:0;
+
+  height:210px;
+
+  content:"";
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(255,255,255,.72)
+    );
+
+  pointer-events:none;
+}
+
+.hero-glow{
+  position:absolute;
+  z-index:-1;
+
+  width:520px;
+  height:520px;
+
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:50%;
+
+  box-shadow:
+    0 0 90px rgba(255,255,255,.72),
+    inset 0 0 80px rgba(255,116,184,.08);
+
+  opacity:.75;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+
+  max-width:1040px;
 }
 
 .badge{
-  display:inline-block;
-  margin-bottom:18px;
-  padding:9px 16px;
-  color:#7b2354;
-  font-weight:bold;
-  background:rgba(255,116,184,.18);
-  border:1px solid rgba(255,116,184,.35);
+  display:inline-flex;
+
+  margin-bottom:22px;
+  padding:9px 17px;
+
+  align-items:center;
+  gap:8px;
+
+  color:#862456;
+
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,116,184,.32);
   border-radius:999px;
+
+  box-shadow:
+    0 10px 28px rgba(165,45,111,.1);
+
+  font-size:15px;
+  font-weight:700;
 }
 
-h1{
-  margin:0 0 20px;
+.hero h1{
+  margin-bottom:23px;
+
   color:var(--deep);
-  font-size:clamp(50px,8vw,96px);
-  line-height:1;
+
+  font-family:var(--serif);
+  font-size:clamp(56px,9vw,110px);
+  font-weight:600;
+
+  line-height:.95;
+
+  text-shadow:
+    0 8px 35px rgba(165,45,111,.1);
+}
+
+.hero-divider{
+  display:flex;
+
+  width:min(420px,76%);
+  margin:0 auto 28px;
+
+  align-items:center;
+  gap:17px;
+
+  color:var(--pink);
+}
+
+.hero-divider::before,
+.hero-divider::after{
+  flex:1;
+  height:1px;
+  content:"";
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(165,45,111,.65)
+  );
+}
+
+.hero-divider::after{
+  background:linear-gradient(
+    90deg,
+    rgba(165,45,111,.65),
+    transparent
+  );
 }
 
 .subtitle{
-  max-width:850px;
+  max-width:820px;
   margin:0 auto;
-  font-size:clamp(23px,3vw,38px);
-  line-height:1.35;
+
+  color:#3b2632;
+
+  font-size:clamp(22px,3vw,36px);
+  line-height:1.4;
 }
 
-section{
-  width:min(1200px,92%);
-  margin:70px auto;
+/* ==================================================
+   HLAVNÍ PROJEKTY
+   ================================================== */
+
+.projects{
+  position:relative;
+  z-index:2;
+
+  width:min(1360px,94%);
+  margin:-45px auto 0;
+  padding-bottom:90px;
 }
 
-section h2{
-  margin-bottom:18px;
-  color:var(--deep);
-  text-align:center;
-  font-size:48px;
-}
-
-.intro{
+.projects-heading{
   max-width:850px;
-  margin:0 auto 50px;
-  color:#4b3541;
+  margin:0 auto 45px;
+
   text-align:center;
-  font-size:21px;
-  line-height:1.7;
 }
 
-.projects-grid{
+.projects-heading h2{
+  margin-bottom:13px;
+
+  color:var(--deep);
+
+  font-family:var(--serif);
+  font-size:clamp(42px,6vw,68px);
+  font-weight:600;
+}
+
+.projects-heading p{
+  color:#59404d;
+
+  font-size:clamp(17px,2vw,21px);
+  line-height:1.65;
+}
+
+/* ==================================================
+   FILMOVÉ PANELY
+   ================================================== */
+
+.project-list{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:40px;
+  gap:26px;
 }
 
-.project-card{
+.project-panel{
+  position:relative;
+  isolation:isolate;
+
+  min-height:410px;
+
   overflow:hidden;
-  border-radius:28px;
-  background:#fff;
-  box-shadow:0 20px 45px rgba(0,0,0,.08);
-  transition:.3s;
+
+  border:1px solid rgba(255,255,255,.52);
+  border-radius:32px;
+
+  box-shadow:
+    0 23px 55px rgba(63,30,48,.18);
+
+  transform:translateZ(0);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
 }
 
-.project-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 30px 60px rgba(165,45,111,.18);
+.project-panel:hover{
+  transform:translateY(-6px);
+
+  box-shadow:
+    0 33px 72px rgba(95,37,69,.25);
 }
 
-.project-cover{
+.project-image{
+  position:absolute;
+  z-index:-3;
+  inset:0;
+
   width:100%;
-  display:block;
+  height:100%;
+
+  object-fit:cover;
+
+  transition:transform .75s ease;
 }
 
-.project-content{
-  padding:28px;
+.project-panel:hover .project-image{
+  transform:scale(1.035);
+}
+
+.project-panel::before{
+  position:absolute;
+  z-index:-2;
+  inset:0;
+
+  content:"";
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15,12,18,.88) 0%,
+      rgba(20,15,21,.69) 36%,
+      rgba(20,15,21,.13) 69%,
+      transparent 100%
+    );
+}
+
+.project-panel::after{
+  position:absolute;
+  z-index:-1;
+  inset:0;
+
+  content:"";
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.03),
+      rgba(0,0,0,.21)
+    );
+
+  pointer-events:none;
+}
+
+.project-copy{
+  display:flex;
+  min-height:410px;
+  max-width:610px;
+  padding:
+    clamp(38px,6vw,72px)
+    clamp(32px,6vw,80px);
+
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+
+  color:#fff;
 }
 
 .project-status{
-  display:inline-block;
-  margin-bottom:18px;
+  display:inline-flex;
+
+  margin-bottom:17px;
   padding:8px 14px;
+
+  align-items:center;
+  gap:7px;
+
+  color:#fff3dc;
+
+  background:rgba(62,30,48,.57);
+  border:1px solid rgba(255,255,255,.22);
   border-radius:999px;
-  color:#8a5a00;
-  background:#ffe9b6;
-  font-size:14px;
-  font-weight:bold;
+
+  backdrop-filter:blur(8px);
+
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:12px;
+  font-weight:800;
+
+  letter-spacing:.06em;
+  text-transform:uppercase;
 }
 
-.project-content h3{
-  margin-bottom:18px;
-  color:var(--deep);
-  font-size:34px;
+.project-copy h3{
+  margin-bottom:15px;
+
+  font-family:var(--serif);
+  font-size:clamp(42px,6vw,76px);
+  font-weight:600;
+
+  line-height:1.01;
+
+  text-shadow:
+    0 8px 30px rgba(0,0,0,.35);
 }
 
-.project-content p{
+.project-copy p{
+  max-width:530px;
   margin-bottom:25px;
-  line-height:1.8;
+
+  color:rgba(255,249,244,.92);
+
+  font-size:clamp(17px,2vw,21px);
+  line-height:1.55;
+
+  text-shadow:
+    0 4px 17px rgba(0,0,0,.44);
 }
 
 .project-btn{
-  display:inline-block;
-  padding:14px 24px;
-  border-radius:999px;
+  display:inline-flex;
+
+  padding:13px 23px;
+
+  align-items:center;
+  gap:8px;
+
   color:#fff;
-  background:linear-gradient(90deg,#c12f7b,#ff74b8);
-  font-weight:bold;
+
+  background:linear-gradient(
+    90deg,
+    #bd2e76,
+    var(--pink)
+  );
+
+  border:1px solid rgba(255,255,255,.17);
+  border-radius:999px;
+
+  box-shadow:
+    0 14px 30px rgba(20,8,14,.28);
+
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:15px;
+  font-weight:800;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
 }
 
-@media(max-width:700px){
-  nav{
-    width:92%;
-    flex-wrap:wrap;
-    border-radius:24px;
-    text-align:center;
+.project-btn:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 18px 38px rgba(20,8,14,.36);
+}
+
+/* ==================================================
+   JEDNOTLIVÉ PROJEKTY
+   ================================================== */
+
+.project-beruska{
+  min-height:470px;
+}
+
+.project-beruska .project-image{
+  object-position:center 43%;
+}
+
+.project-beruska .project-copy h3{
+  color:#ffcf7d;
+}
+
+.project-obrazovka{
+  min-height:430px;
+}
+
+.project-obrazovka .project-image{
+  object-position:center 44%;
+}
+
+.project-obrazovka::before{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,240,247,.96) 0%,
+      rgba(255,228,240,.87) 37%,
+      rgba(255,220,237,.25) 67%,
+      transparent 100%
+    );
+}
+
+.project-obrazovka .project-copy{
+  color:#3c2130;
+}
+
+.project-obrazovka .project-status{
+  color:#8d285d;
+
+  background:rgba(255,255,255,.62);
+  border-color:rgba(165,45,111,.17);
+}
+
+.project-obrazovka .project-copy h3{
+  color:var(--deep);
+
+  text-shadow:
+    0 7px 25px rgba(255,255,255,.7);
+}
+
+.project-obrazovka .project-copy p{
+  color:#4c3340;
+
+  text-shadow:
+    0 3px 14px rgba(255,255,255,.85);
+}
+
+.project-mia{
+  min-height:440px;
+}
+
+.project-mia .project-image{
+  object-position:center 51%;
+}
+
+.project-mia::before{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(22,20,18,.84) 0%,
+      rgba(27,24,20,.62) 34%,
+      rgba(21,18,14,.13) 67%,
+      transparent 100%
+    );
+}
+
+.project-mia .project-copy h3{
+  color:#ff9bc8;
+}
+
+/* ==================================================
+   ZÁVĚREČNÁ VĚTA
+   ================================================== */
+
+.page-ending{
+  padding:40px 20px 70px;
+
+  text-align:center;
+}
+
+.page-ending p{
+  color:var(--deep);
+
+  font-family:var(--hand);
+  font-size:clamp(28px,4vw,46px);
+  font-weight:700;
+}
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media(max-width:900px){
+  .main-nav{
+    gap:17px;
   }
 
-  nav a{
-    margin:6px 7px;
+  .project-panel{
+    min-height:430px;
+  }
+
+  .project-image{
+    object-position:center;
+  }
+
+  .project-panel::before,
+  .project-obrazovka::before,
+  .project-mia::before{
+    background:
+      linear-gradient(
+        90deg,
+        rgba(24,16,22,.86) 0%,
+        rgba(24,16,22,.64) 50%,
+        rgba(24,16,22,.2) 100%
+      );
+  }
+
+  .project-obrazovka::before{
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255,238,246,.94) 0%,
+        rgba(255,226,239,.78) 54%,
+        rgba(255,226,239,.22) 100%
+      );
+  }
+}
+
+/* ==================================================
+   MOBIL
+   ================================================== */
+
+@media(max-width:700px){
+  .topbar{
+    grid-template-columns:1fr auto;
+    min-height:70px;
+    padding:9px 4vw;
+  }
+
+  .brand{
+    font-size:14px;
+  }
+
+  .brand strong{
+    font-size:25px;
+  }
+
+  .main-nav{
+    display:none;
   }
 
   .top-like-btn{
-    margin:6px 7px;
+    min-width:0;
+    max-width:136px;
+    padding:10px 13px;
+
+    overflow:hidden;
+
+    font-size:12px;
+    text-overflow:ellipsis;
   }
 
-  header{
-    padding-top:60px;
+  .hero{
+    min-height:430px;
+
+    padding:
+      65px 7vw
+      100px;
+  }
+
+  .hero-glow{
+    width:400px;
+    height:400px;
+  }
+
+  .hero h1{
+    font-size:57px;
+  }
+
+  .subtitle{
+    font-size:22px;
+  }
+
+  .projects{
+    width:92%;
+    margin-top:-48px;
+  }
+
+  .projects-heading{
+    margin-bottom:32px;
+  }
+
+  .project-list{
+    gap:19px;
+  }
+
+  .project-panel,
+  .project-beruska,
+  .project-obrazovka,
+  .project-mia{
+    min-height:520px;
+
+    border-radius:25px;
+  }
+
+  .project-image{
+    object-position:center;
+  }
+
+  .project-panel::before,
+  .project-mia::before{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(14,10,14,.04) 0%,
+        rgba(14,10,14,.15) 29%,
+        rgba(14,10,14,.88) 70%,
+        rgba(14,10,14,.97) 100%
+      );
+  }
+
+  .project-obrazovka::before{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255,239,247,.02) 0%,
+        rgba(255,226,239,.16) 32%,
+        rgba(255,231,241,.9) 69%,
+        rgba(255,239,246,.98) 100%
+      );
+  }
+
+  .project-copy{
+    min-height:520px;
+    max-width:none;
+
+    padding:
+      230px 25px
+      30px;
+
+    justify-content:flex-end;
+  }
+
+  .project-copy h3{
+    font-size:43px;
+  }
+
+  .project-copy p{
+    font-size:17px;
+    line-height:1.5;
+  }
+
+  .project-btn{
+    width:100%;
+    justify-content:center;
+  }
+}
+
+@media(max-width:420px){
+  .hero h1{
+    font-size:51px;
+  }
+
+  .project-panel,
+  .project-beruska,
+  .project-obrazovka,
+  .project-mia,
+  .project-copy{
+    min-height:500px;
+  }
+
+  .project-copy{
+    padding-top:210px;
   }
 }
 </style>
@@ -236,10 +942,18 @@ section h2{
 
 <body>
 
-<nav>
-  <a href="index.html">Carmen</a>
-  <a href="#projekty">Hlavní projekty</a>
-  <a href="#pripravujeme">Připravujeme</a>
+<header class="topbar">
+
+  <a class="brand" href="index.html">
+    Svět
+    <strong>Carmen♡</strong>
+  </a>
+
+  <nav class="main-nav" aria-label="Hlavní navigace">
+    <a href="index.html">Domů</a>
+    <a href="#projekty">Projekty</a>
+    <a href="#pripravujeme">MIA</a>
+  </nav>
 
   <button
     class="top-like-btn"
@@ -250,135 +964,212 @@ section h2{
   >
     ♡ Líbí se mi…
   </button>
-</nav>
 
-<header>
-  <div class="badge">🌸 Vítej mezi příběhy</div>
-
-  <h1>Svět Carmen</h1>
-
-  <p class="subtitle">
-    Vyber si příběh, který tě osloví.<br>
-    Každý z nich vzniká srdcem.
-  </p>
 </header>
 
-<section id="projekty">
+<main>
 
-  <h2>Hlavní projekty</h2>
+  <!-- FILMOVÝ ÚVOD -->
 
-  <p class="intro">
-    Každý příběh ve Světě Carmen vzniká z opravdových emocí, přátelství, odvahy a naděje.
-    Vyber si, kterým chceš začít.
-  </p>
+  <section class="hero">
 
-  <div class="projects-grid">
+    <div class="hero-glow" aria-hidden="true"></div>
 
-    <article class="project-card">
-      <img
-        class="project-cover"
-        src="obalka.png"
-        alt="Obálka komiksu Beruška a Brouček"
+    <div class="hero-content">
+
+      <div class="badge">
+        🌸 Vítej mezi příběhy
+      </div>
+
+      <h1>Svět Carmen</h1>
+
+      <div class="hero-divider">
+        ♡
+      </div>
+
+      <p class="subtitle">
+        Vyber si příběh, který tě osloví.<br>
+        Každý z nich vzniká srdcem.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- HLAVNÍ PROJEKTY -->
+
+  <section class="projects" id="projekty">
+
+    <div class="projects-heading">
+
+      <h2>Hlavní projekty</h2>
+
+      <p>
+        Každý příběh ve Světě Carmen otevírá jiné dveře.
+        Vyber si svět, do kterého chceš právě teď vstoupit.
+      </p>
+
+    </div>
+
+    <div class="project-list">
+
+      <!-- BERUŠKA A BROUČEK -->
+
+      <article class="project-panel project-beruska">
+
+        <img
+          class="project-image"
+          src="obalka.png"
+          alt="Obálka komiksu Beruška a Brouček"
+        >
+
+        <div class="project-copy">
+
+          <span class="project-status">
+            📖 Komiks · Vydáno
+          </span>
+
+          <h3>
+            Beruška<br>
+            a Brouček
+          </h3>
+
+          <p>
+            Příběh jedné zprávy, která změnila dva životy.
+            Komiks o skutečném přátelství a okamžicích,
+            které zůstávají v srdci.
+          </p>
+
+          <a
+            class="project-btn"
+            href="beruska-a-broucek.html"
+          >
+            📖 Vstoupit do příběhu →
+          </a>
+
+        </div>
+
+      </article>
+
+      <!-- ZA OBRAZOVKOU -->
+
+      <article class="project-panel project-obrazovka">
+
+        <img
+          class="project-image"
+          src="za-obrazovkou.jpg.png"
+          alt="Obálka projektu Za obrazovkou"
+        >
+
+        <div class="project-copy">
+
+          <span class="project-status">
+            🗂 Archiv skutečných příběhů
+          </span>
+
+          <h3>
+            Za obrazovkou
+          </h3>
+
+          <p>
+            Internet ukáže jen několik vteřin.
+            Skutečný příběh bývá mnohem delší
+            a ne všechno je takové, jak se na první pohled zdá.
+          </p>
+
+          <a
+            class="project-btn"
+            href="za-obrazovkou.html"
+          >
+            🗂 Vstoupit do archivu →
+          </a>
+
+        </div>
+
+      </article>
+
+      <!-- MIA -->
+
+      <article
+        class="project-panel project-mia"
+        id="pripravujeme"
       >
 
-      <div class="project-content">
-        <span class="project-status published">📖 Vydáno</span>
+        <img
+          class="project-image"
+          src="obalka-mia-final-v1.png"
+          alt="MIA – skutečný příběh"
+        >
 
-        <h3>🐞 Beruška a Brouček</h3>
+        <div class="project-copy">
 
-        <p>
-          Příběh jedné zprávy, která změnila dva životy.
-          Komiks o skutečném přátelství, podpoře a okamžicích,
-          které zůstávají v srdci.
-        </p>
+          <span class="project-status">
+            🐾 Skutečný příběh
+          </span>
 
-        <a class="project-btn" href="beruska-a-broucek.html">
-          Přečíst komiks
-        </a>
-      </div>
-    </article>
+          <h3>MIA</h3>
 
-    <article class="project-card">
-      <img
-        class="project-cover"
-        src="za-obrazovkou.jpg.png"
-        alt="Obálka projektu Za obrazovkou"
-      >
+          <p>
+            Příběh, který napsal sám život.
+            Příběh o odvaze, naději a přátelství,
+            které změnilo všechno.
+          </p>
 
-      <div class="project-content">
-        <span class="project-status">🆕 Novinka</span>
+          <a
+            class="project-btn"
+            href="mia.html"
+          >
+            🐾 Otevřít příběh →
+          </a>
 
-        <h3>Za obrazovkou</h3>
+        </div>
 
-        <p>
-          Série příběhů inspirovaných skutečnými událostmi ze sociálních sítí.
-          Internet může spojovat i ubližovat a skutečný příběh bývá často
-          mnohem delší, než se na první pohled zdá.
-        </p>
+      </article>
 
-        <a class="project-btn" href="za-obrazovkou.html">
-          Vstoupit do příběhu →
-        </a>
-      </div>
-    </article>
+    </div>
 
-<article class="project-card" id="pripravujeme">
+  </section>
 
-  <img
-    class="project-cover"
-    src="obalka-mia-final-v1.png"
-    alt="MIA – skutečný příběh"
-  >
-
-  <div class="project-content">
-
-    <span class="project-status">
-      🐾 Skutečný příběh
-    </span>
-
-    <h3>MIA</h3>
-
-    <p class="project-subtitle">
-      <em>Příběh, který napsal sám život.</em>
-    </p>
-
+  <section class="page-ending">
     <p>
-      Některé příběhy nevymyslí žádný spisovatel.
-      Napíše je sám život.
+      Děkuji, že jsi součástí Světa Carmen. ♡
     </p>
+  </section>
 
-    <p>
-      Příběh o odvaze, naději a přátelství,
-      které změnilo všechno.
-    </p>
-
-    <a class="project-btn" href="mia.html">
-      📖 Vstoupit do příběhu
-    </a>
-
-  </div>
-
-</article>
-
-  </div>
-</section>
+</main>
 
 <script>
 (function () {
   "use strict";
 
-  const SUPABASE_URL = "https://lggboavbzzvoomveewtl.supabase.co";
-  const SUPABASE_KEY = "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+  const SUPABASE_URL =
+    "https://lggboavbzzvoomveewtl.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+
   const PAGE_ID = "svet-pribehu";
 
-  const likeButton = document.getElementById("likeButton");
-  const storageKey = `svetCarmenLike_${PAGE_ID}`;
+  const likeButton =
+    document.getElementById("likeButton");
+
+  const storageKey =
+    `svetCarmenLike_${PAGE_ID}`;
 
   function getToday() {
     const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
+
+    const year =
+      now.getFullYear();
+
+    const month =
+      String(now.getMonth() + 1)
+        .padStart(2, "0");
+
+    const day =
+      String(now.getDate())
+        .padStart(2, "0");
+
     return `${year}-${month}-${day}`;
   }
 
@@ -387,10 +1178,12 @@ section h2{
       `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
       {
         method: "POST",
+
         headers: {
           apikey: SUPABASE_KEY,
           "Content-Type": "application/json"
         },
+
         body: JSON.stringify({
           requested_page_id: PAGE_ID
         })
@@ -398,61 +1191,104 @@ section h2{
     );
 
     if (!response.ok) {
-      throw new Error(await response.text());
+      throw new Error(
+        await response.text()
+      );
     }
 
     return response.json();
   }
 
   function showReady(count) {
-    likeButton.textContent = `♡ Líbí se mi ${Number(count) || 0}`;
+    likeButton.textContent =
+      `♡ Líbí se mi ${Number(count) || 0}`;
+
     likeButton.disabled = false;
-    likeButton.classList.remove("is-liked");
+
+    likeButton.classList.remove(
+      "is-liked"
+    );
   }
 
   function showThankYou(count) {
-    likeButton.textContent = `♥ Děkujeme ${Number(count) || 0}`;
+    likeButton.textContent =
+      `♥ Děkujeme ${Number(count) || 0}`;
+
     likeButton.disabled = true;
-    likeButton.classList.add("is-liked");
+
+    likeButton.classList.add(
+      "is-liked"
+    );
   }
 
   async function loadLikes() {
     try {
-      const count = await callSupabase("get_page_likes");
+      const count =
+        await callSupabase(
+          "get_page_likes"
+        );
 
-      if (localStorage.getItem(storageKey) === getToday()) {
+      if (
+        localStorage.getItem(storageKey) ===
+        getToday()
+      ) {
         showThankYou(count);
       } else {
         showReady(count);
       }
     } catch (error) {
-      console.error("Počet srdcí se nepodařilo načíst:", error);
-      likeButton.textContent = "♡ Líbí se mi";
+      console.error(
+        "Počet srdcí se nepodařilo načíst:",
+        error
+      );
+
+      likeButton.textContent =
+        "♡ Líbí se mi";
+
       likeButton.disabled = false;
     }
   }
 
-  likeButton.addEventListener("click", async function () {
-    if (
-      likeButton.disabled ||
-      localStorage.getItem(storageKey) === getToday()
-    ) {
-      return;
-    }
+  likeButton.addEventListener(
+    "click",
+    async function () {
+      if (
+        likeButton.disabled ||
+        localStorage.getItem(storageKey) ===
+          getToday()
+      ) {
+        return;
+      }
 
-    likeButton.disabled = true;
-    likeButton.textContent = "♡ Odesílám…";
+      likeButton.disabled = true;
+      likeButton.textContent =
+        "♡ Odesílám…";
 
-    try {
-      const newCount = await callSupabase("add_page_like");
-      localStorage.setItem(storageKey, getToday());
-      showThankYou(newCount);
-    } catch (error) {
-      console.error("Srdce se nepodařilo odeslat:", error);
-      likeButton.textContent = "♡ Zkusit znovu";
-      likeButton.disabled = false;
+      try {
+        const newCount =
+          await callSupabase(
+            "add_page_like"
+          );
+
+        localStorage.setItem(
+          storageKey,
+          getToday()
+        );
+
+        showThankYou(newCount);
+      } catch (error) {
+        console.error(
+          "Srdce se nepodařilo odeslat:",
+          error
+        );
+
+        likeButton.textContent =
+          "♡ Zkusit znovu";
+
+        likeButton.disabled = false;
+      }
     }
-  });
+  );
 
   loadLikes();
 })();
