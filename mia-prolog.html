@@ -24,21 +24,25 @@
   >
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap"
     rel="stylesheet"
   >
 
   <style>
     :root {
       --pink: #df4b91;
-      --pink-light: #ff78b9;
-      --pink-dark: #a92b69;
-      --rose: #c34f7d;
-      --wine: #4b2034;
-      --deep: #1d1017;
-      --cream: #fff5eb;
-      --gold: #dfad6a;
-      --text-light: #fff9f3;
+      --pink-light: #ff7abb;
+      --pink-dark: #aa2d6d;
+
+      --green: #8da892;
+      --green-dark: #405c4b;
+      --green-light: #dce9d8;
+
+      --cream: #fff8ed;
+      --paper: #fffaf2;
+      --brown: #745448;
+      --text: #34473b;
+      --muted: #6f665e;
 
       --serif:
         "Playfair Display",
@@ -65,16 +69,8 @@
     body {
       min-height: 100vh;
       overflow-x: hidden;
-      color: var(--text-light);
-      background:
-        linear-gradient(
-          180deg,
-          #fff8f5 0,
-          #f7d4cf 22%,
-          #a45661 51%,
-          #48202f 76%,
-          #180e14 100%
-        );
+      color: var(--text);
+      background: #f6eee5;
       font-family:
         Georgia,
         "Times New Roman",
@@ -95,23 +91,22 @@
       border: 0;
     }
 
-    /* =========================================
+    /* ==================================================
        HORNÍ MUSTR SVĚTA CARMEN
-       ========================================= */
+       ================================================== */
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       min-height: 76px;
       padding: 10px 5vw;
-      color: #322129;
-      background: rgba(255, 250, 248, 0.96);
-      border-bottom: 1px solid rgba(169, 43, 105, 0.12);
-      box-shadow: 0 8px 25px rgba(64, 25, 43, 0.08);
+      background: rgba(255, 251, 247, 0.97);
+      border-bottom: 1px solid rgba(170, 45, 109, 0.12);
+      box-shadow: 0 8px 25px rgba(74, 31, 51, 0.07);
       backdrop-filter: blur(15px);
     }
 
@@ -160,7 +155,7 @@
         );
       border-radius: 999px;
       box-shadow:
-        0 10px 25px rgba(169, 43, 105, 0.24);
+        0 10px 25px rgba(170, 45, 109, 0.24);
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 14px;
@@ -174,7 +169,7 @@
     .like-button:hover:not(:disabled) {
       transform: translateY(-2px);
       box-shadow:
-        0 14px 30px rgba(169, 43, 105, 0.32);
+        0 14px 31px rgba(170, 45, 109, 0.32);
     }
 
     .like-button.is-liked {
@@ -187,61 +182,15 @@
       cursor: default;
     }
 
-    /* =========================================
-       FILMOVÁ STRÁNKA
-       ========================================= */
-
-    .cinematic-page {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cinematic-page::before {
-      position: absolute;
-      z-index: 0;
-      top: 34%;
-      left: -12%;
-      width: 55vw;
-      height: 55vw;
-      content: "";
-      background:
-        radial-gradient(
-          circle,
-          rgba(255, 186, 158, 0.32),
-          transparent 68%
-        );
-      pointer-events: none;
-    }
-
-    .cinematic-page::after {
-      position: absolute;
-      z-index: 0;
-      right: -15%;
-      bottom: 2%;
-      width: 60vw;
-      height: 60vw;
-      content: "";
-      background:
-        radial-gradient(
-          circle,
-          rgba(220, 68, 131, 0.19),
-          transparent 68%
-        );
-      pointer-events: none;
-    }
-
-    /* =========================================
-       HERO – ŠIROKÝ, BEZ BÍLÉHO RÁMEČKU
-       ========================================= */
+    /* ==================================================
+       HERO – PŘES CELOU ŠÍŘKU
+       ================================================== */
 
     .hero {
       position: relative;
-      z-index: 1;
       width: 100%;
       overflow: hidden;
-      background: #d8ae91;
-      box-shadow:
-        0 26px 70px rgba(29, 12, 20, 0.25);
+      background: #d9bea9;
     }
 
     .hero img {
@@ -250,144 +199,183 @@
       height: auto;
     }
 
-    .hero-fade {
+    .hero::after {
       position: absolute;
       right: 0;
       bottom: 0;
       left: 0;
-      height: 28%;
-      background:
-        linear-gradient(
-          180deg,
-          transparent,
-          rgba(92, 39, 53, 0.24),
-          rgba(103, 47, 57, 0.72)
-        );
-      pointer-events: none;
-    }
-
-    /* =========================================
-       FILMOVÝ PŘECHOD POD HERO
-       ========================================= */
-
-    .story-world {
-      position: relative;
-      z-index: 1;
-      margin-top: -2px;
-      padding:
-        clamp(46px, 7vw, 100px)
-        6vw
-        clamp(60px, 9vw, 120px);
-      background:
-        linear-gradient(
-          180deg,
-          rgba(113, 53, 61, 0.98) 0%,
-          rgba(89, 38, 52, 0.99) 30%,
-          rgba(55, 24, 38, 1) 66%,
-          rgba(24, 14, 20, 1) 100%
-        );
-    }
-
-    .story-world::before {
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      height: 140px;
+      height: 30%;
       content: "";
       background:
         linear-gradient(
           180deg,
-          rgba(223, 173, 106, 0.16),
-          transparent
+          transparent,
+          rgba(221, 231, 211, 0.2),
+          rgba(224, 234, 216, 0.9)
         );
       pointer-events: none;
     }
 
-    .story-world::after {
+    /* ==================================================
+       CELÝ FILMOVÝ SVĚT PROLOGU
+       ================================================== */
+
+    .prolog-world {
+      position: relative;
+      isolation: isolate;
+      margin-top: -3px;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 15% 12%,
+          rgba(255, 211, 225, 0.75),
+          transparent 27%
+        ),
+        radial-gradient(
+          circle at 85% 17%,
+          rgba(255, 239, 211, 0.85),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 48% 77%,
+          rgba(196, 217, 193, 0.72),
+          transparent 42%
+        ),
+        linear-gradient(
+          180deg,
+          #f8eee5 0%,
+          #e8ebd9 36%,
+          #cbdac5 69%,
+          #7f9c84 100%
+        );
+    }
+
+    .prolog-world::before {
       position: absolute;
-      right: 5vw;
-      bottom: 3%;
+      z-index: -1;
+      top: 110px;
+      right: -3vw;
       content: "6";
-      color: rgba(255, 255, 255, 0.025);
+      color: rgba(196, 94, 132, 0.17);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: clamp(260px, 37vw, 610px);
+      font-size: clamp(310px, 44vw, 690px);
       font-weight: 900;
-      line-height: 0.75;
+      line-height: 0.8;
+      transform: rotate(-7deg);
+      pointer-events: none;
+    }
+
+    .prolog-world::after {
+      position: absolute;
+      z-index: -1;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 430px;
+      content: "";
+      background:
+        linear-gradient(
+          180deg,
+          transparent,
+          rgba(57, 84, 65, 0.18),
+          rgba(45, 69, 53, 0.76)
+        );
       pointer-events: none;
     }
 
     .content-width {
-      position: relative;
-      z-index: 2;
-      width: min(1180px, 100%);
+      width: min(1320px, 90%);
       margin: 0 auto;
     }
 
-    /* =========================================
-       HUDBA – VOLNĚ VE FILMOVÉM PROSTORU
-       ========================================= */
+    /* ==================================================
+       HUDBA + DRES NA VĚŠÁKU
+       ================================================== */
 
-    .music-section {
+    .music-scene {
+      position: relative;
       display: grid;
       grid-template-columns:
-        minmax(260px, 0.75fr)
-        minmax(380px, 1.25fr);
+        minmax(310px, 0.9fr)
+        minmax(340px, 1.1fr);
       align-items: center;
-      gap: clamp(35px, 6vw, 85px);
-      padding-bottom:
-        clamp(52px, 7vw, 84px);
-      border-bottom:
-        1px solid rgba(255, 232, 218, 0.2);
+      gap: clamp(45px, 7vw, 110px);
+      min-height: 580px;
+      padding:
+        clamp(62px, 8vw, 115px)
+        0
+        clamp(64px, 8vw, 105px);
+    }
+
+    .music-copy {
+      position: relative;
+      z-index: 3;
     }
 
     .music-label {
-      margin-bottom: 11px;
-      color: #f3bbd3;
+      margin-bottom: 16px;
+      color: var(--pink-dark);
       font-family: Arial, Helvetica, sans-serif;
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
     .music-copy h2 {
-      margin-bottom: 12px;
-      color: #fff6ec;
+      max-width: 570px;
+      margin-bottom: 18px;
+      color: var(--green-dark);
       font-family: var(--serif);
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.08;
+      font-size: clamp(44px, 6vw, 76px);
+      font-weight: 600;
+      line-height: 1.02;
+    }
+
+    .music-copy h2::after {
+      display: block;
+      width: 180px;
+      height: 2px;
+      margin-top: 18px;
+      content: "";
+      background:
+        linear-gradient(
+          90deg,
+          var(--pink),
+          transparent
+        );
     }
 
     .music-copy p {
-      max-width: 500px;
-      color: rgba(255, 244, 236, 0.78);
-      font-size: clamp(17px, 1.7vw, 20px);
-      line-height: 1.65;
+      max-width: 540px;
+      color: #524f48;
+      font-size: clamp(18px, 1.8vw, 22px);
+      line-height: 1.7;
     }
 
     .music-soon {
       position: relative;
-      display: flex;
-      min-height: 72px;
-      padding: 17px 28px;
+      display: inline-flex;
+      min-width: min(500px, 100%);
+      min-height: 64px;
+      margin-top: 30px;
+      padding: 16px 28px;
       align-items: center;
       justify-content: center;
-      gap: 12px;
       overflow: hidden;
-      color: #fff8f1;
+      color: #fff;
       background:
         linear-gradient(
-          110deg,
-          rgba(20, 12, 17, 0.72),
-          rgba(63, 25, 43, 0.7)
+          100deg,
+          #a62d68,
+          #dc5a96,
+          #ba3f79
         );
       border:
-        1px solid rgba(255, 224, 214, 0.18);
+        1px solid rgba(255, 255, 255, 0.28);
       border-radius: 999px;
       box-shadow:
-        0 18px 46px rgba(14, 6, 10, 0.24);
-      backdrop-filter: blur(10px);
+        0 16px 40px rgba(170, 45, 109, 0.25);
       text-align: center;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 16px;
@@ -405,14 +393,14 @@
         linear-gradient(
           90deg,
           transparent,
-          rgba(255, 255, 255, 0.12),
+          rgba(255, 255, 255, 0.22),
           transparent
         );
       transform: skewX(-18deg);
-      animation: musicShine 5s ease-in-out infinite;
+      animation: shine 5s ease-in-out infinite;
     }
 
-    @keyframes musicShine {
+    @keyframes shine {
       0%,
       65% {
         left: -45%;
@@ -423,50 +411,282 @@
       }
     }
 
-    /* =========================================
-       FILMOVÝ TEXT – BEZ KARTY
-       ========================================= */
+    /* ==================================================
+       SPORTOVNÍ ZÁKOUTÍ
+       ================================================== */
 
-    .prolog-story {
+    .locker-scene {
       position: relative;
-      padding-top:
-        clamp(60px, 9vw, 115px);
+      min-height: 470px;
+    }
+
+    .wood-rail {
+      position: absolute;
+      top: 26px;
+      right: 3%;
+      left: 3%;
+      height: 38px;
+      background:
+        linear-gradient(
+          180deg,
+          #8c654e,
+          #664532
+        );
+      border-radius: 5px;
+      box-shadow:
+        0 10px 23px rgba(67, 43, 30, 0.24);
+      transform: rotate(-1deg);
+    }
+
+    .hook {
+      position: absolute;
+      top: 36px;
+      width: 12px;
+      height: 22px;
+      border: 3px solid #5e4335;
+      border-top: 0;
+      border-radius: 0 0 9px 9px;
+    }
+
+    .hook-one {
+      left: 34%;
+    }
+
+    .hook-two {
+      right: 21%;
+    }
+
+    .hanger {
+      position: absolute;
+      top: 61px;
+      left: 29%;
+      width: 170px;
+      height: 70px;
+      border-top: 4px solid #a27148;
+      transform: rotate(-2deg);
+    }
+
+    .hanger::before,
+    .hanger::after {
+      position: absolute;
+      top: 0;
+      width: 95px;
+      height: 4px;
+      content: "";
+      background: #a27148;
+    }
+
+    .hanger::before {
+      left: 2px;
+      transform: rotate(-29deg);
+      transform-origin: left;
+    }
+
+    .hanger::after {
+      right: 2px;
+      transform: rotate(29deg);
+      transform-origin: right;
+    }
+
+    .jersey {
+      position: absolute;
+      z-index: 2;
+      top: 105px;
+      left: 20%;
+      width: 245px;
+      height: 285px;
+      background:
+        linear-gradient(
+          135deg,
+          #b63370,
+          #dc5b91 48%,
+          #9b285e
+        );
+      clip-path:
+        polygon(
+          25% 0,
+          39% 8%,
+          61% 8%,
+          75% 0,
+          100% 16%,
+          84% 39%,
+          76% 34%,
+          76% 100%,
+          24% 100%,
+          24% 34%,
+          16% 39%,
+          0 16%
+        );
+      filter:
+        drop-shadow(
+          0 18px 18px rgba(76, 32, 50, 0.25)
+        );
+      transform: rotate(-2deg);
+    }
+
+    .jersey::before {
+      position: absolute;
+      top: 26px;
+      left: 50%;
+      width: 64px;
+      height: 28px;
+      content: "";
+      border: 8px solid rgba(255, 255, 255, 0.65);
+      border-top: 0;
+      border-radius: 0 0 50% 50%;
+      transform: translateX(-50%);
+    }
+
+    .jersey-number {
+      position: absolute;
+      top: 68px;
+      right: 0;
+      left: 0;
+      color: #fff8e9;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 122px;
+      font-weight: 900;
+      text-shadow:
+        0 5px 11px rgba(82, 23, 47, 0.25);
+    }
+
+    .jersey-paw {
+      position: absolute;
+      top: 43px;
+      right: 0;
+      left: 0;
+      color: #fff0e2;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .boots {
+      position: absolute;
+      z-index: 3;
+      top: 145px;
+      right: 8%;
+      width: 130px;
+      height: 190px;
+      transform: rotate(6deg);
+    }
+
+    .boot {
+      position: absolute;
+      width: 55px;
+      height: 154px;
+      background:
+        linear-gradient(
+          180deg,
+          #e06a9e,
+          #a62e69
+        );
+      border-radius: 22px 22px 28px 28px;
+      box-shadow:
+        0 12px 22px rgba(78, 32, 49, 0.24);
+    }
+
+    .boot::before {
+      position: absolute;
+      top: 18px;
+      right: 10px;
+      left: 10px;
+      height: 5px;
+      content: "";
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #fff 0 5px,
+          transparent 5px 9px
+        );
+    }
+
+    .boot::after {
+      position: absolute;
+      right: 10px;
+      bottom: -12px;
+      left: 10px;
+      height: 16px;
+      content: "";
+      background: #742247;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .boot-one {
+      left: 0;
+      transform: rotate(-8deg);
+    }
+
+    .boot-two {
+      right: 0;
+      transform: rotate(8deg);
+    }
+
+    .hand-note {
+      position: absolute;
+      z-index: 4;
+      left: 2%;
+      bottom: 40px;
+      width: 245px;
+      color: var(--pink-dark);
+      font-family: var(--hand);
+      font-size: 31px;
+      font-weight: 700;
+      line-height: 1.05;
+      transform: rotate(-5deg);
+    }
+
+    .hand-note span {
+      display: block;
+      margin-top: 8px;
+      text-align: center;
+      font-size: 35px;
+    }
+
+    /* ==================================================
+       TEXT PROLOGU – VOLNĚ V PROSTORU
+       ================================================== */
+
+    .story-section {
+      position: relative;
+      padding:
+        clamp(60px, 8vw, 110px)
+        0
+        clamp(280px, 27vw, 390px);
       text-align: center;
     }
 
-    .scene-number {
+    .scene-label {
       margin-bottom: 18px;
-      color: #e6a2bf;
+      color: var(--pink-dark);
       font-family: Arial, Helvetica, sans-serif;
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
     }
 
-    .prolog-story h1 {
-      max-width: 950px;
-      margin: 0 auto 38px;
-      color: #fff5ea;
+    .story-section h1 {
+      max-width: 1030px;
+      margin: 0 auto 28px;
+      color: var(--green-dark);
       font-family: var(--serif);
-      font-size: clamp(43px, 7vw, 82px);
+      font-size: clamp(47px, 7vw, 88px);
       font-weight: 600;
-      line-height: 1.08;
-      text-shadow:
-        0 7px 28px rgba(0, 0, 0, 0.22);
+      line-height: 1.06;
     }
 
-    .cinematic-divider {
+    .title-divider {
       display: flex;
       align-items: center;
-      gap: 16px;
-      width: min(420px, 78%);
-      margin: 0 auto 45px;
-      color: #f09abe;
+      gap: 17px;
+      width: min(430px, 75%);
+      margin: 0 auto 55px;
+      color: var(--pink);
     }
 
-    .cinematic-divider::before,
-    .cinematic-divider::after {
+    .title-divider::before,
+    .title-divider::after {
       flex: 1;
       height: 1px;
       content: "";
@@ -474,93 +694,199 @@
         linear-gradient(
           90deg,
           transparent,
-          rgba(240, 154, 190, 0.85)
+          var(--pink)
         );
     }
 
-    .cinematic-divider::after {
+    .title-divider::after {
       background:
         linear-gradient(
           90deg,
-          rgba(240, 154, 190, 0.85),
+          var(--pink),
           transparent
         );
     }
 
-    .story-lines {
-      max-width: 860px;
+    .story-columns {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+      max-width: 1220px;
       margin: 0 auto;
     }
 
-    .story-lines p {
-      color: rgba(255, 246, 239, 0.9);
-      font-size: clamp(20px, 2.2vw, 27px);
-      line-height: 1.75;
-      text-wrap: balance;
+    .story-column {
+      position: relative;
+      padding: 8px 35px 20px;
     }
 
-    .story-lines p + p {
-      margin-top: 31px;
+    .story-column + .story-column {
+      border-left:
+        1px solid rgba(170, 45, 109, 0.22);
     }
 
-    .story-lines .strong-line {
-      color: #fff9f3;
-      font-size: clamp(22px, 2.55vw, 31px);
+    .story-column + .story-column::before {
+      position: absolute;
+      top: 47%;
+      left: -9px;
+      content: "♡";
+      color: var(--pink);
+      background: #e7ead9;
+      font-size: 17px;
+    }
+
+    .story-column p {
+      color: #474c43;
+      font-size: clamp(17px, 1.65vw, 21px);
+      line-height: 1.67;
+    }
+
+    .story-column strong {
+      color: var(--pink-dark);
       font-weight: 700;
     }
 
-    .story-lines .turning-point {
-      max-width: 900px;
-      margin:
-        clamp(52px, 7vw, 82px)
-        auto 0;
-      color: #ff9fc9;
+    .story-column.final p {
+      color: var(--pink-dark);
       font-family: var(--hand);
-      font-size: clamp(38px, 5vw, 62px);
+      font-size: clamp(29px, 3vw, 42px);
       font-weight: 700;
-      line-height: 1.08;
-      text-shadow:
-        0 7px 30px rgba(0, 0, 0, 0.3);
+      line-height: 1.05;
+      transform: rotate(-3deg);
     }
 
-    /* =========================================
-       ZPĚT NA MIA
-       ========================================= */
+    /* ==================================================
+       TROFEJE A VZPOMÍNKY
+       ================================================== */
+
+    .trophy-shelf {
+      position: absolute;
+      z-index: 2;
+      right: 3%;
+      bottom: 0;
+      left: 3%;
+      display: flex;
+      height: 255px;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 15px 40px 24px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(91, 111, 85, 0.12),
+          rgba(54, 78, 59, 0.72)
+        );
+      border-top:
+        13px solid rgba(119, 83, 59, 0.82);
+      box-shadow:
+        0 -16px 38px rgba(56, 70, 51, 0.12);
+    }
+
+    .trophy {
+      filter:
+        drop-shadow(
+          0 10px 9px rgba(52, 41, 25, 0.22)
+        );
+      font-size: clamp(75px, 8vw, 125px);
+    }
+
+    .medals {
+      font-size: clamp(60px, 7vw, 105px);
+      transform: rotate(-9deg);
+    }
+
+    .football-memory {
+      font-size: clamp(68px, 8vw, 115px);
+    }
+
+    .photo-stack {
+      position: relative;
+      width: 210px;
+      height: 150px;
+    }
+
+    .memory-photo {
+      position: absolute;
+      display: grid;
+      width: 105px;
+      height: 126px;
+      place-items: center;
+      color: #777;
+      background: #fff;
+      border: 9px solid #fff;
+      box-shadow:
+        0 12px 22px rgba(57, 46, 39, 0.24);
+      font-size: 45px;
+    }
+
+    .photo-one {
+      left: 4px;
+      transform: rotate(-8deg);
+    }
+
+    .photo-two {
+      right: 5px;
+      transform: rotate(7deg);
+    }
+
+    .award {
+      width: 230px;
+      padding: 18px 15px;
+      color: #574434;
+      background: #f3ead1;
+      border: 12px solid #937052;
+      box-shadow:
+        0 12px 25px rgba(62, 45, 33, 0.25);
+      text-align: center;
+      font-family: var(--serif);
+      transform: rotate(3deg);
+    }
+
+    .award strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 21px;
+    }
+
+    .award span {
+      display: block;
+      font-size: 14px;
+    }
+
+    /* ==================================================
+       ZÁVĚR
+       ================================================== */
 
     .ending {
-      display: flex;
-      margin-top:
-        clamp(55px, 8vw, 90px);
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .paw-trail {
-      color: rgba(255, 172, 207, 0.55);
-      font-size: 22px;
-      letter-spacing: 12px;
+      position: relative;
+      z-index: 4;
+      padding:
+        54px 20px
+        62px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(62, 88, 67, 0.96),
+          #2c4736
+        );
+      text-align: center;
     }
 
     .back-button {
       display: inline-flex;
-      padding: 14px 26px;
+      padding: 14px 28px;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      color: #fff7ef;
+      color: #fff;
       background:
         linear-gradient(
           90deg,
-          rgba(169, 43, 105, 0.9),
-          rgba(255, 120, 185, 0.94)
+          var(--pink-dark),
+          var(--pink-light)
         );
-      border:
-        1px solid rgba(255, 255, 255, 0.16);
       border-radius: 999px;
       box-shadow:
-        0 15px 38px rgba(10, 4, 8, 0.3);
+        0 16px 38px rgba(34, 50, 38, 0.3);
       font-family: Arial, Helvetica, sans-serif;
       font-size: 16px;
       font-weight: 800;
@@ -572,35 +898,73 @@
     .back-button:hover {
       transform: translateY(-3px);
       box-shadow:
-        0 20px 46px rgba(10, 4, 8, 0.4);
+        0 20px 45px rgba(34, 50, 38, 0.38);
     }
 
-    .final-mark {
-      color: rgba(255, 239, 232, 0.46);
+    .final-line {
+      margin-top: 25px;
+      color: rgba(255, 244, 234, 0.82);
       font-family: var(--hand);
-      font-size: 23px;
+      font-size: clamp(24px, 3vw, 36px);
     }
 
-    /* =========================================
+    /* ==================================================
        MOBIL
-       ========================================= */
+       ================================================== */
 
-    @media (max-width: 850px) {
-      .music-section {
+    @media (max-width: 980px) {
+      .music-scene {
         grid-template-columns: 1fr;
-        gap: 28px;
-      }
-
-      .music-copy {
         text-align: center;
       }
 
       .music-copy p {
         margin: 0 auto;
       }
+
+      .music-copy h2::after {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .locker-scene {
+        width: min(650px, 100%);
+        margin: 0 auto;
+      }
+
+      .story-columns {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .story-column {
+        padding: 30px;
+      }
+
+      .story-column + .story-column {
+        border-left: 0;
+      }
+
+      .story-column:nth-child(even) {
+        border-left:
+          1px solid rgba(170, 45, 109, 0.22);
+      }
+
+      .story-column:nth-child(n + 3) {
+        border-top:
+          1px solid rgba(170, 45, 109, 0.22);
+      }
+
+      .story-column + .story-column::before {
+        display: none;
+      }
+
+      .trophy-shelf {
+        gap: 18px;
+        overflow-x: auto;
+      }
     }
 
-    @media (max-width: 620px) {
+    @media (max-width: 650px) {
       .topbar {
         grid-template-columns: 1fr auto;
         min-height: 70px;
@@ -629,83 +993,102 @@
       }
 
       .hero img {
-        width: 100%;
-        min-height: 430px;
-        object-fit: cover;
-        object-position: center center;
-      }
-
-      .story-world {
-        padding:
-          48px 23px
-          75px;
-      }
-
-      .music-section {
-        padding-bottom: 48px;
-      }
-
-      .music-soon {
-        min-height: 65px;
-        padding: 15px 19px;
-        border-radius: 22px;
-        font-size: 14px;
-      }
-
-      .prolog-story {
-        padding-top: 58px;
-      }
-
-      .prolog-story h1 {
-        margin-bottom: 29px;
-        font-size: 43px;
-      }
-
-      .cinematic-divider {
-        margin-bottom: 34px;
-      }
-
-      .story-lines p {
-        font-size: 20px;
-        line-height: 1.65;
-      }
-
-      .story-lines p + p {
-        margin-top: 26px;
-      }
-
-      .story-lines .strong-line {
-        font-size: 22px;
-      }
-
-      .story-lines .turning-point {
-        margin-top: 51px;
-        font-size: 40px;
-      }
-
-      .back-button {
-        width: 100%;
-        max-width: 340px;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .hero img {
         min-height: 390px;
-        object-position: 51% center;
+        object-fit: cover;
+        object-position: center;
       }
 
-      .story-world {
-        padding-right: 18px;
-        padding-left: 18px;
+      .content-width {
+        width: 90%;
+      }
+
+      .music-scene {
+        min-height: 0;
+        padding-top: 60px;
       }
 
       .music-copy h2 {
-        font-size: 34px;
+        font-size: 46px;
       }
 
-      .prolog-story h1 {
-        font-size: 38px;
+      .music-soon {
+        min-width: 0;
+        width: 100%;
+        border-radius: 24px;
+        font-size: 14px;
+      }
+
+      .locker-scene {
+        min-height: 430px;
+      }
+
+      .jersey {
+        left: 22%;
+        width: 190px;
+        height: 240px;
+      }
+
+      .jersey-number {
+        top: 58px;
+        font-size: 96px;
+      }
+
+      .boots {
+        right: 0;
+        transform: scale(0.8);
+      }
+
+      .hand-note {
+        bottom: 5px;
+        left: 0;
+        width: 185px;
+        font-size: 25px;
+      }
+
+      .story-section {
+        padding-top: 70px;
+        padding-bottom: 270px;
+      }
+
+      .story-section h1 {
+        font-size: 47px;
+      }
+
+      .story-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .story-column {
+        padding: 28px 8px;
+      }
+
+      .story-column:nth-child(even) {
+        border-left: 0;
+      }
+
+      .story-column:nth-child(n + 2) {
+        border-top:
+          1px solid rgba(170, 45, 109, 0.22);
+      }
+
+      .story-column.final p {
+        font-size: 36px;
+      }
+
+      .trophy-shelf {
+        right: 0;
+        left: 0;
+        height: 235px;
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+      .award {
+        min-width: 185px;
+      }
+
+      .back-button {
+        width: min(330px, 100%);
       }
     }
   </style>
@@ -713,7 +1096,7 @@
 
 <body>
 
-  <!-- JEDNOTNÁ HORNÍ LIŠTA -->
+  <!-- HORNÍ LIŠTA -->
 
   <header class="topbar">
 
@@ -738,9 +1121,9 @@
 
   </header>
 
-  <main class="cinematic-page">
+  <main>
 
-    <!-- ŠIROKÝ HERO PROLOGU -->
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -749,24 +1132,22 @@
         alt="Prolog – Než přišla Mia"
       >
 
-      <div class="hero-fade"></div>
-
     </section>
 
-    <!-- NAVAZUJÍCÍ FILMOVÝ SVĚT -->
+    <!-- FILMOVÝ SVĚT -->
 
-    <section class="story-world">
+    <section class="prolog-world">
 
       <div class="content-width">
 
-        <!-- HUDBA PROLOGU -->
+        <!-- HUDBA A SPORTOVNÍ VZPOMÍNKY -->
 
-        <section class="music-section">
+        <section class="music-scene">
 
           <div class="music-copy">
 
             <div class="music-label">
-              🎬 Hudební motiv příběhu
+              🎵 Hudební motiv příběhu
             </div>
 
             <h2>
@@ -779,19 +1160,49 @@
               jejíž smysl tehdy ještě nebylo možné vidět.
             </p>
 
+            <div class="music-soon">
+              🎵 Hudbu Prologu právě připravujeme
+            </div>
+
           </div>
 
-          <div class="music-soon">
-            🎵 Hudbu Prologu právě připravujeme
+          <div
+            class="locker-scene"
+            aria-label="Dres s číslem šest, kopačky a fotbalové vzpomínky"
+          >
+
+            <div class="wood-rail"></div>
+
+            <div class="hook hook-one"></div>
+            <div class="hook hook-two"></div>
+
+            <div class="hanger"></div>
+
+            <div class="jersey">
+              <div class="jersey-paw">🐾</div>
+              <div class="jersey-number">6</div>
+            </div>
+
+            <div class="boots">
+              <div class="boot boot-one"></div>
+              <div class="boot boot-two"></div>
+            </div>
+
+            <p class="hand-note">
+              Než přišla Mia,<br>
+              existoval jiný sen.
+              <span>♡</span>
+            </p>
+
           </div>
 
         </section>
 
-        <!-- KRÁTKÝ FILMOVÝ PROLOG -->
+        <!-- PROLOG -->
 
-        <section class="prolog-story">
+        <section class="story-section">
 
-          <div class="scene-number">
+          <div class="scene-label">
             Prolog · Než přišla Mia
           </div>
 
@@ -799,64 +1210,99 @@
             Každý příběh má svůj začátek
           </h1>
 
-          <div class="cinematic-divider">
+          <div class="title-divider">
             ♡
           </div>
 
-          <div class="story-lines">
+          <div class="story-columns">
 
-            <p>
-              Ne vždy je to okamžik,
-              který si pamatujeme nejvíc.
-              Někdy je to chvíle,
-              která nás potichu připravuje
-              na všechno, co má teprve přijít.
-            </p>
+            <div class="story-column">
+              <p>
+                Ne vždy je to okamžik,
+                který si pamatujeme nejvíc.
+                Někdy je to chvíle,
+                která nás potichu připravuje
+                na všechno, co má teprve přijít.
+              </p>
+            </div>
 
-            <p>
-              Než přišla Mia,
-              existoval jiný sen.
-            </p>
+            <div class="story-column">
+              <p>
+                <strong>Fotbal nebyl jen hra.</strong>
+                Byl to můj svět,
+                moje cesta a místo,
+                kde jsem přesně věděla,
+                kým jsem.
+              </p>
+            </div>
 
-            <p class="strong-line">
-              Fotbal nebyl jen hra.
-              Byl to můj svět, moje cesta
-              a místo, kde jsem přesně věděla,
-              kým jsem.
-            </p>
+            <div class="story-column">
+              <p>
+                Ten sen neskončil proto,
+                že jsem se vzdala.
+                <br><br>
+                <strong>
+                  Skončil proto,
+                  že už nešlo pokračovat.
+                </strong>
+              </p>
+            </div>
 
-            <p>
-              Ten sen neskončil proto,
-              že jsem se vzdala.
-            </p>
-
-            <p class="strong-line">
-              Skončil proto,
-              že už nešlo pokračovat.
-            </p>
-
-            <p class="turning-point">
-              A právě jeho konec otevřel dveře
-              tomu nejkrásnějšímu.
-            </p>
+            <div class="story-column final">
+              <p>
+                A právě jeho konec
+                otevřel dveře
+                tomu nejkrásnějšímu.
+              </p>
+            </div>
 
           </div>
 
-          <div class="ending">
+          <!-- TROFEJE A MEDAILE -->
 
-            <div class="paw-trail">
-              🐾 🐾
+          <div class="trophy-shelf">
+
+            <div class="trophy" title="Poháry">
+              🏆
             </div>
 
-            <a
-              class="back-button"
-              href="mia.html"
-            >
-              ← Zpět na MIA
-            </a>
+            <div class="medals" title="Medaile">
+              🥇🥈
+            </div>
 
-            <div class="final-mark">
-              Příběh, který napsal sám život.
+            <div class="football-memory" title="Fotbal">
+              ⚽
+            </div>
+
+            <div
+              class="photo-stack"
+              aria-label="Vzpomínkové fotografie"
+            >
+              <div class="memory-photo photo-one">
+                ⚽
+              </div>
+
+              <div class="memory-photo photo-two">
+                6
+              </div>
+            </div>
+
+            <div class="award">
+              <strong>
+                NEJLEPŠÍ HRÁČ
+              </strong>
+
+              <span>
+                Ocenění za fotbalové výkony
+              </span>
+
+              <span>
+                ⚽
+              </span>
+            </div>
+
+            <div class="trophy" title="Fotbalová trofej">
+              🏆
             </div>
 
           </div>
@@ -864,6 +1310,23 @@
         </section>
 
       </div>
+
+      <!-- ZÁVĚR -->
+
+      <section class="ending">
+
+        <a
+          class="back-button"
+          href="mia.html"
+        >
+          ← Zpět na MIA
+        </a>
+
+        <p class="final-line">
+          Příběh, který napsal sám život. ♡
+        </p>
+
+      </section>
 
     </section>
 
@@ -904,9 +1367,7 @@
         return `${year}-${month}-${day}`;
       }
 
-      async function callSupabase(
-        functionName
-      ) {
+      async function callSupabase(functionName) {
         const response = await fetch(
           `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
           {
