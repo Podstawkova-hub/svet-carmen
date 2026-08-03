@@ -85,7 +85,7 @@
     }
 
     /* ========================================
-       HORNÍ MUSTR SVĚTA CARMEN
+       HORNÍ LIŠTA
        ======================================== */
 
     .topbar {
@@ -199,28 +199,24 @@
     }
 
     /* ========================================
-       HERO – BEZE ZMĚNY
+       HERO – NEMĚNÍME
        ======================================== */
 
     .hero {
       position: relative;
-
       width: 100%;
       overflow: hidden;
-
       background: #d9bea9;
     }
 
     .hero img {
       display: block;
-
       width: 100%;
       height: auto;
     }
 
     .hero::after {
       position: absolute;
-
       right: 0;
       bottom: -1px;
       left: 0;
@@ -424,7 +420,7 @@
     }
 
     /* ========================================
-       FILMOVÝ TEXT S DRESEM V POZADÍ
+       PROLOG S VÝRAZNĚJŠÍM DRESEM
        ======================================== */
 
     .story-section {
@@ -445,27 +441,25 @@
       text-align: center;
     }
 
-    /* Jemná silueta dresu bez rámečku */
     .jersey-background {
       position: absolute;
-
       z-index: -2;
 
       top: 50%;
       left: 50%;
 
-      width: min(1250px, 110vw);
-      height: 118%;
+      width: min(1280px, 112vw);
+      height: 120%;
 
-      opacity: 0.2;
+      opacity: 0.42;
 
       transform:
         translate(-50%, -50%)
-        rotate(-1deg);
+        rotate(-1.5deg);
 
       filter:
         drop-shadow(
-          0 20px 42px rgba(72, 92, 75, 0.09)
+          0 25px 48px rgba(53, 73, 59, 0.22)
         );
 
       pointer-events: none;
@@ -476,10 +470,25 @@
       inset: 0;
 
       background:
+        radial-gradient(
+          ellipse at 38% 28%,
+          rgba(255, 255, 255, 0.98),
+          transparent 34%
+        ),
+        radial-gradient(
+          ellipse at 66% 62%,
+          rgba(198, 214, 198, 0.58),
+          transparent 46%
+        ),
+        repeating-linear-gradient(
+          108deg,
+          rgba(255, 255, 255, 0.18) 0 3px,
+          rgba(184, 202, 185, 0.1) 3px 7px
+        ),
         linear-gradient(
           155deg,
-          rgba(255, 255, 255, 0.72),
-          rgba(235, 242, 229, 0.38)
+          rgba(255, 255, 255, 0.96),
+          rgba(227, 236, 225, 0.72)
         );
 
       clip-path:
@@ -499,6 +508,9 @@
           13% 47%,
           0 25%
         );
+
+      box-shadow:
+        inset 0 0 70px rgba(91, 116, 95, 0.2);
     }
 
     .jersey-shape::before {
@@ -513,7 +525,7 @@
       content: "";
 
       border:
-        8px solid rgba(99, 124, 106, 0.16);
+        9px solid rgba(83, 111, 91, 0.32);
 
       border-top: 0;
       border-radius: 0 0 50% 50%;
@@ -521,31 +533,47 @@
       transform: translateX(-50%);
     }
 
+    .jersey-shape::after {
+      position: absolute;
+      inset: 7% 13% 9%;
+
+      content: "";
+
+      background:
+        repeating-linear-gradient(
+          96deg,
+          transparent 0 34px,
+          rgba(79, 105, 83, 0.12) 35px 38px,
+          transparent 39px 76px
+        );
+
+      filter: blur(7px);
+      opacity: 0.9;
+    }
+
     .jersey-number {
       position: absolute;
 
-      top: 16%;
+      top: 15%;
       right: 0;
       left: 0;
 
-      color: rgba(169, 45, 108, 0.55);
+      color: rgba(161, 39, 101, 0.82);
 
       font-family: Arial, Helvetica, sans-serif;
-      font-size: clamp(270px, 34vw, 520px);
+      font-size: clamp(290px, 36vw, 560px);
       font-weight: 900;
 
       line-height: 1;
-
       text-align: center;
 
       text-shadow:
-        0 8px 18px rgba(169, 45, 108, 0.1);
+        0 12px 24px rgba(111, 31, 75, 0.24),
+        0 0 35px rgba(255, 255, 255, 0.58);
     }
 
-    /* Měkký oválný filmový svit – žádné rovné hrany */
     .story-section::after {
       position: absolute;
-
       z-index: -1;
 
       inset:
@@ -558,9 +586,9 @@
       background:
         radial-gradient(
           ellipse at center,
-          rgba(239, 247, 232, 0.38) 0%,
-          rgba(220, 237, 211, 0.2) 47%,
-          transparent 78%
+          rgba(239, 247, 232, 0.28) 0%,
+          rgba(220, 237, 211, 0.13) 50%,
+          transparent 80%
         );
 
       pointer-events: none;
@@ -598,7 +626,7 @@
       line-height: 1.08;
 
       text-shadow:
-        0 2px 12px rgba(255, 255, 255, 0.62);
+        0 2px 12px rgba(255, 255, 255, 0.68);
     }
 
     .divider {
@@ -654,7 +682,7 @@
       text-wrap: balance;
 
       text-shadow:
-        0 1px 8px rgba(255, 255, 255, 0.78);
+        0 1px 8px rgba(255, 255, 255, 0.82);
     }
 
     .story-text p + p {
@@ -680,7 +708,7 @@
       line-height: 1.05;
 
       text-shadow:
-        0 2px 10px rgba(255, 255, 255, 0.78);
+        0 2px 10px rgba(255, 255, 255, 0.82);
     }
 
     /* ========================================
@@ -753,9 +781,7 @@
     @media (max-width: 820px) {
       .music-section {
         grid-template-columns: 1fr;
-
         gap: 23px;
-
         text-align: center;
       }
 
@@ -776,9 +802,7 @@
     @media (max-width: 620px) {
       .topbar {
         grid-template-columns: 1fr auto;
-
         min-height: 70px;
-
         padding: 9px 4vw;
       }
 
@@ -797,19 +821,14 @@
       .like-button {
         min-width: 0;
         max-width: 134px;
-
         padding: 10px 13px;
-
         overflow: hidden;
-
         font-size: 12px;
-
         text-overflow: ellipsis;
       }
 
       .hero img {
         min-height: 390px;
-
         object-fit: cover;
         object-position: center;
       }
@@ -829,36 +848,28 @@
 
       .music-soon {
         min-height: 60px;
-
         padding: 14px 18px;
-
         border-radius: 22px;
-
         font-size: 14px;
       }
 
       .story-section {
         min-height: 660px;
-
         padding-top: 42px;
         padding-bottom: 38px;
       }
 
       .jersey-background {
         top: 50%;
-
-        width: 188vw;
-        height: 104%;
-
-        opacity: 0.19;
+        width: 195vw;
+        height: 108%;
+        opacity: 0.36;
       }
 
       .jersey-number {
-        top: 20%;
-
-        font-size: 325px;
-
-        color: rgba(169, 45, 108, 0.5);
+        top: 19%;
+        font-size: 345px;
+        color: rgba(161, 39, 101, 0.76);
       }
 
       .story-section::after {
@@ -870,9 +881,9 @@
         background:
           radial-gradient(
             ellipse at center,
-            rgba(239, 247, 232, 0.38) 0%,
-            rgba(220, 237, 211, 0.17) 50%,
-            transparent 82%
+            rgba(239, 247, 232, 0.25) 0%,
+            rgba(220, 237, 211, 0.1) 55%,
+            transparent 84%
           );
       }
 
@@ -908,20 +919,18 @@
       }
 
       .jersey-background {
-        width: 205vw;
-        opacity: 0.18;
+        width: 210vw;
+        opacity: 0.34;
       }
 
       .jersey-number {
-        font-size: 305px;
+        font-size: 325px;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- HORNÍ LIŠTA -->
 
   <header class="topbar">
 
@@ -954,7 +963,7 @@
 
   <main>
 
-    <!-- HERO – NEMĚNÍME -->
+    <!-- HERO – ZŮSTÁVÁ STEJNÝ -->
 
     <section class="hero">
 
@@ -964,8 +973,6 @@
       >
 
     </section>
-
-    <!-- SVĚTLÝ FILMOVÝ SVĚT -->
 
     <section class="prolog-world">
 
