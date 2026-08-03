@@ -357,7 +357,115 @@
       font-style: normal;
       font-size: 13px;
     }
+/* OFICIÁLNÍ HYMNA POD HERO */
 
+.music-section {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(420px, 1.25fr);
+  align-items: center;
+  gap: 42px;
+  padding:
+    clamp(24px, 3vw, 38px)
+    clamp(26px, 6vw, 78px);
+  background:
+    linear-gradient(
+      135deg,
+      #fffaf5 0%,
+      #fff0f7 100%
+    );
+  border-right: 1px solid rgba(173, 44, 108, 0.1);
+  border-left: 1px solid rgba(173, 44, 108, 0.1);
+}
+
+.music-copy h2 {
+  margin-bottom: 6px;
+  color: var(--pink-dark);
+  font-family: var(--serif);
+  font-size: clamp(29px, 3.5vw, 46px);
+  line-height: 1.08;
+}
+
+.music-copy p {
+  color: #735d67;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.music-player {
+  display: grid;
+  grid-template-columns: 46px 45px 1fr 34px 85px;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 15px;
+  color: #fff;
+  background:
+    linear-gradient(
+      135deg,
+      #24151d,
+      #431c30
+    );
+  border-radius: 999px;
+  box-shadow: 0 13px 32px rgba(57, 24, 40, 0.22);
+}
+
+.play-button {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  color: #fff;
+  background:
+    linear-gradient(
+      135deg,
+      var(--pink),
+      var(--pink-light)
+    );
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.time {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress,
+.volume {
+  width: 100%;
+  accent-color: var(--pink-light);
+  cursor: pointer;
+}
+
+.volume-icon {
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .music-section {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 620px) {
+  .music-section {
+    padding: 25px 18px;
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .music-player {
+    grid-template-columns: 42px 42px 1fr 31px;
+    gap: 7px;
+    padding: 10px 11px;
+  }
+
+  .volume {
+    display: none;
+  }
+}
     /* JEDINÁ VĚTA POD HERO */
 
     .motto {
@@ -600,7 +708,66 @@
       </nav>
 
     </section>
+<section class="music-section">
 
+  <div class="music-copy">
+    <h2>🎵 Oficiální hymna MIA</h2>
+
+    <p>
+      Píseň, která otevírá celý Miin příběh.
+    </p>
+  </div>
+
+  <div class="music-player">
+
+    <button
+      class="play-button"
+      id="playButton"
+      type="button"
+      aria-label="Přehrát hymnu MIA"
+    >
+      ▶
+    </button>
+
+    <span class="time" id="currentTime">
+      0:00
+    </span>
+
+    <input
+      class="progress"
+      id="progress"
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      aria-label="Průběh hymny"
+    >
+
+    <span class="volume-icon">
+      🔊
+    </span>
+
+    <input
+      class="volume"
+      id="volume"
+      type="range"
+      min="0"
+      max="1"
+      value="0.65"
+      step="0.05"
+      aria-label="Hlasitost hymny"
+    >
+
+  </div>
+
+  <audio id="miaAudio" preload="metadata">
+    <source
+      src="hymna-mia.mp3.mp3"
+      type="audio/mpeg"
+    >
+  </audio>
+
+</section>
     <p class="motto">
       „Nevybrala jsem si tebe…
       Ty sis vybrala mě.“ 🐾
@@ -611,7 +778,116 @@
   <script>
     (function () {
       "use strict";
+const audio =
+  document.getElementById("miaAudio");
 
+const playButton =
+  document.getElementById("playButton");
+
+const progress =
+  document.getElementById("progress");
+
+const currentTime =
+  document.getElementById("currentTime");
+
+const volume =
+  document.getElementById("volume");
+
+function formatTime(seconds) {
+  if (!Number.isFinite(seconds)) {
+    return "0:00";
+  }
+
+  const minutes =
+    Math.floor(seconds / 60);
+
+  const remainingSeconds =
+    Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, "0");
+
+  return `${minutes}:${remainingSeconds}`;
+}
+
+if (
+  audio &&
+  playButton &&
+  progress &&
+  currentTime
+) {
+  audio.volume = 0.65;
+
+  playButton.addEventListener(
+    "click",
+    async function () {
+      if (audio.paused) {
+        try {
+          await audio.play();
+          playButton.textContent = "❚❚";
+        } catch (error) {
+          console.error(
+            "Hymnu se nepodařilo spustit:",
+            error
+          );
+
+          playButton.textContent = "!";
+        }
+      } else {
+        audio.pause();
+        playButton.textContent = "▶";
+      }
+    }
+  );
+
+  audio.addEventListener(
+    "timeupdate",
+    function () {
+      if (
+        Number.isFinite(audio.duration) &&
+        audio.duration > 0
+      ) {
+        progress.value =
+          (audio.currentTime / audio.duration) * 100;
+      }
+
+      currentTime.textContent =
+        formatTime(audio.currentTime);
+    }
+  );
+
+  progress.addEventListener(
+    "input",
+    function () {
+      if (
+        Number.isFinite(audio.duration) &&
+        audio.duration > 0
+      ) {
+        audio.currentTime =
+          (Number(progress.value) / 100) *
+          audio.duration;
+      }
+    }
+  );
+
+  audio.addEventListener(
+    "ended",
+    function () {
+      playButton.textContent = "▶";
+      progress.value = 0;
+      currentTime.textContent = "0:00";
+    }
+  );
+}
+
+if (audio && volume) {
+  volume.addEventListener(
+    "input",
+    function () {
+      audio.volume =
+        Number(volume.value);
+    }
+  );
+}
       const SUPABASE_URL =
         "https://lggboavbzzvoomveewtl.supabase.co";
 
