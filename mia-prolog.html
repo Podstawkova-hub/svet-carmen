@@ -37,12 +37,9 @@
       --grass-light: #eff7e9;
       --grass: #dcebd5;
       --grass-mid: #c9dfc4;
-      --grass-dark: #62816a;
 
       --green-text: #315341;
       --green-muted: #617568;
-
-      --cream: #fffaf1;
 
       --serif:
         "Playfair Display",
@@ -202,24 +199,28 @@
     }
 
     /* ========================================
-       HERO – ZŮSTÁVÁ BEZE ZMĚNY
+       HERO – BEZE ZMĚNY
        ======================================== */
 
     .hero {
       position: relative;
+
       width: 100%;
       overflow: hidden;
+
       background: #d9bea9;
     }
 
     .hero img {
       display: block;
+
       width: 100%;
       height: auto;
     }
 
     .hero::after {
       position: absolute;
+
       right: 0;
       bottom: -1px;
       left: 0;
@@ -430,30 +431,33 @@
       position: relative;
       isolation: isolate;
 
-      min-height: 650px;
+      min-height: 640px;
 
-      overflow: hidden;
+      overflow: visible;
 
       padding:
         clamp(48px, 6vw, 72px)
         0
-        clamp(50px, 6vw, 72px);
+        clamp(45px, 6vw, 65px);
+
+      background: transparent;
 
       text-align: center;
     }
 
-    /* Filmová silueta dresu */
+    /* Jemná silueta dresu bez rámečku */
     .jersey-background {
       position: absolute;
+
       z-index: -2;
 
       top: 50%;
       left: 50%;
 
-      width: min(1000px, 94vw);
-      height: 94%;
+      width: min(1250px, 110vw);
+      height: 118%;
 
-      opacity: 0.22;
+      opacity: 0.2;
 
       transform:
         translate(-50%, -50%)
@@ -461,7 +465,7 @@
 
       filter:
         drop-shadow(
-          0 20px 40px rgba(72, 92, 75, 0.12)
+          0 20px 42px rgba(72, 92, 75, 0.09)
         );
 
       pointer-events: none;
@@ -474,8 +478,8 @@
       background:
         linear-gradient(
           155deg,
-          rgba(255, 255, 255, 0.9),
-          rgba(235, 242, 229, 0.7)
+          rgba(255, 255, 255, 0.72),
+          rgba(235, 242, 229, 0.38)
         );
 
       clip-path:
@@ -509,7 +513,7 @@
       content: "";
 
       border:
-        8px solid rgba(99, 124, 106, 0.18);
+        8px solid rgba(99, 124, 106, 0.16);
 
       border-top: 0;
       border-radius: 0 0 50% 50%;
@@ -524,10 +528,10 @@
       right: 0;
       left: 0;
 
-      color: rgba(169, 45, 108, 0.62);
+      color: rgba(169, 45, 108, 0.55);
 
       font-family: Arial, Helvetica, sans-serif;
-      font-size: clamp(260px, 32vw, 500px);
+      font-size: clamp(270px, 34vw, 520px);
       font-weight: 900;
 
       line-height: 1;
@@ -535,24 +539,28 @@
       text-align: center;
 
       text-shadow:
-        0 8px 18px rgba(169, 45, 108, 0.12);
+        0 8px 18px rgba(169, 45, 108, 0.1);
     }
 
-    /* Filmový závoj přes dres */
+    /* Měkký oválný filmový svit – žádné rovné hrany */
     .story-section::after {
       position: absolute;
+
       z-index: -1;
 
-      inset: 0;
+      inset:
+        -120px
+        -18vw
+        -100px;
 
       content: "";
 
       background:
         radial-gradient(
-          circle at center,
-          rgba(239, 247, 232, 0.33),
-          rgba(220, 237, 211, 0.54) 70%,
-          rgba(205, 226, 198, 0.76) 100%
+          ellipse at center,
+          rgba(239, 247, 232, 0.38) 0%,
+          rgba(220, 237, 211, 0.2) 47%,
+          transparent 78%
         );
 
       pointer-events: none;
@@ -590,7 +598,7 @@
       line-height: 1.08;
 
       text-shadow:
-        0 2px 12px rgba(255, 255, 255, 0.6);
+        0 2px 12px rgba(255, 255, 255, 0.62);
     }
 
     .divider {
@@ -646,7 +654,7 @@
       text-wrap: balance;
 
       text-shadow:
-        0 1px 8px rgba(255, 255, 255, 0.74);
+        0 1px 8px rgba(255, 255, 255, 0.78);
     }
 
     .story-text p + p {
@@ -672,7 +680,7 @@
       line-height: 1.05;
 
       text-shadow:
-        0 2px 10px rgba(255, 255, 255, 0.75);
+        0 2px 10px rgba(255, 255, 255, 0.78);
     }
 
     /* ========================================
@@ -830,32 +838,42 @@
       }
 
       .story-section {
-        min-height: 670px;
+        min-height: 660px;
 
         padding-top: 42px;
-        padding-bottom: 40px;
+        padding-bottom: 38px;
       }
 
       .jersey-background {
         top: 50%;
 
-        width: 185vw;
-        height: 90%;
+        width: 188vw;
+        height: 104%;
 
-        opacity: 0.2;
+        opacity: 0.19;
       }
 
       .jersey-number {
-        top: 19%;
+        top: 20%;
 
-        font-size: 330px;
+        font-size: 325px;
 
-        color: rgba(169, 45, 108, 0.57);
+        color: rgba(169, 45, 108, 0.5);
       }
 
       .story-section::after {
+        inset:
+          -70px
+          -60vw
+          -70px;
+
         background:
-          rgba(220, 237, 211, 0.6);
+          radial-gradient(
+            ellipse at center,
+            rgba(239, 247, 232, 0.38) 0%,
+            rgba(220, 237, 211, 0.17) 50%,
+            transparent 82%
+          );
       }
 
       .story-section h1 {
@@ -886,16 +904,16 @@
 
     @media (max-width: 430px) {
       .story-section {
-        min-height: 690px;
+        min-height: 680px;
       }
 
       .jersey-background {
         width: 205vw;
-        opacity: 0.19;
+        opacity: 0.18;
       }
 
       .jersey-number {
-        font-size: 310px;
+        font-size: 305px;
       }
     }
   </style>
