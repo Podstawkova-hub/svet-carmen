@@ -31,13 +31,14 @@
   <style>
     :root {
       --pink: #df4b91;
-      --pink-light: #ff77b8;
-      --pink-dark: #ae2d6d;
-      --paper: #fffaf6;
-      --cream: #fff2f7;
-      --text: #322129;
-      --muted: #755e68;
-      --dark: #1d1118;
+      --pink-light: #ff78b9;
+      --pink-dark: #a92b69;
+      --rose: #c34f7d;
+      --wine: #4b2034;
+      --deep: #1d1017;
+      --cream: #fff5eb;
+      --gold: #dfad6a;
+      --text-light: #fff9f3;
 
       --serif:
         "Playfair Display",
@@ -64,23 +65,15 @@
     body {
       min-height: 100vh;
       overflow-x: hidden;
-      color: var(--text);
+      color: var(--text-light);
       background:
-        radial-gradient(
-          circle at 8% 10%,
-          rgba(255, 179, 215, 0.23),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 92% 12%,
-          rgba(255, 221, 172, 0.22),
-          transparent 28%
-        ),
         linear-gradient(
           180deg,
-          #fff9fc 0%,
-          #fff1f7 55%,
-          #fff9f1 100%
+          #fff8f5 0,
+          #f7d4cf 22%,
+          #a45661 51%,
+          #48202f 76%,
+          #180e14 100%
         );
       font-family:
         Georgia,
@@ -93,14 +86,18 @@
       text-decoration: none;
     }
 
-    button {
-      border: 0;
+    button,
+    input {
       font: inherit;
     }
 
-    /* ===================================
+    button {
+      border: 0;
+    }
+
+    /* =========================================
        HORNÍ MUSTR SVĚTA CARMEN
-       =================================== */
+       ========================================= */
 
     .topbar {
       position: sticky;
@@ -111,15 +108,16 @@
       align-items: center;
       min-height: 76px;
       padding: 10px 5vw;
-      background: rgba(255, 250, 248, 0.97);
-      border-bottom: 1px solid rgba(174, 45, 109, 0.12);
-      box-shadow: 0 8px 25px rgba(74, 31, 51, 0.06);
+      color: #322129;
+      background: rgba(255, 250, 248, 0.96);
+      border-bottom: 1px solid rgba(169, 43, 105, 0.12);
+      box-shadow: 0 8px 25px rgba(64, 25, 43, 0.08);
       backdrop-filter: blur(15px);
     }
 
     .brand {
       justify-self: start;
-      color: var(--text);
+      color: #322129;
       font-family: var(--serif);
       font-size: 16px;
       line-height: 0.9;
@@ -135,15 +133,18 @@
 
     .home-link {
       justify-self: center;
-      color: #69545e;
+      color: #68535d;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 15px;
       font-weight: 700;
-      transition: color 0.2s ease;
+      transition:
+        color 0.2s ease,
+        transform 0.2s ease;
     }
 
     .home-link:hover {
       color: var(--pink-dark);
+      transform: translateY(-1px);
     }
 
     .like-button {
@@ -159,12 +160,21 @@
         );
       border-radius: 999px;
       box-shadow:
-        0 10px 25px rgba(174, 45, 109, 0.23);
+        0 10px 25px rgba(169, 43, 105, 0.24);
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 14px;
       font-weight: 700;
       white-space: nowrap;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .like-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow:
+        0 14px 30px rgba(169, 43, 105, 0.32);
     }
 
     .like-button.is-liked {
@@ -177,23 +187,61 @@
       cursor: default;
     }
 
-    /* ===================================
-       HLAVNÍ OBSAH
-       =================================== */
+    /* =========================================
+       FILMOVÁ STRÁNKA
+       ========================================= */
 
-    .page {
-      width: min(1420px, 95%);
-      margin: 24px auto 44px;
+    .cinematic-page {
+      position: relative;
+      overflow: hidden;
     }
 
-    /* HERO */
+    .cinematic-page::before {
+      position: absolute;
+      z-index: 0;
+      top: 34%;
+      left: -12%;
+      width: 55vw;
+      height: 55vw;
+      content: "";
+      background:
+        radial-gradient(
+          circle,
+          rgba(255, 186, 158, 0.32),
+          transparent 68%
+        );
+      pointer-events: none;
+    }
+
+    .cinematic-page::after {
+      position: absolute;
+      z-index: 0;
+      right: -15%;
+      bottom: 2%;
+      width: 60vw;
+      height: 60vw;
+      content: "";
+      background:
+        radial-gradient(
+          circle,
+          rgba(220, 68, 131, 0.19),
+          transparent 68%
+        );
+      pointer-events: none;
+    }
+
+    /* =========================================
+       HERO – ŠIROKÝ, BEZ BÍLÉHO RÁMEČKU
+       ========================================= */
 
     .hero {
+      position: relative;
+      z-index: 1;
+      width: 100%;
       overflow: hidden;
-      background: #fff;
-      border-radius: 30px;
+      background: #d8ae91;
       box-shadow:
-        0 25px 70px rgba(70, 31, 49, 0.16);
+        0 26px 70px rgba(29, 12, 20, 0.25);
     }
 
     .hero img {
@@ -202,133 +250,320 @@
       height: auto;
     }
 
-    /* HUDBA PROLOGU */
+    .hero-fade {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 28%;
+      background:
+        linear-gradient(
+          180deg,
+          transparent,
+          rgba(92, 39, 53, 0.24),
+          rgba(103, 47, 57, 0.72)
+        );
+      pointer-events: none;
+    }
+
+    /* =========================================
+       FILMOVÝ PŘECHOD POD HERO
+       ========================================= */
+
+    .story-world {
+      position: relative;
+      z-index: 1;
+      margin-top: -2px;
+      padding:
+        clamp(46px, 7vw, 100px)
+        6vw
+        clamp(60px, 9vw, 120px);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(113, 53, 61, 0.98) 0%,
+          rgba(89, 38, 52, 0.99) 30%,
+          rgba(55, 24, 38, 1) 66%,
+          rgba(24, 14, 20, 1) 100%
+        );
+    }
+
+    .story-world::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 140px;
+      content: "";
+      background:
+        linear-gradient(
+          180deg,
+          rgba(223, 173, 106, 0.16),
+          transparent
+        );
+      pointer-events: none;
+    }
+
+    .story-world::after {
+      position: absolute;
+      right: 5vw;
+      bottom: 3%;
+      content: "6";
+      color: rgba(255, 255, 255, 0.025);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(260px, 37vw, 610px);
+      font-weight: 900;
+      line-height: 0.75;
+      pointer-events: none;
+    }
+
+    .content-width {
+      position: relative;
+      z-index: 2;
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    /* =========================================
+       HUDBA – VOLNĚ VE FILMOVÉM PROSTORU
+       ========================================= */
 
     .music-section {
       display: grid;
       grid-template-columns:
-        minmax(240px, 0.8fr)
-        minmax(320px, 1.2fr);
+        minmax(260px, 0.75fr)
+        minmax(380px, 1.25fr);
       align-items: center;
-      gap: 36px;
-      margin-top: 24px;
-      padding:
-        clamp(25px, 4vw, 40px)
-        clamp(24px, 6vw, 70px);
-      background:
-        linear-gradient(
-          135deg,
-          #fffdf9 0%,
-          #fff1f7 100%
-        );
-      border: 1px solid rgba(174, 45, 109, 0.1);
-      border-radius: 28px;
-      box-shadow:
-        0 18px 48px rgba(75, 33, 52, 0.09);
+      gap: clamp(35px, 6vw, 85px);
+      padding-bottom:
+        clamp(52px, 7vw, 84px);
+      border-bottom:
+        1px solid rgba(255, 232, 218, 0.2);
+    }
+
+    .music-label {
+      margin-bottom: 11px;
+      color: #f3bbd3;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
 
     .music-copy h2 {
-      margin-bottom: 8px;
-      color: var(--pink-dark);
+      margin-bottom: 12px;
+      color: #fff6ec;
       font-family: var(--serif);
-      font-size: clamp(30px, 4vw, 46px);
+      font-size: clamp(34px, 5vw, 58px);
       line-height: 1.08;
     }
 
     .music-copy p {
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.55;
+      max-width: 500px;
+      color: rgba(255, 244, 236, 0.78);
+      font-size: clamp(17px, 1.7vw, 20px);
+      line-height: 1.65;
     }
 
     .music-soon {
+      position: relative;
       display: flex;
-      min-height: 68px;
-      padding: 15px 24px;
+      min-height: 72px;
+      padding: 17px 28px;
       align-items: center;
       justify-content: center;
-      gap: 11px;
-      color: #fff;
+      gap: 12px;
+      overflow: hidden;
+      color: #fff8f1;
       background:
         linear-gradient(
-          135deg,
-          #291720,
-          #4a2033
+          110deg,
+          rgba(20, 12, 17, 0.72),
+          rgba(63, 25, 43, 0.7)
         );
+      border:
+        1px solid rgba(255, 224, 214, 0.18);
       border-radius: 999px;
       box-shadow:
-        0 13px 32px rgba(59, 25, 42, 0.2);
+        0 18px 46px rgba(14, 6, 10, 0.24);
+      backdrop-filter: blur(10px);
       text-align: center;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 16px;
       font-weight: 700;
     }
 
-    /* KRÁTKÝ PROLOG */
+    .music-soon::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -45%;
+      width: 35%;
+      content: "";
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.12),
+          transparent
+        );
+      transform: skewX(-18deg);
+      animation: musicShine 5s ease-in-out infinite;
+    }
 
-    .prolog-text {
-      max-width: 900px;
-      margin: 26px auto 0;
-      padding:
-        clamp(35px, 6vw, 60px)
-        clamp(25px, 7vw, 75px);
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(174, 45, 109, 0.1);
-      border-radius: 28px;
-      box-shadow:
-        0 18px 50px rgba(74, 31, 51, 0.09);
+    @keyframes musicShine {
+      0%,
+      65% {
+        left: -45%;
+      }
+
+      100% {
+        left: 125%;
+      }
+    }
+
+    /* =========================================
+       FILMOVÝ TEXT – BEZ KARTY
+       ========================================= */
+
+    .prolog-story {
+      position: relative;
+      padding-top:
+        clamp(60px, 9vw, 115px);
       text-align: center;
     }
 
-    .prolog-text h1 {
-      margin-bottom: 23px;
-      color: var(--pink-dark);
+    .scene-number {
+      margin-bottom: 18px;
+      color: #e6a2bf;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .prolog-story h1 {
+      max-width: 950px;
+      margin: 0 auto 38px;
+      color: #fff5ea;
       font-family: var(--serif);
-      font-size: clamp(36px, 5vw, 58px);
-      line-height: 1.15;
+      font-size: clamp(43px, 7vw, 82px);
+      font-weight: 600;
+      line-height: 1.08;
+      text-shadow:
+        0 7px 28px rgba(0, 0, 0, 0.22);
     }
 
-    .prolog-text p {
-      max-width: 700px;
+    .cinematic-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: min(420px, 78%);
+      margin: 0 auto 45px;
+      color: #f09abe;
+    }
+
+    .cinematic-divider::before,
+    .cinematic-divider::after {
+      flex: 1;
+      height: 1px;
+      content: "";
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(240, 154, 190, 0.85)
+        );
+    }
+
+    .cinematic-divider::after {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(240, 154, 190, 0.85),
+          transparent
+        );
+    }
+
+    .story-lines {
+      max-width: 860px;
       margin: 0 auto;
-      color: #49333d;
-      font-size: clamp(19px, 2vw, 23px);
-      line-height: 1.8;
     }
 
-    .prolog-text p + p {
-      margin-top: 18px;
+    .story-lines p {
+      color: rgba(255, 246, 239, 0.9);
+      font-size: clamp(20px, 2.2vw, 27px);
+      line-height: 1.75;
+      text-wrap: balance;
     }
 
-    .closing-line {
-      margin-top: 28px !important;
-      color: var(--pink-dark) !important;
-      font-family: var(--hand);
-      font-size: clamp(27px, 3.3vw, 40px) !important;
+    .story-lines p + p {
+      margin-top: 31px;
+    }
+
+    .story-lines .strong-line {
+      color: #fff9f3;
+      font-size: clamp(22px, 2.55vw, 31px);
       font-weight: 700;
-      line-height: 1.15 !important;
+    }
+
+    .story-lines .turning-point {
+      max-width: 900px;
+      margin:
+        clamp(52px, 7vw, 82px)
+        auto 0;
+      color: #ff9fc9;
+      font-family: var(--hand);
+      font-size: clamp(38px, 5vw, 62px);
+      font-weight: 700;
+      line-height: 1.08;
+      text-shadow:
+        0 7px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* =========================================
+       ZPĚT NA MIA
+       ========================================= */
+
+    .ending {
+      display: flex;
+      margin-top:
+        clamp(55px, 8vw, 90px);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .paw-trail {
+      color: rgba(255, 172, 207, 0.55);
+      font-size: 22px;
+      letter-spacing: 12px;
     }
 
     .back-button {
       display: inline-flex;
-      margin-top: 34px;
-      padding: 14px 25px;
+      padding: 14px 26px;
       align-items: center;
       justify-content: center;
-      gap: 9px;
-      color: #fff;
+      gap: 10px;
+      color: #fff7ef;
       background:
         linear-gradient(
           90deg,
-          var(--pink-dark),
-          var(--pink-light)
+          rgba(169, 43, 105, 0.9),
+          rgba(255, 120, 185, 0.94)
         );
+      border:
+        1px solid rgba(255, 255, 255, 0.16);
       border-radius: 999px;
       box-shadow:
-        0 13px 30px rgba(174, 45, 109, 0.24);
+        0 15px 38px rgba(10, 4, 8, 0.3);
       font-family: Arial, Helvetica, sans-serif;
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 800;
       transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
@@ -337,17 +572,31 @@
     .back-button:hover {
       transform: translateY(-3px);
       box-shadow:
-        0 18px 38px rgba(174, 45, 109, 0.33);
+        0 20px 46px rgba(10, 4, 8, 0.4);
     }
 
-    /* ===================================
+    .final-mark {
+      color: rgba(255, 239, 232, 0.46);
+      font-family: var(--hand);
+      font-size: 23px;
+    }
+
+    /* =========================================
        MOBIL
-       =================================== */
+       ========================================= */
 
     @media (max-width: 850px) {
       .music-section {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 28px;
+      }
+
+      .music-copy {
+        text-align: center;
+      }
+
+      .music-copy p {
+        margin: 0 auto;
       }
     }
 
@@ -372,48 +621,99 @@
 
       .like-button {
         min-width: 0;
-        max-width: 132px;
+        max-width: 134px;
         padding: 10px 13px;
         overflow: hidden;
         font-size: 12px;
         text-overflow: ellipsis;
       }
 
-      .page {
+      .hero img {
         width: 100%;
-        margin-top: 0;
+        min-height: 430px;
+        object-fit: cover;
+        object-position: center center;
       }
 
-      .hero {
-        border-radius: 0;
-      }
-
-      .music-section,
-      .prolog-text {
-        margin-right: 14px;
-        margin-left: 14px;
+      .story-world {
+        padding:
+          48px 23px
+          75px;
       }
 
       .music-section {
-        padding: 27px 20px;
+        padding-bottom: 48px;
       }
 
       .music-soon {
+        min-height: 65px;
+        padding: 15px 19px;
         border-radius: 22px;
+        font-size: 14px;
       }
 
-      .prolog-text {
-        padding: 38px 23px;
+      .prolog-story {
+        padding-top: 58px;
+      }
+
+      .prolog-story h1 {
+        margin-bottom: 29px;
+        font-size: 43px;
+      }
+
+      .cinematic-divider {
+        margin-bottom: 34px;
+      }
+
+      .story-lines p {
+        font-size: 20px;
+        line-height: 1.65;
+      }
+
+      .story-lines p + p {
+        margin-top: 26px;
+      }
+
+      .story-lines .strong-line {
+        font-size: 22px;
+      }
+
+      .story-lines .turning-point {
+        margin-top: 51px;
+        font-size: 40px;
       }
 
       .back-button {
         width: 100%;
+        max-width: 340px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .hero img {
+        min-height: 390px;
+        object-position: 51% center;
+      }
+
+      .story-world {
+        padding-right: 18px;
+        padding-left: 18px;
+      }
+
+      .music-copy h2 {
+        font-size: 34px;
+      }
+
+      .prolog-story h1 {
+        font-size: 38px;
       }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- JEDNOTNÁ HORNÍ LIŠTA -->
 
   <header class="topbar">
 
@@ -438,9 +738,9 @@
 
   </header>
 
-  <main class="page">
+  <main class="cinematic-page">
 
-    <!-- HERO PROLOGU -->
+    <!-- ŠIROKÝ HERO PROLOGU -->
 
     <section class="hero">
 
@@ -449,70 +749,121 @@
         alt="Prolog – Než přišla Mia"
       >
 
-    </section>
-
-    <!-- HUDBA PROLOGU -->
-
-    <section class="music-section">
-
-      <div class="music-copy">
-
-        <h2>
-          🎵 Hudba Prologu
-        </h2>
-
-        <p>
-          Filmová píseň o konci jednoho snu
-          a začátku nové cesty.
-        </p>
-
-      </div>
-
-      <div class="music-soon">
-        🎼 Hudbu Prologu právě připravujeme
-      </div>
+      <div class="hero-fade"></div>
 
     </section>
 
-    <!-- KRÁTKÝ TEXT -->
+    <!-- NAVAZUJÍCÍ FILMOVÝ SVĚT -->
 
-    <section class="prolog-text">
+    <section class="story-world">
 
-      <h1>
-        Každý příběh má svůj začátek
-      </h1>
+      <div class="content-width">
 
-      <p>
-        Ne ten, který si pamatujeme nejvíc.
-        Ale ten, který nás potichu připravoval
-        na všechno, co mělo přijít.
-      </p>
+        <!-- HUDBA PROLOGU -->
 
-      <p>
-        Než přišla Mia, existoval jiný sen.
-        Fotbal nebyl jen hra.
-        Byl to můj svět, moje cesta
-        a místo, kde jsem přesně věděla, kým jsem.
-      </p>
+        <section class="music-section">
 
-      <p>
-        Ten sen neskončil proto,
-        že jsem se vzdala.
-        Skončil proto,
-        že už nešlo pokračovat.
-      </p>
+          <div class="music-copy">
 
-      <p class="closing-line">
-        A právě jeho konec otevřel dveře
-        tomu nejkrásnějšímu.
-      </p>
+            <div class="music-label">
+              🎬 Hudební motiv příběhu
+            </div>
 
-      <a
-        class="back-button"
-        href="mia.html"
-      >
-        ← Zpět na MIA
-      </a>
+            <h2>
+              Hudba Prologu
+            </h2>
+
+            <p>
+              Filmová píseň o konci jednoho snu
+              a začátku cesty,
+              jejíž smysl tehdy ještě nebylo možné vidět.
+            </p>
+
+          </div>
+
+          <div class="music-soon">
+            🎵 Hudbu Prologu právě připravujeme
+          </div>
+
+        </section>
+
+        <!-- KRÁTKÝ FILMOVÝ PROLOG -->
+
+        <section class="prolog-story">
+
+          <div class="scene-number">
+            Prolog · Než přišla Mia
+          </div>
+
+          <h1>
+            Každý příběh má svůj začátek
+          </h1>
+
+          <div class="cinematic-divider">
+            ♡
+          </div>
+
+          <div class="story-lines">
+
+            <p>
+              Ne vždy je to okamžik,
+              který si pamatujeme nejvíc.
+              Někdy je to chvíle,
+              která nás potichu připravuje
+              na všechno, co má teprve přijít.
+            </p>
+
+            <p>
+              Než přišla Mia,
+              existoval jiný sen.
+            </p>
+
+            <p class="strong-line">
+              Fotbal nebyl jen hra.
+              Byl to můj svět, moje cesta
+              a místo, kde jsem přesně věděla,
+              kým jsem.
+            </p>
+
+            <p>
+              Ten sen neskončil proto,
+              že jsem se vzdala.
+            </p>
+
+            <p class="strong-line">
+              Skončil proto,
+              že už nešlo pokračovat.
+            </p>
+
+            <p class="turning-point">
+              A právě jeho konec otevřel dveře
+              tomu nejkrásnějšímu.
+            </p>
+
+          </div>
+
+          <div class="ending">
+
+            <div class="paw-trail">
+              🐾 🐾
+            </div>
+
+            <a
+              class="back-button"
+              href="mia.html"
+            >
+              ← Zpět na MIA
+            </a>
+
+            <div class="final-mark">
+              Příběh, který napsal sám život.
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
 
     </section>
 
