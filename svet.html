@@ -21,15 +21,9 @@
 
 <style>
 :root{
-  --dark:#21131c;
-  --dark-soft:#38222f;
-
   --pink:#f35ca8;
   --pink-light:#ff92c8;
-  --pink-pale:#fff0f7;
   --deep:#a52d6f;
-
-  --gold:#ffd37d;
   --cream:#fff9f2;
 
   --serif:
@@ -99,9 +93,9 @@ button{
   font:inherit;
 }
 
-/* ==================================================
+/* =========================================
    HORNÍ LIŠTA
-   ================================================== */
+   ========================================= */
 
 .topbar{
   position:sticky;
@@ -115,7 +109,7 @@ button{
   min-height:78px;
   padding:10px 5vw;
 
-  background:rgba(255,251,248,.95);
+  background:rgba(255,251,248,.97);
   border-bottom:1px solid rgba(165,45,111,.12);
 
   box-shadow:
@@ -174,11 +168,12 @@ button{
 
   content:"";
 
-  background:linear-gradient(
-    90deg,
-    var(--deep),
-    var(--pink)
-  );
+  background:
+    linear-gradient(
+      90deg,
+      var(--deep),
+      var(--pink)
+    );
 
   transition:
     right .25s ease,
@@ -202,11 +197,12 @@ button{
 
   color:#fff;
 
-  background:linear-gradient(
-    135deg,
-    var(--deep),
-    var(--pink)
-  );
+  background:
+    linear-gradient(
+      135deg,
+      var(--deep),
+      var(--pink)
+    );
 
   border-radius:999px;
 
@@ -243,193 +239,70 @@ button{
   cursor:default;
 }
 
-/* ==================================================
-   ÚVODNÍ FILMOVÝ HERO
-   ================================================== */
+/* =========================================
+   NOVÝ FILMOVÝ HERO
+   ========================================= */
 
 .hero{
-  position:relative;
-  isolation:isolate;
-
-  display:grid;
-  min-height:520px;
-  place-items:center;
+  width:min(1500px,94%);
+  margin:28px auto 0;
 
   overflow:hidden;
 
-  padding:
-    clamp(70px,9vw,120px)
-    7vw
-    clamp(85px,10vw,140px);
+  border:1px solid rgba(255,255,255,.65);
+  border-radius:34px;
 
-  text-align:center;
+  background:#f5c8d5;
+
+  box-shadow:
+    0 28px 70px rgba(84,35,61,.22);
 }
 
-.hero::before{
-  position:absolute;
-  z-index:-3;
-  inset:0;
+.hero-image{
+  width:100%;
+  height:auto;
 
-  content:"";
+  object-fit:cover;
+  object-position:center;
 
-  background:
-    radial-gradient(
-      circle at 50% 15%,
-      rgba(255,255,255,.88),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 18% 42%,
-      rgba(255,126,184,.2),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 82% 34%,
-      rgba(255,211,125,.24),
-      transparent 30%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255,245,250,.95),
-      rgba(255,225,239,.88)
-    );
+  transition:transform 1s ease;
 }
 
-.hero::after{
-  position:absolute;
-  z-index:-2;
-  right:0;
-  bottom:0;
-  left:0;
+.hero:hover .hero-image{
+  transform:scale(1.012);
+}
 
-  height:210px;
+/* Jemné napojení obrázku na projekty */
 
-  content:"";
+.hero-fade{
+  position:relative;
 
-  background:
-    linear-gradient(
-      180deg,
-      transparent,
-      rgba(255,255,255,.72)
-    );
+  width:min(1500px,94%);
+  height:90px;
+
+  margin:-50px auto 0;
 
   pointer-events:none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,239,247,0) 0%,
+      rgba(255,235,244,.72) 55%,
+      rgba(255,235,244,1) 100%
+    );
 }
 
-.hero-glow{
-  position:absolute;
-  z-index:-1;
-
-  width:520px;
-  height:520px;
-
-  border:1px solid rgba(255,255,255,.55);
-  border-radius:50%;
-
-  box-shadow:
-    0 0 90px rgba(255,255,255,.72),
-    inset 0 0 80px rgba(255,116,184,.08);
-
-  opacity:.75;
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-
-  max-width:1040px;
-}
-
-.badge{
-  display:inline-flex;
-
-  margin-bottom:22px;
-  padding:9px 17px;
-
-  align-items:center;
-  gap:8px;
-
-  color:#862456;
-
-  background:rgba(255,255,255,.72);
-  border:1px solid rgba(255,116,184,.32);
-  border-radius:999px;
-
-  box-shadow:
-    0 10px 28px rgba(165,45,111,.1);
-
-  font-size:15px;
-  font-weight:700;
-}
-
-.hero h1{
-  margin-bottom:23px;
-
-  color:var(--deep);
-
-  font-family:var(--serif);
-  font-size:clamp(56px,9vw,110px);
-  font-weight:600;
-
-  line-height:.95;
-
-  text-shadow:
-    0 8px 35px rgba(165,45,111,.1);
-}
-
-.hero-divider{
-  display:flex;
-
-  width:min(420px,76%);
-  margin:0 auto 28px;
-
-  align-items:center;
-  gap:17px;
-
-  color:var(--pink);
-}
-
-.hero-divider::before,
-.hero-divider::after{
-  flex:1;
-  height:1px;
-  content:"";
-
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(165,45,111,.65)
-  );
-}
-
-.hero-divider::after{
-  background:linear-gradient(
-    90deg,
-    rgba(165,45,111,.65),
-    transparent
-  );
-}
-
-.subtitle{
-  max-width:820px;
-  margin:0 auto;
-
-  color:#3b2632;
-
-  font-size:clamp(22px,3vw,36px);
-  line-height:1.4;
-}
-
-/* ==================================================
+/* =========================================
    HLAVNÍ PROJEKTY
-   ================================================== */
+   ========================================= */
 
 .projects{
   position:relative;
   z-index:2;
 
   width:min(1360px,94%);
-  margin:-45px auto 0;
+  margin:-12px auto 0;
   padding-bottom:90px;
 }
 
@@ -457,9 +330,9 @@ button{
   line-height:1.65;
 }
 
-/* ==================================================
+/* =========================================
    FILMOVÉ PANELY
-   ================================================== */
+   ========================================= */
 
 .project-list{
   display:grid;
@@ -547,8 +420,10 @@ button{
 
 .project-copy{
   display:flex;
+
   min-height:410px;
   max-width:610px;
+
   padding:
     clamp(38px,6vw,72px)
     clamp(32px,6vw,80px);
@@ -621,11 +496,12 @@ button{
 
   color:#fff;
 
-  background:linear-gradient(
-    90deg,
-    #bd2e76,
-    var(--pink)
-  );
+  background:
+    linear-gradient(
+      90deg,
+      #bd2e76,
+      var(--pink)
+    );
 
   border:1px solid rgba(255,255,255,.17);
   border-radius:999px;
@@ -649,9 +525,9 @@ button{
     0 18px 38px rgba(20,8,14,.36);
 }
 
-/* ==================================================
-   JEDNOTLIVÉ PROJEKTY
-   ================================================== */
+/* =========================================
+   BERUŠKA A BROUČEK
+   ========================================= */
 
 .project-beruska{
   min-height:470px;
@@ -664,6 +540,10 @@ button{
 .project-beruska .project-copy h3{
   color:#ffcf7d;
 }
+
+/* =========================================
+   ZA OBRAZOVKOU
+   ========================================= */
 
 .project-obrazovka{
   min-height:430px;
@@ -709,6 +589,10 @@ button{
     0 3px 14px rgba(255,255,255,.85);
 }
 
+/* =========================================
+   MIA
+   ========================================= */
+
 .project-mia{
   min-height:440px;
 }
@@ -732,9 +616,9 @@ button{
   color:#ff9bc8;
 }
 
-/* ==================================================
-   ZÁVĚREČNÁ VĚTA
-   ================================================== */
+/* =========================================
+   ZÁVĚR
+   ========================================= */
 
 .page-ending{
   padding:40px 20px 70px;
@@ -750,13 +634,22 @@ button{
   font-weight:700;
 }
 
-/* ==================================================
+/* =========================================
    TABLET
-   ================================================== */
+   ========================================= */
 
 @media(max-width:900px){
   .main-nav{
     gap:17px;
+  }
+
+  .hero{
+    width:96%;
+    border-radius:26px;
+  }
+
+  .hero-fade{
+    width:96%;
   }
 
   .project-panel{
@@ -768,7 +661,6 @@ button{
   }
 
   .project-panel::before,
-  .project-obrazovka::before,
   .project-mia::before{
     background:
       linear-gradient(
@@ -790,13 +682,14 @@ button{
   }
 }
 
-/* ==================================================
+/* =========================================
    MOBIL
-   ================================================== */
+   ========================================= */
 
 @media(max-width:700px){
   .topbar{
     grid-template-columns:1fr auto;
+
     min-height:70px;
     padding:9px 4vw;
   }
@@ -816,6 +709,7 @@ button{
   .top-like-btn{
     min-width:0;
     max-width:136px;
+
     padding:10px 13px;
 
     overflow:hidden;
@@ -825,33 +719,44 @@ button{
   }
 
   .hero{
-    min-height:430px;
+    width:100%;
+    margin-top:0;
 
-    padding:
-      65px 7vw
-      100px;
+    border:0;
+    border-radius:0;
+
+    box-shadow:none;
   }
 
-  .hero-glow{
-    width:400px;
-    height:400px;
+  .hero-image{
+    width:100%;
+    height:auto;
+
+    object-fit:contain;
   }
 
-  .hero h1{
-    font-size:57px;
+  .hero:hover .hero-image{
+    transform:none;
   }
 
-  .subtitle{
-    font-size:22px;
+  .hero-fade{
+    width:100%;
+    height:58px;
+
+    margin-top:-30px;
   }
 
   .projects{
     width:92%;
-    margin-top:-48px;
+    margin-top:-5px;
   }
 
   .projects-heading{
     margin-bottom:32px;
+  }
+
+  .projects-heading h2{
+    font-size:42px;
   }
 
   .project-list{
@@ -921,10 +826,6 @@ button{
 }
 
 @media(max-width:420px){
-  .hero h1{
-    font-size:51px;
-  }
-
   .project-panel,
   .project-beruska,
   .project-obrazovka,
@@ -952,7 +853,7 @@ button{
   <nav class="main-nav" aria-label="Hlavní navigace">
     <a href="index.html">Domů</a>
     <a href="#projekty">Projekty</a>
-    <a href="#pripravujeme">MIA</a>
+    <a href="mia.html">MIA</a>
   </nav>
 
   <button
@@ -969,32 +870,19 @@ button{
 
 <main>
 
-  <!-- FILMOVÝ ÚVOD -->
+  <!-- NOVÝ HERO OBRÁZEK -->
 
   <section class="hero">
 
-    <div class="hero-glow" aria-hidden="true"></div>
-
-    <div class="hero-content">
-
-      <div class="badge">
-        🌸 Vítej mezi příběhy
-      </div>
-
-      <h1>Svět Carmen</h1>
-
-      <div class="hero-divider">
-        ♡
-      </div>
-
-      <p class="subtitle">
-        Vyber si příběh, který tě osloví.<br>
-        Každý z nich vzniká srdcem.
-      </p>
-
-    </div>
+    <img
+      class="hero-image"
+      src="hero-svet-carmen-final.png"
+      alt="Svět Carmen – příběhy Beruška a Brouček, Za obrazovkou a MIA"
+    >
 
   </section>
+
+  <div class="hero-fade" aria-hidden="true"></div>
 
   <!-- HLAVNÍ PROJEKTY -->
 
@@ -1074,7 +962,8 @@ button{
           <p>
             Internet ukáže jen několik vteřin.
             Skutečný příběh bývá mnohem delší
-            a ne všechno je takové, jak se na první pohled zdá.
+            a ne všechno je takové,
+            jak se na první pohled zdá.
           </p>
 
           <a
@@ -1131,9 +1020,11 @@ button{
   </section>
 
   <section class="page-ending">
+
     <p>
       Děkuji, že jsi součástí Světa Carmen. ♡
     </p>
+
   </section>
 
 </main>
@@ -1148,7 +1039,8 @@ button{
   const SUPABASE_KEY =
     "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
 
-  const PAGE_ID = "svet-pribehu";
+  const PAGE_ID =
+    "svet-pribehu";
 
   const likeButton =
     document.getElementById("likeButton");
@@ -1177,20 +1069,20 @@ button{
     const response = await fetch(
       `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
       {
-        method: "POST",
+        method:"POST",
 
-        headers: {
-          apikey: SUPABASE_KEY,
-          "Content-Type": "application/json"
+        headers:{
+          apikey:SUPABASE_KEY,
+          "Content-Type":"application/json"
         },
 
-        body: JSON.stringify({
-          requested_page_id: PAGE_ID
+        body:JSON.stringify({
+          requested_page_id:PAGE_ID
         })
       }
     );
 
-    if (!response.ok) {
+    if(!response.ok){
       throw new Error(
         await response.text()
       );
@@ -1199,7 +1091,7 @@ button{
     return response.json();
   }
 
-  function showReady(count) {
+  function showReady(count){
     likeButton.textContent =
       `♡ Líbí se mi ${Number(count) || 0}`;
 
@@ -1210,7 +1102,7 @@ button{
     );
   }
 
-  function showThankYou(count) {
+  function showThankYou(count){
     likeButton.textContent =
       `♥ Děkujeme ${Number(count) || 0}`;
 
@@ -1221,22 +1113,23 @@ button{
     );
   }
 
-  async function loadLikes() {
-    try {
+  async function loadLikes(){
+    try{
       const count =
         await callSupabase(
           "get_page_likes"
         );
 
-      if (
+      if(
         localStorage.getItem(storageKey) ===
         getToday()
-      ) {
+      ){
         showThankYou(count);
-      } else {
+      }else{
         showReady(count);
       }
-    } catch (error) {
+
+    }catch(error){
       console.error(
         "Počet srdcí se nepodařilo načíst:",
         error
@@ -1251,20 +1144,22 @@ button{
 
   likeButton.addEventListener(
     "click",
-    async function () {
-      if (
+    async function(){
+
+      if(
         likeButton.disabled ||
         localStorage.getItem(storageKey) ===
-          getToday()
-      ) {
+        getToday()
+      ){
         return;
       }
 
       likeButton.disabled = true;
+
       likeButton.textContent =
         "♡ Odesílám…";
 
-      try {
+      try{
         const newCount =
           await callSupabase(
             "add_page_like"
@@ -1276,7 +1171,8 @@ button{
         );
 
         showThankYou(newCount);
-      } catch (error) {
+
+      }catch(error){
         console.error(
           "Srdce se nepodařilo odeslat:",
           error
