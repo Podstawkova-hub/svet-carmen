@@ -12,53 +12,85 @@
 
   <meta
     name="description"
-    content="MIA – skutečný příběh, který zachránil dva životy."
+    content="MIA – skutečný příběh, který napsal sám život."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+    rel="stylesheet"
   >
 
   <style>
     :root {
-      --pink: #d33286;
-      --pink-light: #ff6bb5;
-      --pink-soft: #fff0f6;
-      --cream: #fffaf5;
-      --gold: #b77a1e;
-      --gold-soft: #ffe8ad;
-      --text: #33242b;
-      --muted: #6e5962;
+      --pink: #e14b91;
+      --pink-light: #ff76b6;
+      --pink-dark: #a92768;
+      --rose: #be3b78;
+      --cream: #fff6ec;
+      --paper: #fffaf5;
+      --gold: #ffd78c;
+      --gold-dark: #8b5b13;
+      --text: #2c1d24;
+      --muted: #6f5963;
+      --dark: #160f13;
       --white: #ffffff;
+      --handwriting:
+        "Caveat",
+        "Segoe Print",
+        cursive;
+      --serif:
+        "Playfair Display",
+        Georgia,
+        "Times New Roman",
+        serif;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 92px;
     }
 
     body {
       min-height: 100vh;
+      overflow-x: hidden;
       color: var(--text);
-      font-family: Georgia, "Times New Roman", serif;
       background:
         radial-gradient(
-          circle at 10% 10%,
-          rgba(255, 190, 220, 0.38),
-          transparent 30%
+          circle at 8% 8%,
+          rgba(255, 176, 214, 0.26),
+          transparent 28%
         ),
         radial-gradient(
-          circle at 90% 30%,
-          rgba(255, 226, 180, 0.30),
-          transparent 34%
+          circle at 92% 14%,
+          rgba(255, 220, 162, 0.22),
+          transparent 28%
         ),
         linear-gradient(
           180deg,
-          #fff1f7 0%,
-          #fffaf7 48%,
-          #fff0f6 100%
+          #fff7fb 0%,
+          #fff2f7 45%,
+          #fff8ef 100%
         );
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+    }
+
+    body.menu-open {
+      overflow: hidden;
     }
 
     img {
@@ -68,231 +100,1148 @@
 
     a {
       color: inherit;
+      text-decoration: none;
     }
 
-    /* Horní menu */
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+    }
+
+    /* ==================================================
+       HORNÍ MENU – JEDNOTNÝ MUSTR SVĚTA CARMEN
+       ================================================== */
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      min-height: 72px;
+      min-height: 78px;
       padding: 12px 5vw;
       background: rgba(255, 250, 248, 0.95);
-      border-bottom: 1px solid rgba(211, 50, 134, 0.14);
-      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(190, 59, 120, 0.13);
+      box-shadow: 0 8px 26px rgba(89, 39, 62, 0.06);
+      backdrop-filter: blur(16px);
     }
 
     .brand {
+      flex-shrink: 0;
       color: var(--text);
-      text-decoration: none;
-      line-height: 0.95;
+      font-family: var(--serif);
       font-size: 18px;
+      line-height: 0.9;
     }
 
     .brand strong {
       display: block;
       color: var(--pink);
-      font-size: 27px;
+      font-family: var(--serif);
+      font-size: 30px;
       font-style: italic;
-      font-weight: normal;
+      font-weight: 500;
     }
 
-    .nav-links {
+    .desktop-nav {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 30px;
     }
 
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
+    .desktop-nav a {
+      position: relative;
+      color: #66515b;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 15px;
-      font-weight: bold;
+      font-weight: 700;
+      transition: color 0.2s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--pink);
+    .desktop-nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: -7px;
+      left: 0;
+      height: 2px;
+      content: "";
+      background: var(--pink);
+      transform: scaleX(0);
+      transition: transform 0.2s ease;
     }
 
-    /* Hlavní část */
-
-    .page {
-      width: min(1120px, 92%);
-      margin: 42px auto 80px;
+    .desktop-nav a:hover {
+      color: var(--pink-dark);
     }
 
-    .hero {
-      overflow: hidden;
-      background: var(--white);
-      border-radius: 34px;
-      box-shadow:
-        0 22px 70px rgba(87, 44, 65, 0.16);
+    .desktop-nav a:hover::after {
+      transform: scaleX(1);
     }
 
-    .cover-wrap {
-      padding: 18px 18px 0;
-    }
-
-    .cover {
-      width: 100%;
-      max-height: 680px;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 26px 26px 10px 10px;
-      background: #241c1b;
-    }
-
-    .hero-content {
-      max-width: 780px;
-      padding: 48px 54px 58px;
-    }
-
-    .badge {
-      display: inline-flex;
+    .top-actions {
+      display: flex;
       align-items: center;
-      gap: 9px;
-      margin-bottom: 27px;
-      padding: 12px 20px;
-      color: #8c5b13;
-      background: linear-gradient(
-        90deg,
-        #fff0bd,
-        #ffe3a2
-      );
+      gap: 12px;
+    }
+
+    .like-button {
+      min-width: 144px;
+      padding: 11px 18px;
+      color: #fff;
+      background:
+        linear-gradient(
+          135deg,
+          var(--pink-dark),
+          var(--pink-light)
+        );
       border-radius: 999px;
+      box-shadow: 0 10px 24px rgba(190, 59, 120, 0.22);
+      cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
-      font-weight: bold;
-      box-shadow: 0 8px 24px rgba(170, 112, 25, 0.12);
-    }
-
-    h1 {
-      margin-bottom: 20px;
-      color: #b72c76;
-      font-size: clamp(48px, 8vw, 84px);
-      line-height: 1;
-      letter-spacing: 2px;
-    }
-
-    .main-subtitle {
-      margin-bottom: 28px;
-      color: var(--text);
-      font-size: clamp(24px, 4vw, 38px);
-      line-height: 1.25;
-      font-style: italic;
-    }
-
-    .claim {
-      margin-bottom: 30px;
-      color: var(--pink);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: clamp(18px, 2.5vw, 24px);
-      font-weight: bold;
-      line-height: 1.5;
-    }
-
-    .intro {
-      color: var(--text);
-      font-size: clamp(19px, 2.2vw, 24px);
-      line-height: 1.8;
-    }
-
-    .intro p + p {
-      margin-top: 22px;
-    }
-
-    .intro strong {
-      color: #23171d;
-    }
-
-    .read-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 38px;
-      padding: 16px 30px;
-      color: var(--white);
-      background: linear-gradient(
-        90deg,
-        var(--pink),
-        var(--pink-light)
-      );
-      border-radius: 999px;
-      text-decoration: none;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 18px;
-      font-weight: bold;
-      box-shadow: 0 12px 28px rgba(211, 50, 134, 0.26);
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
       transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
     }
 
-    .read-button:hover {
+    .like-button:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 16px 34px rgba(211, 50, 134, 0.34);
+      box-shadow: 0 14px 30px rgba(190, 59, 120, 0.3);
     }
 
-    .closing {
-      margin-top: 34px;
-      color: var(--muted);
+    .like-button.is-liked {
+      color: var(--pink-dark);
+      background: #fff;
+      outline: 2px solid var(--pink-light);
+    }
+
+    .like-button:disabled {
+      cursor: default;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      color: var(--pink-dark);
+      background: #fff;
+      border: 1px solid rgba(190, 59, 120, 0.16);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    /* ==================================================
+       FILMOVÝ HERO
+       ================================================== */
+
+    .hero-section {
+      width: min(1500px, 96%);
+      margin: 24px auto 0;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 120px);
+      overflow: hidden;
+      isolation: isolate;
+      border-radius: 34px;
+      box-shadow:
+        0 28px 80px rgba(58, 26, 40, 0.2);
+    }
+
+    .hero::before {
+      position: absolute;
+      z-index: -3;
+      inset: 0;
+      content: "";
+      background:
+        url("mia-hero.png")
+        center center / cover
+        no-repeat;
+      transform: scale(1.01);
+    }
+
+    .hero::after {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      content: "";
+      background:
+        linear-gradient(
+          90deg,
+          rgba(12, 8, 10, 0.86) 0%,
+          rgba(16, 10, 13, 0.73) 25%,
+          rgba(20, 12, 15, 0.37) 48%,
+          rgba(20, 12, 15, 0.03) 72%,
+          rgba(20, 12, 15, 0.12) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.05) 58%,
+          rgba(0, 0, 0, 0.73) 100%
+        );
+    }
+
+    .hero-glow {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 58%;
+      height: 100%;
+      background:
+        radial-gradient(
+          circle at 30% 36%,
+          rgba(255, 122, 181, 0.13),
+          transparent 50%
+        );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      min-height: calc(100vh - 120px);
+      padding:
+        clamp(46px, 7vw, 100px)
+        clamp(28px, 7vw, 105px)
+        118px;
+    }
+
+    .hero-copy {
+      width: min(600px, 48%);
+      color: #fff;
+    }
+
+    .story-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 10px 17px;
+      color: #fff7ec;
+      background: rgba(35, 20, 25, 0.54);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin-bottom: 5px;
+      color: #fff8ef;
+      font-family: var(--handwriting);
+      font-size: clamp(82px, 11vw, 170px);
+      font-weight: 700;
+      line-height: 0.74;
+      letter-spacing: 0.025em;
+      text-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.34);
+      transform: rotate(-2deg);
+    }
+
+    .paw-mark {
+      display: inline-block;
+      margin-left: 8px;
+      color: #ffd5e7;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.38em;
+      transform: rotate(8deg);
+      vertical-align: top;
+    }
+
+    .hero-subtitle {
+      max-width: 580px;
+      margin: 22px 0 20px;
+      color: #fff4ec;
+      font-family: var(--handwriting);
+      font-size: clamp(30px, 3.3vw, 50px);
+      font-weight: 600;
+      line-height: 1.05;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.52);
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      width: min(330px, 80%);
+      margin-bottom: 27px;
+      color: #ff9bc8;
+    }
+
+    .hero-divider::before,
+    .hero-divider::after {
+      flex: 1;
+      height: 1px;
+      content: "";
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 155, 200, 0.9)
+        );
+    }
+
+    .hero-divider::after {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255, 155, 200, 0.9),
+          transparent
+        );
+    }
+
+    /* ==================================================
+       VLASTNÍ HUDEBNÍ PŘEHRÁVAČ
+       ================================================== */
+
+    .music-block {
+      width: min(540px, 100%);
+      margin-bottom: 23px;
+    }
+
+    .music-heading {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 9px;
+      color: #fff5ef;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .music-player {
+      display: grid;
+      grid-template-columns: 48px 50px 1fr 44px 92px;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      color: #fff;
+      background: rgba(8, 6, 7, 0.57);
+      border: 1px solid rgba(255, 255, 255, 0.17);
+      border-radius: 999px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+    }
+
+    .play-button {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      color: #fff;
+      background:
+        linear-gradient(
+          135deg,
+          var(--pink),
+          var(--pink-light)
+        );
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .play-button:hover {
+      transform: scale(1.07);
+    }
+
+    .time {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+    }
+
+    .progress {
+      width: 100%;
+      height: 5px;
+      accent-color: var(--pink-light);
+      cursor: pointer;
+    }
+
+    .volume-icon {
+      text-align: center;
       font-size: 17px;
+    }
+
+    .volume {
+      width: 88px;
+      accent-color: var(--pink-light);
+      cursor: pointer;
+    }
+
+    .hero-intro {
+      max-width: 500px;
+      margin-bottom: 25px;
+      color: rgba(255, 248, 243, 0.94);
+      font-size: clamp(17px, 1.5vw, 21px);
+      line-height: 1.55;
+      text-shadow: 0 3px 15px rgba(0, 0, 0, 0.52);
+    }
+
+    .open-book-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      padding: 15px 27px;
+      color: #fff;
+      background:
+        linear-gradient(
+          90deg,
+          var(--pink-dark),
+          var(--pink-light)
+        );
+      border-radius: 999px;
+      box-shadow:
+        0 14px 34px rgba(225, 75, 145, 0.34);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .open-book-button:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 18px 42px rgba(225, 75, 145, 0.44);
+    }
+
+    /* ==================================================
+       SPODNÍ HERO NAVIGACE
+       ================================================== */
+
+    .hero-nav {
+      position: absolute;
+      z-index: 10;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(13px, 2.5vw, 36px);
+      min-height: 68px;
+      padding: 12px 28px;
+      background: rgba(10, 7, 9, 0.78);
+      border-top: 1px solid rgba(255, 255, 255, 0.13);
+      backdrop-filter: blur(13px);
+    }
+
+    .hero-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #fff4ec;
+      font-family: var(--serif);
+      font-size: clamp(13px, 1.3vw, 17px);
       font-style: italic;
+      white-space: nowrap;
+      transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .hero-nav a:hover {
+      color: #ff9fc9;
+      transform: translateY(-2px);
+    }
+
+    .nav-paw {
+      color: #ffc3de;
+      font-style: normal;
+    }
+
+    .hero-quote {
+      padding: 16px 24px 18px;
+      color: var(--pink-dark);
+      background: rgba(255, 247, 238, 0.97);
+      border-radius: 0 0 28px 28px;
+      box-shadow:
+        0 20px 50px rgba(80, 32, 54, 0.1);
+      text-align: center;
+      font-family: var(--handwriting);
+      font-size: clamp(21px, 2.4vw, 31px);
+      font-weight: 600;
+    }
+
+    /* ==================================================
+       OBSAH KNIHY
+       ================================================== */
+
+    .book-area {
+      width: min(1120px, 92%);
+      margin: 90px auto;
+    }
+
+    .section-eyebrow {
+      margin-bottom: 12px;
+      color: var(--pink);
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .section-heading {
+      margin-bottom: 16px;
+      color: var(--pink-dark);
+      text-align: center;
+      font-family: var(--serif);
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+    }
+
+    .section-lead {
+      max-width: 730px;
+      margin: 0 auto 42px;
+      color: var(--muted);
+      text-align: center;
+      font-size: clamp(18px, 2vw, 22px);
       line-height: 1.7;
     }
 
-    /* Mobil */
+    .book-page {
+      position: relative;
+      max-width: 920px;
+      min-height: 620px;
+      margin: 0 auto;
+      padding:
+        clamp(48px, 7vw, 86px)
+        clamp(30px, 8vw, 100px);
+      overflow: hidden;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(113, 62, 73, 0.07),
+          transparent 10%,
+          transparent 90%,
+          rgba(113, 62, 73, 0.07)
+        ),
+        #fffdf9;
+      border: 1px solid rgba(150, 90, 107, 0.13);
+      border-radius: 26px;
+      box-shadow:
+        0 25px 70px rgba(77, 36, 53, 0.12);
+    }
 
-    @media (max-width: 720px) {
+    .book-page::before {
+      position: absolute;
+      inset: 14px;
+      content: "";
+      border: 1px solid rgba(213, 92, 145, 0.11);
+      border-radius: 18px;
+      pointer-events: none;
+    }
+
+    .page-number {
+      margin-bottom: 18px;
+      color: var(--pink);
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .book-page h2 {
+      margin-bottom: 38px;
+      color: var(--pink-dark);
+      text-align: center;
+      font-family: var(--serif);
+      font-size: clamp(38px, 6vw, 65px);
+      line-height: 1.1;
+    }
+
+    .story-text {
+      max-width: 710px;
+      margin: 0 auto;
+      color: #36242b;
+      font-size: clamp(19px, 2vw, 24px);
+      line-height: 1.85;
+    }
+
+    .story-text p + p {
+      margin-top: 24px;
+    }
+
+    .story-text .opening {
+      font-size: 1.08em;
+      font-style: italic;
+    }
+
+    .story-closing {
+      max-width: 670px;
+      margin: 44px auto 0;
+      color: var(--pink-dark);
+      text-align: center;
+      font-family: var(--handwriting);
+      font-size: clamp(26px, 3.2vw, 39px);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .continue-button {
+      display: flex;
+      width: fit-content;
+      margin: 38px auto 0;
+      padding: 14px 24px;
+      color: #fff;
+      background:
+        linear-gradient(
+          90deg,
+          var(--pink-dark),
+          var(--pink-light)
+        );
+      border-radius: 999px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow:
+        0 12px 30px rgba(190, 59, 120, 0.24);
+    }
+
+    /* ==================================================
+       PROLOG
+       ================================================== */
+
+    .prolog-section {
+      width: min(1200px, 92%);
+      margin: 110px auto;
+      scroll-margin-top: 100px;
+    }
+
+    .prolog-card {
+      position: relative;
+      overflow: hidden;
+      padding:
+        clamp(52px, 8vw, 95px)
+        clamp(30px, 8vw, 105px);
+      color: #fff;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(22, 12, 17, 0.97),
+          rgba(71, 28, 49, 0.93)
+        );
+      border-radius: 34px;
+      box-shadow:
+        0 26px 75px rgba(58, 22, 41, 0.22);
+    }
+
+    .prolog-card::before {
+      position: absolute;
+      top: -80px;
+      right: -60px;
+      width: 390px;
+      height: 390px;
+      content: "";
+      background:
+        radial-gradient(
+          circle,
+          rgba(255, 117, 180, 0.28),
+          transparent 67%
+        );
+    }
+
+    .prolog-label {
+      margin-bottom: 14px;
+      color: #ffc4df;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .prolog-card h2 {
+      margin-bottom: 26px;
+      color: #fff8f2;
+      font-family: var(--serif);
+      font-size: clamp(45px, 7vw, 78px);
+    }
+
+    .chapter-quote {
+      max-width: 700px;
+      margin-bottom: 34px;
+      color: #ffd8e9;
+      font-family: var(--handwriting);
+      font-size: clamp(27px, 3vw, 39px);
+      line-height: 1.25;
+    }
+
+    .prolog-text {
+      max-width: 800px;
+      color: rgba(255, 248, 243, 0.92);
+      font-size: clamp(18px, 1.8vw, 22px);
+      line-height: 1.8;
+    }
+
+    .prolog-text p + p {
+      margin-top: 20px;
+    }
+
+    .soon-tag {
+      display: inline-flex;
+      margin-top: 35px;
+      padding: 11px 18px;
+      color: #692341;
+      background: #ffd3e5;
+      border-radius: 999px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    /* ==================================================
+       KAPITOLY
+       ================================================== */
+
+    .chapters-section {
+      width: min(1200px, 92%);
+      margin: 110px auto;
+    }
+
+    .chapters-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+      gap: 26px;
+      margin-top: 45px;
+    }
+
+    .chapter-card {
+      position: relative;
+      min-height: 310px;
+      padding: 34px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.83);
+      border: 1px solid rgba(190, 59, 120, 0.11);
+      border-radius: 26px;
+      box-shadow:
+        0 17px 44px rgba(85, 40, 60, 0.1);
+      backdrop-filter: blur(8px);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .chapter-card:hover {
+      transform: translateY(-7px);
+      box-shadow:
+        0 25px 55px rgba(85, 40, 60, 0.16);
+    }
+
+    .chapter-number {
+      margin-bottom: 20px;
+      color: var(--pink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .chapter-card h3 {
+      margin-bottom: 18px;
+      color: var(--pink-dark);
+      font-family: var(--serif);
+      font-size: 31px;
+      line-height: 1.17;
+    }
+
+    .chapter-card p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .chapter-state {
+      position: absolute;
+      right: 25px;
+      bottom: 24px;
+      left: 25px;
+      padding-top: 16px;
+      color: var(--pink-dark);
+      border-top: 1px solid rgba(190, 59, 120, 0.15);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* ==================================================
+       GALERIE / O MIE / VZKAZY – PŘIPRAVENO
+       ================================================== */
+
+    .soft-section {
+      width: min(1100px, 92%);
+      margin: 100px auto;
+      padding:
+        clamp(44px, 7vw, 75px)
+        clamp(27px, 7vw, 80px);
+      background: rgba(255, 255, 255, 0.79);
+      border: 1px solid rgba(190, 59, 120, 0.1);
+      border-radius: 32px;
+      box-shadow:
+        0 18px 52px rgba(80, 37, 57, 0.09);
+      text-align: center;
+    }
+
+    .soft-section h2 {
+      margin-bottom: 18px;
+      color: var(--pink-dark);
+      font-family: var(--serif);
+      font-size: clamp(37px, 5vw, 60px);
+    }
+
+    .soft-section p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.75;
+    }
+
+    /* ==================================================
+       PODPOŘ CARMEN
+       ================================================== */
+
+    .support-section {
+      width: min(1100px, 92%);
+      margin: 100px auto 60px;
+      padding:
+        clamp(44px, 7vw, 70px)
+        clamp(28px, 7vw, 80px);
+      background:
+        linear-gradient(
+          135deg,
+          #fff 0%,
+          #fff0f7 100%
+        );
+      border: 1px solid rgba(190, 59, 120, 0.12);
+      border-radius: 32px;
+      box-shadow:
+        0 22px 60px rgba(87, 40, 61, 0.1);
+      text-align: center;
+    }
+
+    .support-icon {
+      margin-bottom: 12px;
+      font-size: 40px;
+    }
+
+    .support-section h2 {
+      margin-bottom: 16px;
+      color: var(--pink-dark);
+      font-family: var(--serif);
+      font-size: clamp(37px, 5vw, 58px);
+    }
+
+    .support-section p {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .support-like {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 190px;
+      padding: 15px 25px;
+      color: #fff;
+      background:
+        linear-gradient(
+          90deg,
+          var(--pink-dark),
+          var(--pink-light)
+        );
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      box-shadow:
+        0 13px 30px rgba(190, 59, 120, 0.24);
+    }
+
+    .support-like.is-liked {
+      color: var(--pink-dark);
+      background: #fff;
+      outline: 2px solid var(--pink-light);
+    }
+
+    /* ==================================================
+       PATIČKA
+       ================================================== */
+
+    footer {
+      padding: 38px 24px 45px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--pink-dark);
+      font-family: var(--serif);
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    /* ==================================================
+       MOBIL
+       ================================================== */
+
+    @media (max-width: 980px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
       .topbar {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
-        padding: 12px 5vw 15px;
+        padding-right: 4vw;
+        padding-left: 4vw;
       }
 
-      .nav-links {
-        width: 100%;
-        justify-content: space-between;
-        gap: 12px;
+      .mobile-menu {
+        position: fixed;
+        z-index: 999;
+        top: 78px;
+        right: 0;
+        left: 0;
+        display: none;
+        padding: 20px 5vw 28px;
+        background: rgba(255, 250, 248, 0.98);
+        border-bottom: 1px solid rgba(190, 59, 120, 0.13);
+        box-shadow: 0 17px 35px rgba(68, 29, 47, 0.12);
       }
 
-      .page {
-        width: min(94%, 620px);
-        margin-top: 24px;
+      .mobile-menu.is-open {
+        display: grid;
+        gap: 6px;
+      }
+
+      .mobile-menu a {
+        padding: 13px 4px;
+        color: var(--pink-dark);
+        border-bottom: 1px solid rgba(190, 59, 120, 0.1);
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
       }
 
       .hero {
-        border-radius: 24px;
+        min-height: 830px;
       }
 
-      .cover-wrap {
-        padding: 9px 9px 0;
+      .hero::before {
+        background-position: 61% center;
       }
 
-      .cover {
-        border-radius: 18px 18px 8px 8px;
+      .hero::after {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(12, 8, 10, 0.25) 0%,
+            rgba(12, 8, 10, 0.44) 42%,
+            rgba(12, 8, 10, 0.94) 76%,
+            rgba(12, 8, 10, 0.98) 100%
+          );
       }
 
       .hero-content {
-        padding: 34px 26px 42px;
+        align-items: flex-end;
+        min-height: 830px;
+        padding:
+          60px 32px
+          118px;
       }
 
-      .badge {
-        margin-bottom: 22px;
-        padding: 10px 16px;
+      .hero-copy {
+        width: 100%;
       }
 
-      .intro {
-        line-height: 1.7;
+      .hero-title {
+        font-size: clamp(80px, 25vw, 135px);
       }
 
-      .read-button {
+      .hero-subtitle {
+        font-size: clamp(30px, 8vw, 44px);
+      }
+
+      .hero-nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-right: 18px;
+        padding-left: 18px;
+      }
+
+      .hero-nav::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    @media (max-width: 670px) {
+      .topbar {
+        min-height: 72px;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .brand strong {
+        font-size: 25px;
+      }
+
+      .like-button {
+        min-width: 0;
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+
+      .menu-toggle {
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero-section {
+        width: 100%;
+        margin-top: 0;
+      }
+
+      .hero {
+        min-height: 830px;
+        border-radius: 0;
+      }
+
+      .hero::before {
+        background-position: 64% center;
+      }
+
+      .hero-content {
+        padding:
+          50px 21px
+          114px;
+      }
+
+      .story-badge {
+        font-size: 11px;
+      }
+
+      .hero-title {
+        font-size: 91px;
+      }
+
+      .hero-subtitle {
+        margin-top: 15px;
+        font-size: 33px;
+      }
+
+      .music-player {
+        grid-template-columns: 42px 43px 1fr 31px;
+        gap: 7px;
+        padding: 9px 11px;
+      }
+
+      .volume {
+        display: none;
+      }
+
+      .music-player {
+        grid-template-columns: 42px 43px 1fr 31px;
+      }
+
+      .hero-intro {
+        font-size: 17px;
+      }
+
+      .hero-nav {
+        min-height: 62px;
+      }
+
+      .hero-quote {
+        border-radius: 0;
+      }
+
+      .book-area,
+      .prolog-section,
+      .chapters-section,
+      .soft-section,
+      .support-section {
+        width: 94%;
+      }
+
+      .book-page {
+        min-height: 0;
+        padding: 54px 27px;
+      }
+
+      .story-text {
+        font-size: 19px;
+        line-height: 1.75;
+      }
+
+      .prolog-card {
+        padding: 55px 29px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .like-button {
+        max-width: 118px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .hero-title {
+        font-size: 76px;
+      }
+
+      .hero-subtitle {
+        font-size: 29px;
+      }
+
+      .hero-content {
+        padding-right: 17px;
+        padding-left: 17px;
+      }
+
+      .open-book-button {
         width: 100%;
       }
     }
@@ -301,50 +1250,266 @@
 
 <body>
 
+  <!-- HORNÍ MENU -->
+
   <header class="topbar">
+
     <a class="brand" href="index.html">
       Svět
       <strong>Carmen♡</strong>
     </a>
 
-    <nav class="nav-links" aria-label="Hlavní menu">
+    <nav class="desktop-nav" aria-label="Hlavní navigace">
       <a href="index.html">Domů</a>
       <a href="svet.html">Svět příběhů</a>
+      <a href="#pribeh">Příběh</a>
+      <a href="#prolog">Prolog</a>
+      <a href="#kapitoly">Kapitoly</a>
     </nav>
+
+    <div class="top-actions">
+
+      <button
+        class="like-button"
+        id="likeButton"
+        type="button"
+        aria-label="Dát příběhu MIA srdce"
+        disabled
+      >
+        ♡ Líbí se mi…
+      </button>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Otevřít menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+    </div>
+
   </header>
 
-  <main class="page">
+  <nav
+    class="mobile-menu"
+    id="mobileMenu"
+    aria-label="Mobilní navigace"
+  >
+    <a href="index.html">Domů</a>
+    <a href="svet.html">Svět příběhů</a>
+    <a href="#pribeh">Příběh</a>
+    <a href="#prolog">Prolog</a>
+    <a href="#kapitoly">Kapitoly</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#o-mie">O Mie</a>
+    <a href="#vzkazy">Vzkazy</a>
+  </nav>
 
-    <article class="hero">
+  <main>
 
-      <div class="cover-wrap">
-        <img
-          class="cover"
-          src="obalka-mia.png.png"
-          alt="Obálka skutečného příběhu MIA"
-        >
-      </div>
+    <!-- FILMOVÝ HERO -->
 
-      <div class="hero-content">
+    <section class="hero-section" id="domu">
 
-        <div class="badge">
-          🐾 Skutečný příběh
+      <div class="hero">
+
+        <div class="hero-glow"></div>
+
+        <div class="hero-content">
+
+          <div class="hero-copy">
+
+            <div class="story-badge">
+              🐾 Skutečný příběh
+            </div>
+
+            <h1 class="hero-title">
+              MIA
+              <span class="paw-mark">🐾</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              Příběh, který napsal sám život.
+            </p>
+
+            <div class="hero-divider">
+              ♡
+            </div>
+
+            <!-- HYMNĚ MIA -->
+
+            <div class="music-block">
+
+              <div class="music-heading">
+                🎵 Oficiální hymna MIA
+              </div>
+
+              <div class="music-player">
+
+                <button
+                  class="play-button"
+                  id="playButton"
+                  type="button"
+                  aria-label="Přehrát hymnu MIA"
+                >
+                  ▶
+                </button>
+
+                <span class="time" id="currentTime">
+                  0:00
+                </span>
+
+                <div class="progress-wrap">
+                  <input
+                    class="progress"
+                    id="progress"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="0"
+                    aria-label="Průběh hymny"
+                  >
+                </div>
+
+                <span class="volume-icon">
+                  🔊
+                </span>
+
+                <input
+                  class="volume"
+                  id="volume"
+                  type="range"
+                  min="0"
+                  max="1"
+                  value="0.65"
+                  step="0.05"
+                  aria-label="Hlasitost hymny"
+                >
+
+              </div>
+
+              <audio
+                id="miaAudio"
+                preload="metadata"
+              >
+                <source
+                  src="hymna-mia.mp3.mp3"
+                  type="audio/mpeg"
+                >
+              </audio>
+
+            </div>
+
+            <p class="hero-intro">
+              Některé příběhy nevzniknou
+              v lidské fantazii.<br>
+              Napíše je sám život.<br>
+              Tohle je jeden z nich.
+            </p>
+
+            <a
+              class="open-book-button"
+              href="#pribeh"
+            >
+              📖 Otevřít knihu 🐾
+            </a>
+
+          </div>
+
         </div>
 
-        <h1>MIA</h1>
+        <!-- SPODNÍ NAVIGACE PŘES HERO -->
 
-        <p class="main-subtitle">
-          Příběh, který napsal sám život.
-        </p>
+        <nav
+          class="hero-nav"
+          aria-label="Navigace příběhu MIA"
+        >
+          <a href="#domu">
+            Domů
+            <span class="nav-paw">🐾</span>
+          </a>
 
-        <p class="claim">
-          Skutečný příběh, který zachránil dva životy.
-        </p>
+          <a href="#pribeh">
+            Příběh
+            <span class="nav-paw">🐾</span>
+          </a>
 
-        <div class="intro">
+          <a href="#prolog">
+            Prolog
+            <span class="nav-paw">🐾</span>
+          </a>
+
+          <a href="#kapitoly">
+            Kapitoly
+            <span class="nav-paw">🐾</span>
+          </a>
+
+          <a href="#galerie">
+            Galerie
+            <span class="nav-paw">🐾</span>
+          </a>
+
+          <a href="#o-mie">
+            O Mie
+            <span class="nav-paw">🐾</span>
+          </a>
+
+          <a href="#vzkazy">
+            Vzkazy
+            <span class="nav-paw">🐾</span>
+          </a>
+        </nav>
+
+      </div>
+
+      <div class="hero-quote">
+        „Nevybrala jsem si tebe…
+        Ty sis vybrala mě.“ ♡
+      </div>
+
+    </section>
+
+    <!-- STRANA 1 -->
+
+    <section
+      class="book-area"
+      id="pribeh"
+    >
+
+      <p class="section-eyebrow">
+        Otevři první stránku
+      </p>
+
+      <h2 class="section-heading">
+        Příběh, který napsal sám život
+      </h2>
+
+      <p class="section-lead">
+        Ne každý příběh vznikne ve fantazii.
+        Některé napíše život sám.
+      </p>
+
+      <article class="book-page">
+
+        <div class="page-number">
+          Strana 1
+        </div>
+
+        <h2>
+          🐾 Příběh, který napsal sám život.
+        </h2>
+
+        <div class="story-text">
+
+          <p class="opening">
+            Některé příběhy vzniknou
+            v lidské fantazii.
+          </p>
 
           <p>
-            Některé příběhy vzniknou v lidské fantazii.
             Jiné napíše sám život.
           </p>
 
@@ -359,31 +1524,705 @@
           </p>
 
           <p>
-            Příběh o naději, druhé šanci
-            a přátelství, které nelze popsat slovy.
+            Příběh o naději.
           </p>
 
           <p>
-            A o tom, že někdy stačí jediný pohled,
+            O druhé šanci.
+          </p>
+
+          <p>
+            O přátelství,
+            které nelze popsat slovy.
+          </p>
+
+          <p>
+            A o tom, že někdy stačí
+            jediný pohled,
             aby se změnil celý život.
           </p>
 
         </div>
 
-        <a class="read-button" href="#kniha">
-          📖 Začít číst
+        <p class="story-closing">
+          Možná v něm najdeš
+          i kousek svého vlastního příběhu.
+        </p>
+
+        <a
+          class="continue-button"
+          href="#prolog"
+        >
+          Pokračovat do Prologu →
         </a>
 
-        <p class="closing">
-          Možná v tomto příběhu najdeš
-          i kousek svého vlastního života.
+      </article>
+
+    </section>
+
+    <!-- PROLOG -->
+
+    <section
+      class="prolog-section"
+      id="prolog"
+    >
+
+      <article class="prolog-card">
+
+        <div class="prolog-label">
+          Prolog
+        </div>
+
+        <h2>
+          Než přišla Mia
+        </h2>
+
+        <p class="chapter-quote">
+          „Někdy nám život vezme jeden sen,
+          aby nám později ukázal jinou cestu.“
         </p>
+
+        <div class="prolog-text">
+
+          <p>
+            Kdysi jsem žila úplně jiný život.
+          </p>
+
+          <p>
+            Fotbal nebyl jen můj koníček.
+            Byl mou vášní, mou cestou
+            a snem, za kterým jsem šla.
+          </p>
+
+          <p>
+            Pak ale přišel pracovní úraz,
+            operace pravé ruky
+            a okamžik, který všechno změnil.
+          </p>
+
+          <p>
+            Musela jsem skončit s fotbalem.
+            Přestala jsem chodit mezi lidi
+            a uzavřela se sama do sebe.
+          </p>
+
+          <p>
+            Tehdy mi psycholožka doporučila
+            něco, co znělo až příliš jednoduše:
+            pořídit si psa.
+          </p>
+
+          <p>
+            Netušila jsem,
+            že právě tahle rada
+            otevře dveře příběhu,
+            který změní celý můj život.
+          </p>
+
+        </div>
+
+        <span class="soon-tag">
+          🎬 Filmová ilustrace Prologu připravujeme
+        </span>
+
+      </article>
+
+    </section>
+
+    <!-- KAPITOLY -->
+
+    <section
+      class="chapters-section"
+      id="kapitoly"
+    >
+
+      <p class="section-eyebrow">
+        Skutečné události
+      </p>
+
+      <h2 class="section-heading">
+        Kapitoly příběhu
+      </h2>
+
+      <p class="section-lead">
+        Každá kapitola vypráví jeden skutečný
+        okamžik z Miina života.
+      </p>
+
+      <div class="chapters-grid">
+
+        <article class="chapter-card">
+
+          <div class="chapter-number">
+            Kapitola 1
+          </div>
+
+          <h3>
+            Ona si vybrala mě
+          </h3>
+
+          <p>
+            Cesta pro jedno štěňátko měla
+            dopadnout úplně jinak.
+            Pak ale přišel pohled,
+            na který se nezapomíná.
+          </p>
+
+          <div class="chapter-state">
+            🐾 Připravujeme první kapitolu
+          </div>
+
+        </article>
+
+        <article class="chapter-card">
+
+          <div class="chapter-number">
+            Kapitola 2
+          </div>
+
+          <h3>
+            První cesta domů
+          </h3>
+
+          <p>
+            Nový domov, první společné chvíle
+            a okamžik, kdy malá princezna
+            dostala své jméno.
+          </p>
+
+          <div class="chapter-state">
+            Brzy
+          </div>
+
+        </article>
+
+        <article class="chapter-card">
+
+          <div class="chapter-number">
+            Další kapitoly
+          </div>
+
+          <h3>
+            Příběh pokračuje
+          </h3>
+
+          <p>
+            Hry, cesty, dobrodružství,
+            radostné chvíle i okamžiky,
+            které změnily několik životů.
+          </p>
+
+          <div class="chapter-state">
+            Kapitoly budou vycházet postupně
+          </div>
+
+        </article>
 
       </div>
 
-    </article>
+    </section>
+
+    <!-- GALERIE -->
+
+    <section
+      class="soft-section"
+      id="galerie"
+    >
+
+      <p class="section-eyebrow">
+        Vzpomínky
+      </p>
+
+      <h2>
+        Galerie MIA
+      </h2>
+
+      <p>
+        Skutečné fotografie, vzpomínky
+        a malé okamžiky,
+        ze kterých vznikl tento příběh.
+        Galerie bude doplněna postupně.
+      </p>
+
+    </section>
+
+    <!-- O MIE -->
+
+    <section
+      class="soft-section"
+      id="o-mie"
+    >
+
+      <p class="section-eyebrow">
+        Jedinečná duše
+      </p>
+
+      <h2>
+        O Mie
+      </h2>
+
+      <p>
+        Mia nebyla obyčejný pes.
+        Byla přítel, ochránce,
+        dobrodruh a rodina.
+        Rozuměla i slovům,
+        která nikdy nebyla vyslovena.
+      </p>
+
+    </section>
+
+    <!-- VZKAZY -->
+
+    <section
+      class="soft-section"
+      id="vzkazy"
+    >
+
+      <p class="section-eyebrow">
+        Od srdce
+      </p>
+
+      <h2>
+        Vzkazy pro Miu
+      </h2>
+
+      <p>
+        Později zde vznikne místo,
+        kde budou moci čtenáři zanechat
+        vlastní vzpomínku, vzkaz
+        nebo příběh o čtyřnohém příteli,
+        který změnil jejich život.
+      </p>
+
+    </section>
+
+    <!-- PODPOŘ CARMEN -->
+
+    <section class="support-section">
+
+      <div class="support-icon">
+        ♡🐾
+      </div>
+
+      <h2>
+        Podpoř Carmen
+      </h2>
+
+      <p>
+        Jestli se tě příběh MIA dotkl,
+        můžeš mu dát srdce.
+        Každé srdce pomáhá Světu Carmen růst
+        a přinášet další příběhy,
+        které vznikají srdcem.
+      </p>
+
+      <button
+        class="support-like"
+        id="supportLikeButton"
+        type="button"
+        disabled
+      >
+        ♡ Líbí se mi…
+      </button>
+
+    </section>
 
   </main>
+
+  <footer>
+
+    <strong>
+      Svět Carmen♡
+    </strong>
+
+    <p>
+      Tady každý příběh začíná srdcem.
+    </p>
+
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* ================================================
+         MOBILNÍ MENU
+         ================================================ */
+
+      const menuToggle =
+        document.getElementById("menuToggle");
+
+      const mobileMenu =
+        document.getElementById("mobileMenu");
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener(
+          "click",
+          function () {
+            const isOpen =
+              mobileMenu.classList.toggle("is-open");
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              String(isOpen)
+            );
+
+            menuToggle.textContent =
+              isOpen ? "✕" : "☰";
+          }
+        );
+
+        mobileMenu
+          .querySelectorAll("a")
+          .forEach(function (link) {
+            link.addEventListener(
+              "click",
+              function () {
+                mobileMenu.classList.remove("is-open");
+
+                menuToggle.setAttribute(
+                  "aria-expanded",
+                  "false"
+                );
+
+                menuToggle.textContent = "☰";
+              }
+            );
+          });
+      }
+
+      /* ================================================
+         HUDEBNÍ PŘEHRÁVAČ
+         ================================================ */
+
+      const audio =
+        document.getElementById("miaAudio");
+
+      const playButton =
+        document.getElementById("playButton");
+
+      const progress =
+        document.getElementById("progress");
+
+      const currentTime =
+        document.getElementById("currentTime");
+
+      const volume =
+        document.getElementById("volume");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) {
+          return "0:00";
+        }
+
+        const minutes =
+          Math.floor(seconds / 60);
+
+        const remainingSeconds =
+          Math.floor(seconds % 60)
+            .toString()
+            .padStart(2, "0");
+
+        return `${minutes}:${remainingSeconds}`;
+      }
+
+      if (
+        audio &&
+        playButton &&
+        progress &&
+        currentTime
+      ) {
+        audio.volume = 0.65;
+
+        playButton.addEventListener(
+          "click",
+          async function () {
+            if (audio.paused) {
+              try {
+                await audio.play();
+
+                playButton.textContent = "❚❚";
+
+                playButton.setAttribute(
+                  "aria-label",
+                  "Pozastavit hymnu MIA"
+                );
+              } catch (error) {
+                console.error(
+                  "Hymnu se nepodařilo spustit:",
+                  error
+                );
+
+                playButton.textContent = "!";
+              }
+            } else {
+              audio.pause();
+
+              playButton.textContent = "▶";
+
+              playButton.setAttribute(
+                "aria-label",
+                "Přehrát hymnu MIA"
+              );
+            }
+          }
+        );
+
+        audio.addEventListener(
+          "timeupdate",
+          function () {
+            if (
+              Number.isFinite(audio.duration) &&
+              audio.duration > 0
+            ) {
+              progress.value =
+                (audio.currentTime / audio.duration) * 100;
+            }
+
+            currentTime.textContent =
+              formatTime(audio.currentTime);
+          }
+        );
+
+        progress.addEventListener(
+          "input",
+          function () {
+            if (
+              Number.isFinite(audio.duration) &&
+              audio.duration > 0
+            ) {
+              audio.currentTime =
+                (Number(progress.value) / 100) *
+                audio.duration;
+            }
+          }
+        );
+
+        audio.addEventListener(
+          "ended",
+          function () {
+            playButton.textContent = "▶";
+            progress.value = 0;
+            currentTime.textContent = "0:00";
+          }
+        );
+
+        audio.addEventListener(
+          "error",
+          function () {
+            playButton.textContent = "!";
+
+            playButton.setAttribute(
+              "aria-label",
+              "Hymnu se nepodařilo načíst"
+            );
+          }
+        );
+      }
+
+      if (audio && volume) {
+        volume.addEventListener(
+          "input",
+          function () {
+            audio.volume =
+              Number(volume.value);
+          }
+        );
+      }
+
+      /* ================================================
+         SRDÍČKA – SUPABASE
+         ================================================ */
+
+      const SUPABASE_URL =
+        "https://lggboavbzzvoomveewtl.supabase.co";
+
+      const SUPABASE_KEY =
+        "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+
+      const PAGE_ID = "mia";
+
+      const likeButton =
+        document.getElementById("likeButton");
+
+      const supportLikeButton =
+        document.getElementById(
+          "supportLikeButton"
+        );
+
+      const likeButtons = [
+        likeButton,
+        supportLikeButton
+      ].filter(Boolean);
+
+      const storageKey =
+        `svetCarmenLike_${PAGE_ID}`;
+
+      function getToday() {
+        const now = new Date();
+
+        const year =
+          now.getFullYear();
+
+        const month =
+          String(now.getMonth() + 1)
+            .padStart(2, "0");
+
+        const day =
+          String(now.getDate())
+            .padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+      }
+
+      async function callSupabase(
+        functionName
+      ) {
+        const response = await fetch(
+          `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
+          {
+            method: "POST",
+            headers: {
+              apikey: SUPABASE_KEY,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              requested_page_id: PAGE_ID
+            })
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            await response.text()
+          );
+        }
+
+        return response.json();
+      }
+
+      function showReady(count) {
+        likeButtons.forEach(
+          function (button) {
+            button.textContent =
+              `♡ Líbí se mi ${Number(count) || 0}`;
+
+            button.disabled = false;
+
+            button.classList.remove(
+              "is-liked"
+            );
+          }
+        );
+      }
+
+      function showThankYou(count) {
+        likeButtons.forEach(
+          function (button) {
+            button.textContent =
+              `♥ Děkujeme ${Number(count) || 0}`;
+
+            button.disabled = true;
+
+            button.classList.add(
+              "is-liked"
+            );
+          }
+        );
+      }
+
+      async function loadLikes() {
+        try {
+          const count =
+            await callSupabase(
+              "get_page_likes"
+            );
+
+          if (
+            localStorage.getItem(
+              storageKey
+            ) === getToday()
+          ) {
+            showThankYou(count);
+          } else {
+            showReady(count);
+          }
+        } catch (error) {
+          console.error(
+            "Počet srdcí se nepodařilo načíst:",
+            error
+          );
+
+          likeButtons.forEach(
+            function (button) {
+              button.textContent =
+                "♡ Líbí se mi";
+
+              button.disabled = false;
+            }
+          );
+        }
+      }
+
+      async function addLike() {
+        if (
+          localStorage.getItem(
+            storageKey
+          ) === getToday()
+        ) {
+          return;
+        }
+
+        likeButtons.forEach(
+          function (button) {
+            button.disabled = true;
+
+            button.textContent =
+              "♡ Odesílám…";
+          }
+        );
+
+        try {
+          const newCount =
+            await callSupabase(
+              "add_page_like"
+            );
+
+          localStorage.setItem(
+            storageKey,
+            getToday()
+          );
+
+          showThankYou(newCount);
+        } catch (error) {
+          console.error(
+            "Srdce se nepodařilo odeslat:",
+            error
+          );
+
+          likeButtons.forEach(
+            function (button) {
+              button.textContent =
+                "♡ Zkusit znovu";
+
+              button.disabled = false;
+            }
+          );
+        }
+      }
+
+      likeButtons.forEach(
+        function (button) {
+          button.addEventListener(
+            "click",
+            addLike
+          );
+        }
+      );
+
+      loadLikes();
+    })();
+  </script>
 
 </body>
 </html>
