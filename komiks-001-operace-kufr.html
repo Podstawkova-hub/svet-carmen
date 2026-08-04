@@ -52,17 +52,20 @@
 <script>
 (function(){
 "use strict";
-const coverPath="assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-cover..png";
-const pages=[
-"assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-01.jpeg",
-"assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-02.jpeg",
-"assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-03.jpeg",
-"assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-04.jpeg",
-"assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-05.jpeg",
-"assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-06.jpeg",
-"assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-07.jpeg",
-"assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-08.jpeg",
-"assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-09.jpeg"];
+const coverPath =
+"/assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-cover.png?v=2";
+
+const pages = [
+  "/assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-01.jpeg?v=2",
+  "/assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-02.jpeg?v=2",
+  "/assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-03.jpeg?v=2",
+  "/assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-04.jpeg?v=2",
+  "/assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-05.jpeg?v=2",
+  "/assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-06.jpeg?v=2",
+  "/assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-07.jpeg?v=2",
+  "/assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-08.jpeg?v=2",
+  "/assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-09.jpeg?v=2"
+];
 const shell=document.getElementById("pageShell"),status=document.getElementById("statusText"),controls=document.getElementById("readerControls"),prev=document.getElementById("prevButton"),next=document.getElementById("nextButton"),dots=document.getElementById("dots"),end=document.getElementById("endPanel");
 let mode="cover",index=0,busy=false,touchStart=0;
 pages.forEach(()=>{const d=document.createElement("span");d.className="dot";dots.appendChild(d)});
