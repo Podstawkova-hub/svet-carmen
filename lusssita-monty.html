@@ -26,7 +26,6 @@
   --deep:#a52d6f;
   --ink:#2d1c28;
   --muted:#654b59;
-  --cream:#fff8f2;
   --serif:"Playfair Display",Georgia,"Times New Roman",serif;
   --hand:"Caveat","Segoe Print",cursive;
   --sans:"Nunito",Arial,Helvetica,sans-serif;
@@ -168,7 +167,7 @@ button{
 }
 
 /* =========================================
-   HERO – ZŮSTÁVÁ BEZE ZMĚNY
+   HERO – ZŮSTÁVÁ PŮVODNÍ
    ========================================= */
 
 .hero{
@@ -190,7 +189,7 @@ button{
   right:0;
   bottom:0;
   left:0;
-  height:125px;
+  height:120px;
   content:"";
   pointer-events:none;
   background:linear-gradient(
@@ -208,7 +207,7 @@ button{
 .music-section{
   width:min(900px,90%);
   margin:0 auto;
-  padding:30px 0 28px;
+  padding:28px 0 22px;
   text-align:center;
 }
 
@@ -226,110 +225,57 @@ button{
 }
 
 /* =========================================
-   FILMOVÉ PŘEDSTAVENÍ PROJEKTU
+   TEXTOVÉ PŘEDSTAVENÍ – BEZ DALŠÍ FOTKY
    ========================================= */
 
-.story-intro{
-  position:relative;
-  min-height:470px;
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(18,12,16,.94) 0%,
-      rgba(20,13,17,.78) 38%,
-      rgba(20,13,17,.18) 72%,
-      transparent 100%
-    ),
-    url("lusssita-monty-cover.png") center/cover no-repeat;
-}
-
-.story-intro::before,
-.story-intro::after{
-  position:absolute;
-  right:0;
-  left:0;
-  z-index:2;
-  height:95px;
-  content:"";
-  pointer-events:none;
-}
-
-.story-intro::before{
-  top:0;
-  background:linear-gradient(
-    180deg,
-    #ffedf6 0%,
-    rgba(255,237,246,.56) 35%,
-    rgba(255,237,246,0) 100%
-  );
-}
-
-.story-intro::after{
-  bottom:0;
-  background:linear-gradient(
-    0deg,
-    #ffedf6 0%,
-    rgba(255,237,246,.56) 35%,
-    rgba(255,237,246,0) 100%
-  );
-}
-
-.story-copy{
-  position:relative;
-  z-index:3;
-  width:min(650px,88%);
-  margin-left:6vw;
-  padding:70px 0;
-  color:#fff;
+.intro{
+  width:min(980px,90%);
+  margin:0 auto;
+  padding:42px 0 64px;
+  text-align:center;
 }
 
 .eyebrow{
   display:inline-flex;
-  margin-bottom:16px;
+  margin-bottom:15px;
   padding:8px 14px;
   align-items:center;
   gap:7px;
-  color:#fff;
-  background:rgba(165,45,111,.62);
-  border:1px solid rgba(255,255,255,.20);
+  color:var(--deep);
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(165,45,111,.10);
   border-radius:999px;
   font-size:13px;
   font-weight:900;
   letter-spacing:.05em;
   text-transform:uppercase;
-  backdrop-filter:blur(8px);
 }
 
-.story-copy h1{
+.intro h1{
+  color:var(--deep);
   font-family:var(--serif);
-  font-size:clamp(44px,6vw,72px);
-  line-height:1.04;
-  text-shadow:0 8px 30px rgba(0,0,0,.38);
+  font-size:clamp(46px,6vw,72px);
+  line-height:1.06;
 }
 
-.story-copy p{
-  max-width:590px;
-  margin-top:20px;
-  color:rgba(255,248,244,.94);
+.intro p{
+  max-width:850px;
+  margin:20px auto 0;
+  color:var(--muted);
   font-size:clamp(17px,2vw,21px);
-  line-height:1.72;
-  text-shadow:0 4px 18px rgba(0,0,0,.42);
+  line-height:1.74;
 }
 
 .motto{
-  margin-top:22px;
-  color:var(--pink-soft);
+  margin-top:24px;
+  color:var(--pink);
   font-family:var(--hand);
   font-size:clamp(30px,4vw,47px);
   font-weight:700;
-  text-shadow:0 4px 18px rgba(0,0,0,.42);
 }
 
 /* =========================================
-   PŘÁTELSTVÍ – BEZ OSTRÉHO USEKNUTÍ
+   PŘÁTELSTVÍ – FILMOVĚ DO ZTRACENA
    ========================================= */
 
 .friendship{
@@ -359,14 +305,6 @@ button{
       rgba(255,250,253,.96) 76%,
       rgba(255,250,253,.72) 100%
     );
-}
-
-.friendship-copy .eyebrow{
-  align-self:flex-start;
-  color:var(--deep);
-  background:rgba(255,255,255,.76);
-  border-color:rgba(165,45,111,.10);
-  text-shadow:none;
 }
 
 .friendship-copy h2{
@@ -464,56 +402,35 @@ button{
 }
 
 /* =========================================
-   KOMIKSY – FILMOVÝ KONEC
+   KOMIKSY – BEZ RÁMEČKU, BEZ BAREVNÉ KARTY
    ========================================= */
 
 .comics{
-  position:relative;
-  min-height:320px;
-  display:flex;
-  padding:72px 20px 80px;
-  align-items:center;
-  justify-content:center;
+  width:min(950px,90%);
+  margin:0 auto;
+  padding:60px 0 66px;
   text-align:center;
-  overflow:hidden;
-  color:#fff;
-  background:
-    radial-gradient(circle at 50% 18%,rgba(255,100,176,.30),transparent 28%),
-    linear-gradient(180deg,#4c1737 0%,#7f2457 48%,#b63279 100%);
-}
-
-.comics::before{
-  position:absolute;
-  inset:0;
-  content:"";
-  background:
-    radial-gradient(circle at 15% 30%,rgba(255,255,255,.10),transparent 20%),
-    radial-gradient(circle at 84% 22%,rgba(255,255,255,.08),transparent 18%);
-  pointer-events:none;
-}
-
-.comics-content{
-  position:relative;
-  z-index:2;
 }
 
 .comics h2{
+  color:var(--deep);
   font-family:var(--serif);
-  font-size:clamp(40px,6vw,64px);
+  font-size:clamp(40px,5.5vw,64px);
+  line-height:1.08;
 }
 
 .comics p{
   max-width:760px;
-  margin:16px auto 0;
-  color:rgba(255,255,255,.88);
+  margin:17px auto 0;
+  color:var(--muted);
   font-size:18px;
   line-height:1.65;
 }
 
 .comics strong{
   display:block;
-  margin-top:20px;
-  color:#ffb2d4;
+  margin-top:22px;
+  color:var(--pink);
   font-family:var(--hand);
   font-size:clamp(30px,4vw,46px);
 }
@@ -523,7 +440,7 @@ button{
    ========================================= */
 
 footer{
-  padding:24px 20px 36px;
+  padding:18px 20px 34px;
   text-align:center;
   color:#9a7187;
   background:#fff8ef;
@@ -538,11 +455,6 @@ footer{
 @media(max-width:900px){
   .main-nav{
     gap:17px;
-  }
-
-  .story-intro{
-    min-height:520px;
-    background-position:center;
   }
 
   .friendship-wrap{
@@ -612,34 +524,14 @@ footer{
   }
 
   .music-section{
-    padding:24px 0 22px;
+    padding:24px 0 20px;
   }
 
-  .story-intro{
-    min-height:560px;
-    align-items:flex-end;
-    background-position:63% center;
+  .intro{
+    padding:36px 0 50px;
   }
 
-  .story-intro{
-    background:
-      linear-gradient(
-        180deg,
-        rgba(18,12,16,.04) 0%,
-        rgba(18,12,16,.22) 38%,
-        rgba(18,12,16,.92) 78%,
-        rgba(18,12,16,.98) 100%
-      ),
-      url("lusssita-monty-cover.png") 63% center/cover no-repeat;
-  }
-
-  .story-copy{
-    width:88%;
-    margin:0 auto;
-    padding:230px 0 68px;
-  }
-
-  .story-copy h1{
+  .intro h1{
     font-size:43px;
   }
 
@@ -656,8 +548,7 @@ footer{
   }
 
   .comics{
-    min-height:280px;
-    padding:62px 22px 66px;
+    padding:48px 0 54px;
   }
 }
 </style>
@@ -716,29 +607,23 @@ footer{
 
   </section>
 
-  <!-- FILMOVÉ PŘEDSTAVENÍ -->
+  <!-- POUZE TEXT, ŽÁDNÁ DRUHÁ FOTKA -->
 
-  <section class="story-intro">
+  <section class="intro">
 
-    <div class="story-copy">
+    <span class="eyebrow">😂 Každodenní humor</span>
 
-      <span class="eyebrow">😂 Každodenní humor</span>
+    <h1>Lusssita &amp; Monty</h1>
 
-      <h1>
-        Lusssita &amp; Monty
-      </h1>
+    <p>
+      Krátké komiksy inspirované skutečnými každodenními situacemi.
+      Lusssita je noční sova, Monty ranní ptáček, miluje lidi,
+      rád zpívá a každý obyčejný den promění v příhodu,
+      která si zaslouží vlastní komiks.
+    </p>
 
-      <p>
-        Krátké komiksy inspirované skutečnými každodenními situacemi.
-        Lusssita je noční sova, Monty ranní ptáček,
-        miluje lidi, rád zpívá a každý obyčejný den
-        promění v příhodu, která si zaslouží vlastní komiks.
-      </p>
-
-      <div class="motto">
-        Jeden den. Jeden komiks. Jeden úsměv.
-      </div>
-
+    <div class="motto">
+      Jeden den. Jeden komiks. Jeden úsměv.
     </div>
 
   </section>
@@ -793,22 +678,18 @@ footer{
 
   </section>
 
-  <!-- FILMOVÝ KONEC -->
+  <!-- KOMIKSY BEZ RÁMEČKU -->
 
   <section class="comics" id="komiksy">
 
-    <div class="comics-content">
+    <h2>Komiksy Lusssity a Montyho</h2>
 
-      <h2>Komiksy Lusssity a Montyho</h2>
+    <p>
+      Jednotlivé příhody budeme postupně přidávat
+      do společného archivu.
+    </p>
 
-      <p>
-        Jednotlivé příhody budeme postupně přidávat
-        do společného archivu.
-      </p>
-
-      <strong>První komiksy již brzy.</strong>
-
-    </div>
+    <strong>První komiksy již brzy.</strong>
 
   </section>
 
