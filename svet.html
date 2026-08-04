@@ -617,6 +617,39 @@ button{
 }
 
 /* =========================================
+   LUSSSITA & MONTY
+   ========================================= */
+
+.project-lusssita{
+  min-height:440px;
+}
+
+.project-lusssita .project-image{
+  object-position:center 48%;
+}
+
+.project-lusssita::before{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12,10,13,.92) 0%,
+      rgba(17,13,18,.72) 36%,
+      rgba(18,14,18,.18) 68%,
+      transparent 100%
+    );
+}
+
+.project-lusssita .project-copy h3{
+  color:#ff8fbd;
+}
+
+.project-lusssita .project-status{
+  color:#fff2f7;
+  background:rgba(181,44,105,.56);
+  border-color:rgba(255,255,255,.24);
+}
+
+/* =========================================
    ZÁVĚR
    ========================================= */
 
@@ -661,7 +694,8 @@ button{
   }
 
   .project-panel::before,
-  .project-mia::before{
+  .project-mia::before,
+  .project-lusssita::before{
     background:
       linear-gradient(
         90deg,
@@ -766,7 +800,8 @@ button{
   .project-panel,
   .project-beruska,
   .project-obrazovka,
-  .project-mia{
+  .project-mia,
+  .project-lusssita{
     min-height:520px;
 
     border-radius:25px;
@@ -777,7 +812,8 @@ button{
   }
 
   .project-panel::before,
-  .project-mia::before{
+  .project-mia::before,
+  .project-lusssita::before{
     background:
       linear-gradient(
         180deg,
@@ -830,6 +866,7 @@ button{
   .project-beruska,
   .project-obrazovka,
   .project-mia,
+  .project-lusssita,
   .project-copy{
     min-height:500px;
   }
@@ -1007,6 +1044,44 @@ button{
             href="mia.html"
           >
             🐾 Otevřít příběh →
+          </a>
+
+        </div>
+
+      </article>
+
+      <!-- LUSSSITA & MONTY -->
+
+      <article class="project-panel project-lusssita">
+
+        <img
+          class="project-image"
+          src="lusssita-monty-cover.png"
+          alt="Komiksová obálka projektu Lusssita a Monty"
+        >
+
+        <div class="project-copy">
+
+          <span class="project-status">
+            😂 Každodenní humor
+          </span>
+
+          <h3>
+            Lusssita<br>
+            &amp; Monty
+          </h3>
+
+          <p>
+            Krátké komiksy ze skutečného života,
+            plné humoru, psích lumpáren
+            a nerozlučného přátelství.
+          </p>
+
+          <a
+            class="project-btn"
+            href="lusssita-monty.html"
+          >
+            🐾 Vstoupit do jejich světa →
           </a>
 
         </div>
