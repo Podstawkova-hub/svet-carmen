@@ -8,7 +8,7 @@
 
 <meta
   name="description"
-  content="Komiksový archiv Lusssity a Montyho ve Světě Carmen. Každý díl zachycuje jednu skutečou veselou příhodu."
+  content="Komiksový archiv Lusssity a Montyho ve Světě Carmen. Každý díl zachycuje jednu skutečnou veselou příhodu."
 >
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -171,21 +171,22 @@ button{
 }
 
 /* =========================================
-   HERO – NOVÝ KOMIKSOVÝ VSTUP
+   HERO – NIŽŠÍ KOMIKSOVÝ BANNER
    ========================================= */
 
 .hero{
   position:relative;
   width:100%;
+  height:470px;
   overflow:hidden;
   background:#1b1018;
 }
 
 .hero-image{
   width:100%;
-  height:auto;
+  height:100%;
   object-fit:cover;
-  object-position:center;
+  object-position:center 44%;
 }
 
 .hero::after{
@@ -193,13 +194,13 @@ button{
   right:0;
   bottom:0;
   left:0;
-  height:130px;
+  height:105px;
   content:"";
   pointer-events:none;
   background:linear-gradient(
     180deg,
     rgba(255,234,244,0) 0%,
-    rgba(255,234,244,.48) 52%,
+    rgba(255,234,244,.46) 52%,
     #ffeaf4 100%
   );
 }
@@ -212,7 +213,7 @@ button{
   position:relative;
   width:min(1100px,90%);
   margin:0 auto;
-  padding:44px 0 56px;
+  padding:38px 0 50px;
   text-align:center;
 }
 
@@ -229,14 +230,14 @@ button{
 }
 
 .comic-intro::before{
-  top:38px;
+  top:34px;
   left:0;
   transform:rotate(-10deg);
 }
 
 .comic-intro::after{
   right:0;
-  bottom:28px;
+  bottom:22px;
   transform:rotate(12deg);
 }
 
@@ -284,90 +285,193 @@ button{
 }
 
 /* =========================================
-   KOMIKSOVÁ KNIHOVNA – POLICE
+   KOMIKSOVÁ KNIHOVNA – CELÁ SCÉNA
    ========================================= */
 
 .library{
   position:relative;
   width:100%;
-  padding:56px 0 78px;
+  padding:84px 0 90px;
   overflow:hidden;
   background:
-    radial-gradient(circle at 50% 0%,rgba(255,255,255,.30),transparent 22%),
-    linear-gradient(180deg,#351427 0%,#5a1d45 58%,#2f1227 100%);
+    radial-gradient(circle at 12% 16%,rgba(255,178,91,.14),transparent 18%),
+    radial-gradient(circle at 88% 16%,rgba(255,178,91,.12),transparent 18%),
+    linear-gradient(180deg,#2c171e 0%,#3b1c25 50%,#241119 100%);
 }
+
+/* cihlová komiksová zeď */
 
 .library::before{
   position:absolute;
   inset:0;
   content:"";
+  opacity:.38;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px) 0 0/72px 36px,
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/72px 36px,
+    linear-gradient(90deg,transparent 35px,rgba(255,255,255,.04) 36px,transparent 37px) 0 18px/72px 36px;
   pointer-events:none;
-  opacity:.12;
-  background-image:
-    radial-gradient(circle,#fff 0 1.5px,transparent 2px),
-    linear-gradient(135deg,transparent 44%,rgba(255,255,255,.30) 45% 46%,transparent 47%);
-  background-size:24px 24px,90px 90px;
+}
+
+/* horní světelný přechod */
+
+.library::after{
+  position:absolute;
+  top:0;
+  right:0;
+  left:0;
+  height:100px;
+  content:"";
+  background:linear-gradient(
+    180deg,
+    rgba(255,234,244,.92) 0%,
+    rgba(255,234,244,.30) 38%,
+    rgba(255,234,244,0) 100%
+  );
+  pointer-events:none;
 }
 
 .library-heading{
   position:relative;
-  z-index:2;
+  z-index:3;
   width:min(980px,90%);
-  margin:0 auto 42px;
+  margin:0 auto 54px;
   text-align:center;
   color:#fff;
 }
 
+.library-heading::before{
+  position:absolute;
+  top:-28px;
+  left:50%;
+  width:min(520px,80vw);
+  height:78px;
+  content:"";
+  transform:translateX(-50%) rotate(-1deg);
+  border:5px solid #2a150d;
+  border-radius:7px;
+  background:
+    linear-gradient(180deg,#c17a3f 0%,#8b4d26 48%,#5f2f18 100%);
+  box-shadow:
+    0 14px 24px rgba(0,0,0,.35),
+    inset 0 3px 0 rgba(255,255,255,.20);
+  z-index:-1;
+}
+
 .library-heading h2{
   font-family:var(--comic);
-  font-size:clamp(46px,6vw,76px);
+  font-size:clamp(44px,6vw,72px);
   letter-spacing:.03em;
   line-height:1;
+  color:#fff1d4;
+  text-shadow:4px 4px 0 rgba(0,0,0,.35);
 }
 
 .library-heading p{
   max-width:760px;
-  margin:15px auto 0;
+  margin:28px auto 0;
   color:rgba(255,255,255,.82);
   font-size:18px;
   line-height:1.65;
 }
 
+/* komiksové nápisy na zdi */
+
+.wall-pop{
+  position:absolute;
+  z-index:2;
+  top:122px;
+  font-family:var(--comic);
+  font-size:56px;
+  color:#ffc74e;
+  text-shadow:
+    4px 4px 0 #1a1015,
+    -2px -2px 0 #1a1015;
+  transform:rotate(-8deg);
+}
+
+.wall-pop.left{
+  left:5vw;
+}
+
+.wall-pop.right{
+  right:5vw;
+  color:#ff6fae;
+  transform:rotate(8deg);
+}
+
 .shelves{
   position:relative;
-  z-index:2;
-  width:min(1260px,92%);
+  z-index:3;
+  width:min(1320px,94%);
   margin:0 auto;
+}
+
+/* police už není obdélník – je to samostatná komiksová scéna */
+
+.shelf-scene{
+  position:relative;
+  padding:38px 34px 70px;
+}
+
+/* velké boční dřevěné opěry */
+
+.shelf-scene::before,
+.shelf-scene::after{
+  position:absolute;
+  top:22px;
+  bottom:42px;
+  width:34px;
+  content:"";
+  border:4px solid #2b160d;
+  border-radius:10px;
+  background:
+    linear-gradient(90deg,#6b351b,#a45e30 46%,#5a2b17);
+  box-shadow:
+    0 10px 18px rgba(0,0,0,.38),
+    inset 0 0 0 3px rgba(255,255,255,.06);
+}
+
+.shelf-scene::before{
+  left:0;
+  transform:rotate(-1deg);
+}
+
+.shelf-scene::after{
+  right:0;
+  transform:rotate(1deg);
 }
 
 .shelf{
   position:relative;
   display:grid;
   grid-template-columns:repeat(5,minmax(150px,1fr));
-  gap:26px;
+  gap:28px;
   align-items:end;
-  padding:24px 26px 30px;
-  margin-bottom:48px;
+  padding:18px 30px 44px;
 }
+
+/* masivní dřevěná police */
 
 .shelf::after{
   position:absolute;
-  right:0;
-  bottom:0;
-  left:0;
-  height:20px;
+  right:12px;
+  bottom:10px;
+  left:12px;
+  height:28px;
   content:"";
-  border-radius:4px 4px 10px 10px;
+  border:4px solid #2b160d;
+  border-radius:6px 6px 13px 13px;
   background:
-    linear-gradient(180deg,#a95f2d 0%,#6f351c 48%,#3d1d11 100%);
+    linear-gradient(180deg,#bd7037 0%,#7e3f20 48%,#4a2313 100%);
   box-shadow:
-    0 10px 18px rgba(0,0,0,.45),
-    inset 0 2px 0 rgba(255,255,255,.18);
+    0 15px 22px rgba(0,0,0,.45),
+    inset 0 3px 0 rgba(255,255,255,.18);
 }
 
 .comic-book{
   position:relative;
-  min-height:300px;
+  min-height:310px;
   display:flex;
   padding:18px 16px 20px;
   flex-direction:column;
@@ -388,15 +492,15 @@ button{
 
 .comic-book:hover{
   z-index:5;
-  transform:translateY(-18px) rotate(-1.5deg);
+  transform:translateY(-24px) rotate(-2deg) scale(1.03);
   box-shadow:
     13px 18px 0 rgba(0,0,0,.20),
-    0 30px 38px rgba(0,0,0,.35);
-  filter:saturate(1.08);
+    0 34px 40px rgba(0,0,0,.38);
+  filter:saturate(1.12);
 }
 
 .comic-book:nth-child(2n):hover{
-  transform:translateY(-18px) rotate(1.5deg);
+  transform:translateY(-24px) rotate(2deg) scale(1.03);
 }
 
 .comic-book::before{
@@ -438,7 +542,7 @@ button{
 }
 
 .comic-book:nth-child(5){
-  background:linear-gradient(145deg,#e04e83,#6f2f61);
+  background:linear-gradient(145deg,#86b84c,#47752e);
 }
 
 .issue{
@@ -461,7 +565,7 @@ button{
   z-index:2;
   display:grid;
   place-items:center;
-  min-height:130px;
+  min-height:135px;
   margin:14px 0;
   text-align:center;
 }
@@ -502,21 +606,63 @@ button{
   background:#171017;
 }
 
-/* prázdné budoucí díly */
-
 .comic-book.is-locked{
-  opacity:.72;
-  filter:saturate(.66);
+  opacity:.78;
+  filter:saturate(.72);
 }
 
 .comic-book.is-locked:hover{
-  transform:translateY(-10px);
+  opacity:1;
 }
 
-.comic-book.is-locked .book-open{
-  cursor:default;
-  color:#5b4b55;
-  background:rgba(255,255,255,.78);
+/* dekorace pod policí */
+
+.lower-shelf{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:28px;
+  width:min(1180px,90%);
+  margin:18px auto 0;
+  padding-top:34px;
+}
+
+.mini-books{
+  display:flex;
+  gap:7px;
+  align-items:flex-end;
+}
+
+.mini-book{
+  width:22px;
+  border:3px solid #171017;
+  border-radius:4px 4px 2px 2px;
+  box-shadow:3px 4px 0 rgba(0,0,0,.22);
+}
+
+.mini-book:nth-child(1){height:64px;background:#f05a9f;}
+.mini-book:nth-child(2){height:74px;background:#4eb7c7;}
+.mini-book:nth-child(3){height:58px;background:#8d62c7;}
+.mini-book:nth-child(4){height:80px;background:#f39a4c;}
+.mini-book:nth-child(5){height:68px;background:#7cad4b;}
+.mini-book:nth-child(6){height:76px;background:#e04e83;}
+
+.lower-message{
+  padding:14px 22px;
+  color:#21131c;
+  background:#ffdba8;
+  border:4px solid #171017;
+  box-shadow:7px 7px 0 rgba(0,0,0,.20);
+  font-family:var(--comic);
+  font-size:27px;
+  letter-spacing:.03em;
+  transform:rotate(-1deg);
+}
+
+.lower-message.right{
+  transform:rotate(1deg);
 }
 
 /* =========================================
@@ -603,8 +749,17 @@ footer{
    ========================================= */
 
 @media(max-width:1050px){
+  .hero{
+    height:420px;
+  }
+
   .shelf{
     grid-template-columns:repeat(3,minmax(160px,1fr));
+  }
+
+  .lower-shelf{
+    grid-template-columns:1fr;
+    justify-items:center;
   }
 }
 
@@ -646,18 +801,20 @@ footer{
     text-overflow:ellipsis;
   }
 
+  .hero{
+    height:360px;
+  }
+
   .hero-image{
-    min-height:430px;
-    object-fit:cover;
-    object-position:center;
+    object-position:center 44%;
   }
 
   .hero::after{
-    height:90px;
+    height:78px;
   }
 
   .comic-intro{
-    padding:36px 0 48px;
+    padding:34px 0 44px;
   }
 
   .comic-intro h1{
@@ -665,13 +822,30 @@ footer{
   }
 
   .library{
-    padding-top:46px;
+    padding-top:74px;
+  }
+
+  .wall-pop{
+    display:none;
+  }
+
+  .library-heading::before{
+    width:88vw;
+  }
+
+  .shelf-scene{
+    padding:28px 8px 58px;
+  }
+
+  .shelf-scene::before,
+  .shelf-scene::after{
+    display:none;
   }
 
   .shelf{
     grid-template-columns:repeat(2,minmax(130px,1fr));
     gap:20px;
-    padding:18px 8px 28px;
+    padding:18px 8px 36px;
   }
 
   .comic-book{
@@ -689,6 +863,10 @@ footer{
 
   .cover-mark strong{
     font-size:25px;
+  }
+
+  .lower-shelf{
+    display:none;
   }
 
   .speech{
@@ -731,7 +909,7 @@ footer{
 
 <main>
 
-  <!-- NOVÝ HERO – PŘESNÝ NÁZEV SOUBORU -->
+  <!-- HERO – NIŽŠÍ BANNER -->
 
   <section class="hero">
 
@@ -761,13 +939,16 @@ footer{
 
   </section>
 
-  <!-- KOMIKSOVÉ POLICE -->
+  <!-- MEGA KOMIKSOVÁ KNIHOVNA -->
 
   <section class="library">
 
+    <div class="wall-pop left">BOOM!</div>
+    <div class="wall-pop right">POW!</div>
+
     <div class="library-heading">
 
-      <h2>Archiv komiksů</h2>
+      <h2>Komiksová knihovna</h2>
 
       <p>
         Jednotlivé díly budou postupně přibývat jako skutečné komiksové sešity.
@@ -777,62 +958,92 @@ footer{
 
     <div class="shelves">
 
-      <div class="shelf">
+      <div class="shelf-scene">
 
-        <article class="comic-book is-locked">
-          <span class="issue">Komiks 001</span>
-          <div class="cover-mark">
-            <div>
-              <span>🐾</span>
-              <strong>Již brzy</strong>
-            </div>
-          </div>
-          <span class="book-open">Připravujeme</span>
-        </article>
+        <div class="shelf">
 
-        <article class="comic-book is-locked">
-          <span class="issue">Komiks 002</span>
-          <div class="cover-mark">
-            <div>
-              <span>💬</span>
-              <strong>Již brzy</strong>
+          <article class="comic-book is-locked">
+            <span class="issue">Komiks 001</span>
+            <div class="cover-mark">
+              <div>
+                <span>🐾</span>
+                <strong>Již brzy</strong>
+              </div>
             </div>
-          </div>
-          <span class="book-open">Připravujeme</span>
-        </article>
+            <span class="book-open">Připravujeme</span>
+          </article>
 
-        <article class="comic-book is-locked">
-          <span class="issue">Komiks 003</span>
-          <div class="cover-mark">
-            <div>
-              <span>😂</span>
-              <strong>Již brzy</strong>
+          <article class="comic-book is-locked">
+            <span class="issue">Komiks 002</span>
+            <div class="cover-mark">
+              <div>
+                <span>💬</span>
+                <strong>Již brzy</strong>
+              </div>
             </div>
-          </div>
-          <span class="book-open">Připravujeme</span>
-        </article>
+            <span class="book-open">Připravujeme</span>
+          </article>
 
-        <article class="comic-book is-locked">
-          <span class="issue">Komiks 004</span>
-          <div class="cover-mark">
-            <div>
-              <span>🎵</span>
-              <strong>Již brzy</strong>
+          <article class="comic-book is-locked">
+            <span class="issue">Komiks 003</span>
+            <div class="cover-mark">
+              <div>
+                <span>😂</span>
+                <strong>Již brzy</strong>
+              </div>
             </div>
-          </div>
-          <span class="book-open">Připravujeme</span>
-        </article>
+            <span class="book-open">Připravujeme</span>
+          </article>
 
-        <article class="comic-book is-locked">
-          <span class="issue">Komiks 005</span>
-          <div class="cover-mark">
-            <div>
-              <span>❤️</span>
-              <strong>Již brzy</strong>
+          <article class="comic-book is-locked">
+            <span class="issue">Komiks 004</span>
+            <div class="cover-mark">
+              <div>
+                <span>🎵</span>
+                <strong>Již brzy</strong>
+              </div>
             </div>
-          </div>
-          <span class="book-open">Připravujeme</span>
-        </article>
+            <span class="book-open">Připravujeme</span>
+          </article>
+
+          <article class="comic-book is-locked">
+            <span class="issue">Komiks 005</span>
+            <div class="cover-mark">
+              <div>
+                <span>❤️</span>
+                <strong>Již brzy</strong>
+              </div>
+            </div>
+            <span class="book-open">Připravujeme</span>
+          </article>
+
+        </div>
+
+      </div>
+
+      <div class="lower-shelf">
+
+        <div class="mini-books">
+          <span class="mini-book"></span>
+          <span class="mini-book"></span>
+          <span class="mini-book"></span>
+          <span class="mini-book"></span>
+          <span class="mini-book"></span>
+          <span class="mini-book"></span>
+        </div>
+
+        <div class="lower-message">
+          Každý komiks je jeden nový úsměv!
+        </div>
+
+        <div class="mini-books">
+          <span class="mini-book"></span>
+          <span class="mini-book"></span>
+          <span class="mini-book"></span>
+          <span class="mini-book"></span>
+          <span class="mini-book"></span>
+          <span class="mini-book"></span>
+        </div>
 
       </div>
 
