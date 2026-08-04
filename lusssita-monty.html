@@ -15,24 +15,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-  href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
   rel="stylesheet"
 >
 
 <style>
 :root{
   --pink:#f35ca8;
-  --pink-soft:#ff9ac9;
+  --pink-light:#ff91c6;
   --deep:#a52d6f;
-  --cream:#fff9f2;
-  --ink:#2c2027;
-  --muted:#6f5362;
-  --card:#fffdfb;
-  --line:rgba(165,45,111,.13);
-  --shadow:0 22px 55px rgba(78,35,59,.14);
-  --serif:"Playfair Display",Georgia,serif;
+  --ink:#2d1c28;
+  --muted:#654b59;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
   --hand:"Caveat","Segoe Print",cursive;
-  --sans:"Nunito",Arial,sans-serif;
+  --sans:"Nunito",Arial,Helvetica,sans-serif;
 }
 
 *{
@@ -50,9 +46,9 @@ body{
   overflow-x:hidden;
   color:var(--ink);
   background:
-    radial-gradient(circle at 8% 5%,rgba(255,151,198,.20),transparent 26%),
-    radial-gradient(circle at 92% 12%,rgba(255,209,152,.19),transparent 28%),
-    linear-gradient(180deg,#fffafc 0%,#ffeef6 52%,#fff8ef 100%);
+    radial-gradient(circle at 8% 6%,rgba(255,156,202,.18),transparent 27%),
+    radial-gradient(circle at 92% 12%,rgba(255,211,159,.16),transparent 29%),
+    linear-gradient(180deg,#fffafd 0%,#ffedf6 52%,#fff8ef 100%);
   font-family:var(--sans);
 }
 
@@ -71,7 +67,9 @@ button{
   font:inherit;
 }
 
-/* HORNÍ LIŠTA */
+/* =========================================
+   HORNÍ LIŠTA
+   ========================================= */
 
 .topbar{
   position:sticky;
@@ -83,8 +81,8 @@ button{
   min-height:78px;
   padding:10px 5vw;
   background:rgba(255,251,248,.97);
-  border-bottom:1px solid var(--line);
-  box-shadow:0 10px 35px rgba(89,39,67,.08);
+  border-bottom:1px solid rgba(165,45,111,.11);
+  box-shadow:0 10px 35px rgba(89,39,67,.07);
   backdrop-filter:blur(16px);
 }
 
@@ -108,8 +106,7 @@ button{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:28px;
-  font-family:var(--sans);
+  gap:30px;
 }
 
 .main-nav a{
@@ -148,7 +145,6 @@ button{
   border-radius:999px;
   box-shadow:0 10px 25px rgba(165,45,111,.24);
   cursor:pointer;
-  font-family:var(--sans);
   font-size:14px;
   font-weight:800;
   white-space:nowrap;
@@ -170,74 +166,70 @@ button{
   cursor:default;
 }
 
-/* HERO */
+/* =========================================
+   HERO – BEZ RÁMEČKU
+   ========================================= */
 
 .hero{
-  width:min(1500px,94%);
-  margin:28px auto 0;
+  position:relative;
+  width:100%;
   overflow:hidden;
-  border:1px solid rgba(255,255,255,.72);
-  border-radius:34px;
-  background:#e7b7c7;
-  box-shadow:0 28px 70px rgba(84,35,61,.22);
+  background:#1a1116;
 }
 
-.hero img{
+.hero-image{
   width:100%;
   height:auto;
   object-fit:cover;
   object-position:center;
-  transition:transform 1s ease;
 }
 
-.hero:hover img{
-  transform:scale(1.012);
-}
-
-.hero-fade{
-  position:relative;
-  width:min(1500px,94%);
-  height:90px;
-  margin:-50px auto 0;
+.hero::after{
+  position:absolute;
+  right:0;
+  bottom:0;
+  left:0;
+  height:150px;
+  content:"";
   pointer-events:none;
   background:linear-gradient(
     180deg,
-    rgba(255,239,247,0) 0%,
-    rgba(255,235,244,.72) 55%,
-    rgba(255,235,244,1) 100%
+    rgba(255,237,246,0) 0%,
+    rgba(255,237,246,.35) 46%,
+    #ffedf6 100%
   );
 }
 
-/* OBECNÉ SEKCE */
+/* =========================================
+   ZÁKLAD SEKCE
+   ========================================= */
 
 main{
   position:relative;
-  z-index:2;
 }
 
 .section{
-  width:min(1240px,92%);
+  width:min(1320px,92%);
   margin:0 auto;
-  padding:72px 0;
+  padding:76px 0;
 }
 
 .section-heading{
-  max-width:840px;
-  margin:0 auto 42px;
+  max-width:900px;
+  margin:0 auto;
   text-align:center;
 }
 
 .eyebrow{
   display:inline-flex;
-  margin-bottom:14px;
+  margin-bottom:16px;
   padding:8px 14px;
   align-items:center;
   gap:7px;
   color:var(--deep);
   background:rgba(255,255,255,.72);
-  border:1px solid var(--line);
+  border:1px solid rgba(165,45,111,.10);
   border-radius:999px;
-  box-shadow:0 10px 25px rgba(87,37,64,.08);
   font-size:13px;
   font-weight:900;
   letter-spacing:.05em;
@@ -248,129 +240,115 @@ main{
 .section-heading h2{
   color:var(--deep);
   font-family:var(--serif);
-  font-size:clamp(40px,6vw,66px);
-  line-height:1.05;
+  font-size:clamp(42px,6vw,70px);
+  line-height:1.06;
 }
 
 .section-heading p{
-  margin-top:17px;
+  margin-top:20px;
   color:var(--muted);
   font-size:clamp(17px,2vw,21px);
-  line-height:1.7;
+  line-height:1.75;
 }
 
 .motto{
-  margin-top:20px;
+  margin-top:24px;
   color:var(--pink);
   font-family:var(--hand);
-  font-size:clamp(28px,4vw,45px);
+  font-size:clamp(30px,4vw,48px);
   font-weight:700;
 }
 
-/* HYMN PLACEHOLDER */
+/* =========================================
+   ÚVOD – BEZ KARET
+   ========================================= */
 
-.music-placeholder{
-  width:min(860px,92%);
-  margin:10px auto 0;
-  padding:28px;
+.intro-strip{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:36px;
+  margin-top:54px;
+}
+
+.intro-item{
+  position:relative;
+  padding-top:22px;
   text-align:center;
-  background:rgba(255,255,255,.76);
-  border:1px solid var(--line);
-  border-radius:26px;
-  box-shadow:var(--shadow);
 }
 
-.music-placeholder h2{
-  color:var(--deep);
-  font-family:var(--serif);
-  font-size:clamp(27px,4vw,38px);
-}
-
-.music-placeholder p{
-  margin-top:10px;
-  color:var(--muted);
-  line-height:1.65;
-}
-
-.music-pill{
-  display:inline-flex;
-  margin-top:17px;
-  padding:10px 16px;
-  color:#fff;
+.intro-item::before{
+  display:block;
+  width:56px;
+  height:3px;
+  margin:0 auto 20px;
+  content:"";
   background:linear-gradient(90deg,var(--deep),var(--pink));
   border-radius:999px;
-  font-weight:900;
 }
 
-/* KARTY */
-
-.intro-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
+.intro-item .icon{
+  margin-bottom:10px;
+  font-size:38px;
 }
 
-.intro-card{
-  padding:34px 28px;
-  text-align:center;
-  background:rgba(255,253,251,.9);
-  border:1px solid var(--line);
-  border-radius:28px;
-  box-shadow:var(--shadow);
-}
-
-.intro-icon{
-  display:grid;
-  width:84px;
-  height:84px;
-  margin:0 auto 20px;
-  place-items:center;
-  background:linear-gradient(145deg,#fff,#ffe2ef);
-  border:1px solid rgba(243,92,168,.16);
-  border-radius:50%;
-  font-size:39px;
-  box-shadow:0 15px 30px rgba(165,45,111,.12);
-}
-
-.intro-card h3{
+.intro-item h3{
   color:var(--deep);
   font-family:var(--serif);
-  font-size:30px;
+  font-size:31px;
 }
 
-.intro-card p{
+.intro-item p{
   margin-top:12px;
   color:var(--muted);
   font-size:17px;
   line-height:1.65;
 }
 
-/* PŘÍBĚH PŘÁTELSTVÍ */
+/* =========================================
+   PŘÁTELSTVÍ – TEXT + OBRÁZEK DO ZTRACENA
+   ========================================= */
 
-.friendship{
+.friendship-section{
+  width:100%;
+  padding:42px 0 74px;
+}
+
+.friendship-wrap{
   display:grid;
-  grid-template-columns:1.1fr .9fr;
-  overflow:hidden;
-  background:linear-gradient(135deg,rgba(255,255,255,.93),rgba(255,235,245,.88));
-  border:1px solid var(--line);
-  border-radius:32px;
-  box-shadow:var(--shadow);
+  grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
+  align-items:stretch;
+  min-height:610px;
 }
 
 .friendship-copy{
-  padding:clamp(34px,6vw,70px);
+  display:flex;
+  padding:
+    clamp(44px,6vw,88px)
+    clamp(28px,6vw,90px);
+  flex-direction:column;
+  justify-content:center;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,250,253,.98) 0%,
+      rgba(255,250,253,.96) 74%,
+      rgba(255,250,253,.70) 100%
+    );
 }
 
 .friendship-copy h2{
+  max-width:680px;
   color:var(--deep);
   font-family:var(--serif);
-  font-size:clamp(36px,5vw,57px);
+  font-size:clamp(43px,5.7vw,76px);
+  line-height:1.09;
 }
 
 .friendship-copy p{
-  margin-top:18px;
-  color:#5d4351;
-  font-size:18px;
+  max-width:650px;
+  margin-top:22px;
+  color:#5b414f;
+  font-size:clamp(17px,1.6vw,20px);
   line-height:1.78;
 }
 
@@ -378,239 +356,248 @@ main{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
-  margin-top:24px;
+  margin-top:28px;
 }
 
 .friendship-tags span{
   padding:9px 14px;
   color:var(--deep);
-  background:#fff;
-  border:1px solid rgba(165,45,111,.13);
+  background:rgba(255,255,255,.74);
+  border:1px solid rgba(165,45,111,.10);
   border-radius:999px;
+  font-size:15px;
   font-weight:900;
 }
 
-.friendship-art{
-  min-height:410px;
-  display:grid;
-  place-items:center;
-  padding:34px;
-  color:#fff;
-  text-align:center;
-  background:
-    radial-gradient(circle at 50% 35%,rgba(255,255,255,.22),transparent 35%),
-    linear-gradient(145deg,#70244e,#d6478e 60%,#ff8fbd);
-}
-
-.friendship-art strong{
-  display:block;
-  font-family:var(--hand);
-  font-size:clamp(48px,7vw,86px);
-  line-height:.9;
-}
-
-.friendship-art p{
-  max-width:340px;
-  margin-top:20px;
-  font-size:19px;
-  line-height:1.6;
-}
-
-/* KOMIKSY */
-
-.comics-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-}
-
-.comic-card{
+.friendship-visual{
+  position:relative;
+  min-height:610px;
   overflow:hidden;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:26px;
-  box-shadow:var(--shadow);
-  transition:transform .25s ease,box-shadow .25s ease;
 }
 
-.comic-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 30px 65px rgba(78,35,59,.19);
+.friendship-visual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
 }
 
-.comic-preview{
-  min-height:290px;
-  display:grid;
-  padding:25px;
-  place-items:center;
+.friendship-visual::before{
+  position:absolute;
+  z-index:2;
+  top:0;
+  bottom:0;
+  left:0;
+  width:180px;
+  content:"";
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,
+    rgba(255,250,253,1) 0%,
+    rgba(255,250,253,.76) 34%,
+    rgba(255,250,253,0) 100%
+  );
+}
+
+/* =========================================
+   LUSSSITA & MONTY – FILMOVÝ TEXTOVÝ BLOK
+   ========================================= */
+
+.duo-section{
+  padding:72px 0 50px;
+}
+
+.duo-wrap{
+  width:min(1180px,90%);
+  margin:0 auto;
   text-align:center;
-  color:#fff;
-  background:
-    linear-gradient(rgba(25,18,22,.48),rgba(25,18,22,.7)),
-    url("lusssita-monty-cover.png") center/cover no-repeat;
 }
 
-.comic-preview span{
-  padding:10px 15px;
-  background:rgba(165,45,111,.83);
-  border:1px solid rgba(255,255,255,.3);
-  border-radius:999px;
-  font-weight:900;
-}
-
-.comic-content{
-  padding:25px;
-}
-
-.comic-content h3{
+.duo-wrap h2{
   color:var(--deep);
   font-family:var(--serif);
-  font-size:27px;
+  font-size:clamp(42px,6vw,68px);
 }
 
-.comic-content p{
+.duo-wrap p{
+  max-width:900px;
+  margin:22px auto 0;
+  color:var(--muted);
+  font-size:clamp(17px,2vw,21px);
+  line-height:1.78;
+}
+
+.duo-points{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:38px;
+  margin-top:52px;
+}
+
+.duo-point{
+  text-align:left;
+}
+
+.duo-point span{
+  display:block;
+  margin-bottom:12px;
+  font-size:34px;
+}
+
+.duo-point h3{
+  color:var(--deep);
+  font-family:var(--serif);
+  font-size:29px;
+}
+
+.duo-point p{
+  margin-top:9px;
+  font-size:17px;
+  line-height:1.65;
+}
+
+/* =========================================
+   KOMIKSY – BEZ KARET
+   ========================================= */
+
+.comics-section{
+  padding:82px 0;
+  text-align:center;
+}
+
+.comics-section h2{
+  color:var(--deep);
+  font-family:var(--serif);
+  font-size:clamp(42px,6vw,68px);
+}
+
+.comics-section p{
+  max-width:760px;
+  margin:18px auto 0;
+  color:var(--muted);
+  font-size:19px;
+  line-height:1.7;
+}
+
+.comics-coming{
+  margin-top:30px;
+  color:var(--pink);
+  font-family:var(--hand);
+  font-size:clamp(29px,4vw,46px);
+  font-weight:700;
+}
+
+/* =========================================
+   HYMN PLACEHOLDER – JEN JEMNĚ
+   ========================================= */
+
+.music-line{
+  width:min(950px,90%);
+  margin:0 auto;
+  padding:40px 0 18px;
+  text-align:center;
+  border-top:1px solid rgba(165,45,111,.12);
+}
+
+.music-line h2{
+  color:var(--deep);
+  font-family:var(--serif);
+  font-size:clamp(31px,4vw,46px);
+}
+
+.music-line p{
   margin-top:10px;
   color:var(--muted);
-  line-height:1.6;
+  font-size:17px;
 }
 
-.comic-btn{
-  display:inline-flex;
-  margin-top:18px;
-  padding:11px 18px;
-  color:#fff;
-  background:linear-gradient(90deg,var(--deep),var(--pink));
-  border-radius:999px;
-  font-weight:900;
-}
+/* =========================================
+   PODPORA – BEZ RÁMEČKU
+   ========================================= */
 
-/* PŘÁTELÉ SVĚTA CARMEN */
-
-.friends-box{
-  padding:clamp(34px,6vw,64px);
+.support{
+  padding:76px 20px 88px;
   text-align:center;
-  color:#fff;
   background:
-    radial-gradient(circle at 15% 20%,rgba(255,255,255,.16),transparent 22%),
-    radial-gradient(circle at 86% 14%,rgba(255,255,255,.13),transparent 20%),
-    linear-gradient(135deg,#6f244c,#b62f78 58%,#f35ca8);
-  border-radius:34px;
-  box-shadow:0 28px 65px rgba(94,35,69,.25);
+    radial-gradient(circle at 20% 30%,rgba(255,255,255,.19),transparent 25%),
+    linear-gradient(135deg,#71254f,#bd347d 58%,#f35ca8);
 }
 
-.friends-box h2{
+.support h2{
+  color:#fff;
   font-family:var(--serif);
-  font-size:clamp(39px,6vw,62px);
+  font-size:clamp(40px,6vw,64px);
 }
 
-.friends-box > p{
-  max-width:800px;
-  margin:17px auto 0;
+.support p{
+  max-width:770px;
+  margin:18px auto 0;
+  color:rgba(255,255,255,.90);
   font-size:19px;
   line-height:1.7;
 }
 
-.friends-list{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin-top:32px;
-}
-
-.friend-card{
-  padding:24px 19px;
-  background:rgba(255,255,255,.13);
-  border:1px solid rgba(255,255,255,.23);
-  border-radius:22px;
-  backdrop-filter:blur(8px);
-}
-
-.friend-card strong{
-  display:block;
-  font-family:var(--serif);
-  font-size:26px;
-}
-
-.friend-card span{
-  display:block;
-  margin-top:7px;
-  color:rgba(255,255,255,.86);
-  line-height:1.5;
-}
-
-/* PODPORA */
-
-.support{
-  text-align:center;
-  padding-top:35px;
-}
-
-.support-box{
-  padding:40px 25px;
-  background:rgba(255,255,255,.78);
-  border:1px solid var(--line);
-  border-radius:30px;
-  box-shadow:var(--shadow);
-}
-
-.support-box h2{
-  color:var(--deep);
-  font-family:var(--serif);
-  font-size:clamp(34px,5vw,52px);
-}
-
-.support-box p{
-  max-width:760px;
-  margin:15px auto 0;
-  color:var(--muted);
-  font-size:18px;
-  line-height:1.7;
-}
-
-.support-btn{
+.support a{
   display:inline-flex;
-  margin-top:22px;
+  margin-top:25px;
   padding:14px 24px;
-  color:#fff;
-  background:linear-gradient(90deg,var(--deep),var(--pink));
+  color:var(--deep);
+  background:#fff;
   border-radius:999px;
   font-weight:900;
-  box-shadow:0 14px 30px rgba(165,45,111,.22);
+  box-shadow:0 14px 30px rgba(41,15,29,.22);
 }
 
-/* PATIČKA */
-
 footer{
-  padding:28px 20px 44px;
+  padding:28px 20px 42px;
   text-align:center;
   color:#9a7187;
   font-family:var(--hand);
-  font-size:27px;
+  font-size:28px;
 }
 
-/* TABLET */
+/* =========================================
+   TABLET
+   ========================================= */
 
 @media(max-width:900px){
   .main-nav{
-    gap:16px;
+    gap:17px;
   }
 
-  .intro-grid,
-  .comics-grid,
-  .friends-list{
+  .intro-strip,
+  .duo-points{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+
+  .friendship-wrap{
     grid-template-columns:1fr;
   }
 
-  .friendship{
-    grid-template-columns:1fr;
+  .friendship-visual{
+    min-height:520px;
   }
 
-  .friendship-art{
-    min-height:310px;
+  .friendship-visual::before{
+    top:0;
+    right:0;
+    bottom:auto;
+    left:0;
+    width:auto;
+    height:120px;
+    background:linear-gradient(
+      180deg,
+      rgba(255,250,253,1) 0%,
+      rgba(255,250,253,.55) 46%,
+      rgba(255,250,253,0) 100%
+    );
   }
 }
 
-/* MOBIL */
+/* =========================================
+   MOBIL
+   ========================================= */
 
 @media(max-width:700px){
   .topbar{
@@ -640,31 +627,19 @@ footer{
     text-overflow:ellipsis;
   }
 
-  .hero{
-    width:100%;
-    margin-top:0;
-    border:0;
-    border-radius:0;
-    box-shadow:none;
+  .hero-image{
+    min-height:420px;
+    object-fit:cover;
+    object-position:center;
   }
 
-  .hero:hover img{
-    transform:none;
-  }
-
-  .hero-fade{
-    width:100%;
-    height:58px;
-    margin-top:-30px;
+  .hero::after{
+    height:90px;
   }
 
   .section{
-    width:92%;
-    padding:53px 0;
-  }
-
-  .section-heading{
-    margin-bottom:30px;
+    width:90%;
+    padding:56px 0;
   }
 
   .section-heading h1,
@@ -672,25 +647,36 @@ footer{
     font-size:42px;
   }
 
-  .intro-card{
-    padding:29px 23px;
+  .intro-strip{
+    margin-top:42px;
+  }
+
+  .friendship-section{
+    padding-top:20px;
   }
 
   .friendship-copy{
-    padding:32px 24px;
+    padding:46px 24px 34px;
   }
 
-  .friendship-art{
-    min-height:260px;
-    padding:30px 22px;
+  .friendship-copy h2{
+    font-size:43px;
   }
 
-  .music-placeholder{
-    padding:24px 20px;
+  .friendship-visual{
+    min-height:430px;
   }
 
-  .friends-box{
-    padding:38px 22px;
+  .friendship-visual img{
+    object-position:center;
+  }
+
+  .duo-wrap{
+    width:88%;
+  }
+
+  .duo-point{
+    text-align:center;
   }
 }
 </style>
@@ -725,77 +711,142 @@ footer{
 
 <main>
 
+  <!-- HERO BEZ RÁMEČKU -->
+
   <section class="hero">
+
     <img
+      class="hero-image"
       src="lusssita-monty-hero.png"
-      alt="Lusssita a Monty – každodenní příhody plné humoru"
+      alt="Lusssita a Monty – jeden den, jeden komiks, jeden úsměv"
     >
+
   </section>
 
-  <div class="hero-fade" aria-hidden="true"></div>
-
-  <section class="music-placeholder" aria-label="Připravovaná hymna projektu">
-    <h2>🎵 Hymna Lusssity a Montyho</h2>
-    <p>
-      Oficiální hymna projektu právě vzniká.
-      Brzy se tu rozezní smích, sbor a jejich společný příběh.
-    </p>
-    <span class="music-pill">Již brzy</span>
-  </section>
+  <!-- ÚVOD -->
 
   <section class="section">
 
     <div class="section-heading">
+
       <span class="eyebrow">😂 Každodenní humor</span>
-      <h1>Vítejte ve světě Lusssity a Montyho</h1>
+
+      <h1>
+        Vítejte ve světě<br>
+        Lusssity a Montyho
+      </h1>
+
       <p>
         Krátké komiksy inspirované skutečnými každodenními situacemi
         připomínají, že i obyčejné okamžiky mohou vykouzlit úsměv
         a stát se malým příběhem, na který se nezapomíná.
       </p>
-      <div class="motto">Jeden den. Jeden komiks. Jeden úsměv.</div>
+
+      <div class="motto">
+        Jeden den. Jeden komiks. Jeden úsměv.
+      </div>
+
     </div>
 
-    <div class="intro-grid">
+    <div class="intro-strip">
 
-      <article class="intro-card">
-        <div class="intro-icon">👩🏻</div>
+      <div class="intro-item">
+        <div class="icon">👩🏻</div>
         <h3>Lusssita</h3>
         <p>
-          Autorka veselých komiksů inspirovaných skutečným životem,
-          společnými chvílemi a každodenními situacemi s Montym.
+          Autorka veselých komiksů inspirovaných skutečným životem
+          a každodenními chvílemi s Montym.
         </p>
-      </article>
+      </div>
 
-      <article class="intro-card">
-        <div class="intro-icon">🐶</div>
+      <div class="intro-item">
+        <div class="icon">🐶</div>
         <h3>Monty</h3>
         <p>
-          Akční a milý pes, který miluje lidi, rád zpívá
-          a nikdy nemá dost pozornosti. Kam jde Lusssita, jde i on.
+          Akční, milý a upovídaný parťák,
+          který nikdy nemá dost pozornosti.
         </p>
-      </article>
+      </div>
 
-      <article class="intro-card">
-        <div class="intro-icon">💬</div>
-        <h3>O komiksu</h3>
+      <div class="intro-item">
+        <div class="icon">💬</div>
+        <h3>Jejich komiks</h3>
         <p>
-          Jedna stránka, jedna bublina a jedna vtipná pointa.
-          Malé příběhy, které přinášejí každý den nový důvod k úsměvu.
+          Krátká příhoda, jedna povedená pointa
+          a nový důvod k úsměvu.
         </p>
-      </article>
+      </div>
 
     </div>
 
   </section>
 
-  <section class="section">
+  <!-- LUSSSITA A MONTY -->
 
-    <div class="friendship">
+  <section class="duo-section">
+
+    <div class="duo-wrap">
+
+      <span class="eyebrow">🐾 Nerozlučná dvojka</span>
+
+      <h2>Lusssita &amp; Monty</h2>
+
+      <p>
+        Lusssita je noční sova, zatímco Monty je ranní ptáček.
+        Kde je ona, tam je i on. Monty miluje lidi, rád zpívá,
+        dokáže si hlasitě postěžovat na nedostatek pozornosti
+        a každý obyčejný den promění v příhodu, která si zaslouží vlastní komiks.
+      </p>
+
+      <div class="duo-points">
+
+        <div class="duo-point">
+          <span>🌙</span>
+          <h3>Noční sova</h3>
+          <p>
+            Lusssita by nejraději začínala den později.
+            Monty má ale často úplně jiný plán.
+          </p>
+        </div>
+
+        <div class="duo-point">
+          <span>🎶</span>
+          <h3>Psí zpěvák</h3>
+          <p>
+            Když má Monty co říct, celý svět to pozná.
+            Zpívá, povídá a vyžaduje pozornost.
+          </p>
+        </div>
+
+        <div class="duo-point">
+          <span>❤️</span>
+          <h3>Bez sebe ani krok</h3>
+          <p>
+            Občas jí leze na nervy, ale kam jde Lusssita,
+            tam jde vždycky i Monty.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PŘÁTELSTVÍ: VLEVO TEXT, VPRAVO SAMOSTATNÝ OBRÁZEK -->
+
+  <section class="friendship-section">
+
+    <div class="friendship-wrap">
 
       <div class="friendship-copy">
+
         <span class="eyebrow">🤝 Jak jsme se poznaly</span>
-        <h2>Přátelství, které propojilo dva světy</h2>
+
+        <h2>
+          Přátelství, které<br>
+          propojilo dva světy
+        </h2>
 
         <p>
           Náš příběh nezačal plánem, ale krásnou náhodou.
@@ -816,106 +867,15 @@ footer{
           <span>😂 humor</span>
           <span>⚽ Liverpool FC</span>
         </div>
+
       </div>
 
-      <div class="friendship-art">
-        <div>
-          <strong>Přátelé<br>Světa Carmen</strong>
-          <p>
-            Protože ty nejkrásnější příběhy nevznikají jen na papíře.
-            Vznikají také mezi lidmi.
-          </p>
-        </div>
-      </div>
+      <div class="friendship-visual">
 
-    </div>
-
-  </section>
-
-  <section class="section" id="komiksy">
-
-    <div class="section-heading">
-      <span class="eyebrow">📚 Každodenní příhody</span>
-      <h2>Nejnovější komiksy</h2>
-      <p>
-        První díly sem postupně přidáme.
-        Každý dostane svůj název, obrázek a vlastní malou pointu.
-      </p>
-    </div>
-
-    <div class="comics-grid">
-
-      <article class="comic-card">
-        <div class="comic-preview">
-          <span>První komiks již brzy</span>
-        </div>
-        <div class="comic-content">
-          <h3>Nový díl se připravuje</h3>
-          <p>
-            První každodenní příhoda Lusssity a Montyho
-            brzy otevře celý jejich komiksový archiv.
-          </p>
-        </div>
-      </article>
-
-      <article class="comic-card">
-        <div class="comic-preview">
-          <span>Archiv příhod</span>
-        </div>
-        <div class="comic-content">
-          <h3>Jeden den, jeden úsměv</h3>
-          <p>
-            Postupně tu vznikne přehled všech dílů,
-            ke kterým se půjde kdykoliv vrátit.
-          </p>
-        </div>
-      </article>
-
-      <article class="comic-card">
-        <div class="comic-preview">
-          <span>Každodenní humor</span>
-        </div>
-        <div class="comic-content">
-          <h3>Ze skutečného života</h3>
-          <p>
-            Montyho lumpárny, Lusssitiny reakce
-            a obyčejné chvíle proměněné v komiks.
-          </p>
-        </div>
-      </article>
-
-    </div>
-
-  </section>
-
-  <section class="section">
-
-    <div class="friends-box">
-
-      <h2>🤝 Přátelé Světa Carmen</h2>
-
-      <p>
-        Svět Carmen není jen jedno místo ani jeden příběh.
-        Je to domov lidí, které spojuje tvoření, přátelství,
-        laskavost a chuť rozdávat radost.
-      </p>
-
-      <div class="friends-list">
-
-        <div class="friend-card">
-          <strong>❤️ Carmen</strong>
-          <span>Zakladatelka Světa Carmen a průvodkyně světem příběhů.</span>
-        </div>
-
-        <div class="friend-card">
-          <strong>🐶 Lusssita</strong>
-          <span>Autorka komiksů Lusssita &amp; Monty.</span>
-        </div>
-
-        <div class="friend-card">
-          <strong>🐞 Eny</strong>
-          <span>Přítelkyně, díky které se naše cesty propojily.</span>
-        </div>
+        <img
+          src="prvni-pohled-po-operaci.png.jpeg"
+          alt="Carmen, Lusssita, Eny a Monty v komiksovém stylu"
+        >
 
       </div>
 
@@ -923,22 +883,51 @@ footer{
 
   </section>
 
-  <section class="section support">
+  <!-- KOMIKSY -->
 
-    <div class="support-box">
+  <section class="comics-section" id="komiksy">
 
-      <h2>❤️ Podpoř Svět Carmen</h2>
+    <span class="eyebrow">📚 Každodenní příhody</span>
 
-      <p>
-        Každé srdce, sdílení a milé slovo pomáhá příběhům růst
-        a dostat se k dalším lidem.
-      </p>
+    <h2>Komiksy Lusssity a Montyho</h2>
 
-      <a class="support-btn" href="index.html">
-        Vstoupit do Světa Carmen →
-      </a>
+    <p>
+      Jednotlivé příhody budeme postupně přidávat do společného archivu.
+      Každý díl bude mít vlastní obrázek, název a krátkou pointu.
+    </p>
 
+    <div class="comics-coming">
+      První komiksy již brzy.
     </div>
+
+  </section>
+
+  <!-- HYMN POUZE JAKO JEMNÁ POZNÁMKA -->
+
+  <section class="music-line">
+
+    <h2>🎵 Hymna Lusssity a Montyho</h2>
+
+    <p>
+      Oficiální hymnu doplníme, jakmile bude hotová její finální verze.
+    </p>
+
+  </section>
+
+  <!-- PODPORA -->
+
+  <section class="support">
+
+    <h2>❤️ Podpoř Svět Carmen</h2>
+
+    <p>
+      Každé srdce, sdílení a milé slovo pomáhá příběhům růst
+      a dostat se k dalším lidem.
+    </p>
+
+    <a href="index.html">
+      Vstoupit do Světa Carmen →
+    </a>
 
   </section>
 
