@@ -1,0 +1,1113 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Lusssita & Monty | Svět Carmen</title>
+
+<meta
+  name="description"
+  content="Krátké komiksy ze skutečného života, plné humoru, psích lumpáren a nerozlučného přátelství."
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+:root{
+  --pink:#f35ca8;
+  --pink-soft:#ff9ac9;
+  --deep:#a52d6f;
+  --cream:#fff9f2;
+  --ink:#2c2027;
+  --muted:#6f5362;
+  --card:#fffdfb;
+  --line:rgba(165,45,111,.13);
+  --shadow:0 22px 55px rgba(78,35,59,.14);
+  --serif:"Playfair Display",Georgia,serif;
+  --hand:"Caveat","Segoe Print",cursive;
+  --sans:"Nunito",Arial,sans-serif;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 8% 5%,rgba(255,151,198,.20),transparent 26%),
+    radial-gradient(circle at 92% 12%,rgba(255,209,152,.19),transparent 28%),
+    linear-gradient(180deg,#fffafc 0%,#ffeef6 52%,#fff8ef 100%);
+  font-family:var(--sans);
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+button{
+  border:0;
+  font:inherit;
+}
+
+/* HORNÍ LIŠTA */
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  min-height:78px;
+  padding:10px 5vw;
+  background:rgba(255,251,248,.97);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 10px 35px rgba(89,39,67,.08);
+  backdrop-filter:blur(16px);
+}
+
+.brand{
+  justify-self:start;
+  color:#322129;
+  font-family:var(--serif);
+  font-size:16px;
+  line-height:.9;
+}
+
+.brand strong{
+  display:block;
+  color:var(--pink);
+  font-size:29px;
+  font-style:italic;
+  font-weight:500;
+}
+
+.main-nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  font-family:var(--sans);
+}
+
+.main-nav a{
+  position:relative;
+  color:#624b57;
+  font-size:15px;
+  font-weight:800;
+}
+
+.main-nav a::after{
+  position:absolute;
+  right:50%;
+  bottom:-10px;
+  left:50%;
+  height:2px;
+  content:"";
+  background:linear-gradient(90deg,var(--deep),var(--pink));
+  transition:right .25s ease,left .25s ease;
+}
+
+.main-nav a:hover{
+  color:var(--deep);
+}
+
+.main-nav a:hover::after{
+  right:0;
+  left:0;
+}
+
+.top-like-btn{
+  justify-self:end;
+  min-width:145px;
+  padding:11px 18px;
+  color:#fff;
+  background:linear-gradient(135deg,var(--deep),var(--pink));
+  border-radius:999px;
+  box-shadow:0 10px 25px rgba(165,45,111,.24);
+  cursor:pointer;
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:800;
+  white-space:nowrap;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.top-like-btn:hover:not(:disabled){
+  transform:translateY(-2px);
+  box-shadow:0 15px 33px rgba(165,45,111,.32);
+}
+
+.top-like-btn.is-liked{
+  color:var(--deep);
+  background:#fff;
+  outline:2px solid var(--pink);
+}
+
+.top-like-btn:disabled{
+  cursor:default;
+}
+
+/* HERO */
+
+.hero{
+  width:min(1500px,94%);
+  margin:28px auto 0;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:34px;
+  background:#e7b7c7;
+  box-shadow:0 28px 70px rgba(84,35,61,.22);
+}
+
+.hero img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  object-position:center;
+  transition:transform 1s ease;
+}
+
+.hero:hover img{
+  transform:scale(1.012);
+}
+
+.hero-fade{
+  position:relative;
+  width:min(1500px,94%);
+  height:90px;
+  margin:-50px auto 0;
+  pointer-events:none;
+  background:linear-gradient(
+    180deg,
+    rgba(255,239,247,0) 0%,
+    rgba(255,235,244,.72) 55%,
+    rgba(255,235,244,1) 100%
+  );
+}
+
+/* OBECNÉ SEKCE */
+
+main{
+  position:relative;
+  z-index:2;
+}
+
+.section{
+  width:min(1240px,92%);
+  margin:0 auto;
+  padding:72px 0;
+}
+
+.section-heading{
+  max-width:840px;
+  margin:0 auto 42px;
+  text-align:center;
+}
+
+.eyebrow{
+  display:inline-flex;
+  margin-bottom:14px;
+  padding:8px 14px;
+  align-items:center;
+  gap:7px;
+  color:var(--deep);
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--line);
+  border-radius:999px;
+  box-shadow:0 10px 25px rgba(87,37,64,.08);
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+.section-heading h1,
+.section-heading h2{
+  color:var(--deep);
+  font-family:var(--serif);
+  font-size:clamp(40px,6vw,66px);
+  line-height:1.05;
+}
+
+.section-heading p{
+  margin-top:17px;
+  color:var(--muted);
+  font-size:clamp(17px,2vw,21px);
+  line-height:1.7;
+}
+
+.motto{
+  margin-top:20px;
+  color:var(--pink);
+  font-family:var(--hand);
+  font-size:clamp(28px,4vw,45px);
+  font-weight:700;
+}
+
+/* HYMN PLACEHOLDER */
+
+.music-placeholder{
+  width:min(860px,92%);
+  margin:10px auto 0;
+  padding:28px;
+  text-align:center;
+  background:rgba(255,255,255,.76);
+  border:1px solid var(--line);
+  border-radius:26px;
+  box-shadow:var(--shadow);
+}
+
+.music-placeholder h2{
+  color:var(--deep);
+  font-family:var(--serif);
+  font-size:clamp(27px,4vw,38px);
+}
+
+.music-placeholder p{
+  margin-top:10px;
+  color:var(--muted);
+  line-height:1.65;
+}
+
+.music-pill{
+  display:inline-flex;
+  margin-top:17px;
+  padding:10px 16px;
+  color:#fff;
+  background:linear-gradient(90deg,var(--deep),var(--pink));
+  border-radius:999px;
+  font-weight:900;
+}
+
+/* KARTY */
+
+.intro-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.intro-card{
+  padding:34px 28px;
+  text-align:center;
+  background:rgba(255,253,251,.9);
+  border:1px solid var(--line);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+}
+
+.intro-icon{
+  display:grid;
+  width:84px;
+  height:84px;
+  margin:0 auto 20px;
+  place-items:center;
+  background:linear-gradient(145deg,#fff,#ffe2ef);
+  border:1px solid rgba(243,92,168,.16);
+  border-radius:50%;
+  font-size:39px;
+  box-shadow:0 15px 30px rgba(165,45,111,.12);
+}
+
+.intro-card h3{
+  color:var(--deep);
+  font-family:var(--serif);
+  font-size:30px;
+}
+
+.intro-card p{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.65;
+}
+
+/* PŘÍBĚH PŘÁTELSTVÍ */
+
+.friendship{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  overflow:hidden;
+  background:linear-gradient(135deg,rgba(255,255,255,.93),rgba(255,235,245,.88));
+  border:1px solid var(--line);
+  border-radius:32px;
+  box-shadow:var(--shadow);
+}
+
+.friendship-copy{
+  padding:clamp(34px,6vw,70px);
+}
+
+.friendship-copy h2{
+  color:var(--deep);
+  font-family:var(--serif);
+  font-size:clamp(36px,5vw,57px);
+}
+
+.friendship-copy p{
+  margin-top:18px;
+  color:#5d4351;
+  font-size:18px;
+  line-height:1.78;
+}
+
+.friendship-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:24px;
+}
+
+.friendship-tags span{
+  padding:9px 14px;
+  color:var(--deep);
+  background:#fff;
+  border:1px solid rgba(165,45,111,.13);
+  border-radius:999px;
+  font-weight:900;
+}
+
+.friendship-art{
+  min-height:410px;
+  display:grid;
+  place-items:center;
+  padding:34px;
+  color:#fff;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(255,255,255,.22),transparent 35%),
+    linear-gradient(145deg,#70244e,#d6478e 60%,#ff8fbd);
+}
+
+.friendship-art strong{
+  display:block;
+  font-family:var(--hand);
+  font-size:clamp(48px,7vw,86px);
+  line-height:.9;
+}
+
+.friendship-art p{
+  max-width:340px;
+  margin-top:20px;
+  font-size:19px;
+  line-height:1.6;
+}
+
+/* KOMIKSY */
+
+.comics-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.comic-card{
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:26px;
+  box-shadow:var(--shadow);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+
+.comic-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 30px 65px rgba(78,35,59,.19);
+}
+
+.comic-preview{
+  min-height:290px;
+  display:grid;
+  padding:25px;
+  place-items:center;
+  text-align:center;
+  color:#fff;
+  background:
+    linear-gradient(rgba(25,18,22,.48),rgba(25,18,22,.7)),
+    url("lusssita-monty-cover.png") center/cover no-repeat;
+}
+
+.comic-preview span{
+  padding:10px 15px;
+  background:rgba(165,45,111,.83);
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;
+  font-weight:900;
+}
+
+.comic-content{
+  padding:25px;
+}
+
+.comic-content h3{
+  color:var(--deep);
+  font-family:var(--serif);
+  font-size:27px;
+}
+
+.comic-content p{
+  margin-top:10px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.comic-btn{
+  display:inline-flex;
+  margin-top:18px;
+  padding:11px 18px;
+  color:#fff;
+  background:linear-gradient(90deg,var(--deep),var(--pink));
+  border-radius:999px;
+  font-weight:900;
+}
+
+/* PŘÁTELÉ SVĚTA CARMEN */
+
+.friends-box{
+  padding:clamp(34px,6vw,64px);
+  text-align:center;
+  color:#fff;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,255,255,.16),transparent 22%),
+    radial-gradient(circle at 86% 14%,rgba(255,255,255,.13),transparent 20%),
+    linear-gradient(135deg,#6f244c,#b62f78 58%,#f35ca8);
+  border-radius:34px;
+  box-shadow:0 28px 65px rgba(94,35,69,.25);
+}
+
+.friends-box h2{
+  font-family:var(--serif);
+  font-size:clamp(39px,6vw,62px);
+}
+
+.friends-box > p{
+  max-width:800px;
+  margin:17px auto 0;
+  font-size:19px;
+  line-height:1.7;
+}
+
+.friends-list{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:32px;
+}
+
+.friend-card{
+  padding:24px 19px;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.23);
+  border-radius:22px;
+  backdrop-filter:blur(8px);
+}
+
+.friend-card strong{
+  display:block;
+  font-family:var(--serif);
+  font-size:26px;
+}
+
+.friend-card span{
+  display:block;
+  margin-top:7px;
+  color:rgba(255,255,255,.86);
+  line-height:1.5;
+}
+
+/* PODPORA */
+
+.support{
+  text-align:center;
+  padding-top:35px;
+}
+
+.support-box{
+  padding:40px 25px;
+  background:rgba(255,255,255,.78);
+  border:1px solid var(--line);
+  border-radius:30px;
+  box-shadow:var(--shadow);
+}
+
+.support-box h2{
+  color:var(--deep);
+  font-family:var(--serif);
+  font-size:clamp(34px,5vw,52px);
+}
+
+.support-box p{
+  max-width:760px;
+  margin:15px auto 0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.7;
+}
+
+.support-btn{
+  display:inline-flex;
+  margin-top:22px;
+  padding:14px 24px;
+  color:#fff;
+  background:linear-gradient(90deg,var(--deep),var(--pink));
+  border-radius:999px;
+  font-weight:900;
+  box-shadow:0 14px 30px rgba(165,45,111,.22);
+}
+
+/* PATIČKA */
+
+footer{
+  padding:28px 20px 44px;
+  text-align:center;
+  color:#9a7187;
+  font-family:var(--hand);
+  font-size:27px;
+}
+
+/* TABLET */
+
+@media(max-width:900px){
+  .main-nav{
+    gap:16px;
+  }
+
+  .intro-grid,
+  .comics-grid,
+  .friends-list{
+    grid-template-columns:1fr;
+  }
+
+  .friendship{
+    grid-template-columns:1fr;
+  }
+
+  .friendship-art{
+    min-height:310px;
+  }
+}
+
+/* MOBIL */
+
+@media(max-width:700px){
+  .topbar{
+    grid-template-columns:1fr auto;
+    min-height:70px;
+    padding:9px 4vw;
+  }
+
+  .brand{
+    font-size:14px;
+  }
+
+  .brand strong{
+    font-size:25px;
+  }
+
+  .main-nav{
+    display:none;
+  }
+
+  .top-like-btn{
+    min-width:0;
+    max-width:138px;
+    padding:10px 13px;
+    overflow:hidden;
+    font-size:12px;
+    text-overflow:ellipsis;
+  }
+
+  .hero{
+    width:100%;
+    margin-top:0;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+  }
+
+  .hero:hover img{
+    transform:none;
+  }
+
+  .hero-fade{
+    width:100%;
+    height:58px;
+    margin-top:-30px;
+  }
+
+  .section{
+    width:92%;
+    padding:53px 0;
+  }
+
+  .section-heading{
+    margin-bottom:30px;
+  }
+
+  .section-heading h1,
+  .section-heading h2{
+    font-size:42px;
+  }
+
+  .intro-card{
+    padding:29px 23px;
+  }
+
+  .friendship-copy{
+    padding:32px 24px;
+  }
+
+  .friendship-art{
+    min-height:260px;
+    padding:30px 22px;
+  }
+
+  .music-placeholder{
+    padding:24px 20px;
+  }
+
+  .friends-box{
+    padding:38px 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+  <a class="brand" href="index.html">
+    Svět
+    <strong>Carmen♡</strong>
+  </a>
+
+  <nav class="main-nav" aria-label="Hlavní navigace">
+    <a href="index.html">Domů</a>
+    <a href="svet.html">Svět příběhů</a>
+    <a href="#komiksy">Komiksy</a>
+  </nav>
+
+  <button
+    class="top-like-btn"
+    id="likeButton"
+    type="button"
+    aria-label="Dát projektu Lusssita a Monty srdce"
+    disabled
+  >
+    ♡ Líbí se mi…
+  </button>
+
+</header>
+
+<main>
+
+  <section class="hero">
+    <img
+      src="lusssita-monty-hero.png"
+      alt="Lusssita a Monty – každodenní příhody plné humoru"
+    >
+  </section>
+
+  <div class="hero-fade" aria-hidden="true"></div>
+
+  <section class="music-placeholder" aria-label="Připravovaná hymna projektu">
+    <h2>🎵 Hymna Lusssity a Montyho</h2>
+    <p>
+      Oficiální hymna projektu právě vzniká.
+      Brzy se tu rozezní smích, sbor a jejich společný příběh.
+    </p>
+    <span class="music-pill">Již brzy</span>
+  </section>
+
+  <section class="section">
+
+    <div class="section-heading">
+      <span class="eyebrow">😂 Každodenní humor</span>
+      <h1>Vítejte ve světě Lusssity a Montyho</h1>
+      <p>
+        Krátké komiksy inspirované skutečnými každodenními situacemi
+        připomínají, že i obyčejné okamžiky mohou vykouzlit úsměv
+        a stát se malým příběhem, na který se nezapomíná.
+      </p>
+      <div class="motto">Jeden den. Jeden komiks. Jeden úsměv.</div>
+    </div>
+
+    <div class="intro-grid">
+
+      <article class="intro-card">
+        <div class="intro-icon">👩🏻</div>
+        <h3>Lusssita</h3>
+        <p>
+          Autorka veselých komiksů inspirovaných skutečným životem,
+          společnými chvílemi a každodenními situacemi s Montym.
+        </p>
+      </article>
+
+      <article class="intro-card">
+        <div class="intro-icon">🐶</div>
+        <h3>Monty</h3>
+        <p>
+          Akční a milý pes, který miluje lidi, rád zpívá
+          a nikdy nemá dost pozornosti. Kam jde Lusssita, jde i on.
+        </p>
+      </article>
+
+      <article class="intro-card">
+        <div class="intro-icon">💬</div>
+        <h3>O komiksu</h3>
+        <p>
+          Jedna stránka, jedna bublina a jedna vtipná pointa.
+          Malé příběhy, které přinášejí každý den nový důvod k úsměvu.
+        </p>
+      </article>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <div class="friendship">
+
+      <div class="friendship-copy">
+        <span class="eyebrow">🤝 Jak jsme se poznaly</span>
+        <h2>Přátelství, které propojilo dva světy</h2>
+
+        <p>
+          Náš příběh nezačal plánem, ale krásnou náhodou.
+          Seznámila nás Eny a brzy jsme zjistily,
+          že máme společnou lásku ke psům, humoru
+          a také k Liverpool FC.
+        </p>
+
+        <p>
+          Z přátelství postupně vznikla spolupráce
+          a komiksy Lusssity a Montyho našly svůj nový domov
+          právě ve Světě Carmen.
+        </p>
+
+        <div class="friendship-tags">
+          <span>❤️ přátelství</span>
+          <span>🐾 psi</span>
+          <span>😂 humor</span>
+          <span>⚽ Liverpool FC</span>
+        </div>
+      </div>
+
+      <div class="friendship-art">
+        <div>
+          <strong>Přátelé<br>Světa Carmen</strong>
+          <p>
+            Protože ty nejkrásnější příběhy nevznikají jen na papíře.
+            Vznikají také mezi lidmi.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section" id="komiksy">
+
+    <div class="section-heading">
+      <span class="eyebrow">📚 Každodenní příhody</span>
+      <h2>Nejnovější komiksy</h2>
+      <p>
+        První díly sem postupně přidáme.
+        Každý dostane svůj název, obrázek a vlastní malou pointu.
+      </p>
+    </div>
+
+    <div class="comics-grid">
+
+      <article class="comic-card">
+        <div class="comic-preview">
+          <span>První komiks již brzy</span>
+        </div>
+        <div class="comic-content">
+          <h3>Nový díl se připravuje</h3>
+          <p>
+            První každodenní příhoda Lusssity a Montyho
+            brzy otevře celý jejich komiksový archiv.
+          </p>
+        </div>
+      </article>
+
+      <article class="comic-card">
+        <div class="comic-preview">
+          <span>Archiv příhod</span>
+        </div>
+        <div class="comic-content">
+          <h3>Jeden den, jeden úsměv</h3>
+          <p>
+            Postupně tu vznikne přehled všech dílů,
+            ke kterým se půjde kdykoliv vrátit.
+          </p>
+        </div>
+      </article>
+
+      <article class="comic-card">
+        <div class="comic-preview">
+          <span>Každodenní humor</span>
+        </div>
+        <div class="comic-content">
+          <h3>Ze skutečného života</h3>
+          <p>
+            Montyho lumpárny, Lusssitiny reakce
+            a obyčejné chvíle proměněné v komiks.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <div class="friends-box">
+
+      <h2>🤝 Přátelé Světa Carmen</h2>
+
+      <p>
+        Svět Carmen není jen jedno místo ani jeden příběh.
+        Je to domov lidí, které spojuje tvoření, přátelství,
+        laskavost a chuť rozdávat radost.
+      </p>
+
+      <div class="friends-list">
+
+        <div class="friend-card">
+          <strong>❤️ Carmen</strong>
+          <span>Zakladatelka Světa Carmen a průvodkyně světem příběhů.</span>
+        </div>
+
+        <div class="friend-card">
+          <strong>🐶 Lusssita</strong>
+          <span>Autorka komiksů Lusssita &amp; Monty.</span>
+        </div>
+
+        <div class="friend-card">
+          <strong>🐞 Eny</strong>
+          <span>Přítelkyně, díky které se naše cesty propojily.</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section support">
+
+    <div class="support-box">
+
+      <h2>❤️ Podpoř Svět Carmen</h2>
+
+      <p>
+        Každé srdce, sdílení a milé slovo pomáhá příběhům růst
+        a dostat se k dalším lidem.
+      </p>
+
+      <a class="support-btn" href="index.html">
+        Vstoupit do Světa Carmen →
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  Děkuji, že jsi součástí Světa Carmen. ♡
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  const SUPABASE_URL =
+    "https://lggboavbzzvoomveewtl.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+
+  const PAGE_ID =
+    "lusssita-monty";
+
+  const likeButton =
+    document.getElementById("likeButton");
+
+  const storageKey =
+    `svetCarmenLike_${PAGE_ID}`;
+
+  function getToday() {
+    const now = new Date();
+
+    const year =
+      now.getFullYear();
+
+    const month =
+      String(now.getMonth() + 1)
+        .padStart(2, "0");
+
+    const day =
+      String(now.getDate())
+        .padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  }
+
+  async function callSupabase(functionName) {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
+      {
+        method:"POST",
+
+        headers:{
+          apikey:SUPABASE_KEY,
+          "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+          requested_page_id:PAGE_ID
+        })
+      }
+    );
+
+    if(!response.ok){
+      throw new Error(
+        await response.text()
+      );
+    }
+
+    return response.json();
+  }
+
+  function showReady(count){
+    likeButton.textContent =
+      `♡ Líbí se mi ${Number(count) || 0}`;
+
+    likeButton.disabled = false;
+
+    likeButton.classList.remove(
+      "is-liked"
+    );
+  }
+
+  function showThankYou(count){
+    likeButton.textContent =
+      `♥ Děkujeme ${Number(count) || 0}`;
+
+    likeButton.disabled = true;
+
+    likeButton.classList.add(
+      "is-liked"
+    );
+  }
+
+  async function loadLikes(){
+    try{
+      const count =
+        await callSupabase(
+          "get_page_likes"
+        );
+
+      if(
+        localStorage.getItem(storageKey) ===
+        getToday()
+      ){
+        showThankYou(count);
+      }else{
+        showReady(count);
+      }
+
+    }catch(error){
+      console.error(
+        "Počet srdcí se nepodařilo načíst:",
+        error
+      );
+
+      likeButton.textContent =
+        "♡ Líbí se mi";
+
+      likeButton.disabled = false;
+    }
+  }
+
+  likeButton.addEventListener(
+    "click",
+    async function(){
+
+      if(
+        likeButton.disabled ||
+        localStorage.getItem(storageKey) ===
+        getToday()
+      ){
+        return;
+      }
+
+      likeButton.disabled = true;
+
+      likeButton.textContent =
+        "♡ Odesílám…";
+
+      try{
+        const newCount =
+          await callSupabase(
+            "add_page_like"
+          );
+
+        localStorage.setItem(
+          storageKey,
+          getToday()
+        );
+
+        showThankYou(newCount);
+
+      }catch(error){
+        console.error(
+          "Srdce se nepodařilo odeslat:",
+          error
+        );
+
+        likeButton.textContent =
+          "♡ Zkusit znovu";
+
+        likeButton.disabled = false;
+      }
+    }
+  );
+
+  loadLikes();
+})();
+</script>
+
+</body>
+</html>
