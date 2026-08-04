@@ -8,25 +8,29 @@
 
 <meta
   name="description"
-  content="Archiv komiksů Lusssity a Montyho – skutečné každodenní příhody plné humoru, psích lumpáren a přátelství."
+  content="Komiksový archiv Lusssity a Montyho ve Světě Carmen. Každý díl zachycuje jednu skutečou veselou příhodu."
 >
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-  href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
   rel="stylesheet"
 >
 
 <style>
 :root{
   --pink:#f35ca8;
-  --pink-soft:#ff91c6;
+  --pink-soft:#ff9dcc;
   --deep:#a52d6f;
-  --ink:#2d1c28;
-  --muted:#654b59;
+  --purple:#5c2b73;
+  --teal:#4eb7c7;
+  --cream:#fff8f2;
+  --ink:#24151f;
+  --muted:#684e5c;
   --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --comic:"Bangers","Arial Black",sans-serif;
   --hand:"Caveat","Segoe Print",cursive;
   --sans:"Nunito",Arial,Helvetica,sans-serif;
 }
@@ -46,9 +50,9 @@ body{
   overflow-x:hidden;
   color:var(--ink);
   background:
-    radial-gradient(circle at 8% 6%,rgba(255,156,202,.16),transparent 27%),
-    radial-gradient(circle at 92% 12%,rgba(255,211,159,.14),transparent 29%),
-    linear-gradient(180deg,#fffafd 0%,#ffedf6 54%,#fff8ef 100%);
+    radial-gradient(circle at 15% 10%,rgba(255,110,181,.18),transparent 26%),
+    radial-gradient(circle at 85% 13%,rgba(78,183,199,.14),transparent 24%),
+    linear-gradient(180deg,#fffafd 0%,#ffeaf4 48%,#fff7ef 100%);
   font-family:var(--sans);
 }
 
@@ -68,7 +72,7 @@ button{
 }
 
 /* =========================================
-   HORNÍ LIŠTA
+   HORNÍ LIŠTA – MUSTER SVĚTA CARMEN
    ========================================= */
 
 .topbar{
@@ -167,291 +171,427 @@ button{
 }
 
 /* =========================================
-   HERO ARCHIVU – KOMIKSOVÝ, BEZ RÁMEČKU
+   HERO – NOVÝ KOMIKSOVÝ VSTUP
    ========================================= */
 
-.archive-hero{
+.hero{
   position:relative;
-  min-height:560px;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(16,10,14,.90) 0%,
-      rgba(18,11,15,.64) 38%,
-      rgba(18,11,15,.10) 72%,
-      transparent 100%
-    ),
-    url("lusssita-monty-cover.png") center/cover no-repeat;
-}
-
-.archive-hero::after{
-  position:absolute;
-  right:0;
-  bottom:0;
-  left:0;
-  height:135px;
-  content:"";
-  pointer-events:none;
-  background:linear-gradient(
-    180deg,
-    rgba(255,237,246,0) 0%,
-    rgba(255,237,246,.44) 48%,
-    #ffedf6 100%
-  );
-}
-
-.archive-hero-copy{
-  position:relative;
-  z-index:2;
-  width:min(760px,88%);
-  margin-left:6vw;
-  padding:90px 0 105px;
-  color:#fff;
-}
-
-.eyebrow{
-  display:inline-flex;
-  margin-bottom:16px;
-  padding:8px 14px;
-  align-items:center;
-  gap:7px;
-  color:#fff;
-  background:rgba(165,45,111,.68);
-  border:1px solid rgba(255,255,255,.20);
-  border-radius:999px;
-  font-size:13px;
-  font-weight:900;
-  letter-spacing:.05em;
-  text-transform:uppercase;
-  backdrop-filter:blur(8px);
-}
-
-.archive-hero h1{
-  font-family:var(--serif);
-  font-size:clamp(48px,7vw,82px);
-  line-height:1.03;
-  text-shadow:0 8px 30px rgba(0,0,0,.40);
-}
-
-.archive-hero p{
-  max-width:650px;
-  margin-top:20px;
-  color:rgba(255,248,244,.94);
-  font-size:clamp(17px,2vw,21px);
-  line-height:1.72;
-  text-shadow:0 4px 18px rgba(0,0,0,.42);
-}
-
-.archive-motto{
-  margin-top:22px;
-  color:var(--pink-soft);
-  font-family:var(--hand);
-  font-size:clamp(30px,4vw,46px);
-  font-weight:700;
-  text-shadow:0 4px 18px rgba(0,0,0,.42);
-}
-
-/* =========================================
-   ARCHIV KOMIKSŮ
-   ========================================= */
-
-.archive{
-  width:min(1180px,90%);
-  margin:0 auto;
-  padding:54px 0 72px;
-}
-
-.archive-heading{
-  max-width:820px;
-  margin:0 auto 46px;
-  text-align:center;
-}
-
-.archive-heading .eyebrow{
-  color:var(--deep);
-  background:rgba(255,255,255,.72);
-  border-color:rgba(165,45,111,.10);
-}
-
-.archive-heading h2{
-  color:var(--deep);
-  font-family:var(--serif);
-  font-size:clamp(42px,5.5vw,66px);
-  line-height:1.08;
-}
-
-.archive-heading p{
-  margin-top:17px;
-  color:var(--muted);
-  font-size:18px;
-  line-height:1.7;
-}
-
-/* Jeden komiks = jeden široký komiksový záznam */
-
-.comic-entry{
-  position:relative;
-  display:grid;
-  grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
-  min-height:430px;
-  align-items:stretch;
-  overflow:hidden;
-  margin-top:30px;
-}
-
-.comic-entry + .comic-entry{
-  margin-top:48px;
-}
-
-.comic-image{
-  position:relative;
-  min-height:430px;
-  overflow:hidden;
-}
-
-.comic-image img{
   width:100%;
-  height:100%;
+  overflow:hidden;
+  background:#1b1018;
+}
+
+.hero-image{
+  width:100%;
+  height:auto;
   object-fit:cover;
   object-position:center;
 }
 
-.comic-image::after{
+.hero::after{
   position:absolute;
-  top:0;
   right:0;
   bottom:0;
-  width:155px;
+  left:0;
+  height:130px;
   content:"";
   pointer-events:none;
   background:linear-gradient(
-    90deg,
-    rgba(255,250,253,0) 0%,
-    rgba(255,250,253,.58) 58%,
-    rgba(255,250,253,1) 100%
+    180deg,
+    rgba(255,234,244,0) 0%,
+    rgba(255,234,244,.48) 52%,
+    #ffeaf4 100%
   );
 }
 
-.comic-copy{
-  display:flex;
-  padding:50px 5vw 50px 34px;
-  flex-direction:column;
-  justify-content:center;
+/* =========================================
+   VSTUP DO KOMIKSOVÉHO SVĚTA
+   ========================================= */
+
+.comic-intro{
+  position:relative;
+  width:min(1100px,90%);
+  margin:0 auto;
+  padding:44px 0 56px;
+  text-align:center;
 }
 
-.comic-number{
+.comic-intro::before,
+.comic-intro::after{
+  position:absolute;
+  width:78px;
+  height:78px;
+  content:"";
+  opacity:.17;
+  background:
+    radial-gradient(circle,#a52d6f 0 2px,transparent 2.7px);
+  background-size:11px 11px;
+}
+
+.comic-intro::before{
+  top:38px;
+  left:0;
+  transform:rotate(-10deg);
+}
+
+.comic-intro::after{
+  right:0;
+  bottom:28px;
+  transform:rotate(12deg);
+}
+
+.badge{
   display:inline-flex;
-  align-self:flex-start;
-  margin-bottom:16px;
+  margin-bottom:15px;
   padding:8px 14px;
+  align-items:center;
+  gap:7px;
   color:#fff;
   background:linear-gradient(135deg,var(--deep),var(--pink));
   border-radius:999px;
+  box-shadow:0 8px 22px rgba(165,45,111,.20);
   font-size:13px;
   font-weight:900;
   letter-spacing:.05em;
   text-transform:uppercase;
 }
 
-.comic-copy h3{
+.comic-intro h1{
   color:var(--deep);
-  font-family:var(--serif);
-  font-size:clamp(36px,4.8vw,58px);
-  line-height:1.08;
+  font-family:var(--comic);
+  font-size:clamp(52px,8vw,94px);
+  letter-spacing:.02em;
+  line-height:.95;
+  text-shadow:
+    3px 3px 0 rgba(255,255,255,.92),
+    6px 6px 0 rgba(78,183,199,.18);
 }
 
-.comic-copy p{
-  max-width:620px;
-  margin-top:18px;
+.comic-intro p{
+  max-width:820px;
+  margin:22px auto 0;
   color:var(--muted);
-  font-size:18px;
-  line-height:1.7;
+  font-size:clamp(17px,2vw,20px);
+  line-height:1.72;
 }
 
-.read-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  align-self:flex-start;
-  gap:8px;
-  margin-top:27px;
-  padding:15px 30px;
-  color:#fff;
-  background:linear-gradient(135deg,var(--deep),var(--pink));
-  border-radius:999px;
-  box-shadow:0 12px 28px rgba(165,45,111,.25);
-  font-size:17px;
-  font-weight:900;
-  transition:transform .22s ease,box-shadow .22s ease;
-}
-
-.read-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 18px 36px rgba(165,45,111,.35);
-}
-
-/* Zástupný první díl */
-
-.comic-placeholder{
-  background:
-    radial-gradient(circle at 50% 30%,rgba(255,255,255,.18),transparent 26%),
-    linear-gradient(145deg,#76244f,#c13980 58%,#f35ca8);
-}
-
-.comic-placeholder-inner{
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center;
-  padding:24px;
-  color:#fff;
-  text-align:center;
-}
-
-.comic-placeholder-inner span{
-  font-size:64px;
-}
-
-.comic-placeholder-inner strong{
+.comic-intro strong{
   display:block;
-  margin-top:12px;
+  margin-top:20px;
+  color:var(--pink);
   font-family:var(--hand);
-  font-size:38px;
+  font-size:clamp(31px,4vw,47px);
 }
 
 /* =========================================
-   ZPĚT NA HLAVNÍ STRÁNKU PROJEKTU
+   KOMIKSOVÁ KNIHOVNA – POLICE
    ========================================= */
 
-.back-section{
-  padding:26px 20px 64px;
+.library{
+  position:relative;
+  width:100%;
+  padding:56px 0 78px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.30),transparent 22%),
+    linear-gradient(180deg,#351427 0%,#5a1d45 58%,#2f1227 100%);
+}
+
+.library::before{
+  position:absolute;
+  inset:0;
+  content:"";
+  pointer-events:none;
+  opacity:.12;
+  background-image:
+    radial-gradient(circle,#fff 0 1.5px,transparent 2px),
+    linear-gradient(135deg,transparent 44%,rgba(255,255,255,.30) 45% 46%,transparent 47%);
+  background-size:24px 24px,90px 90px;
+}
+
+.library-heading{
+  position:relative;
+  z-index:2;
+  width:min(980px,90%);
+  margin:0 auto 42px;
   text-align:center;
+  color:#fff;
+}
+
+.library-heading h2{
+  font-family:var(--comic);
+  font-size:clamp(46px,6vw,76px);
+  letter-spacing:.03em;
+  line-height:1;
+}
+
+.library-heading p{
+  max-width:760px;
+  margin:15px auto 0;
+  color:rgba(255,255,255,.82);
+  font-size:18px;
+  line-height:1.65;
+}
+
+.shelves{
+  position:relative;
+  z-index:2;
+  width:min(1260px,92%);
+  margin:0 auto;
+}
+
+.shelf{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(5,minmax(150px,1fr));
+  gap:26px;
+  align-items:end;
+  padding:24px 26px 30px;
+  margin-bottom:48px;
+}
+
+.shelf::after{
+  position:absolute;
+  right:0;
+  bottom:0;
+  left:0;
+  height:20px;
+  content:"";
+  border-radius:4px 4px 10px 10px;
+  background:
+    linear-gradient(180deg,#a95f2d 0%,#6f351c 48%,#3d1d11 100%);
+  box-shadow:
+    0 10px 18px rgba(0,0,0,.45),
+    inset 0 2px 0 rgba(255,255,255,.18);
+}
+
+.comic-book{
+  position:relative;
+  min-height:300px;
+  display:flex;
+  padding:18px 16px 20px;
+  flex-direction:column;
+  justify-content:space-between;
+  overflow:hidden;
+  color:#fff;
+  border:5px solid #171017;
+  border-radius:10px 10px 6px 6px;
+  box-shadow:
+    10px 12px 0 rgba(0,0,0,.24),
+    0 20px 30px rgba(0,0,0,.28);
+  transform-origin:bottom center;
+  transition:
+    transform .26s ease,
+    box-shadow .26s ease,
+    filter .26s ease;
+}
+
+.comic-book:hover{
+  z-index:5;
+  transform:translateY(-18px) rotate(-1.5deg);
+  box-shadow:
+    13px 18px 0 rgba(0,0,0,.20),
+    0 30px 38px rgba(0,0,0,.35);
+  filter:saturate(1.08);
+}
+
+.comic-book:nth-child(2n):hover{
+  transform:translateY(-18px) rotate(1.5deg);
+}
+
+.comic-book::before{
+  position:absolute;
+  inset:0;
+  content:"";
+  pointer-events:none;
+  opacity:.20;
+  background:
+    radial-gradient(circle,#fff 0 1.4px,transparent 1.8px);
+  background-size:11px 11px;
+}
+
+.comic-book::after{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  width:13px;
+  content:"";
+  background:rgba(0,0,0,.26);
+  box-shadow:inset -2px 0 0 rgba(255,255,255,.10);
+}
+
+.comic-book:nth-child(1){
+  background:linear-gradient(145deg,#ec5da6,#9d2f72);
+}
+
+.comic-book:nth-child(2){
+  background:linear-gradient(145deg,#55c1cf,#2d748f);
+}
+
+.comic-book:nth-child(3){
+  background:linear-gradient(145deg,#8d62c7,#56327a);
+}
+
+.comic-book:nth-child(4){
+  background:linear-gradient(145deg,#ff9c55,#bd4f3e);
+}
+
+.comic-book:nth-child(5){
+  background:linear-gradient(145deg,#e04e83,#6f2f61);
+}
+
+.issue{
+  position:relative;
+  z-index:2;
+  align-self:flex-start;
+  padding:6px 10px;
+  color:#171017;
+  background:#fff;
+  border:2px solid #171017;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+.cover-mark{
+  position:relative;
+  z-index:2;
+  display:grid;
+  place-items:center;
+  min-height:130px;
+  margin:14px 0;
+  text-align:center;
+}
+
+.cover-mark span{
+  display:block;
+  font-size:54px;
+  line-height:1;
+}
+
+.cover-mark strong{
+  display:block;
+  margin-top:12px;
+  font-family:var(--comic);
+  font-size:31px;
+  letter-spacing:.04em;
+}
+
+.book-open{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:10px 13px;
+  color:#171017;
+  background:#fff;
+  border:3px solid #171017;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+  transition:background .2s ease,color .2s ease;
+}
+
+.comic-book:hover .book-open{
+  color:#fff;
+  background:#171017;
+}
+
+/* prázdné budoucí díly */
+
+.comic-book.is-locked{
+  opacity:.72;
+  filter:saturate(.66);
+}
+
+.comic-book.is-locked:hover{
+  transform:translateY(-10px);
+}
+
+.comic-book.is-locked .book-open{
+  cursor:default;
+  color:#5b4b55;
+  background:rgba(255,255,255,.78);
+}
+
+/* =========================================
+   KOMIKSOVÁ BUBLINA DOLE
+   ========================================= */
+
+.closing{
+  position:relative;
+  width:min(900px,90%);
+  margin:0 auto;
+  padding:66px 0 72px;
+  text-align:center;
+}
+
+.speech{
+  position:relative;
+  display:inline-block;
+  max-width:760px;
+  padding:28px 34px;
+  color:var(--ink);
+  background:#fff;
+  border:4px solid var(--ink);
+  border-radius:30px;
+  box-shadow:10px 10px 0 rgba(165,45,111,.16);
+}
+
+.speech::after{
+  position:absolute;
+  bottom:-28px;
+  left:90px;
+  width:38px;
+  height:38px;
+  content:"";
+  background:#fff;
+  border-right:4px solid var(--ink);
+  border-bottom:4px solid var(--ink);
+  transform:rotate(45deg);
+}
+
+.speech h2{
+  color:var(--deep);
+  font-family:var(--comic);
+  font-size:clamp(36px,5vw,56px);
+  letter-spacing:.03em;
+}
+
+.speech p{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.6;
 }
 
 .back-btn{
   display:inline-flex;
+  margin-top:54px;
+  padding:14px 26px;
   align-items:center;
   justify-content:center;
   gap:8px;
-  padding:14px 26px;
-  color:var(--deep);
-  background:rgba(255,255,255,.76);
-  border:1px solid rgba(165,45,111,.12);
+  color:#fff;
+  background:linear-gradient(135deg,var(--deep),var(--pink));
   border-radius:999px;
+  box-shadow:0 12px 28px rgba(165,45,111,.25);
   font-weight:900;
-  transition:transform .22s ease,background .22s ease;
+  transition:transform .22s ease,box-shadow .22s ease;
 }
 
 .back-btn:hover{
-  transform:translateY(-2px);
-  background:#fff;
+  transform:translateY(-3px);
+  box-shadow:0 18px 36px rgba(165,45,111,.35);
 }
 
 footer{
-  padding:20px 20px 34px;
+  padding:18px 20px 34px;
   text-align:center;
   color:#9a7187;
   font-family:var(--hand);
@@ -462,40 +602,15 @@ footer{
    TABLET
    ========================================= */
 
+@media(max-width:1050px){
+  .shelf{
+    grid-template-columns:repeat(3,minmax(160px,1fr));
+  }
+}
+
 @media(max-width:900px){
   .main-nav{
     gap:17px;
-  }
-
-  .archive-hero{
-    min-height:520px;
-  }
-
-  .comic-entry{
-    grid-template-columns:1fr;
-  }
-
-  .comic-image{
-    min-height:460px;
-  }
-
-  .comic-image::after{
-    top:auto;
-    right:0;
-    bottom:0;
-    left:0;
-    width:auto;
-    height:120px;
-    background:linear-gradient(
-      180deg,
-      rgba(255,250,253,0) 0%,
-      rgba(255,250,253,.56) 58%,
-      rgba(255,250,253,1) 100%
-    );
-  }
-
-  .comic-copy{
-    padding:25px 30px 52px;
   }
 }
 
@@ -531,53 +646,57 @@ footer{
     text-overflow:ellipsis;
   }
 
-  .archive-hero{
-    min-height:560px;
-    align-items:flex-end;
-    background-position:65% center;
+  .hero-image{
+    min-height:430px;
+    object-fit:cover;
+    object-position:center;
   }
 
-  .archive-hero{
-    background:
-      linear-gradient(
-        180deg,
-        rgba(16,10,14,.04) 0%,
-        rgba(16,10,14,.20) 36%,
-        rgba(16,10,14,.92) 78%,
-        rgba(16,10,14,.98) 100%
-      ),
-      url("lusssita-monty-cover.png") 65% center/cover no-repeat;
+  .hero::after{
+    height:90px;
   }
 
-  .archive-hero-copy{
-    width:88%;
-    margin:0 auto;
-    padding:250px 0 78px;
+  .comic-intro{
+    padding:36px 0 48px;
   }
 
-  .archive-hero h1{
+  .comic-intro h1{
+    font-size:52px;
+  }
+
+  .library{
+    padding-top:46px;
+  }
+
+  .shelf{
+    grid-template-columns:repeat(2,minmax(130px,1fr));
+    gap:20px;
+    padding:18px 8px 28px;
+  }
+
+  .comic-book{
+    min-height:260px;
+    padding:15px 12px 16px;
+  }
+
+  .cover-mark{
+    min-height:110px;
+  }
+
+  .cover-mark span{
     font-size:44px;
   }
 
-  .archive{
-    width:90%;
-    padding-top:42px;
+  .cover-mark strong{
+    font-size:25px;
   }
 
-  .archive-heading h2{
-    font-size:42px;
+  .speech{
+    padding:24px 22px;
   }
 
-  .comic-image{
-    min-height:390px;
-  }
-
-  .comic-copy{
-    padding:22px 10px 46px;
-  }
-
-  .comic-copy h3{
-    font-size:38px;
+  .speech::after{
+    left:50px;
   }
 }
 </style>
@@ -612,91 +731,135 @@ footer{
 
 <main>
 
-  <!-- HERO ARCHIVU -->
+  <!-- NOVÝ HERO – PŘESNÝ NÁZEV SOUBORU -->
 
-  <section class="archive-hero">
+  <section class="hero">
 
-    <div class="archive-hero-copy">
-
-      <span class="eyebrow">🐾 Archiv komiksů</span>
-
-      <h1>
-        Komiksy<br>
-        Lusssity a Montyho
-      </h1>
-
-      <p>
-        Každý komiks zachycuje jednu skutečnou veselou příhodu
-        ze života nerozlučné dvojky.
-      </p>
-
-      <div class="archive-motto">
-        Jeden den. Jeden komiks. Jeden úsměv.
-      </div>
-
-    </div>
+    <img
+      class="hero-image"
+      src="komiksy-lusssita-monty-hero.png.png"
+      alt="Archiv komiksů Lusssity a Montyho"
+    >
 
   </section>
 
-  <!-- SEZNAM KOMIKSŮ -->
+  <!-- VSTUP DO SVĚTA KOMIKSŮ -->
 
-  <section class="archive">
+  <section class="comic-intro">
 
-    <div class="archive-heading">
+    <span class="badge">📚 Komiksová knihovna</span>
 
-      <span class="eyebrow">📚 Všechny příhody</span>
+    <h1>Vítejte ve světě komiksů</h1>
 
-      <h2>Otevřete jejich komiksový svět</h2>
+    <p>
+      Každý sešit ukrývá jednu skutečnou příhodu ze života Lusssity a Montyho.
+      Zatím je necháváme bez názvů – jejich jména doplníme až ve chvíli,
+      kdy vznikne konkrétní komiks.
+    </p>
+
+    <strong>Vyber si sešit a otevři další příběh.</strong>
+
+  </section>
+
+  <!-- KOMIKSOVÉ POLICE -->
+
+  <section class="library">
+
+    <div class="library-heading">
+
+      <h2>Archiv komiksů</h2>
 
       <p>
-        Nové díly budeme postupně přidávat.
-        Každý zážitek dostane vlastní stránku a svůj jedinečný komiks.
+        Jednotlivé díly budou postupně přibývat jako skutečné komiksové sešity.
       </p>
 
     </div>
 
-    <!-- KOMIKS 001 – ZATÍM PŘIPRAVENÝ ZÁZNAM -->
+    <div class="shelves">
 
-    <article class="comic-entry">
+      <div class="shelf">
 
-      <div class="comic-image comic-placeholder">
-
-        <div class="comic-placeholder-inner">
-          <div>
-            <span>🐾</span>
-            <strong>První příhoda již brzy</strong>
+        <article class="comic-book is-locked">
+          <span class="issue">Komiks 001</span>
+          <div class="cover-mark">
+            <div>
+              <span>🐾</span>
+              <strong>Již brzy</strong>
+            </div>
           </div>
-        </div>
+          <span class="book-open">Připravujeme</span>
+        </article>
+
+        <article class="comic-book is-locked">
+          <span class="issue">Komiks 002</span>
+          <div class="cover-mark">
+            <div>
+              <span>💬</span>
+              <strong>Již brzy</strong>
+            </div>
+          </div>
+          <span class="book-open">Připravujeme</span>
+        </article>
+
+        <article class="comic-book is-locked">
+          <span class="issue">Komiks 003</span>
+          <div class="cover-mark">
+            <div>
+              <span>😂</span>
+              <strong>Již brzy</strong>
+            </div>
+          </div>
+          <span class="book-open">Připravujeme</span>
+        </article>
+
+        <article class="comic-book is-locked">
+          <span class="issue">Komiks 004</span>
+          <div class="cover-mark">
+            <div>
+              <span>🎵</span>
+              <strong>Již brzy</strong>
+            </div>
+          </div>
+          <span class="book-open">Připravujeme</span>
+        </article>
+
+        <article class="comic-book is-locked">
+          <span class="issue">Komiks 005</span>
+          <div class="cover-mark">
+            <div>
+              <span>❤️</span>
+              <strong>Již brzy</strong>
+            </div>
+          </div>
+          <span class="book-open">Připravujeme</span>
+        </article>
 
       </div>
 
-      <div class="comic-copy">
-
-        <span class="comic-number">
-          Komiks 001
-        </span>
-
-        <h3>
-          První komiks se připravuje
-        </h3>
-
-        <p>
-          Jakmile vybereme první skutečnou příhodu Lusssity a Montyho,
-          právě tady se objeví její název, náhled a tlačítko
-          pro otevření celého komiksu.
-        </p>
-
-      </div>
-
-    </article>
+    </div>
 
   </section>
 
-  <section class="back-section">
+  <!-- KOMIKSOVÁ BUBLINA -->
 
-    <a class="back-btn" href="lusssita-monty.html">
-      ← Zpět na stránku Lusssita &amp; Monty
-    </a>
+  <section class="closing">
+
+    <div class="speech">
+
+      <h2>Každý den může být komiks.</h2>
+
+      <p>
+        Stačí jedna malá příhoda, Montyho nápad
+        a Lusssitin smysl pro humor.
+      </p>
+
+    </div>
+
+    <div>
+      <a class="back-btn" href="lusssita-monty.html">
+        ← Zpět na stránku Lusssita &amp; Monty
+      </a>
+    </div>
 
   </section>
 
