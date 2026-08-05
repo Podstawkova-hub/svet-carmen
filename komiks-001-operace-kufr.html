@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Komiks 001 – Operace kufr | Lusssita & Monty | Svět Carmen</title>
+  <meta
+    name="description"
+    content="První oficiální komiks Lusssity a Montyho ve Světě Carmen – Operace kufr."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --pink:#f35ca8;
+      --pink-soft:#ff9dcc;
+      --deep:#a52d6f;
+      --cream:#fff8f2;
+      --paper:#f3dfbd;
+      --ink:#24151f;
+      --muted:#6e5060;
+      --dark:#211118;
+      --comic:"Bangers","Arial Black",sans-serif;
+      --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+      --hand:"Caveat","Segoe Print",cursive;
+      --sans:"Nunito",Arial,Helvetica,sans-serif;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      overflow-x:hidden;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 15% 8%,rgba(243,92,168,.16),transparent 26%),
+        radial-gradient(circle at 88% 10%,rgba(255,190,98,.15),transparent 23%),
+        linear-gradient(180deg,#fff9fc 0%,#ffeaf4 48%,#fff7ef 100%);
+      font-family:var(--sans);
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    button{
+      border:0;
+      font:inherit;
+    }
+
+    /* HORNÍ LIŠTA */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      min-height:78px;
+      padding:10px 5vw;
+      background:rgba(255,251,248,.97);
+      border-bottom:1px solid rgba(165,45,111,.11);
+      box-shadow:0 10px 35px rgba(89,39,67,.07);
+      backdrop-filter:blur(16px);
+    }
+
+    .brand{
+      justify-self:start;
+      color:#322129;
+      font-family:var(--serif);
+      font-size:16px;
+      line-height:.9;
+    }
+
+    .brand strong{
+      display:block;
+      color:var(--pink);
+      font-size:29px;
+      font-style:italic;
+      font-weight:500;
+    }
+
+    .main-nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:30px;
+    }
+
+    .main-nav a{
+      color:#624b57;
+      font-size:15px;
+      font-weight:800;
+    }
+
+    .main-nav a:hover{
+      color:var(--deep);
+    }
+
+    .archive-btn{
+      justify-self:end;
+      display:inline-flex;
+      padding:11px 18px;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      background:linear-gradient(135deg,var(--deep),var(--pink));
+      border-radius:999px;
+      box-shadow:0 10px 25px rgba(165,45,111,.24);
+      font-size:14px;
+      font-weight:900;
+      white-space:nowrap;
+      transition:transform .2s ease,box-shadow .2s ease;
+    }
+
+    .archive-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 15px 33px rgba(165,45,111,.32);
+    }
+
+    /* HERO KOMIKSU */
+    .comic-hero{
+      position:relative;
+      overflow:hidden;
+      padding:58px 5vw 72px;
+      color:#fff;
+      background:
+        radial-gradient(circle at 80% 10%,rgba(243,92,168,.26),transparent 30%),
+        radial-gradient(circle at 10% 90%,rgba(255,185,88,.18),transparent 24%),
+        linear-gradient(135deg,#1c1017 0%,#3d1b27 54%,#241119 100%);
+    }
+
+    .comic-hero::before{
+      position:absolute;
+      inset:0;
+      content:"";
+      opacity:.12;
+      background:
+        radial-gradient(circle,#fff 0 1.4px,transparent 1.8px);
+      background-size:13px 13px;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:minmax(270px,430px) 1fr;
+      gap:64px;
+      align-items:center;
+      width:min(1180px,92%);
+      margin:0 auto;
+    }
+
+    .hero-cover{
+      position:relative;
+      max-width:410px;
+      margin:0 auto;
+    }
+
+    .hero-cover img{
+      width:100%;
+      border:5px solid #10090d;
+      border-radius:10px;
+      box-shadow:
+        18px 20px 0 rgba(0,0,0,.24),
+        0 34px 60px rgba(0,0,0,.48);
+      transform:rotate(-2deg);
+    }
+
+    .hero-stamp{
+      position:absolute;
+      z-index:3;
+      top:24px;
+      left:-25px;
+      padding:11px 22px;
+      color:#fff;
+      background:linear-gradient(135deg,#b52d73,#f35ca8);
+      border:4px solid #171017;
+      box-shadow:7px 8px 0 rgba(0,0,0,.26);
+      font-family:var(--comic);
+      font-size:24px;
+      letter-spacing:.04em;
+      transform:rotate(-7deg);
+    }
+
+    .hero-copy .issue{
+      display:inline-flex;
+      margin-bottom:16px;
+      padding:8px 14px;
+      color:#25131c;
+      background:#ffdba8;
+      border:3px solid #171017;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .hero-copy h1{
+      color:#ffaad2;
+      font-family:var(--comic);
+      font-size:clamp(58px,8vw,104px);
+      letter-spacing:.03em;
+      line-height:.86;
+      text-shadow:
+        4px 4px 0 #171017,
+        8px 8px 0 rgba(255,212,146,.16);
+    }
+
+    .hero-copy h2{
+      margin-top:20px;
+      color:#fff1d4;
+      font-family:var(--serif);
+      font-size:clamp(25px,3vw,39px);
+      font-weight:600;
+    }
+
+    .hero-copy p{
+      max-width:680px;
+      margin-top:20px;
+      color:rgba(255,255,255,.83);
+      font-size:18px;
+      line-height:1.75;
+    }
+
+    .hero-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:24px;
+    }
+
+    .hero-tags span{
+      padding:8px 13px;
+      color:#fff;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .start-btn{
+      display:inline-flex;
+      margin-top:30px;
+      padding:16px 28px;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--deep),var(--pink));
+      border:3px solid #171017;
+      border-radius:999px;
+      box-shadow:
+        7px 8px 0 #171017,
+        0 18px 32px rgba(243,92,168,.23);
+      font-weight:900;
+      transition:transform .22s ease,box-shadow .22s ease;
+    }
+
+    .start-btn:hover{
+      transform:translateY(-4px);
+      box-shadow:
+        7px 12px 0 #171017,
+        0 25px 40px rgba(243,92,168,.32);
+    }
+
+    /* ČTEČKA */
+    .reader-section{
+      padding:70px 20px 86px;
+    }
+
+    .reader-heading{
+      width:min(920px,92%);
+      margin:0 auto 34px;
+      text-align:center;
+    }
+
+    .reader-heading span{
+      display:inline-flex;
+      margin-bottom:13px;
+      padding:8px 14px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--deep),var(--pink));
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+
+    .reader-heading h2{
+      color:var(--deep);
+      font-family:var(--comic);
+      font-size:clamp(48px,7vw,82px);
+      line-height:.95;
+      letter-spacing:.03em;
+      text-shadow:
+        3px 3px 0 #fff,
+        6px 6px 0 rgba(243,92,168,.12);
+    }
+
+    .reader-heading p{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.65;
+    }
+
+    .comic-reader{
+      position:relative;
+      width:min(980px,96%);
+      margin:0 auto;
+      padding:38px 34px 34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px) 0 0/100% 34px,
+        linear-gradient(90deg,rgba(0,0,0,.025) 1px,transparent 1px) 0 0/34px 100%,
+        linear-gradient(135deg,#f3dfbd 0%,#fff8e8 52%,#ead2a9 100%);
+      border:7px solid #24151f;
+      border-radius:28px;
+      box-shadow:
+        16px 18px 0 rgba(165,45,111,.16),
+        0 30px 70px rgba(51,19,37,.24);
+    }
+
+    .comic-reader::before{
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:50%;
+      width:34px;
+      content:"";
+      transform:translateX(-50%);
+      opacity:.18;
+      background:linear-gradient(90deg,transparent,#3b2419,transparent);
+      pointer-events:none;
+    }
+
+    .page-stage{
+      position:relative;
+      display:grid;
+      place-items:center;
+      min-height:640px;
+      padding:12px;
+    }
+
+    .page-stage img{
+      max-width:min(100%,650px);
+      max-height:76vh;
+      object-fit:contain;
+      border:5px solid #1a1116;
+      border-radius:8px;
+      box-shadow:
+        12px 14px 0 rgba(0,0,0,.15),
+        0 28px 42px rgba(0,0,0,.27);
+      background:#fff;
+      transition:opacity .18s ease,transform .18s ease;
+    }
+
+    .page-stage.is-changing img{
+      opacity:.25;
+      transform:scale(.98);
+    }
+
+    .reader-controls{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:16px;
+      align-items:center;
+      margin-top:25px;
+    }
+
+    .reader-btn{
+      display:inline-flex;
+      padding:13px 20px;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--deep),var(--pink));
+      border:3px solid #24151f;
+      border-radius:999px;
+      box-shadow:5px 6px 0 #24151f;
+      cursor:pointer;
+      font-weight:900;
+      transition:transform .2s ease,opacity .2s ease;
+    }
+
+    .reader-btn:hover:not(:disabled){
+      transform:translateY(-3px);
+    }
+
+    .reader-btn:disabled{
+      opacity:.38;
+      cursor:not-allowed;
+    }
+
+    .page-counter{
+      min-width:155px;
+      padding:10px 15px;
+      color:#24151f;
+      background:#fff8ee;
+      border:3px solid #24151f;
+      border-radius:999px;
+      box-shadow:4px 5px 0 rgba(36,21,31,.16);
+      text-align:center;
+      font-family:var(--comic);
+      font-size:23px;
+      letter-spacing:.04em;
+    }
+
+    .reader-hint{
+      margin-top:22px;
+      color:#7b5968;
+      text-align:center;
+      font-family:var(--hand);
+      font-size:27px;
+    }
+
+    .reader-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+      margin-top:36px;
+    }
+
+    .reader-actions a{
+      display:inline-flex;
+      padding:13px 22px;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      background:linear-gradient(135deg,var(--deep),var(--pink));
+      border-radius:999px;
+      box-shadow:0 11px 26px rgba(165,45,111,.22);
+      font-weight:900;
+      transition:transform .2s ease;
+    }
+
+    .reader-actions a:hover{
+      transform:translateY(-3px);
+    }
+
+    .ending{
+      width:min(850px,92%);
+      margin:0 auto;
+      padding:0 20px 80px;
+      text-align:center;
+    }
+
+    .ending-bubble{
+      position:relative;
+      display:inline-block;
+      padding:27px 33px;
+      background:#fff;
+      border:4px solid var(--ink);
+      border-radius:30px;
+      box-shadow:10px 10px 0 rgba(165,45,111,.16);
+    }
+
+    .ending-bubble::after{
+      position:absolute;
+      bottom:-27px;
+      left:80px;
+      width:36px;
+      height:36px;
+      content:"";
+      background:#fff;
+      border-right:4px solid var(--ink);
+      border-bottom:4px solid var(--ink);
+      transform:rotate(45deg);
+    }
+
+    .ending-bubble h2{
+      color:var(--deep);
+      font-family:var(--comic);
+      font-size:clamp(38px,5vw,58px);
+      letter-spacing:.03em;
+    }
+
+    .ending-bubble p{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.6;
+    }
+
+    footer{
+      padding:20px 20px 34px;
+      color:#9a7187;
+      text-align:center;
+      font-family:var(--hand);
+      font-size:27px;
+    }
+
+    @media(max-width:860px){
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:42px;
+        text-align:center;
+      }
+
+      .hero-copy p{
+        margin-right:auto;
+        margin-left:auto;
+      }
+
+      .hero-tags{
+        justify-content:center;
+      }
+
+      .page-stage{
+        min-height:520px;
+      }
+    }
+
+    @media(max-width:700px){
+      .topbar{
+        grid-template-columns:1fr auto;
+        min-height:70px;
+        padding:9px 4vw;
+      }
+
+      .main-nav{
+        display:none;
+      }
+
+      .brand strong{
+        font-size:25px;
+      }
+
+      .archive-btn{
+        padding:10px 13px;
+        font-size:12px;
+      }
+
+      .comic-hero{
+        padding:42px 12px 58px;
+      }
+
+      .hero-stamp{
+        left:-8px;
+        font-size:20px;
+      }
+
+      .comic-reader{
+        width:98%;
+        padding:24px 10px 25px;
+        border-width:4px;
+      }
+
+      .page-stage{
+        min-height:420px;
+        padding:4px;
+      }
+
+      .reader-controls{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .page-counter{
+        grid-column:1/-1;
+        grid-row:1;
+        justify-self:center;
+      }
+
+      .reader-btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+
+    <a class="brand" href="index.html">
+      Svět
+      <strong>Carmen♡</strong>
+    </a>
+
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <a href="index.html">Domů</a>
+      <a href="svet.html">Svět příběhů</a>
+      <a href="lusssita-monty.html">Lusssita &amp; Monty</a>
+    </nav>
+
+    <a class="archive-btn" href="komiksy-lusssita-monty.html">
+      📚 Zpět do archivu
+    </a>
+
+  </header>
+
+  <main>
+
+    <section class="comic-hero">
+
+      <div class="hero-grid">
+
+        <div class="hero-cover">
+
+          <span class="hero-stamp">
+            🔥 PRÁVĚ VYŠLO
+          </span>
+
+          <img
+            src="komiks-001-operace-kufr-cover..png"
+            alt="Obálka komiksu Operace kufr"
+          >
+
+        </div>
+
+        <div class="hero-copy">
+
+          <span class="issue">🧳 Komiks 001</span>
+
+          <h1>Operace kufr</h1>
+
+          <h2>
+            První oficiální komiks Lusssity a Montyho
+          </h2>
+
+          <p>
+            Lusssita se snaží potají zabalit kufr.
+            Monty ale rychle zjistí, že se chystá něco podezřelého,
+            a rozjíždí vlastní záchrannou operaci.
+            Čeká tě devět stran humoru, napětí a jedno velmi zvědavé psí srdce.
+          </p>
+
+          <div class="hero-tags">
+            <span>📖 9 stran</span>
+            <span>😂 Skutečná příhoda</span>
+            <span>🐾 Monty v hlavní roli</span>
+          </div>
+
+          <a class="start-btn" href="#cteni">
+            📖 Začít číst →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="reader-section" id="cteni">
+
+      <div class="reader-heading">
+
+        <span>📖 Otevřený komiks</span>
+
+        <h2>Listuj příběhem</h2>
+
+        <p>
+          Obálka je první stranou. Potom pokračuj šipkami jako v opravdovém komiksovém sešitě.
+        </p>
+
+      </div>
+
+      <div class="comic-reader">
+
+        <div class="page-stage" id="pageStage">
+
+          <img
+            id="comicPage"
+            src="komiks-001-operace-kufr-cover..png"
+            alt="Obálka komiksu Operace kufr"
+          >
+
+        </div>
+
+        <div class="reader-controls">
+
+          <button
+            class="reader-btn"
+            id="prevPage"
+            type="button"
+            disabled
+          >
+            ← Předchozí
+          </button>
+
+          <div class="page-counter" id="pageCounter">
+            Obálka
+          </div>
+
+          <button
+            class="reader-btn"
+            id="nextPage"
+            type="button"
+          >
+            Další →
+          </button>
+
+        </div>
+
+        <p class="reader-hint">
+          Můžeš použít také šipky na klávesnici. ♡
+        </p>
+
+        <div class="reader-actions">
+
+          <a href="komiksy-lusssita-monty.html">
+            📚 Zpět do archivu
+          </a>
+
+          <a href="lusssita-monty.html">
+            🐾 Lusssita &amp; Monty
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="ending">
+
+      <div class="ending-bubble">
+
+        <h2>Každá cesta začíná jedním kufrem.</h2>
+
+        <p>
+          A někdy také jedním velmi odhodlaným psem,
+          který rozhodně nehodlá zůstat doma.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    Jeden den. Jeden komiks. Jeden úsměv. ♡
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const pages = [
+        {
+          src:"komiks-001-operace-kufr-cover..png",
+          label:"Obálka",
+          alt:"Obálka komiksu Operace kufr"
+        },
+        {
+          src:"komiks-001-operace-kufr-01.jpeg",
+          label:"Strana 1 / 9",
+          alt:"Komiks Operace kufr – strana 1"
+        },
+        {
+          src:"komiks-001-operace-kufr-02.jpeg",
+          label:"Strana 2 / 9",
+          alt:"Komiks Operace kufr – strana 2"
+        },
+        {
+          src:"komiks-001-operace-kufr-03..jpeg",
+          label:"Strana 3 / 9",
+          alt:"Komiks Operace kufr – strana 3"
+        },
+        {
+          src:"komiks-001-operace-kufr-04..jpeg",
+          label:"Strana 4 / 9",
+          alt:"Komiks Operace kufr – strana 4"
+        },
+        {
+          src:"komiks-001-operace-kufr-05..jpeg",
+          label:"Strana 5 / 9",
+          alt:"Komiks Operace kufr – strana 5"
+        },
+        {
+          src:"komiks-001-operace-kufr-06..jpeg",
+          label:"Strana 6 / 9",
+          alt:"Komiks Operace kufr – strana 6"
+        },
+        {
+          src:"komiks-001-operace-kufr-07..jpeg",
+          label:"Strana 7 / 9",
+          alt:"Komiks Operace kufr – strana 7"
+        },
+        {
+          src:"komiks-001-operace-kufr-08..jpeg",
+          label:"Strana 8 / 9",
+          alt:"Komiks Operace kufr – strana 8"
+        },
+        {
+          src:"komiks-001-operace-kufr-09..jpeg",
+          label:"Strana 9 / 9",
+          alt:"Komiks Operace kufr – strana 9"
+        }
+      ];
+
+      const pageStage = document.getElementById("pageStage");
+      const comicPage = document.getElementById("comicPage");
+      const pageCounter = document.getElementById("pageCounter");
+      const prevPage = document.getElementById("prevPage");
+      const nextPage = document.getElementById("nextPage");
+
+      let currentPage = 0;
+
+      function renderPage(index) {
+        const page = pages[index];
+
+        pageStage.classList.add("is-changing");
+
+        window.setTimeout(function () {
+          comicPage.src = page.src;
+          comicPage.alt = page.alt;
+          pageCounter.textContent = page.label;
+
+          prevPage.disabled = index === 0;
+          nextPage.disabled = index === pages.length - 1;
+
+          nextPage.textContent =
+            index === pages.length - 1
+              ? "Konec příběhu ♡"
+              : "Další →";
+
+          pageStage.classList.remove("is-changing");
+        }, 150);
+      }
+
+      prevPage.addEventListener("click", function () {
+        if (currentPage > 0) {
+          currentPage -= 1;
+          renderPage(currentPage);
+        }
+      });
+
+      nextPage.addEventListener("click", function () {
+        if (currentPage < pages.length - 1) {
+          currentPage += 1;
+          renderPage(currentPage);
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowLeft" && currentPage > 0) {
+          currentPage -= 1;
+          renderPage(currentPage);
+        }
+
+        if (
+          event.key === "ArrowRight" &&
+          currentPage < pages.length - 1
+        ) {
+          currentPage += 1;
+          renderPage(currentPage);
+        }
+      });
+
+      renderPage(currentPage);
+    })();
+  </script>
+
+</body>
+</html>
