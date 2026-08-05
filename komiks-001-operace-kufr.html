@@ -118,25 +118,39 @@
       color:var(--deep);
     }
 
-    .archive-btn{
+    .like-button{
       justify-self:end;
       display:inline-flex;
-      padding:11px 18px;
       align-items:center;
       justify-content:center;
+      gap:8px;
+      min-width:155px;
+      padding:12px 20px;
       color:#fff;
       background:linear-gradient(135deg,var(--deep),var(--pink));
+      border:0;
       border-radius:999px;
-      box-shadow:0 10px 25px rgba(165,45,111,.24);
+      box-shadow:0 12px 26px rgba(165,45,111,.24);
+      cursor:pointer;
       font-size:14px;
       font-weight:900;
       white-space:nowrap;
       transition:transform .2s ease,box-shadow .2s ease;
     }
 
-    .archive-btn:hover{
+    .like-button:hover:not(:disabled){
       transform:translateY(-2px);
-      box-shadow:0 15px 33px rgba(165,45,111,.32);
+      box-shadow:0 16px 34px rgba(165,45,111,.32);
+    }
+
+    .like-button.is-liked{
+      color:var(--deep);
+      background:#fff;
+      outline:2px solid var(--pink);
+    }
+
+    .like-button:disabled{
+      cursor:default;
     }
 
     /* HERO – JEN OBRÁZEK */
@@ -167,16 +181,6 @@
       padding:42px 20px 30px;
       text-align:center;
       background:linear-gradient(180deg,#fff2f7 0%,#fff9fb 100%);
-    }
-    .comic-intro .badge{
-      display:inline-flex;
-      padding:8px 15px;
-      color:#fff;
-      background:linear-gradient(135deg,var(--deep),var(--pink));
-      border-radius:999px;
-      font-size:13px;
-      font-weight:900;
-      text-transform:uppercase;
     }
     .comic-intro h1{
       margin-top:16px;
@@ -236,9 +240,9 @@
 
     .comic-reader{
       position:relative;
-      width:min(1160px,96%);
+      width:min(1320px,98%);
       margin:0 auto;
-      padding:28px 28px 30px;
+      padding:24px 24px 30px;
       overflow:hidden;
       background:
         linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px) 0 0/100% 34px,
@@ -251,33 +255,24 @@
         0 30px 70px rgba(51,19,37,.24);
     }
 
-    .comic-reader::before{
-      position:absolute;
-      top:0;
-      bottom:0;
-      left:50%;
-      width:34px;
-      content:"";
-      transform:translateX(-50%);
-      opacity:.18;
-      background:linear-gradient(90deg,transparent,#3b2419,transparent);
-      pointer-events:none;
-    }
 
     .page-stage{
       position:relative;
-      display:grid;
-      place-items:center;
-      min-height:560px;
-      padding:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:0;
+      padding:0;
     }
 
     .page-stage img{
-      max-width:min(100%,760px);
-      max-height:76vh;
+      width:min(100%,1050px);
+      max-width:1050px;
+      height:auto;
+      max-height:none;
       object-fit:contain;
       border:5px solid #1a1116;
-      border-radius:8px;
+      border-radius:12px;
       box-shadow:
         12px 14px 0 rgba(0,0,0,.15),
         0 28px 42px rgba(0,0,0,.27);
@@ -490,7 +485,8 @@
         font-size:25px;
       }
 
-      .archive-btn{
+      .like-button{
+        min-width:auto;
         padding:10px 13px;
         font-size:12px;
       }
@@ -511,8 +507,13 @@
       }
 
       .page-stage{
-        min-height:420px;
-        padding:4px;
+        min-height:0;
+        padding:0;
+      }
+
+      .page-stage img{
+        width:100%;
+        max-width:100%;
       }
 
       .reader-controls{
@@ -547,9 +548,15 @@
       <a href="lusssita-monty.html">Lusssita &amp; Monty</a>
     </nav>
 
-    <a class="archive-btn" href="komiksy-lusssita-monty.html">
-      📚 Zpět do archivu
-    </a>
+    <button
+      class="like-button"
+      id="likeButton"
+      type="button"
+      aria-label="Dát komiksu Operace kufr srdce"
+      disabled
+    >
+      ♡ Líbí se mi…
+    </button>
 
   </header>
 
@@ -563,7 +570,6 @@
     </section>
 
     <section class="comic-intro">
-      <span class="badge">🐾 Grafický román</span>
       <h1>První oficiální komiks Lusssity a Montyho</h1>
       <p>
         Lusssita se snaží potají zabalit kufr. Monty ale rychle zjistí,
@@ -743,7 +749,126 @@
         button.appendChild(image);
         button.addEventListener("click",function(){
           currentPage=index;
-          renderPage(currentPage);
+    
+      const SUPABASE_URL =
+        "https://lggboavbzzvoomveewtl.supabase.co";
+
+      const SUPABASE_KEY =
+        "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+
+      const PAGE_ID =
+        "komiks-001-operace-kufr";
+
+      const likeButton =
+        document.getElementById("likeButton");
+
+      const storageKey =
+        `svetCarmenLike_${PAGE_ID}`;
+
+      function getToday() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      }
+
+      async function callSupabase(functionName) {
+        const response = await fetch(
+          `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
+          {
+            method:"POST",
+            headers:{
+              apikey:SUPABASE_KEY,
+              "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+              requested_page_id:PAGE_ID
+            })
+          }
+        );
+
+        if(!response.ok){
+          throw new Error(await response.text());
+        }
+
+        return response.json();
+      }
+
+      function showReady(count){
+        likeButton.textContent =
+          `♡ Líbí se mi ${Number(count) || 0}`;
+        likeButton.disabled = false;
+        likeButton.classList.remove("is-liked");
+      }
+
+      function showThankYou(count){
+        likeButton.textContent =
+          `♥ Děkujeme ${Number(count) || 0}`;
+        likeButton.disabled = true;
+        likeButton.classList.add("is-liked");
+      }
+
+      async function loadLikes(){
+        try{
+          const count =
+            await callSupabase("get_page_likes");
+
+          if(
+            localStorage.getItem(storageKey) === getToday()
+          ){
+            showThankYou(count);
+          }else{
+            showReady(count);
+          }
+        }catch(error){
+          console.error(
+            "Počet srdcí se nepodařilo načíst:",
+            error
+          );
+
+          likeButton.textContent = "♡ Líbí se mi";
+          likeButton.disabled = false;
+        }
+      }
+
+      likeButton.addEventListener(
+        "click",
+        async function(){
+          if(
+            likeButton.disabled ||
+            localStorage.getItem(storageKey) === getToday()
+          ){
+            return;
+          }
+
+          likeButton.disabled = true;
+          likeButton.textContent = "♡ Odesílám…";
+
+          try{
+            const newCount =
+              await callSupabase("add_page_like");
+
+            localStorage.setItem(
+              storageKey,
+              getToday()
+            );
+
+            showThankYou(newCount);
+          }catch(error){
+            console.error(
+              "Srdce se nepodařilo odeslat:",
+              error
+            );
+
+            likeButton.textContent = "♡ Zkusit znovu";
+            likeButton.disabled = false;
+          }
+        }
+      );
+
+      loadLikes();
+      renderPage(currentPage);
         });
         thumbnails.appendChild(button);
       });
@@ -811,4 +936,4 @@
   </script>
 
 </body>
-</html>
+</htm
