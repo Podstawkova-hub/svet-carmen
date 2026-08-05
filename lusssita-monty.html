@@ -619,14 +619,47 @@ footer{
 
   <!-- HYMNA HNED POD HERO -->
 
-  <section class="music-section">
+<section class="music-section">
 
     <h2>🎵 Hymna Lusssity a Montyho</h2>
 
     <p>
-      Oficiální hymnu doplníme, jakmile bude hotová její finální verze.
+        Oficiální hymna projektu Lusssita &amp; Monty.
     </p>
 
+    <div class="music-player">
+        <button class="play-btn" id="playBtnLusssita">
+            ▶️ Přehrát hymnu
+        </button>
+
+        <audio id="audioLusssita">
+            <source src="hymna-lusssita-monty.mp3.mp3" type="audio/mpeg">
+            Tvůj prohlížeč nepodporuje přehrávání audia.
+        </audio>
+    </div>
+
+</section>
+
+<script>
+const playBtnLusssita = document.getElementById("playBtnLusssita");
+const audioLusssita = document.getElementById("audioLusssita");
+
+playBtnLusssita.addEventListener("click", () => {
+
+    if (audioLusssita.paused) {
+        audioLusssita.play();
+        playBtnLusssita.textContent = "⏸️ Pozastavit hymnu";
+    } else {
+        audioLusssita.pause();
+        playBtnLusssita.textContent = "▶️ Přehrát hymnu";
+    }
+
+});
+
+audioLusssita.addEventListener("ended", () => {
+    playBtnLusssita.textContent = "▶️ Přehrát hymnu";
+});
+</script>
   </section>
 
   <!-- POUZE TEXT, ŽÁDNÁ DRUHÁ FOTKA -->
