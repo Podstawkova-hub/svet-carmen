@@ -139,153 +139,57 @@
       box-shadow:0 15px 33px rgba(165,45,111,.32);
     }
 
-    /* HERO KOMIKSU */
-    .comic-hero{
+    /* HERO – JEN OBRÁZEK */
+    .hero{
       position:relative;
       overflow:hidden;
-      padding:58px 5vw 72px;
-      color:#fff;
-      background:
-        radial-gradient(circle at 80% 10%,rgba(243,92,168,.26),transparent 30%),
-        radial-gradient(circle at 10% 90%,rgba(255,185,88,.18),transparent 24%),
-        linear-gradient(135deg,#1c1017 0%,#3d1b27 54%,#241119 100%);
+      background:#1d1118;
     }
-
-    .comic-hero::before{
+    .hero img{
+      width:100%;
+      height:auto;
+      max-height:780px;
+      object-fit:cover;
+      object-position:center;
+    }
+    .hero::after{
       position:absolute;
-      inset:0;
+      right:0;
+      bottom:-1px;
+      left:0;
+      height:100px;
       content:"";
-      opacity:.12;
-      background:
-        radial-gradient(circle,#fff 0 1.4px,transparent 1.8px);
-      background-size:13px 13px;
+      background:linear-gradient(180deg,transparent 0%,rgba(255,243,248,.6) 55%,#fff2f7 100%);
       pointer-events:none;
     }
 
-    .hero-grid{
-      position:relative;
-      z-index:2;
-      display:grid;
-      grid-template-columns:minmax(270px,430px) 1fr;
-      gap:64px;
-      align-items:center;
-      width:min(1180px,92%);
-      margin:0 auto;
+    .comic-intro{
+      padding:42px 20px 30px;
+      text-align:center;
+      background:linear-gradient(180deg,#fff2f7 0%,#fff9fb 100%);
     }
-
-    .hero-cover{
-      position:relative;
-      max-width:410px;
-      margin:0 auto;
-    }
-
-    .hero-cover img{
-      width:100%;
-      border:5px solid #10090d;
-      border-radius:10px;
-      box-shadow:
-        18px 20px 0 rgba(0,0,0,.24),
-        0 34px 60px rgba(0,0,0,.48);
-      transform:rotate(-2deg);
-    }
-
-    .hero-stamp{
-      position:absolute;
-      z-index:3;
-      top:24px;
-      left:-25px;
-      padding:11px 22px;
-      color:#fff;
-      background:linear-gradient(135deg,#b52d73,#f35ca8);
-      border:4px solid #171017;
-      box-shadow:7px 8px 0 rgba(0,0,0,.26);
-      font-family:var(--comic);
-      font-size:24px;
-      letter-spacing:.04em;
-      transform:rotate(-7deg);
-    }
-
-    .hero-copy .issue{
+    .comic-intro .badge{
       display:inline-flex;
-      margin-bottom:16px;
-      padding:8px 14px;
-      color:#25131c;
-      background:#ffdba8;
-      border:3px solid #171017;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:900;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-    }
-
-    .hero-copy h1{
-      color:#ffaad2;
-      font-family:var(--comic);
-      font-size:clamp(58px,8vw,104px);
-      letter-spacing:.03em;
-      line-height:.86;
-      text-shadow:
-        4px 4px 0 #171017,
-        8px 8px 0 rgba(255,212,146,.16);
-    }
-
-    .hero-copy h2{
-      margin-top:20px;
-      color:#fff1d4;
-      font-family:var(--serif);
-      font-size:clamp(25px,3vw,39px);
-      font-weight:600;
-    }
-
-    .hero-copy p{
-      max-width:680px;
-      margin-top:20px;
-      color:rgba(255,255,255,.83);
-      font-size:18px;
-      line-height:1.75;
-    }
-
-    .hero-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:24px;
-    }
-
-    .hero-tags span{
-      padding:8px 13px;
-      color:#fff;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.15);
-      border-radius:999px;
-      font-size:13px;
-      font-weight:800;
-    }
-
-    .start-btn{
-      display:inline-flex;
-      margin-top:30px;
-      padding:16px 28px;
-      align-items:center;
-      justify-content:center;
-      gap:9px;
+      padding:8px 15px;
       color:#fff;
       background:linear-gradient(135deg,var(--deep),var(--pink));
-      border:3px solid #171017;
       border-radius:999px;
-      box-shadow:
-        7px 8px 0 #171017,
-        0 18px 32px rgba(243,92,168,.23);
+      font-size:13px;
       font-weight:900;
-      transition:transform .22s ease,box-shadow .22s ease;
+      text-transform:uppercase;
     }
-
-    .start-btn:hover{
-      transform:translateY(-4px);
-      box-shadow:
-        7px 12px 0 #171017,
-        0 25px 40px rgba(243,92,168,.32);
+    .comic-intro h1{
+      margin-top:16px;
+      color:var(--deep);
+      font-family:var(--serif);
+      font-size:clamp(34px,5vw,60px);
+    }
+    .comic-intro p{
+      max-width:850px;
+      margin:14px auto 0;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.7;
     }
 
     /* ČTEČKA */
@@ -332,9 +236,9 @@
 
     .comic-reader{
       position:relative;
-      width:min(980px,96%);
+      width:min(1160px,96%);
       margin:0 auto;
-      padding:38px 34px 34px;
+      padding:28px 28px 30px;
       overflow:hidden;
       background:
         linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px) 0 0/100% 34px,
@@ -364,12 +268,12 @@
       position:relative;
       display:grid;
       place-items:center;
-      min-height:640px;
+      min-height:560px;
       padding:12px;
     }
 
     .page-stage img{
-      max-width:min(100%,650px);
+      max-width:min(100%,760px);
       max-height:76vh;
       object-fit:contain;
       border:5px solid #1a1116;
@@ -439,6 +343,38 @@
       text-align:center;
       font-family:var(--hand);
       font-size:27px;
+    }
+
+    .thumbnails{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      margin-top:24px;
+      overflow-x:auto;
+      padding:4px 0;
+    }
+    .thumb{
+      flex:0 0 72px;
+      width:72px;
+      height:72px;
+      padding:4px;
+      border:3px solid rgba(41,25,34,.24);
+      border-radius:10px;
+      background:#fff;
+      cursor:pointer;
+      opacity:.62;
+      transition:.18s ease;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:5px;
+    }
+    .thumb:hover,.thumb.is-active{
+      opacity:1;
+      border-color:var(--pink);
+      transform:translateY(-3px);
     }
 
     .reader-actions{
@@ -619,54 +555,21 @@
 
   <main>
 
-    <section class="comic-hero">
+    <section class="hero">
+      <img
+        src="komiks-001-operace-kufr-hero.png"
+        alt="Operace kufr – Lusssita a Monty"
+      >
+    </section>
 
-      <div class="hero-grid">
-
-        <div class="hero-cover">
-
-          <span class="hero-stamp">
-            🔥 PRÁVĚ VYŠLO
-          </span>
-
-          <img
-            src="komiks-001-operace-kufr-cover..png"
-            alt="Obálka komiksu Operace kufr"
-          >
-
-        </div>
-
-        <div class="hero-copy">
-
-          <span class="issue">🧳 Komiks 001</span>
-
-          <h1>Operace kufr</h1>
-
-          <h2>
-            První oficiální komiks Lusssity a Montyho
-          </h2>
-
-          <p>
-            Lusssita se snaží potají zabalit kufr.
-            Monty ale rychle zjistí, že se chystá něco podezřelého,
-            a rozjíždí vlastní záchrannou operaci.
-            Čeká tě devět stran humoru, napětí a jedno velmi zvědavé psí srdce.
-          </p>
-
-          <div class="hero-tags">
-            <span>📖 9 stran</span>
-            <span>😂 Skutečná příhoda</span>
-            <span>🐾 Monty v hlavní roli</span>
-          </div>
-
-          <a class="start-btn" href="#cteni">
-            📖 Začít číst →
-          </a>
-
-        </div>
-
-      </div>
-
+    <section class="comic-intro">
+      <span class="badge">🐾 Grafický román</span>
+      <h1>První oficiální komiks Lusssity a Montyho</h1>
+      <p>
+        Lusssita se snaží potají zabalit kufr. Monty ale rychle zjistí,
+        že se chystá něco podezřelého, a rozjíždí vlastní záchrannou operaci.
+        Čeká tě devět stran humoru, napětí a jedno velmi zvědavé psí srdce. ♡
+      </p>
     </section>
 
     <section class="reader-section" id="cteni">
@@ -719,6 +622,8 @@
           </button>
 
         </div>
+
+        <div class="thumbnails" id="thumbnails" aria-label="Náhledy stran komiksu"></div>
 
         <p class="reader-hint">
           Můžeš použít také šipky na klávesnici. ♡
@@ -777,7 +682,7 @@
           alt:"Komiks Operace kufr – strana 1"
         },
         {
-          src:"komiks-001-operace-kufr-02..jpeg",
+          src:"komiks-001-operace-kufr-02.jpeg",
           label:"Strana 2 / 9",
           alt:"Komiks Operace kufr – strana 2"
         },
@@ -823,8 +728,31 @@
       const pageCounter = document.getElementById("pageCounter");
       const prevPage = document.getElementById("prevPage");
       const nextPage = document.getElementById("nextPage");
+      const thumbnails = document.getElementById("thumbnails");
 
       let currentPage = 0;
+
+      pages.forEach(function(page,index){
+        const button=document.createElement("button");
+        const image=document.createElement("img");
+        button.type="button";
+        button.className="thumb";
+        button.setAttribute("aria-label","Otevřít "+page.label);
+        image.src=page.src;
+        image.alt=page.alt;
+        button.appendChild(image);
+        button.addEventListener("click",function(){
+          currentPage=index;
+          renderPage(currentPage);
+        });
+        thumbnails.appendChild(button);
+      });
+
+      function updateThumbnails(){
+        thumbnails.querySelectorAll(".thumb").forEach(function(thumb,index){
+          thumb.classList.toggle("is-active",index===currentPage);
+        });
+      }
 
       function renderPage(index) {
         const page = pages[index];
@@ -844,6 +772,7 @@
               ? "Konec příběhu ♡"
               : "Další →";
 
+          updateThumbnails();
           pageStage.classList.remove("is-changing");
         }, 150);
       }
