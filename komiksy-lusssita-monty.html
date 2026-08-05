@@ -743,6 +743,251 @@ footer{
   font-size:27px;
 }
 
+
+/* =========================================
+   PRÁVĚ VYŠLO – HLAVNÍ KOMIKS
+   ========================================= */
+
+.latest-release{
+  position:relative;
+  width:min(1180px,92%);
+  margin:20px auto 82px;
+  padding:50px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 85% 20%,rgba(243,92,168,.22),transparent 28%),
+    linear-gradient(135deg,#28151d 0%,#44202c 55%,#251219 100%);
+  border:6px solid #1b1017;
+  border-radius:32px;
+  box-shadow:
+    16px 18px 0 rgba(165,45,111,.18),
+    0 30px 70px rgba(48,17,35,.26);
+}
+
+.latest-release::before{
+  position:absolute;
+  inset:0;
+  content:"";
+  opacity:.12;
+  pointer-events:none;
+  background:radial-gradient(circle,#fff 0 1.4px,transparent 1.8px);
+  background-size:13px 13px;
+}
+
+.latest-release-grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(270px,430px) 1fr;
+  gap:62px;
+  align-items:center;
+}
+
+.latest-cover-wrap{
+  position:relative;
+  max-width:420px;
+  margin:0 auto;
+}
+
+.latest-cover{
+  width:100%;
+  border:5px solid #160e14;
+  border-radius:10px;
+  box-shadow:
+    18px 20px 0 rgba(0,0,0,.24),
+    0 30px 55px rgba(0,0,0,.44);
+  transform:rotate(-2deg);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+
+.latest-cover-wrap:hover .latest-cover{
+  transform:rotate(0deg) translateY(-8px) scale(1.02);
+  box-shadow:
+    20px 24px 0 rgba(0,0,0,.20),
+    0 38px 65px rgba(0,0,0,.50);
+}
+
+.release-ribbon{
+  position:absolute;
+  z-index:4;
+  top:24px;
+  left:-28px;
+  padding:12px 24px;
+  color:#fff;
+  background:linear-gradient(135deg,#b52d73,#f35ca8);
+  border:4px solid #171017;
+  box-shadow:7px 8px 0 rgba(0,0,0,.25);
+  font-family:var(--comic);
+  font-size:25px;
+  letter-spacing:.05em;
+  transform:rotate(-7deg);
+}
+
+.latest-copy{
+  color:#fff;
+}
+
+.latest-eyebrow{
+  display:inline-flex;
+  margin-bottom:16px;
+  padding:8px 14px;
+  align-items:center;
+  gap:7px;
+  color:#25131c;
+  background:#ffdba8;
+  border:3px solid #171017;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+.latest-copy h2{
+  max-width:650px;
+  color:#ffaad2;
+  font-family:var(--comic);
+  font-size:clamp(54px,7vw,92px);
+  line-height:.9;
+  letter-spacing:.03em;
+  text-shadow:
+    4px 4px 0 #171017,
+    7px 7px 0 rgba(78,183,199,.26);
+}
+
+.latest-copy h3{
+  margin-top:18px;
+  color:#fff1d4;
+  font-family:var(--serif);
+  font-size:clamp(25px,3vw,38px);
+  font-weight:600;
+}
+
+.latest-copy p{
+  max-width:610px;
+  margin-top:20px;
+  color:rgba(255,255,255,.82);
+  font-size:18px;
+  line-height:1.72;
+}
+
+.release-details{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:24px;
+}
+
+.release-details span{
+  padding:8px 13px;
+  color:#fff;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+  font-size:13px;
+  font-weight:800;
+}
+
+.open-comic-btn{
+  display:inline-flex;
+  margin-top:28px;
+  padding:16px 28px;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color:#fff;
+  background:linear-gradient(135deg,var(--deep),var(--pink));
+  border:3px solid #171017;
+  border-radius:999px;
+  box-shadow:
+    7px 8px 0 #171017,
+    0 18px 32px rgba(243,92,168,.22);
+  font-size:17px;
+  font-weight:900;
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+
+.open-comic-btn:hover{
+  transform:translateY(-4px);
+  box-shadow:
+    7px 12px 0 #171017,
+    0 25px 40px rgba(243,92,168,.32);
+}
+
+.comic-book.is-published{
+  cursor:pointer;
+  opacity:1;
+}
+
+.comic-book.is-published::before{
+  opacity:.13;
+}
+
+.published-stamp{
+  position:absolute;
+  z-index:6;
+  top:56px;
+  right:-18px;
+  padding:7px 14px;
+  color:#fff;
+  background:#e22f7d;
+  border:3px solid #171017;
+  box-shadow:5px 5px 0 rgba(0,0,0,.25);
+  font-family:var(--comic);
+  font-size:20px;
+  transform:rotate(8deg);
+}
+
+@media(max-width:850px){
+  .latest-release{
+    padding:36px 25px 42px;
+  }
+
+  .latest-release-grid{
+    grid-template-columns:1fr;
+    gap:42px;
+    text-align:center;
+  }
+
+  .latest-copy p{
+    margin-right:auto;
+    margin-left:auto;
+  }
+
+  .release-details{
+    justify-content:center;
+  }
+}
+
+@media(max-width:520px){
+  .latest-release{
+    width:94%;
+    padding:28px 16px 36px;
+    border-width:4px;
+    border-radius:22px;
+  }
+
+  .release-ribbon{
+    top:18px;
+    left:-10px;
+    padding:9px 15px;
+    font-size:20px;
+  }
+
+  .latest-copy h2{
+    font-size:52px;
+  }
+
+  .latest-copy p{
+    font-size:16px;
+  }
+
+  .open-comic-btn{
+    width:100%;
+  }
+}
+
+
 /* =========================================
    TABLET
    ========================================= */
@@ -933,6 +1178,64 @@ footer{
 
   </section>
 
+  <!-- PRÁVĚ VYŠLO -->
+
+  <section class="latest-release">
+
+    <div class="latest-release-grid">
+
+      <div class="latest-cover-wrap">
+
+        <span class="release-ribbon">
+          🔥 PRÁVĚ VYŠLO
+        </span>
+
+        <img
+          class="latest-cover"
+          src="assets/komiksy/komiks-001-operace-kufr/komiks-001-operace-kufr-cover.png"
+          alt="Obálka komiksu Operace kufr"
+        >
+
+      </div>
+
+      <div class="latest-copy">
+
+        <span class="latest-eyebrow">
+          🧳 Komiks 001
+        </span>
+
+        <h2>Operace kufr</h2>
+
+        <h3>
+          První oficiální komiks Lusssity a Montyho
+        </h3>
+
+        <p>
+          Lusssita se snaží potají zabalit kufr.
+          Monty ale rychle pochopí, že se chystá něco podezřelého,
+          a rozjíždí vlastní záchrannou operaci.
+          Dokáže se přibalit dřív, než panička odjede?
+        </p>
+
+        <div class="release-details">
+          <span>📖 9 stran</span>
+          <span>😂 Skutečná příhoda</span>
+          <span>🐾 Monty v hlavní roli</span>
+        </div>
+
+        <a
+          class="open-comic-btn"
+          href="komiks-001-operace-kufr.html"
+        >
+          📖 Otevřít komiks →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
   <!-- MEGA KOMIKSOVÁ KNIHOVNA -->
 
   <section class="library">
@@ -942,10 +1245,11 @@ footer{
 
     <div class="library-heading">
 
-      <h2>Komiksová knihovna</h2>
+      <h2>Archiv komiksů</h2>
 
       <p>
-        Jednotlivé díly budou postupně přibývat jako skutečné komiksové sešity.
+        Prohlédni si vydané příběhy a podívej se,
+        jaké další komiksové sešity pro tebe připravujeme.
       </p>
 
     </div>
@@ -956,16 +1260,32 @@ footer{
 
         <div class="shelf">
 
-          <article class="comic-book is-locked">
-            <span class="issue">Komiks 001</span>
+          <a
+            class="comic-book is-published"
+            href="komiks-001-operace-kufr.html"
+            aria-label="Otevřít Komiks 001 – Operace kufr"
+          >
+
+            <span class="published-stamp">
+              VYDÁNO
+            </span>
+
+            <span class="issue">
+              Komiks 001
+            </span>
+
             <div class="cover-mark">
               <div>
                 <span>🧳</span>
                 <strong>OPERACE<br>KUFR</strong>
               </div>
             </div>
-            <span class="book-open">🕒 Již brzy</span>
-          </article>
+
+            <span class="book-open">
+              📖 Otevřít
+            </span>
+
+          </a>
 
           <article class="comic-book is-locked">
             <span class="issue">Komiks 002</span>
