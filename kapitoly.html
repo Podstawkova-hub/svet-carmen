@@ -5,24 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Kapitoly MIA | Svět Carmen</title>
-
-  <meta
-    name="description"
-    content="Listujte skutečným příběhem Mii stránku po stránce."
-  >
+  <meta name="description" content="Listujte skutečným příběhem Mii stránku po stránce v otevřené digitální knize.">
 
   <style>
     :root {
       --pink: #e74991;
-      --pink-dark: #b72b68;
-      --cream: #fff8f5;
-      --paper: #ead2aa;
-      --paper-light: #f6e4c5;
-      --brown: #2a120d;
-      --brown-dark: #120806;
-      --text: #331d18;
-      --white: #ffffff;
-      --shadow: rgba(0, 0, 0, 0.42);
+      --pink-light: #ff73b4;
+      --pink-dark: #ad2c6c;
+      --cream: #fff9f6;
+      --paper: #edd3a7;
+      --paper-dark: #c69a67;
+      --wood: #2b120b;
+      --wood-dark: #120705;
+      --ink: #321d18;
+      --white: #fff;
+      --header-height: 78px;
     }
 
     * {
@@ -36,21 +33,10 @@
     body {
       margin: 0;
       min-height: 100vh;
-      color: var(--white);
-      background:
-        linear-gradient(rgba(18, 8, 6, 0.42), rgba(18, 8, 6, 0.7)),
-        radial-gradient(circle at 50% 20%, #6c3925 0%, #26130d 50%, #100705 100%);
-      font-family: Georgia, "Times New Roman", serif;
       overflow-x: hidden;
-    }
-
-    button,
-    a {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
+      color: var(--white);
+      background: #160905;
+      font-family: Georgia, "Times New Roman", serif;
     }
 
     img {
@@ -58,37 +44,49 @@
       max-width: 100%;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      border: 0;
+      font: inherit;
+      cursor: pointer;
+    }
+
     /* =====================================================
-       HLAVIČKA
+       HLAVIČKA – JEN DOMŮ, SVĚT PŘÍBĚHŮ A LÍBÍ SE MI
     ===================================================== */
 
     .site-header {
       position: relative;
       z-index: 100;
-      width: 100%;
+      min-height: var(--header-height);
+      color: #3c2930;
       background: rgba(255, 250, 248, 0.98);
-      box-shadow: 0 8px 28px rgba(42, 18, 13, 0.16);
+      border-bottom: 1px solid rgba(173, 44, 108, 0.12);
+      box-shadow: 0 7px 24px rgba(72, 30, 51, 0.08);
     }
 
     .header-inner {
-      width: min(1400px, calc(100% - 40px));
-      min-height: 82px;
+      width: min(1480px, calc(100% - 42px));
+      min-height: var(--header-height);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 220px 1fr 220px;
+      grid-template-columns: 260px 1fr 220px;
       align-items: center;
       gap: 24px;
     }
 
     .brand {
-      color: var(--text);
-      text-decoration: none;
-      line-height: 0.85;
+      justify-self: start;
+      line-height: 0.86;
     }
 
     .brand-small {
       display: block;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
     }
 
@@ -109,20 +107,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: clamp(24px, 4vw, 62px);
+      gap: clamp(38px, 6vw, 90px);
     }
 
     .main-nav a {
-      color: #493535;
+      color: #49363e;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 17px;
       font-weight: 700;
-      text-decoration: none;
-      transition: color 0.2s ease, transform 0.2s ease;
+      transition: color .2s ease, transform .2s ease;
     }
 
-    .main-nav a:hover,
-    .main-nav a.active {
+    .main-nav a:hover {
       color: var(--pink);
       transform: translateY(-1px);
     }
@@ -133,37 +129,47 @@
     }
 
     .like-button {
-      min-width: 155px;
-      padding: 15px 23px;
-      border: 0;
+      min-width: 166px;
+      padding: 14px 22px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--pink-dark), var(--pink-light));
       border-radius: 999px;
-      color: white;
-      background: linear-gradient(135deg, var(--pink-dark), #ff68aa);
-      box-shadow: 0 10px 26px rgba(231, 73, 145, 0.28);
+      box-shadow: 0 10px 25px rgba(227, 76, 146, .26);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
 
-    .like-button:hover {
+    .like-button:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 13px 30px rgba(231, 73, 145, 0.4);
+      box-shadow: 0 13px 30px rgba(227, 76, 146, .38);
     }
 
-    .like-button.liked {
-      background: linear-gradient(135deg, #9f245b, var(--pink));
+    .like-button.is-liked {
+      color: var(--pink-dark);
+      background: #fff;
+      outline: 2px solid var(--pink-light);
+    }
+
+    .like-button:disabled {
+      cursor: default;
     }
 
     /* =====================================================
-       HLAVNÍ FILMOVÁ PLOCHA
+       FILMOVÉ POZADÍ
     ===================================================== */
 
     .chapters-stage {
       position: relative;
-      min-height: calc(100vh - 82px);
-      padding: 26px 28px 38px;
+      min-height: calc(100vh - var(--header-height));
+      padding: 16px 22px 28px;
       isolation: isolate;
+      background:
+        radial-gradient(circle at 8% 18%, rgba(255, 185, 103, .24), transparent 20%),
+        radial-gradient(circle at 90% 18%, rgba(255, 202, 146, .12), transparent 23%),
+        linear-gradient(180deg, rgba(40, 17, 10, .4), rgba(8, 3, 2, .82));
     }
 
     .chapters-stage::before {
@@ -172,9 +178,14 @@
       inset: 0;
       z-index: -3;
       background:
-        radial-gradient(circle at 7% 23%, rgba(255, 172, 76, 0.26), transparent 25%),
-        radial-gradient(circle at 92% 22%, rgba(255, 202, 146, 0.12), transparent 22%),
-        linear-gradient(180deg, rgba(19, 8, 6, 0.2), rgba(8, 3, 2, 0.72));
+        linear-gradient(rgba(22, 8, 5, .18), rgba(15, 5, 3, .64)),
+        repeating-linear-gradient(
+          90deg,
+          #34170f 0,
+          #2a100b 62px,
+          #371910 63px,
+          #2a100b 128px
+        );
     }
 
     .chapters-stage::after {
@@ -184,108 +195,243 @@
       z-index: -2;
       pointer-events: none;
       background:
-        repeating-linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.012) 0,
-          rgba(255, 255, 255, 0.012) 1px,
-          transparent 1px,
-          transparent 7px
-        );
-      opacity: 0.55;
+        radial-gradient(ellipse at 50% 110%, rgba(0,0,0,.55), transparent 55%),
+        linear-gradient(90deg, rgba(0,0,0,.27), transparent 20%, transparent 80%, rgba(0,0,0,.27));
     }
 
+    /* Dekorace stolu */
+
+    .decor {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      z-index: -1;
+    }
+
+    .candle {
+      left: 2.4%;
+      top: 8%;
+      width: clamp(80px, 8vw, 128px);
+      aspect-ratio: .78;
+      border-radius: 18px 18px 25px 25px;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(255,242,180,.95) 0 6%, transparent 7%),
+        linear-gradient(180deg, #ffc86e, #df7b34 76%, #9e431f);
+      box-shadow:
+        0 0 44px rgba(255, 162, 72, .45),
+        inset 0 0 20px rgba(255,255,255,.18),
+        0 18px 30px rgba(0,0,0,.35);
+    }
+
+    .candle::before {
+      content: "🐾";
+      position: absolute;
+      inset: auto 0 18%;
+      text-align: center;
+      color: #24100a;
+      font-size: clamp(29px, 3.4vw, 52px);
+    }
+
+    .candle::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -22%;
+      width: 18%;
+      height: 29%;
+      transform: translateX(-50%);
+      border-radius: 50% 50% 45% 45%;
+      background: radial-gradient(circle at 50% 70%, #fffbd5 0 16%, #ffd24c 35%, #ff8a2b 70%, transparent 72%);
+      filter: drop-shadow(0 0 11px #ffb54e);
+    }
+
+    .books {
+      right: 1.7%;
+      top: 7%;
+      width: clamp(105px, 11vw, 180px);
+      height: clamp(110px, 12vw, 190px);
+      transform: rotate(2deg);
+    }
+
+    .books::before,
+    .books::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      width: 100%;
+      height: 27%;
+      border-radius: 5px;
+      background: linear-gradient(90deg, #5b2f20, #9a6545 12%, #3b1b13 88%);
+      box-shadow: 0 10px 16px rgba(0,0,0,.28);
+    }
+
+    .books::before {
+      bottom: 8%;
+      transform: rotate(-3deg);
+    }
+
+    .books::after {
+      bottom: 38%;
+      width: 86%;
+      background: linear-gradient(90deg, #321b23, #745066 14%, #28151d 88%);
+      transform: rotate(2deg);
+    }
+
+    .plant {
+      right: 2.3%;
+      top: 0;
+      width: clamp(80px, 9vw, 145px);
+      height: clamp(85px, 10vw, 165px);
+      border-radius: 45% 50% 42% 48%;
+      background:
+        radial-gradient(circle at 35% 35%, #526e3c 0 7%, transparent 8%),
+        radial-gradient(circle at 62% 28%, #6f8a51 0 8%, transparent 9%),
+        radial-gradient(circle at 58% 55%, #3d5d32 0 9%, transparent 10%),
+        radial-gradient(circle at 28% 60%, #78905a 0 8%, transparent 9%);
+      filter: drop-shadow(0 12px 12px rgba(0,0,0,.28));
+    }
+
+    .plant::after {
+      content: "";
+      position: absolute;
+      left: 25%;
+      right: 25%;
+      bottom: -4%;
+      height: 34%;
+      border-radius: 6px 6px 20px 20px;
+      background: linear-gradient(90deg, #92704c, #d2ae7a 50%, #745332);
+    }
+
+    .fabric {
+      right: 0;
+      bottom: 0;
+      width: clamp(120px, 15vw, 230px);
+      height: clamp(85px, 10vw, 150px);
+      border-radius: 55% 0 0 0;
+      background:
+        repeating-radial-gradient(circle at 40% 60%, #db8ead 0 3px, #ba668b 4px 8px);
+      opacity: .68;
+      filter: blur(.2px);
+    }
+
+    /* =====================================================
+       NADPIS
+    ===================================================== */
+
     .stage-heading {
-      width: min(960px, 100%);
-      margin: 0 auto 18px;
+      width: min(970px, 100%);
+      margin: 0 auto 10px;
       text-align: center;
     }
 
     .stage-heading h1 {
       margin: 0;
-      font-size: clamp(38px, 5vw, 66px);
+      font-size: clamp(34px, 4.6vw, 64px);
       font-weight: 400;
-      letter-spacing: 0.22em;
-      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.55);
+      letter-spacing: .24em;
+      text-shadow: 0 4px 20px rgba(0,0,0,.58);
     }
 
     .heading-divider {
-      width: min(520px, 72%);
+      width: min(560px, 72%);
       height: 1px;
-      margin: 8px auto 8px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 238, 220, 0.72),
-        transparent
-      );
+      margin: 5px auto 5px;
+      background: linear-gradient(90deg, transparent, rgba(255,240,225,.7), transparent);
     }
 
     .heading-paw {
       display: inline-block;
-      margin: 0 8px;
-      color: #f5d7c7;
+      margin-top: -12px;
+      padding: 0 10px;
+      color: #f7ddcd;
+      background: rgba(36, 14, 9, .75);
       font-size: 18px;
     }
 
     .stage-heading p {
-      margin: 4px 0;
-      color: #f3dccc;
-      font-size: clamp(17px, 2vw, 23px);
+      margin: 2px 0;
+      color: #f3d9c8;
+      font-size: clamp(15px, 1.6vw, 21px);
       font-style: italic;
-      line-height: 1.5;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      line-height: 1.35;
+      text-shadow: 0 2px 10px rgba(0,0,0,.8);
     }
 
     /* =====================================================
-       KNIHA
+       OTEVŘENÁ KNIHA
     ===================================================== */
 
     .reader-layout {
       position: relative;
-      width: min(1500px, 100%);
+      width: min(1510px, 100%);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 105px minmax(0, 1fr) 105px;
+      grid-template-columns: 92px minmax(0, 1fr) 92px;
       align-items: center;
-      gap: 20px;
+      gap: 14px;
     }
 
     .book-shell {
       position: relative;
-      padding: 16px 17px 22px;
-      border-radius: 28px 28px 19px 19px;
+      padding: 12px 14px 20px;
+      border-radius: 28px 28px 17px 17px;
       background:
-        linear-gradient(90deg, #35180f, #6b3822 8%, #2d140e 50%, #6b3822 92%, #35180f);
+        linear-gradient(90deg, #2d120d, #7a4329 7%, #3a1810 49%, #7b442a 93%, #2a110c);
+      border: 1px solid rgba(255, 219, 173, .18);
       box-shadow:
-        0 26px 55px rgba(0, 0, 0, 0.64),
-        inset 0 2px 3px rgba(255, 255, 255, 0.16),
-        inset 0 -4px 8px rgba(0, 0, 0, 0.42);
+        0 28px 58px rgba(0,0,0,.68),
+        inset 0 2px 4px rgba(255,255,255,.14),
+        inset 0 -5px 10px rgba(0,0,0,.55);
     }
 
     .book-shell::before {
       content: "";
       position: absolute;
-      left: 4%;
-      right: 4%;
-      bottom: 4px;
-      height: 20px;
+      left: 5%;
+      right: 5%;
+      bottom: -7px;
+      height: 24px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.45);
-      filter: blur(10px);
+      background: rgba(0,0,0,.52);
+      filter: blur(12px);
       z-index: -1;
+    }
+
+    .page-stack {
+      position: absolute;
+      top: 8px;
+      bottom: 14px;
+      width: 24px;
+      z-index: 3;
+      background:
+        repeating-linear-gradient(180deg, #dfbd8d 0 2px, #f1d6ac 3px 5px);
+      opacity: .92;
+    }
+
+    .page-stack.left-stack {
+      left: 7px;
+      border-radius: 12px 0 0 10px;
+      transform: skewY(-1deg);
+    }
+
+    .page-stack.right-stack {
+      right: 7px;
+      border-radius: 0 12px 10px 0;
+      transform: skewY(1deg);
     }
 
     .open-book {
       position: relative;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      aspect-ratio: 1.72 / 1;
+      aspect-ratio: 2 / 1.02;
       overflow: hidden;
-      border-radius: 18px 18px 12px 12px;
+      border-radius: 18px 18px 11px 11px;
       background: var(--paper);
       box-shadow:
-        inset 0 0 35px rgba(84, 43, 21, 0.28),
-        0 3px 6px rgba(0, 0, 0, 0.35);
+        inset 0 0 33px rgba(84,43,21,.24),
+        0 4px 9px rgba(0,0,0,.38);
+      perspective: 1800px;
     }
 
     .open-book::before {
@@ -294,16 +440,16 @@
       top: 0;
       bottom: 0;
       left: 50%;
-      z-index: 15;
-      width: 54px;
+      z-index: 20;
+      width: 60px;
       transform: translateX(-50%);
       pointer-events: none;
       background: linear-gradient(
         90deg,
         transparent,
-        rgba(80, 37, 18, 0.12) 22%,
-        rgba(33, 13, 7, 0.29) 50%,
-        rgba(80, 37, 18, 0.12) 78%,
+        rgba(105,61,31,.12) 25%,
+        rgba(31,12,7,.34) 50%,
+        rgba(105,61,31,.12) 75%,
         transparent
       );
       filter: blur(2px);
@@ -313,245 +459,119 @@
       content: "";
       position: absolute;
       left: 50%;
-      bottom: -2px;
-      z-index: 16;
-      width: 110px;
-      height: 18px;
+      bottom: -3px;
+      z-index: 21;
+      width: 130px;
+      height: 22px;
       transform: translateX(-50%);
       border-radius: 50%;
-      background: rgba(35, 13, 7, 0.32);
-      filter: blur(5px);
+      background: rgba(34,12,7,.38);
+      filter: blur(6px);
     }
 
     .book-page {
       position: relative;
       min-width: 0;
       overflow: hidden;
-      color: var(--text);
-      background:
-        radial-gradient(circle at center, rgba(255, 248, 225, 0.94), transparent 68%),
-        linear-gradient(135deg, #efd8ad, #f8e8c8 52%, #dfbe8b);
-      box-shadow: inset 0 0 28px rgba(91, 51, 28, 0.2);
+      background: #ead0a4;
+      backface-visibility: hidden;
     }
 
     .book-page.left {
-      border-radius: 16px 0 0 10px;
+      border-radius: 17px 0 0 9px;
+      box-shadow: inset -10px 0 18px rgba(81,43,23,.08);
     }
 
     .book-page.right {
-      border-radius: 0 16px 10px 0;
-    }
-
-    .book-page.left::after,
-    .book-page.right::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        repeating-linear-gradient(
-          0deg,
-          transparent 0,
-          transparent 35px,
-          rgba(121, 75, 48, 0.035) 36px
-        );
-      mix-blend-mode: multiply;
+      border-radius: 0 17px 9px 0;
+      box-shadow: inset 10px 0 18px rgba(81,43,23,.08);
     }
 
     .page-image {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center;
-      background: #e9cfa4;
-      transition: opacity 0.2s ease, transform 0.35s ease;
+      background: #ead0a4;
+      transition: opacity .18s ease;
     }
 
     .page-image.loading {
-      opacity: 0;
-      transform: scale(0.99);
+      opacity: .15;
     }
 
-    /* =====================================================
-       ÚVODNÍ LEVÁ STRÁNKA
-    ===================================================== */
-
-    .intro-page {
-      width: 100%;
-      height: 100%;
-      padding: clamp(24px, 3vw, 58px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: center;
-      background:
-        radial-gradient(circle at 50% 40%, rgba(255, 249, 228, 0.9), transparent 66%),
-        linear-gradient(135deg, #e8cda2, #f7e5c3);
-    }
-
-    .intro-page[hidden] {
+    .page-error {
+      position: absolute;
+      inset: 0;
       display: none;
+      place-items: center;
+      padding: 28px;
+      color: #5b3529;
+      background: #ead0a4;
+      text-align: center;
+      font-size: 18px;
     }
 
-    .intro-kicker {
-      margin: 0;
-      font-size: clamp(15px, 1.4vw, 23px);
-      letter-spacing: 0.21em;
+    .book-page.has-error .page-error {
+      display: grid;
     }
 
-    .intro-paw {
-      margin: 9px 0;
-      font-size: clamp(20px, 2vw, 30px);
+    .book-page.has-error .page-image {
+      visibility: hidden;
     }
 
-    .intro-title {
-      margin: 8px auto 12px;
-      max-width: 680px;
-      font-size: clamp(30px, 3.6vw, 59px);
-      font-weight: 400;
-      line-height: 1.08;
+    /* Opravdovější otočení listu */
+
+    .turning-forward .right {
+      animation: turnForward .62s cubic-bezier(.42,0,.2,1);
+      transform-origin: left center;
+      z-index: 12;
     }
 
-    .intro-heart-line {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 13px;
-      color: #a22e49;
+    .turning-backward .left {
+      animation: turnBackward .62s cubic-bezier(.42,0,.2,1);
+      transform-origin: right center;
+      z-index: 12;
     }
 
-    .intro-heart-line::before,
-    .intro-heart-line::after {
-      content: "";
-      width: min(160px, 25%);
-      height: 1px;
-      background: rgba(110, 45, 41, 0.5);
+    @keyframes turnForward {
+      0% {
+        transform: rotateY(0deg);
+        filter: brightness(1);
+      }
+      48% {
+        transform: rotateY(-72deg);
+        filter: brightness(.68);
+        box-shadow: -24px 8px 25px rgba(0,0,0,.28);
+      }
+      52% {
+        transform: rotateY(-86deg);
+        filter: brightness(.58);
+      }
+      100% {
+        transform: rotateY(0deg);
+        filter: brightness(1);
+      }
     }
 
-    .intro-text {
-      width: min(530px, 92%);
-      margin: 14px auto 0;
-      font-size: clamp(16px, 1.65vw, 26px);
-      font-style: italic;
-      line-height: 1.55;
-    }
-
-    .intro-illustration {
-      position: relative;
-      min-height: 42%;
-      margin-top: 8px;
-    }
-
-    .intro-window {
-      position: absolute;
-      top: 5%;
-      right: 7%;
-      width: 34%;
-      height: 56%;
-      border: 3px solid rgba(102, 62, 38, 0.42);
-      background:
-        linear-gradient(rgba(244, 182, 128, 0.22), rgba(255, 245, 220, 0.1)),
-        radial-gradient(circle at 75% 30%, #ffcb8d, #d68458 48%, #71412e 100%);
-      box-shadow: inset 0 0 15px rgba(74, 40, 23, 0.26);
-    }
-
-    .intro-woman {
-      position: absolute;
-      right: 19%;
-      bottom: 12%;
-      width: 19%;
-      height: 46%;
-      border-radius: 46% 46% 28% 30%;
-      background:
-        linear-gradient(150deg, #e2a2a9, #bd6d79 57%, #7d4e50);
-      filter: sepia(0.3);
-      opacity: 0.82;
-    }
-
-    .intro-woman::before {
-      content: "";
-      position: absolute;
-      left: 28%;
-      top: -20%;
-      width: 48%;
-      aspect-ratio: 1;
-      border-radius: 48% 48% 45% 45%;
-      background:
-        linear-gradient(145deg, #edc98c, #d0a568 58%, #94683c);
-      box-shadow:
-        -8px 4px 0 #d4a86e,
-        8px 7px 0 rgba(188, 138, 78, 0.75);
-    }
-
-    .intro-woman::after {
-      content: "";
-      position: absolute;
-      top: -17%;
-      left: 16%;
-      width: 66%;
-      height: 38%;
-      border-radius: 48% 50% 45% 40%;
-      background:
-        linear-gradient(145deg, #f2d79f, #d7b36e);
-      clip-path: polygon(0 0, 100% 0, 93% 56%, 73% 88%, 52% 69%, 30% 91%, 8% 58%);
-    }
-
-    .dog-bed {
-      position: absolute;
-      left: 4%;
-      bottom: 3%;
-      width: 38%;
-      height: 27%;
-      border-radius: 50%;
-      border: clamp(8px, 1.2vw, 17px) solid #4e7585;
-      background: radial-gradient(ellipse, #7899a3, #527786 66%, #315764);
-      box-shadow:
-        inset 0 7px 15px rgba(255, 255, 255, 0.2),
-        0 8px 10px rgba(69, 42, 27, 0.22);
-    }
-
-    .collar {
-      position: absolute;
-      left: 47%;
-      bottom: 20%;
-      width: 19%;
-      height: 11%;
-      border: 8px solid #426e84;
-      border-radius: 50%;
-      transform: rotate(-7deg);
-    }
-
-    .collar::after {
-      content: "";
-      position: absolute;
-      right: -7px;
-      top: 38%;
-      width: 15px;
-      height: 10px;
-      border: 3px solid #7c5733;
-      background: #c9a56b;
-    }
-
-    .leash {
-      position: absolute;
-      left: 36%;
-      bottom: 4%;
-      width: 36%;
-      height: 8px;
-      border-radius: 999px;
-      background: #426e84;
-      transform: rotate(-12deg);
-      box-shadow: 0 3px 4px rgba(45, 25, 17, 0.22);
-    }
-
-    .paw-trail {
-      position: absolute;
-      right: 3%;
-      bottom: 1%;
-      color: #5c361f;
-      font-size: clamp(17px, 2vw, 30px);
-      letter-spacing: 11px;
-      transform: rotate(-20deg);
+    @keyframes turnBackward {
+      0% {
+        transform: rotateY(0deg);
+        filter: brightness(1);
+      }
+      48% {
+        transform: rotateY(72deg);
+        filter: brightness(.68);
+        box-shadow: 24px 8px 25px rgba(0,0,0,.28);
+      }
+      52% {
+        transform: rotateY(86deg);
+        filter: brightness(.58);
+      }
+      100% {
+        transform: rotateY(0deg);
+        filter: brightness(1);
+      }
     }
 
     /* =====================================================
@@ -562,205 +582,138 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 9px;
-      color: white;
+      gap: 7px;
+      color: #fff5ee;
       background: none;
-      border: 0;
-      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.75);
+      text-shadow: 0 3px 11px rgba(0,0,0,.8);
     }
 
     .nav-control:disabled {
-      opacity: 0.35;
+      opacity: .28;
       cursor: not-allowed;
     }
 
     .nav-circle {
-      width: 62px;
-      height: 62px;
+      width: 59px;
+      height: 59px;
       display: grid;
       place-items: center;
       border-radius: 50%;
       color: var(--pink-dark);
-      background: rgba(255, 248, 245, 0.96);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+      background: rgba(255,249,246,.96);
+      box-shadow: 0 10px 25px rgba(0,0,0,.36);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 42px;
+      font-size: 40px;
       line-height: 1;
-      transition: transform 0.2s ease, background 0.2s ease;
+      transition: transform .2s ease, background .2s ease;
     }
 
     .nav-control:not(:disabled):hover .nav-circle {
       transform: scale(1.08);
-      background: white;
+      background: #fff;
     }
 
     .nav-label {
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .book-status {
-      width: min(900px, calc(100% - 80px));
-      margin: 13px auto 0;
+      width: min(950px, calc(100% - 80px));
+      margin: 7px auto 0;
       text-align: center;
     }
 
     .page-count {
-      margin-bottom: 7px;
+      margin-bottom: 5px;
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
     }
 
     .progress-dots {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 9px;
+      flex-wrap: wrap;
     }
 
     .progress-dot {
-      width: 11px;
-      height: 11px;
+      width: 10px;
+      height: 10px;
       padding: 0;
-      border: 0;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.42);
-      transition: transform 0.2s ease, background 0.2s ease;
+      background: rgba(255,255,255,.42);
+      transition: transform .2s ease, background .2s ease;
     }
 
     .progress-dot:hover {
-      transform: scale(1.25);
+      transform: scale(1.3);
     }
 
     .progress-dot.active {
       background: var(--pink);
-      box-shadow: 0 0 12px rgba(255, 92, 163, 0.75);
+      box-shadow: 0 0 12px rgba(255,92,163,.8);
     }
 
     .truth-quote {
-      width: min(930px, calc(100% - 80px));
-      margin: 18px auto 0;
-      padding: 16px 28px;
+      width: min(970px, calc(100% - 80px));
+      margin: 10px auto 0;
+      padding: 13px 24px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 16px;
-      color: #704652;
-      border-radius: 13px;
-      background: rgba(255, 246, 243, 0.94);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-      font-size: clamp(15px, 1.6vw, 21px);
+      gap: 15px;
+      color: #774655;
+      background: rgba(255,246,243,.95);
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.28);
+      font-size: clamp(14px, 1.45vw, 19px);
       font-style: italic;
       text-align: center;
     }
 
     .truth-quote .heart {
       color: var(--pink);
-      font-size: 25px;
+      font-size: 24px;
     }
 
     .truth-quote .paw {
-      color: #583a3f;
-      font-size: 26px;
-    }
-
-    .mobile-menu-button {
-      display: none;
-      border: 0;
-      color: var(--pink-dark);
-      background: transparent;
-      font-size: 28px;
-    }
-
-    /* Animace při přechodu */
-
-    .turning-forward .book-page.right {
-      animation: pageForward 0.38s ease;
-      transform-origin: left center;
-    }
-
-    .turning-backward .book-page.left {
-      animation: pageBackward 0.38s ease;
-      transform-origin: right center;
-    }
-
-    @keyframes pageForward {
-      0% {
-        transform: perspective(1200px) rotateY(0deg);
-        filter: brightness(1);
-      }
-
-      50% {
-        transform: perspective(1200px) rotateY(-9deg);
-        filter: brightness(0.75);
-      }
-
-      100% {
-        transform: perspective(1200px) rotateY(0deg);
-        filter: brightness(1);
-      }
-    }
-
-    @keyframes pageBackward {
-      0% {
-        transform: perspective(1200px) rotateY(0deg);
-        filter: brightness(1);
-      }
-
-      50% {
-        transform: perspective(1200px) rotateY(9deg);
-        filter: brightness(0.75);
-      }
-
-      100% {
-        transform: perspective(1200px) rotateY(0deg);
-        filter: brightness(1);
-      }
+      color: #56383e;
+      font-size: 25px;
     }
 
     /* =====================================================
        MOBIL
     ===================================================== */
 
-    @media (max-width: 980px) {
+    @media (max-width: 900px) {
       .header-inner {
         grid-template-columns: 1fr auto;
       }
 
       .main-nav {
-        position: absolute;
-        top: 82px;
-        left: 0;
-        right: 0;
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        padding: 12px 20px 22px;
-        background: rgba(255, 250, 248, 0.99);
-        box-shadow: 0 15px 25px rgba(42, 18, 13, 0.15);
-      }
-
-      .main-nav.open {
-        display: flex;
-      }
-
-      .main-nav a {
-        width: 100%;
-        padding: 14px;
-        text-align: center;
+        justify-content: flex-end;
+        gap: 22px;
       }
 
       .like-wrap {
-        display: none;
+        grid-column: 1 / -1;
+        justify-content: center;
+        padding-bottom: 10px;
       }
 
-      .mobile-menu-button {
-        display: block;
+      .site-header,
+      .header-inner {
+        min-height: auto;
+      }
+
+      .header-inner {
+        padding: 10px 0;
       }
 
       .reader-layout {
-        grid-template-columns: 65px minmax(0, 1fr) 65px;
-        gap: 8px;
+        grid-template-columns: 58px minmax(0,1fr) 58px;
+        gap: 5px;
       }
 
       .nav-label {
@@ -768,19 +721,41 @@
       }
 
       .nav-circle {
-        width: 50px;
-        height: 50px;
-        font-size: 34px;
+        width: 46px;
+        height: 46px;
+        font-size: 32px;
+      }
+
+      .decor {
+        opacity: .55;
       }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 680px) {
+      .header-inner {
+        width: calc(100% - 24px);
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .brand {
+        justify-self: center;
+      }
+
+      .main-nav {
+        justify-content: center;
+      }
+
       .chapters-stage {
-        padding: 22px 8px 28px;
+        padding: 18px 7px 25px;
       }
 
       .stage-heading h1 {
-        letter-spacing: 0.13em;
+        letter-spacing: .14em;
+      }
+
+      .stage-heading p {
+        font-size: 15px;
       }
 
       .reader-layout {
@@ -788,17 +763,18 @@
       }
 
       .book-shell {
-        padding: 10px 10px 15px;
+        padding: 9px 9px 14px;
         border-radius: 18px;
       }
 
       .open-book {
         display: block;
-        aspect-ratio: 0.72 / 1;
+        aspect-ratio: 3 / 4;
       }
 
       .open-book::before,
-      .open-book::after {
+      .open-book::after,
+      .page-stack {
         display: none;
       }
 
@@ -812,6 +788,10 @@
         display: none;
       }
 
+      .page-image {
+        object-fit: contain;
+      }
+
       .nav-control {
         position: absolute;
         top: 50%;
@@ -820,34 +800,28 @@
       }
 
       .nav-control.previous {
-        left: 7px;
+        left: 8px;
       }
 
       .nav-control.next {
-        right: 7px;
-      }
-
-      .nav-circle {
-        width: 44px;
-        height: 44px;
-        background: rgba(255, 248, 245, 0.88);
+        right: 8px;
       }
 
       .book-status,
       .truth-quote {
-        width: calc(100% - 24px);
+        width: calc(100% - 20px);
       }
 
       .truth-quote {
-        padding: 13px 16px;
+        padding: 12px 14px;
       }
 
       .truth-quote .paw {
         display: none;
       }
 
-      .intro-page {
-        padding: 24px 20px;
+      .decor {
+        display: none;
       }
     }
 
@@ -855,20 +829,15 @@
       *,
       *::before,
       *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
+        animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- ===================================================
-       HLAVIČKA
-  ==================================================== -->
 
   <header class="site-header">
     <div class="header-inner">
@@ -879,53 +848,43 @@
         <span class="brand-heart">♡</span>
       </a>
 
-      <nav class="main-nav" id="mainNav" aria-label="Hlavní navigace">
+      <nav class="main-nav" aria-label="Hlavní navigace">
         <a href="index.html">Domů</a>
-        <a href="index.html#svet-pribehu">Svět příběhů</a>
-        <a href="mia.html#prolog">Prolog</a>
-        <a class="active" href="kapitoly.html" aria-current="page">Kapitoly</a>
+        <a href="svet.html">Svět příběhů</a>
       </nav>
 
       <div class="like-wrap">
-        <button class="like-button" id="likeButton" type="button">
-          ♡ Líbí se mi <span id="likeCount">3</span>
+        <button
+          class="like-button"
+          id="likeButton"
+          type="button"
+          aria-label="Dát stránce Kapitoly MIA srdce"
+          disabled
+        >
+          ♡ Líbí se mi…
         </button>
       </div>
-
-      <button
-        class="mobile-menu-button"
-        id="mobileMenuButton"
-        type="button"
-        aria-label="Otevřít menu"
-        aria-expanded="false"
-      >
-        ☰
-      </button>
 
     </div>
   </header>
 
-  <!-- ===================================================
-       KAPITOLY – OTEVŘENÁ KNIHA
-  ==================================================== -->
-
   <main class="chapters-stage">
+
+    <div class="decor candle" aria-hidden="true"></div>
+    <div class="decor books" aria-hidden="true"></div>
+    <div class="decor plant" aria-hidden="true"></div>
+    <div class="decor fabric" aria-hidden="true"></div>
 
     <section class="stage-heading">
       <h1>KAPITOLY</h1>
-
       <div class="heading-divider">
         <span class="heading-paw">🐾</span>
       </div>
-
       <p>Přečtěte si skutečný příběh, který se stal.</p>
       <p>Listujte stránku po stránce a prožijte každou chvíli s námi.</p>
     </section>
 
-    <section
-      class="reader-layout"
-      aria-label="Interaktivní kniha MIA"
-    >
+    <section class="reader-layout" aria-label="Interaktivní kniha MIA">
 
       <button
         class="nav-control previous"
@@ -938,65 +897,23 @@
       </button>
 
       <div class="book-shell">
+        <div class="page-stack left-stack" aria-hidden="true"></div>
+        <div class="page-stack right-stack" aria-hidden="true"></div>
 
         <div class="open-book" id="openBook">
 
-          <!-- Levá stránka -->
           <article class="book-page left" id="leftPage">
-
-            <!-- Úvodní strana kapitoly -->
-            <div class="intro-page" id="introPage">
-
-              <div>
-                <p class="intro-kicker">KAPITOLA 1</p>
-                <div class="intro-paw">🐾</div>
-
-                <h2 class="intro-title">
-                  ZAČÁTEK<br>
-                  NOVÉHO PŘÍBĚHU
-                </h2>
-
-                <div class="intro-heart-line">♥</div>
-
-                <p class="intro-text">
-                  Příběh začíná ve chvíli,<br>
-                  kdy se po těžkém období<br>
-                  objeví malá naděje.<br>
-                  Ještě nikdo netuší,<br>
-                  že jedno malé štěňátko<br>
-                  změní dva životy.
-                </p>
-              </div>
-
-              <div class="intro-illustration" aria-hidden="true">
-                <div class="intro-window"></div>
-                <div class="intro-woman"></div>
-                <div class="dog-bed"></div>
-                <div class="collar"></div>
-                <div class="leash"></div>
-                <div class="paw-trail">🐾 🐾 🐾</div>
-              </div>
-
+            <img class="page-image" id="leftImage" src="" alt="">
+            <div class="page-error" id="leftError">
+              Obrázek levé stránky se nepodařilo načíst.
             </div>
-
-            <img
-              class="page-image"
-              id="leftImage"
-              src=""
-              alt=""
-              hidden
-            >
-
           </article>
 
-          <!-- Pravá stránka -->
           <article class="book-page right" id="rightPage">
-            <img
-              class="page-image"
-              id="rightImage"
-              src=""
-              alt=""
-            >
+            <img class="page-image" id="rightImage" src="" alt="">
+            <div class="page-error" id="rightError">
+              Obrázek pravé stránky se nepodařilo načíst.
+            </div>
           </article>
 
         </div>
@@ -1034,210 +951,145 @@
     "use strict";
 
     /* =====================================================
-       NASTAVENÍ OBRÁZKŮ
-
-       DŮLEŽITÉ:
-       Pokud máš obrázky v jiné složce, změň IMAGE_FOLDER.
-
-       Příklad:
-       const IMAGE_FOLDER = "images/mia/kapitola-01/";
+       OBRÁZKY JSOU VE STEJNÉ SLOŽCE JAKO kapitoly.html
     ===================================================== */
 
-    const IMAGE_FOLDER = "images/mia/kapitola-01/";
-
-    /*
-      Zkontroluj přesné názvy souborů na GitHubu.
-      GitHub rozlišuje malá a velká písmena.
-    */
-
-    const chapterPages = [
+    const pages = [
       {
-        number: 1,
+        file: "kapitola-01-uvodni-stranka-hero.png",
+        alt: "Úvodní stránka první kapitoly – Začátek nového příběhu"
+      },
+      {
         file: "kapitola-01-zacatek-noveho-pribehu-hero.png",
         alt: "Kapitola 1, strana 1 – Začátek nového příběhu"
       },
       {
-        number: 2,
         file: "kapitola-01-stranka-02-psycholozka-hero.png",
-        alt: "Kapitola 1, strana 2 – Rozhovor s psycholožkou"
+        alt: "Kapitola 1, strana 2 – Psycholožka"
       },
       {
-        number: 3,
         file: "kapitola-01-stranka-03-zprava-o-narozeni-stenatek-hero.png",
         alt: "Kapitola 1, strana 3 – Zpráva o narození štěňátek"
       },
       {
-        number: 4,
         file: "kapitola-01-stranka-04-prvni-fotografie-stenatek-hero.png",
         alt: "Kapitola 1, strana 4 – První fotografie štěňátek"
       },
       {
-        number: 5,
         file: "kapitola-01-stranka-05-vybrala-jsem-si-tebe-a-dala-ti-jmeno-neo-hero.png",
         alt: "Kapitola 1, strana 5 – Vybrala jsem si tebe"
       },
       {
-        number: 6,
         file: "kapitola-01-stranka-06-tohle-je-moje-jmenuju-ho-neo-hero.png",
         alt: "Kapitola 1, strana 6 – Proč právě Neo"
       },
       {
-        number: 7,
         file: "kapitola-01-stranka-07-vedela-jsem-ze-si-pro-nej-prijedu-hero.png",
         alt: "Kapitola 1, strana 7 – Psala jsem první slova"
       },
       {
-        number: 8,
         file: "kapitola-01-stranka-08-pes-si-vybral-me-hero.png",
         alt: "Kapitola 1, strana 8"
       },
       {
-        number: 9,
         file: "kapitola-01-stranka-09-beru-si-te-domu-hero.png",
         alt: "Kapitola 1, strana 9 – Jedu si pro tebe"
       },
       {
-        number: 10,
         file: "kapitola-01-stranka-10-konec-prvni-kapitoly-hero.png",
         alt: "Kapitola 1, strana 10 – První setkání"
       },
       {
-        number: 11,
         file: "kapitola-01-stranka-11-ten-pohled-hero.png",
         alt: "Kapitola 1, strana 11 – Ten pohled"
       }
     ];
 
-    /* =====================================================
-       PROMĚNNÉ
-    ===================================================== */
-
-    const openBook = document.getElementById("openBook");
-
-    const leftPage = document.getElementById("leftPage");
-    const rightPage = document.getElementById("rightPage");
-
-    const introPage = document.getElementById("introPage");
-
-    const leftImage = document.getElementById("leftImage");
-    const rightImage = document.getElementById("rightImage");
-
-    const previousButton = document.getElementById("previousButton");
-    const nextButton = document.getElementById("nextButton");
-
-    const pageCount = document.getElementById("pageCount");
-    const progressDots = document.getElementById("progressDots");
-
     /*
-      Spread 0:
-      vlevo úvod kapitoly, vpravo strana 1
-
-      Spread 1:
-      vlevo strana 2, vpravo strana 3
-
-      Spread 2:
-      vlevo strana 4, vpravo strana 5
-      atd.
+      Dvoustrany:
+      0–1 = úvod + strana 1
+      2–3
+      4–5
+      6–7
+      8–9
+      10–11
     */
 
     const spreads = [
-      { left: "intro", right: 1 },
-      { left: 2, right: 3 },
-      { left: 4, right: 5 },
-      { left: 6, right: 7 },
-      { left: 8, right: 9 },
-      { left: 10, right: 11 }
+      [0, 1],
+      [2, 3],
+      [4, 5],
+      [6, 7],
+      [8, 9],
+      [10, 11]
     ];
 
+    const openBook = document.getElementById("openBook");
+    const leftPage = document.getElementById("leftPage");
+    const rightPage = document.getElementById("rightPage");
+    const leftImage = document.getElementById("leftImage");
+    const rightImage = document.getElementById("rightImage");
+    const previousButton = document.getElementById("previousButton");
+    const nextButton = document.getElementById("nextButton");
+    const pageCount = document.getElementById("pageCount");
+    const progressDots = document.getElementById("progressDots");
+
     let currentSpread = 0;
-    let currentMobileSide = "right";
+    let currentMobileSide = "left";
     let animationLocked = false;
 
-    /* =====================================================
-       POMOCNÉ FUNKCE
-    ===================================================== */
-
-    function getPageByNumber(pageNumber) {
-      return chapterPages.find(page => page.number === pageNumber);
+    function isMobile() {
+      return window.matchMedia("(max-width: 680px)").matches;
     }
 
-    function getPageSource(pageNumber) {
-      const page = getPageByNumber(pageNumber);
+    function setPageImage(image, pageContainer, pageIndex) {
+      const page = pages[pageIndex];
 
-      if (!page) {
-        return "";
-      }
+      pageContainer.classList.remove("has-error");
+      image.classList.add("loading");
+      image.alt = page.alt;
+      image.src = page.file;
 
-      return IMAGE_FOLDER + page.file;
-    }
-
-    function setImage(imageElement, pageNumber) {
-      const page = getPageByNumber(pageNumber);
-
-      if (!page) {
-        imageElement.hidden = true;
-        imageElement.removeAttribute("src");
-        imageElement.alt = "";
-        return;
-      }
-
-      imageElement.classList.add("loading");
-      imageElement.hidden = false;
-      imageElement.alt = page.alt;
-      imageElement.src = getPageSource(pageNumber);
-
-      imageElement.onload = () => {
-        imageElement.classList.remove("loading");
+      image.onload = function () {
+        image.classList.remove("loading");
+        pageContainer.classList.remove("has-error");
       };
 
-      imageElement.onerror = () => {
-        imageElement.classList.remove("loading");
-
-        console.error(
-          "Obrázek se nepodařilo načíst:",
-          imageElement.src
-        );
+      image.onerror = function () {
+        image.classList.remove("loading");
+        pageContainer.classList.add("has-error");
+        console.error("Nepodařilo se načíst:", page.file);
       };
     }
-
-    function isMobileView() {
-      return window.matchMedia("(max-width: 720px)").matches;
-    }
-
-    /* =====================================================
-       TEČKY PRŮBĚHU
-    ===================================================== */
 
     function createProgressDots() {
       progressDots.innerHTML = "";
 
-      spreads.forEach((spread, index) => {
+      spreads.forEach(function (_, index) {
         const dot = document.createElement("button");
-
         dot.type = "button";
         dot.className = "progress-dot";
-        dot.setAttribute(
-          "aria-label",
-          `Přejít na dvoustranu ${index + 1}`
-        );
+        dot.setAttribute("aria-label", "Přejít na dvoustranu " + (index + 1));
 
-        dot.addEventListener("click", () => {
+        dot.addEventListener("click", function () {
           if (index === currentSpread || animationLocked) {
             return;
           }
 
-          const direction = index > currentSpread ? "forward" : "backward";
-          turnToSpread(index, direction);
+          turnToSpread(
+            index,
+            index > currentSpread ? "forward" : "backward"
+          );
         });
 
         progressDots.appendChild(dot);
       });
     }
 
-    function updateProgressDots() {
+    function updateDots() {
       const dots = progressDots.querySelectorAll(".progress-dot");
 
-      dots.forEach((dot, index) => {
+      dots.forEach(function (dot, index) {
         dot.classList.toggle("active", index === currentSpread);
 
         if (index === currentSpread) {
@@ -1248,45 +1100,50 @@
       });
     }
 
-    /* =====================================================
-       VYKRESLENÍ KNIHY
-    ===================================================== */
+    function updateMobileView() {
+      if (!isMobile()) {
+        leftPage.classList.remove("mobile-hidden");
+        rightPage.classList.remove("mobile-hidden");
+        return;
+      }
+
+      if (currentMobileSide === "left") {
+        leftPage.classList.remove("mobile-hidden");
+        rightPage.classList.add("mobile-hidden");
+      } else {
+        leftPage.classList.add("mobile-hidden");
+        rightPage.classList.remove("mobile-hidden");
+      }
+
+      const spread = spreads[currentSpread];
+      const shownIndex =
+        currentMobileSide === "left" ? spread[0] : spread[1];
+
+      pageCount.textContent =
+        shownIndex === 0
+          ? "Úvod / 11"
+          : shownIndex + " / 11";
+    }
 
     function renderSpread() {
       const spread = spreads[currentSpread];
 
-      if (!spread) {
-        return;
-      }
-
-      if (spread.left === "intro") {
-        introPage.hidden = false;
-
-        leftImage.hidden = true;
-        leftImage.removeAttribute("src");
-        leftImage.alt = "";
-      } else {
-        introPage.hidden = true;
-        setImage(leftImage, spread.left);
-      }
-
-      setImage(rightImage, spread.right);
+      setPageImage(leftImage, leftPage, spread[0]);
+      setPageImage(rightImage, rightPage, spread[1]);
 
       previousButton.disabled = currentSpread === 0;
       nextButton.disabled = currentSpread === spreads.length - 1;
 
-      if (spread.left === "intro") {
-        pageCount.textContent = `Úvod–${spread.right} / ${chapterPages.length}`;
-      } else {
-        pageCount.textContent =
-          `${spread.left}–${spread.right} / ${chapterPages.length}`;
-      }
+      pageCount.textContent =
+        currentSpread === 0
+          ? "Úvod–1 / 11"
+          : spread[0] + "–" + spread[1] + " / 11";
 
-      updateProgressDots();
-      updateMobilePage();
+      updateDots();
+      updateMobileView();
     }
 
-    function turnToSpread(targetIndex, direction = "forward") {
+    function turnToSpread(targetIndex, direction) {
       if (
         animationLocked ||
         targetIndex < 0 ||
@@ -1298,11 +1155,7 @@
 
       animationLocked = true;
 
-      openBook.classList.remove(
-        "turning-forward",
-        "turning-backward"
-      );
-
+      openBook.classList.remove("turning-forward", "turning-backward");
       void openBook.offsetWidth;
 
       openBook.classList.add(
@@ -1311,63 +1164,16 @@
           : "turning-backward"
       );
 
-      window.setTimeout(() => {
+      window.setTimeout(function () {
         currentSpread = targetIndex;
-
-        /*
-          Na mobilu po přechodu:
-          - při cestě vpřed zobrazíme levou stranu,
-          - u úvodu raději pravou stranu 1.
-        */
-
-        if (isMobileView()) {
-          currentMobileSide =
-            spreads[currentSpread].left === "intro"
-              ? "right"
-              : "left";
-        }
-
+        currentMobileSide = "left";
         renderSpread();
-      }, 180);
+      }, 310);
 
-      window.setTimeout(() => {
-        openBook.classList.remove(
-          "turning-forward",
-          "turning-backward"
-        );
-
+      window.setTimeout(function () {
+        openBook.classList.remove("turning-forward", "turning-backward");
         animationLocked = false;
-      }, 430);
-    }
-
-    /* =====================================================
-       MOBILNÍ LISTOVÁNÍ PO JEDNÉ STRÁNCE
-    ===================================================== */
-
-    function updateMobilePage() {
-      if (!isMobileView()) {
-        leftPage.classList.remove("mobile-hidden");
-        rightPage.classList.remove("mobile-hidden");
-        return;
-      }
-
-      const spread = spreads[currentSpread];
-
-      if (currentMobileSide === "left") {
-        leftPage.classList.remove("mobile-hidden");
-        rightPage.classList.add("mobile-hidden");
-      } else {
-        leftPage.classList.add("mobile-hidden");
-        rightPage.classList.remove("mobile-hidden");
-      }
-
-      if (spread.left === "intro" && currentMobileSide === "left") {
-        pageCount.textContent = `Úvod / ${chapterPages.length}`;
-      } else if (currentMobileSide === "right") {
-        pageCount.textContent = `${spread.right} / ${chapterPages.length}`;
-      } else {
-        pageCount.textContent = `${spread.left} / ${chapterPages.length}`;
-      }
+      }, 660);
     }
 
     function goNext() {
@@ -1375,17 +1181,10 @@
         return;
       }
 
-      if (isMobileView()) {
-        const spread = spreads[currentSpread];
-
-        if (
-          currentMobileSide === "left" &&
-          spread.right !== undefined
-        ) {
-          currentMobileSide = "right";
-          updateMobilePage();
-          return;
-        }
+      if (isMobile() && currentMobileSide === "left") {
+        currentMobileSide = "right";
+        updateMobileView();
+        return;
       }
 
       if (currentSpread < spreads.length - 1) {
@@ -1398,32 +1197,28 @@
         return;
       }
 
-      if (isMobileView()) {
-        const spread = spreads[currentSpread];
-
-        if (
-          currentMobileSide === "right" &&
-          spread.left !== "intro"
-        ) {
-          currentMobileSide = "left";
-          updateMobilePage();
-          return;
-        }
+      if (isMobile() && currentMobileSide === "right") {
+        currentMobileSide = "left";
+        updateMobileView();
+        return;
       }
 
       if (currentSpread > 0) {
         turnToSpread(currentSpread - 1, "backward");
 
-        if (isMobileView()) {
-          currentMobileSide = "right";
-        }
+        window.setTimeout(function () {
+          if (isMobile()) {
+            currentMobileSide = "right";
+            updateMobileView();
+          }
+        }, 330);
       }
     }
 
     previousButton.addEventListener("click", goPrevious);
     nextButton.addEventListener("click", goNext);
 
-    document.addEventListener("keydown", event => {
+    document.addEventListener("keydown", function (event) {
       if (event.key === "ArrowRight") {
         goNext();
       }
@@ -1433,98 +1228,132 @@
       }
     });
 
-    window.addEventListener("resize", updateMobilePage);
+    window.addEventListener("resize", updateMobileView);
 
     /* =====================================================
-       LÍBÍ SE MI
-       Zatím se počet ukládá do daného prohlížeče.
+       LÍBÍ SE MI – STEJNÝ SUPABASE SYSTÉM JAKO NA MIA
     ===================================================== */
 
-    const likeButton = document.getElementById("likeButton");
-    const likeCount = document.getElementById("likeCount");
+    (function () {
+      const SUPABASE_URL =
+        "https://lggboavbzzvoomveewtl.supabase.co";
 
-    const LIKE_COUNT_KEY = "svetCarmenMiaChaptersLikeCount";
-    const LIKED_KEY = "svetCarmenMiaChaptersLiked";
+      const SUPABASE_KEY =
+        "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
 
-    let storedLikes = Number(
-      localStorage.getItem(LIKE_COUNT_KEY)
-    );
+      const PAGE_ID = "mia-kapitoly";
 
-    if (!Number.isFinite(storedLikes) || storedLikes < 0) {
-      storedLikes = 3;
-    }
+      const likeButton =
+        document.getElementById("likeButton");
 
-    let userLiked =
-      localStorage.getItem(LIKED_KEY) === "true";
+      const storageKey =
+        "svetCarmenLike_" + PAGE_ID;
 
-    function renderLikeButton() {
-      likeCount.textContent = String(storedLikes);
-      likeButton.classList.toggle("liked", userLiked);
+      function getToday() {
+        const now = new Date();
 
-      likeButton.firstChild.textContent =
-        userLiked ? "♥ Líbí se mi " : "♡ Líbí se mi ";
-    }
+        const year = now.getFullYear();
+        const month =
+          String(now.getMonth() + 1).padStart(2, "0");
+        const day =
+          String(now.getDate()).padStart(2, "0");
 
-    likeButton.addEventListener("click", () => {
-      if (userLiked) {
-        storedLikes = Math.max(0, storedLikes - 1);
-        userLiked = false;
-      } else {
-        storedLikes += 1;
-        userLiked = true;
+        return year + "-" + month + "-" + day;
       }
 
-      localStorage.setItem(
-        LIKE_COUNT_KEY,
-        String(storedLikes)
-      );
+      async function callSupabase(functionName) {
+        const response = await fetch(
+          SUPABASE_URL + "/rest/v1/rpc/" + functionName,
+          {
+            method: "POST",
+            headers: {
+              apikey: SUPABASE_KEY,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              requested_page_id: PAGE_ID
+            })
+          }
+        );
 
-      localStorage.setItem(
-        LIKED_KEY,
-        String(userLiked)
-      );
+        if (!response.ok) {
+          throw new Error(await response.text());
+        }
 
-      renderLikeButton();
-    });
-
-    /* =====================================================
-       MOBILNÍ MENU
-    ===================================================== */
-
-    const mobileMenuButton =
-      document.getElementById("mobileMenuButton");
-
-    const mainNav =
-      document.getElementById("mainNav");
-
-    mobileMenuButton.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("open");
-
-      mobileMenuButton.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-
-      mobileMenuButton.textContent = isOpen ? "✕" : "☰";
-    });
-
-    mainNav.addEventListener("click", event => {
-      if (
-        event.target instanceof HTMLAnchorElement &&
-        isMobileView()
-      ) {
-        mainNav.classList.remove("open");
-        mobileMenuButton.setAttribute("aria-expanded", "false");
-        mobileMenuButton.textContent = "☰";
+        return response.json();
       }
-    });
 
-    /* =====================================================
-       SPUŠTĚNÍ
-    ===================================================== */
+      function showReady(count) {
+        likeButton.textContent =
+          "♡ Líbí se mi " + (Number(count) || 0);
+
+        likeButton.disabled = false;
+        likeButton.classList.remove("is-liked");
+      }
+
+      function showThankYou(count) {
+        likeButton.textContent =
+          "♥ Děkujeme " + (Number(count) || 0);
+
+        likeButton.disabled = true;
+        likeButton.classList.add("is-liked");
+      }
+
+      async function loadLikes() {
+        try {
+          const count =
+            await callSupabase("get_page_likes");
+
+          if (
+            localStorage.getItem(storageKey) === getToday()
+          ) {
+            showThankYou(count);
+          } else {
+            showReady(count);
+          }
+        } catch (error) {
+          console.error(
+            "Počet srdcí se nepodařilo načíst:",
+            error
+          );
+
+          likeButton.textContent = "♡ Líbí se mi";
+          likeButton.disabled = false;
+        }
+      }
+
+      likeButton.addEventListener("click", async function () {
+        if (
+          likeButton.disabled ||
+          localStorage.getItem(storageKey) === getToday()
+        ) {
+          return;
+        }
+
+        likeButton.disabled = true;
+        likeButton.textContent = "♡ Odesílám…";
+
+        try {
+          const newCount =
+            await callSupabase("add_page_like");
+
+          localStorage.setItem(storageKey, getToday());
+          showThankYou(newCount);
+        } catch (error) {
+          console.error(
+            "Srdce se nepodařilo odeslat:",
+            error
+          );
+
+          likeButton.textContent = "♡ Zkusit znovu";
+          likeButton.disabled = false;
+        }
+      });
+
+      loadLikes();
+    })();
 
     createProgressDots();
-    renderLikeButton();
     renderSpread();
   </script>
 
