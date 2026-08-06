@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kapitoly MIA | Svět Carmen</title>
+
+  <meta
+    name="description"
+    content="Listujte skutečným příběhem Mii stránku po stránce."
+  >
+
+  <style>
+    :root {
+      --pink: #e74991;
+      --pink-dark: #b72b68;
+      --cream: #fff8f5;
+      --paper: #ead2aa;
+      --paper-light: #f6e4c5;
+      --brown: #2a120d;
+      --brown-dark: #120806;
+      --text: #331d18;
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.42);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--white);
+      background:
+        linear-gradient(rgba(18, 8, 6, 0.42), rgba(18, 8, 6, 0.7)),
+        radial-gradient(circle at 50% 20%, #6c3925 0%, #26130d 50%, #100705 100%);
+      font-family: Georgia, "Times New Roman", serif;
+      overflow-x: hidden;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* =====================================================
+       HLAVIČKA
+    ===================================================== */
+
+    .site-header {
+      position: relative;
+      z-index: 100;
+      width: 100%;
+      background: rgba(255, 250, 248, 0.98);
+      box-shadow: 0 8px 28px rgba(42, 18, 13, 0.16);
+    }
+
+    .header-inner {
+      width: min(1400px, calc(100% - 40px));
+      min-height: 82px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1fr 220px;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--text);
+      text-decoration: none;
+      line-height: 0.85;
+    }
+
+    .brand-small {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .brand-main {
+      display: inline-block;
+      color: var(--pink);
+      font-size: 39px;
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .brand-heart {
+      color: var(--pink);
+      font-size: 29px;
+    }
+
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(24px, 4vw, 62px);
+    }
+
+    .main-nav a {
+      color: #493535;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--pink);
+      transform: translateY(-1px);
+    }
+
+    .like-wrap {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .like-button {
+      min-width: 155px;
+      padding: 15px 23px;
+      border: 0;
+      border-radius: 999px;
+      color: white;
+      background: linear-gradient(135deg, var(--pink-dark), #ff68aa);
+      box-shadow: 0 10px 26px rgba(231, 73, 145, 0.28);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .like-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 13px 30px rgba(231, 73, 145, 0.4);
+    }
+
+    .like-button.liked {
+      background: linear-gradient(135deg, #9f245b, var(--pink));
+    }
+
+    /* =====================================================
+       HLAVNÍ FILMOVÁ PLOCHA
+    ===================================================== */
+
+    .chapters-stage {
+      position: relative;
+      min-height: calc(100vh - 82px);
+      padding: 26px 28px 38px;
+      isolation: isolate;
+    }
+
+    .chapters-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        radial-gradient(circle at 7% 23%, rgba(255, 172, 76, 0.26), transparent 25%),
+        radial-gradient(circle at 92% 22%, rgba(255, 202, 146, 0.12), transparent 22%),
+        linear-gradient(180deg, rgba(19, 8, 6, 0.2), rgba(8, 3, 2, 0.72));
+    }
+
+    .chapters-stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.012) 0,
+          rgba(255, 255, 255, 0.012) 1px,
+          transparent 1px,
+          transparent 7px
+        );
+      opacity: 0.55;
+    }
+
+    .stage-heading {
+      width: min(960px, 100%);
+      margin: 0 auto 18px;
+      text-align: center;
+    }
+
+    .stage-heading h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 66px);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.55);
+    }
+
+    .heading-divider {
+      width: min(520px, 72%);
+      height: 1px;
+      margin: 8px auto 8px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 238, 220, 0.72),
+        transparent
+      );
+    }
+
+    .heading-paw {
+      display: inline-block;
+      margin: 0 8px;
+      color: #f5d7c7;
+      font-size: 18px;
+    }
+
+    .stage-heading p {
+      margin: 4px 0;
+      color: #f3dccc;
+      font-size: clamp(17px, 2vw, 23px);
+      font-style: italic;
+      line-height: 1.5;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    /* =====================================================
+       KNIHA
+    ===================================================== */
+
+    .reader-layout {
+      position: relative;
+      width: min(1500px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 105px minmax(0, 1fr) 105px;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .book-shell {
+      position: relative;
+      padding: 16px 17px 22px;
+      border-radius: 28px 28px 19px 19px;
+      background:
+        linear-gradient(90deg, #35180f, #6b3822 8%, #2d140e 50%, #6b3822 92%, #35180f);
+      box-shadow:
+        0 26px 55px rgba(0, 0, 0, 0.64),
+        inset 0 2px 3px rgba(255, 255, 255, 0.16),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.42);
+    }
+
+    .book-shell::before {
+      content: "";
+      position: absolute;
+      left: 4%;
+      right: 4%;
+      bottom: 4px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.45);
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    .open-book {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      aspect-ratio: 1.72 / 1;
+      overflow: hidden;
+      border-radius: 18px 18px 12px 12px;
+      background: var(--paper);
+      box-shadow:
+        inset 0 0 35px rgba(84, 43, 21, 0.28),
+        0 3px 6px rgba(0, 0, 0, 0.35);
+    }
+
+    .open-book::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      z-index: 15;
+      width: 54px;
+      transform: translateX(-50%);
+      pointer-events: none;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(80, 37, 18, 0.12) 22%,
+        rgba(33, 13, 7, 0.29) 50%,
+        rgba(80, 37, 18, 0.12) 78%,
+        transparent
+      );
+      filter: blur(2px);
+    }
+
+    .open-book::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -2px;
+      z-index: 16;
+      width: 110px;
+      height: 18px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: rgba(35, 13, 7, 0.32);
+      filter: blur(5px);
+    }
+
+    .book-page {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(circle at center, rgba(255, 248, 225, 0.94), transparent 68%),
+        linear-gradient(135deg, #efd8ad, #f8e8c8 52%, #dfbe8b);
+      box-shadow: inset 0 0 28px rgba(91, 51, 28, 0.2);
+    }
+
+    .book-page.left {
+      border-radius: 16px 0 0 10px;
+    }
+
+    .book-page.right {
+      border-radius: 0 16px 10px 0;
+    }
+
+    .book-page.left::after,
+    .book-page.right::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 35px,
+          rgba(121, 75, 48, 0.035) 36px
+        );
+      mix-blend-mode: multiply;
+    }
+
+    .page-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: #e9cfa4;
+      transition: opacity 0.2s ease, transform 0.35s ease;
+    }
+
+    .page-image.loading {
+      opacity: 0;
+      transform: scale(0.99);
+    }
+
+    /* =====================================================
+       ÚVODNÍ LEVÁ STRÁNKA
+    ===================================================== */
+
+    .intro-page {
+      width: 100%;
+      height: 100%;
+      padding: clamp(24px, 3vw, 58px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(255, 249, 228, 0.9), transparent 66%),
+        linear-gradient(135deg, #e8cda2, #f7e5c3);
+    }
+
+    .intro-page[hidden] {
+      display: none;
+    }
+
+    .intro-kicker {
+      margin: 0;
+      font-size: clamp(15px, 1.4vw, 23px);
+      letter-spacing: 0.21em;
+    }
+
+    .intro-paw {
+      margin: 9px 0;
+      font-size: clamp(20px, 2vw, 30px);
+    }
+
+    .intro-title {
+      margin: 8px auto 12px;
+      max-width: 680px;
+      font-size: clamp(30px, 3.6vw, 59px);
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    .intro-heart-line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 13px;
+      color: #a22e49;
+    }
+
+    .intro-heart-line::before,
+    .intro-heart-line::after {
+      content: "";
+      width: min(160px, 25%);
+      height: 1px;
+      background: rgba(110, 45, 41, 0.5);
+    }
+
+    .intro-text {
+      width: min(530px, 92%);
+      margin: 14px auto 0;
+      font-size: clamp(16px, 1.65vw, 26px);
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    .intro-illustration {
+      position: relative;
+      min-height: 42%;
+      margin-top: 8px;
+    }
+
+    .intro-window {
+      position: absolute;
+      top: 5%;
+      right: 7%;
+      width: 34%;
+      height: 56%;
+      border: 3px solid rgba(102, 62, 38, 0.42);
+      background:
+        linear-gradient(rgba(244, 182, 128, 0.22), rgba(255, 245, 220, 0.1)),
+        radial-gradient(circle at 75% 30%, #ffcb8d, #d68458 48%, #71412e 100%);
+      box-shadow: inset 0 0 15px rgba(74, 40, 23, 0.26);
+    }
+
+    .intro-woman {
+      position: absolute;
+      right: 19%;
+      bottom: 12%;
+      width: 19%;
+      height: 46%;
+      border-radius: 46% 46% 28% 30%;
+      background:
+        linear-gradient(150deg, #e2a2a9, #bd6d79 57%, #7d4e50);
+      filter: sepia(0.3);
+      opacity: 0.82;
+    }
+
+    .intro-woman::before {
+      content: "";
+      position: absolute;
+      left: 28%;
+      top: -20%;
+      width: 48%;
+      aspect-ratio: 1;
+      border-radius: 48% 48% 45% 45%;
+      background:
+        linear-gradient(145deg, #edc98c, #d0a568 58%, #94683c);
+      box-shadow:
+        -8px 4px 0 #d4a86e,
+        8px 7px 0 rgba(188, 138, 78, 0.75);
+    }
+
+    .intro-woman::after {
+      content: "";
+      position: absolute;
+      top: -17%;
+      left: 16%;
+      width: 66%;
+      height: 38%;
+      border-radius: 48% 50% 45% 40%;
+      background:
+        linear-gradient(145deg, #f2d79f, #d7b36e);
+      clip-path: polygon(0 0, 100% 0, 93% 56%, 73% 88%, 52% 69%, 30% 91%, 8% 58%);
+    }
+
+    .dog-bed {
+      position: absolute;
+      left: 4%;
+      bottom: 3%;
+      width: 38%;
+      height: 27%;
+      border-radius: 50%;
+      border: clamp(8px, 1.2vw, 17px) solid #4e7585;
+      background: radial-gradient(ellipse, #7899a3, #527786 66%, #315764);
+      box-shadow:
+        inset 0 7px 15px rgba(255, 255, 255, 0.2),
+        0 8px 10px rgba(69, 42, 27, 0.22);
+    }
+
+    .collar {
+      position: absolute;
+      left: 47%;
+      bottom: 20%;
+      width: 19%;
+      height: 11%;
+      border: 8px solid #426e84;
+      border-radius: 50%;
+      transform: rotate(-7deg);
+    }
+
+    .collar::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      top: 38%;
+      width: 15px;
+      height: 10px;
+      border: 3px solid #7c5733;
+      background: #c9a56b;
+    }
+
+    .leash {
+      position: absolute;
+      left: 36%;
+      bottom: 4%;
+      width: 36%;
+      height: 8px;
+      border-radius: 999px;
+      background: #426e84;
+      transform: rotate(-12deg);
+      box-shadow: 0 3px 4px rgba(45, 25, 17, 0.22);
+    }
+
+    .paw-trail {
+      position: absolute;
+      right: 3%;
+      bottom: 1%;
+      color: #5c361f;
+      font-size: clamp(17px, 2vw, 30px);
+      letter-spacing: 11px;
+      transform: rotate(-20deg);
+    }
+
+    /* =====================================================
+       OVLÁDÁNÍ
+    ===================================================== */
+
+    .nav-control {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      color: white;
+      background: none;
+      border: 0;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.75);
+    }
+
+    .nav-control:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .nav-circle {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--pink-dark);
+      background: rgba(255, 248, 245, 0.96);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 42px;
+      line-height: 1;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-control:not(:disabled):hover .nav-circle {
+      transform: scale(1.08);
+      background: white;
+    }
+
+    .nav-label {
+      font-size: 17px;
+    }
+
+    .book-status {
+      width: min(900px, calc(100% - 80px));
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    .page-count {
+      margin-bottom: 7px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .progress-dot {
+      width: 11px;
+      height: 11px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.42);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .progress-dot:hover {
+      transform: scale(1.25);
+    }
+
+    .progress-dot.active {
+      background: var(--pink);
+      box-shadow: 0 0 12px rgba(255, 92, 163, 0.75);
+    }
+
+    .truth-quote {
+      width: min(930px, calc(100% - 80px));
+      margin: 18px auto 0;
+      padding: 16px 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      color: #704652;
+      border-radius: 13px;
+      background: rgba(255, 246, 243, 0.94);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      font-size: clamp(15px, 1.6vw, 21px);
+      font-style: italic;
+      text-align: center;
+    }
+
+    .truth-quote .heart {
+      color: var(--pink);
+      font-size: 25px;
+    }
+
+    .truth-quote .paw {
+      color: #583a3f;
+      font-size: 26px;
+    }
+
+    .mobile-menu-button {
+      display: none;
+      border: 0;
+      color: var(--pink-dark);
+      background: transparent;
+      font-size: 28px;
+    }
+
+    /* Animace při přechodu */
+
+    .turning-forward .book-page.right {
+      animation: pageForward 0.38s ease;
+      transform-origin: left center;
+    }
+
+    .turning-backward .book-page.left {
+      animation: pageBackward 0.38s ease;
+      transform-origin: right center;
+    }
+
+    @keyframes pageForward {
+      0% {
+        transform: perspective(1200px) rotateY(0deg);
+        filter: brightness(1);
+      }
+
+      50% {
+        transform: perspective(1200px) rotateY(-9deg);
+        filter: brightness(0.75);
+      }
+
+      100% {
+        transform: perspective(1200px) rotateY(0deg);
+        filter: brightness(1);
+      }
+    }
+
+    @keyframes pageBackward {
+      0% {
+        transform: perspective(1200px) rotateY(0deg);
+        filter: brightness(1);
+      }
+
+      50% {
+        transform: perspective(1200px) rotateY(9deg);
+        filter: brightness(0.75);
+      }
+
+      100% {
+        transform: perspective(1200px) rotateY(0deg);
+        filter: brightness(1);
+      }
+    }
+
+    /* =====================================================
+       MOBIL
+    ===================================================== */
+
+    @media (max-width: 980px) {
+      .header-inner {
+        grid-template-columns: 1fr auto;
+      }
+
+      .main-nav {
+        position: absolute;
+        top: 82px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        padding: 12px 20px 22px;
+        background: rgba(255, 250, 248, 0.99);
+        box-shadow: 0 15px 25px rgba(42, 18, 13, 0.15);
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .main-nav a {
+        width: 100%;
+        padding: 14px;
+        text-align: center;
+      }
+
+      .like-wrap {
+        display: none;
+      }
+
+      .mobile-menu-button {
+        display: block;
+      }
+
+      .reader-layout {
+        grid-template-columns: 65px minmax(0, 1fr) 65px;
+        gap: 8px;
+      }
+
+      .nav-label {
+        display: none;
+      }
+
+      .nav-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .chapters-stage {
+        padding: 22px 8px 28px;
+      }
+
+      .stage-heading h1 {
+        letter-spacing: 0.13em;
+      }
+
+      .reader-layout {
+        display: block;
+      }
+
+      .book-shell {
+        padding: 10px 10px 15px;
+        border-radius: 18px;
+      }
+
+      .open-book {
+        display: block;
+        aspect-ratio: 0.72 / 1;
+      }
+
+      .open-book::before,
+      .open-book::after {
+        display: none;
+      }
+
+      .book-page {
+        position: absolute;
+        inset: 0;
+        border-radius: 11px !important;
+      }
+
+      .book-page.mobile-hidden {
+        display: none;
+      }
+
+      .nav-control {
+        position: absolute;
+        top: 50%;
+        z-index: 40;
+        transform: translateY(-50%);
+      }
+
+      .nav-control.previous {
+        left: 7px;
+      }
+
+      .nav-control.next {
+        right: 7px;
+      }
+
+      .nav-circle {
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 248, 245, 0.88);
+      }
+
+      .book-status,
+      .truth-quote {
+        width: calc(100% - 24px);
+      }
+
+      .truth-quote {
+        padding: 13px 16px;
+      }
+
+      .truth-quote .paw {
+        display: none;
+      }
+
+      .intro-page {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===================================================
+       HLAVIČKA
+  ==================================================== -->
+
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html" aria-label="Svět Carmen – domů">
+        <span class="brand-small">Svět</span>
+        <span class="brand-main">Carmen</span>
+        <span class="brand-heart">♡</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Hlavní navigace">
+        <a href="index.html">Domů</a>
+        <a href="index.html#svet-pribehu">Svět příběhů</a>
+        <a href="mia.html#prolog">Prolog</a>
+        <a class="active" href="kapitoly.html" aria-current="page">Kapitoly</a>
+      </nav>
+
+      <div class="like-wrap">
+        <button class="like-button" id="likeButton" type="button">
+          ♡ Líbí se mi <span id="likeCount">3</span>
+        </button>
+      </div>
+
+      <button
+        class="mobile-menu-button"
+        id="mobileMenuButton"
+        type="button"
+        aria-label="Otevřít menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ===================================================
+       KAPITOLY – OTEVŘENÁ KNIHA
+  ==================================================== -->
+
+  <main class="chapters-stage">
+
+    <section class="stage-heading">
+      <h1>KAPITOLY</h1>
+
+      <div class="heading-divider">
+        <span class="heading-paw">🐾</span>
+      </div>
+
+      <p>Přečtěte si skutečný příběh, který se stal.</p>
+      <p>Listujte stránku po stránce a prožijte každou chvíli s námi.</p>
+    </section>
+
+    <section
+      class="reader-layout"
+      aria-label="Interaktivní kniha MIA"
+    >
+
+      <button
+        class="nav-control previous"
+        id="previousButton"
+        type="button"
+        aria-label="Předchozí dvoustrana"
+      >
+        <span class="nav-circle">‹</span>
+        <span class="nav-label">Předchozí</span>
+      </button>
+
+      <div class="book-shell">
+
+        <div class="open-book" id="openBook">
+
+          <!-- Levá stránka -->
+          <article class="book-page left" id="leftPage">
+
+            <!-- Úvodní strana kapitoly -->
+            <div class="intro-page" id="introPage">
+
+              <div>
+                <p class="intro-kicker">KAPITOLA 1</p>
+                <div class="intro-paw">🐾</div>
+
+                <h2 class="intro-title">
+                  ZAČÁTEK<br>
+                  NOVÉHO PŘÍBĚHU
+                </h2>
+
+                <div class="intro-heart-line">♥</div>
+
+                <p class="intro-text">
+                  Příběh začíná ve chvíli,<br>
+                  kdy se po těžkém období<br>
+                  objeví malá naděje.<br>
+                  Ještě nikdo netuší,<br>
+                  že jedno malé štěňátko<br>
+                  změní dva životy.
+                </p>
+              </div>
+
+              <div class="intro-illustration" aria-hidden="true">
+                <div class="intro-window"></div>
+                <div class="intro-woman"></div>
+                <div class="dog-bed"></div>
+                <div class="collar"></div>
+                <div class="leash"></div>
+                <div class="paw-trail">🐾 🐾 🐾</div>
+              </div>
+
+            </div>
+
+            <img
+              class="page-image"
+              id="leftImage"
+              src=""
+              alt=""
+              hidden
+            >
+
+          </article>
+
+          <!-- Pravá stránka -->
+          <article class="book-page right" id="rightPage">
+            <img
+              class="page-image"
+              id="rightImage"
+              src=""
+              alt=""
+            >
+          </article>
+
+        </div>
+      </div>
+
+      <button
+        class="nav-control next"
+        id="nextButton"
+        type="button"
+        aria-label="Další dvoustrana"
+      >
+        <span class="nav-circle">›</span>
+        <span class="nav-label">Další</span>
+      </button>
+
+    </section>
+
+    <div class="book-status">
+      <div class="page-count" id="pageCount">Úvod–1 / 11</div>
+      <div class="progress-dots" id="progressDots"></div>
+    </div>
+
+    <aside class="truth-quote">
+      <span class="heart">♥</span>
+      <span>
+        Každá stránka je skutečná. Každé slovo je pravdivé.
+        Každý okamžik se opravdu stal.
+      </span>
+      <span class="paw">🐾</span>
+    </aside>
+
+  </main>
+
+  <script>
+    "use strict";
+
+    /* =====================================================
+       NASTAVENÍ OBRÁZKŮ
+
+       DŮLEŽITÉ:
+       Pokud máš obrázky v jiné složce, změň IMAGE_FOLDER.
+
+       Příklad:
+       const IMAGE_FOLDER = "images/mia/kapitola-01/";
+    ===================================================== */
+
+    const IMAGE_FOLDER = "images/mia/kapitola-01/";
+
+    /*
+      Zkontroluj přesné názvy souborů na GitHubu.
+      GitHub rozlišuje malá a velká písmena.
+    */
+
+    const chapterPages = [
+      {
+        number: 1,
+        file: "kapitola-01-zacatek-noveho-pribehu-hero.png",
+        alt: "Kapitola 1, strana 1 – Začátek nového příběhu"
+      },
+      {
+        number: 2,
+        file: "kapitola-01-stranka-02-psycholozka-hero.png",
+        alt: "Kapitola 1, strana 2 – Rozhovor s psycholožkou"
+      },
+      {
+        number: 3,
+        file: "kapitola-01-stranka-03-zprava-o-narozeni-stenatek-hero.png",
+        alt: "Kapitola 1, strana 3 – Zpráva o narození štěňátek"
+      },
+      {
+        number: 4,
+        file: "kapitola-01-stranka-04-prvni-fotografie-stenatek-hero.png",
+        alt: "Kapitola 1, strana 4 – První fotografie štěňátek"
+      },
+      {
+        number: 5,
+        file: "kapitola-01-stranka-05-vybrala-jsem-si-tebe-a-dala-ti-jmeno-neo-hero.png",
+        alt: "Kapitola 1, strana 5 – Vybrala jsem si tebe"
+      },
+      {
+        number: 6,
+        file: "kapitola-01-stranka-06-tohle-je-moje-jmenuju-ho-neo-hero.png",
+        alt: "Kapitola 1, strana 6 – Proč právě Neo"
+      },
+      {
+        number: 7,
+        file: "kapitola-01-stranka-07-vedela-jsem-ze-si-pro-nej-prijedu-hero.png",
+        alt: "Kapitola 1, strana 7 – Psala jsem první slova"
+      },
+      {
+        number: 8,
+        file: "kapitola-01-stranka-08-pes-si-vybral-me-hero.png",
+        alt: "Kapitola 1, strana 8"
+      },
+      {
+        number: 9,
+        file: "kapitola-01-stranka-09-beru-si-te-domu-hero.png",
+        alt: "Kapitola 1, strana 9 – Jedu si pro tebe"
+      },
+      {
+        number: 10,
+        file: "kapitola-01-stranka-10-konec-prvni-kapitoly-hero.png",
+        alt: "Kapitola 1, strana 10 – První setkání"
+      },
+      {
+        number: 11,
+        file: "kapitola-01-stranka-11-ten-pohled-hero.png",
+        alt: "Kapitola 1, strana 11 – Ten pohled"
+      }
+    ];
+
+    /* =====================================================
+       PROMĚNNÉ
+    ===================================================== */
+
+    const openBook = document.getElementById("openBook");
+
+    const leftPage = document.getElementById("leftPage");
+    const rightPage = document.getElementById("rightPage");
+
+    const introPage = document.getElementById("introPage");
+
+    const leftImage = document.getElementById("leftImage");
+    const rightImage = document.getElementById("rightImage");
+
+    const previousButton = document.getElementById("previousButton");
+    const nextButton = document.getElementById("nextButton");
+
+    const pageCount = document.getElementById("pageCount");
+    const progressDots = document.getElementById("progressDots");
+
+    /*
+      Spread 0:
+      vlevo úvod kapitoly, vpravo strana 1
+
+      Spread 1:
+      vlevo strana 2, vpravo strana 3
+
+      Spread 2:
+      vlevo strana 4, vpravo strana 5
+      atd.
+    */
+
+    const spreads = [
+      { left: "intro", right: 1 },
+      { left: 2, right: 3 },
+      { left: 4, right: 5 },
+      { left: 6, right: 7 },
+      { left: 8, right: 9 },
+      { left: 10, right: 11 }
+    ];
+
+    let currentSpread = 0;
+    let currentMobileSide = "right";
+    let animationLocked = false;
+
+    /* =====================================================
+       POMOCNÉ FUNKCE
+    ===================================================== */
+
+    function getPageByNumber(pageNumber) {
+      return chapterPages.find(page => page.number === pageNumber);
+    }
+
+    function getPageSource(pageNumber) {
+      const page = getPageByNumber(pageNumber);
+
+      if (!page) {
+        return "";
+      }
+
+      return IMAGE_FOLDER + page.file;
+    }
+
+    function setImage(imageElement, pageNumber) {
+      const page = getPageByNumber(pageNumber);
+
+      if (!page) {
+        imageElement.hidden = true;
+        imageElement.removeAttribute("src");
+        imageElement.alt = "";
+        return;
+      }
+
+      imageElement.classList.add("loading");
+      imageElement.hidden = false;
+      imageElement.alt = page.alt;
+      imageElement.src = getPageSource(pageNumber);
+
+      imageElement.onload = () => {
+        imageElement.classList.remove("loading");
+      };
+
+      imageElement.onerror = () => {
+        imageElement.classList.remove("loading");
+
+        console.error(
+          "Obrázek se nepodařilo načíst:",
+          imageElement.src
+        );
+      };
+    }
+
+    function isMobileView() {
+      return window.matchMedia("(max-width: 720px)").matches;
+    }
+
+    /* =====================================================
+       TEČKY PRŮBĚHU
+    ===================================================== */
+
+    function createProgressDots() {
+      progressDots.innerHTML = "";
+
+      spreads.forEach((spread, index) => {
+        const dot = document.createElement("button");
+
+        dot.type = "button";
+        dot.className = "progress-dot";
+        dot.setAttribute(
+          "aria-label",
+          `Přejít na dvoustranu ${index + 1}`
+        );
+
+        dot.addEventListener("click", () => {
+          if (index === currentSpread || animationLocked) {
+            return;
+          }
+
+          const direction = index > currentSpread ? "forward" : "backward";
+          turnToSpread(index, direction);
+        });
+
+        progressDots.appendChild(dot);
+      });
+    }
+
+    function updateProgressDots() {
+      const dots = progressDots.querySelectorAll(".progress-dot");
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentSpread);
+
+        if (index === currentSpread) {
+          dot.setAttribute("aria-current", "true");
+        } else {
+          dot.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    /* =====================================================
+       VYKRESLENÍ KNIHY
+    ===================================================== */
+
+    function renderSpread() {
+      const spread = spreads[currentSpread];
+
+      if (!spread) {
+        return;
+      }
+
+      if (spread.left === "intro") {
+        introPage.hidden = false;
+
+        leftImage.hidden = true;
+        leftImage.removeAttribute("src");
+        leftImage.alt = "";
+      } else {
+        introPage.hidden = true;
+        setImage(leftImage, spread.left);
+      }
+
+      setImage(rightImage, spread.right);
+
+      previousButton.disabled = currentSpread === 0;
+      nextButton.disabled = currentSpread === spreads.length - 1;
+
+      if (spread.left === "intro") {
+        pageCount.textContent = `Úvod–${spread.right} / ${chapterPages.length}`;
+      } else {
+        pageCount.textContent =
+          `${spread.left}–${spread.right} / ${chapterPages.length}`;
+      }
+
+      updateProgressDots();
+      updateMobilePage();
+    }
+
+    function turnToSpread(targetIndex, direction = "forward") {
+      if (
+        animationLocked ||
+        targetIndex < 0 ||
+        targetIndex >= spreads.length ||
+        targetIndex === currentSpread
+      ) {
+        return;
+      }
+
+      animationLocked = true;
+
+      openBook.classList.remove(
+        "turning-forward",
+        "turning-backward"
+      );
+
+      void openBook.offsetWidth;
+
+      openBook.classList.add(
+        direction === "forward"
+          ? "turning-forward"
+          : "turning-backward"
+      );
+
+      window.setTimeout(() => {
+        currentSpread = targetIndex;
+
+        /*
+          Na mobilu po přechodu:
+          - při cestě vpřed zobrazíme levou stranu,
+          - u úvodu raději pravou stranu 1.
+        */
+
+        if (isMobileView()) {
+          currentMobileSide =
+            spreads[currentSpread].left === "intro"
+              ? "right"
+              : "left";
+        }
+
+        renderSpread();
+      }, 180);
+
+      window.setTimeout(() => {
+        openBook.classList.remove(
+          "turning-forward",
+          "turning-backward"
+        );
+
+        animationLocked = false;
+      }, 430);
+    }
+
+    /* =====================================================
+       MOBILNÍ LISTOVÁNÍ PO JEDNÉ STRÁNCE
+    ===================================================== */
+
+    function updateMobilePage() {
+      if (!isMobileView()) {
+        leftPage.classList.remove("mobile-hidden");
+        rightPage.classList.remove("mobile-hidden");
+        return;
+      }
+
+      const spread = spreads[currentSpread];
+
+      if (currentMobileSide === "left") {
+        leftPage.classList.remove("mobile-hidden");
+        rightPage.classList.add("mobile-hidden");
+      } else {
+        leftPage.classList.add("mobile-hidden");
+        rightPage.classList.remove("mobile-hidden");
+      }
+
+      if (spread.left === "intro" && currentMobileSide === "left") {
+        pageCount.textContent = `Úvod / ${chapterPages.length}`;
+      } else if (currentMobileSide === "right") {
+        pageCount.textContent = `${spread.right} / ${chapterPages.length}`;
+      } else {
+        pageCount.textContent = `${spread.left} / ${chapterPages.length}`;
+      }
+    }
+
+    function goNext() {
+      if (animationLocked) {
+        return;
+      }
+
+      if (isMobileView()) {
+        const spread = spreads[currentSpread];
+
+        if (
+          currentMobileSide === "left" &&
+          spread.right !== undefined
+        ) {
+          currentMobileSide = "right";
+          updateMobilePage();
+          return;
+        }
+      }
+
+      if (currentSpread < spreads.length - 1) {
+        turnToSpread(currentSpread + 1, "forward");
+      }
+    }
+
+    function goPrevious() {
+      if (animationLocked) {
+        return;
+      }
+
+      if (isMobileView()) {
+        const spread = spreads[currentSpread];
+
+        if (
+          currentMobileSide === "right" &&
+          spread.left !== "intro"
+        ) {
+          currentMobileSide = "left";
+          updateMobilePage();
+          return;
+        }
+      }
+
+      if (currentSpread > 0) {
+        turnToSpread(currentSpread - 1, "backward");
+
+        if (isMobileView()) {
+          currentMobileSide = "right";
+        }
+      }
+    }
+
+    previousButton.addEventListener("click", goPrevious);
+    nextButton.addEventListener("click", goNext);
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "ArrowRight") {
+        goNext();
+      }
+
+      if (event.key === "ArrowLeft") {
+        goPrevious();
+      }
+    });
+
+    window.addEventListener("resize", updateMobilePage);
+
+    /* =====================================================
+       LÍBÍ SE MI
+       Zatím se počet ukládá do daného prohlížeče.
+    ===================================================== */
+
+    const likeButton = document.getElementById("likeButton");
+    const likeCount = document.getElementById("likeCount");
+
+    const LIKE_COUNT_KEY = "svetCarmenMiaChaptersLikeCount";
+    const LIKED_KEY = "svetCarmenMiaChaptersLiked";
+
+    let storedLikes = Number(
+      localStorage.getItem(LIKE_COUNT_KEY)
+    );
+
+    if (!Number.isFinite(storedLikes) || storedLikes < 0) {
+      storedLikes = 3;
+    }
+
+    let userLiked =
+      localStorage.getItem(LIKED_KEY) === "true";
+
+    function renderLikeButton() {
+      likeCount.textContent = String(storedLikes);
+      likeButton.classList.toggle("liked", userLiked);
+
+      likeButton.firstChild.textContent =
+        userLiked ? "♥ Líbí se mi " : "♡ Líbí se mi ";
+    }
+
+    likeButton.addEventListener("click", () => {
+      if (userLiked) {
+        storedLikes = Math.max(0, storedLikes - 1);
+        userLiked = false;
+      } else {
+        storedLikes += 1;
+        userLiked = true;
+      }
+
+      localStorage.setItem(
+        LIKE_COUNT_KEY,
+        String(storedLikes)
+      );
+
+      localStorage.setItem(
+        LIKED_KEY,
+        String(userLiked)
+      );
+
+      renderLikeButton();
+    });
+
+    /* =====================================================
+       MOBILNÍ MENU
+    ===================================================== */
+
+    const mobileMenuButton =
+      document.getElementById("mobileMenuButton");
+
+    const mainNav =
+      document.getElementById("mainNav");
+
+    mobileMenuButton.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+
+      mobileMenuButton.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      mobileMenuButton.textContent = isOpen ? "✕" : "☰";
+    });
+
+    mainNav.addEventListener("click", event => {
+      if (
+        event.target instanceof HTMLAnchorElement &&
+        isMobileView()
+      ) {
+        mainNav.classList.remove("open");
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+        mobileMenuButton.textContent = "☰";
+      }
+    });
+
+    /* =====================================================
+       SPUŠTĚNÍ
+    ===================================================== */
+
+    createProgressDots();
+    renderLikeButton();
+    renderSpread();
+  </script>
+
+</body>
+</html>
