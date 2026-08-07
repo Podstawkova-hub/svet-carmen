@@ -13,10 +13,6 @@
 
   <style>
 
-    /* =========================================================
-       ZÁKLAD
-    ========================================================= */
-
     * {
       margin: 0;
       padding: 0;
@@ -49,137 +45,112 @@
 
 
     /* =========================================================
-       JEDNODUCHÁ HLAVIČKA
+       HLAVIČKA SVĚT CARMEN
     ========================================================= */
 
     .site-header {
       position: relative;
       z-index: 100;
-
       width: 100%;
-      background:
-        linear-gradient(
-          180deg,
-          #2c1712,
-          #21110d
-        );
-
-      border-bottom:
-        1px solid rgba(255,255,255,.07);
-
-      box-shadow:
-        0 6px 22px rgba(0,0,0,.28);
+      background: #fffaf8;
+      border-bottom: 1px solid #f1dfe5;
     }
 
     .header-inner {
-      width: min(1450px, 100%);
-      min-height: 82px;
-
+      width: 100%;
+      min-height: 96px;
       margin: 0 auto;
-      padding: 12px 30px;
+      padding: 14px 5%;
 
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: 25px;
+      gap: 30px;
     }
-
-
-    /* ZNAČKA */
 
     .brand {
+      justify-self: start;
+      display: inline-block;
+      line-height: .9;
+    }
+
+    .brand-top {
+      display: block;
+      color: #332824;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .brand-bottom {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 5px;
 
-      justify-self: start;
-    }
-
-    .brand-paw {
-      font-size: 34px;
-    }
-
-    .brand-text strong {
-      display: block;
-
-      font-size: 24px;
+      color: #e4518c;
+      font-size: 35px;
       font-style: italic;
-      font-weight: 500;
-
-      color: #fff4e8;
+      line-height: 1;
     }
 
-    .brand-text span {
-      display: block;
-
-      margin-top: 3px;
-
-      font-size: 12px;
-      font-style: italic;
-
-      color: #cfae9e;
+    .brand-heart {
+      font-size: 28px;
+      font-style: normal;
     }
-
-
-    /* MENU */
 
     .simple-nav {
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 48px;
 
-      gap: 30px;
-
-      font-size: 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      font-weight: 600;
     }
 
     .simple-nav a {
-      color: #f5ded3;
-      transition: .25s ease;
+      color: #60464f;
+      transition: color .2s ease;
     }
 
     .simple-nav a:hover {
-      color: #e86b8a;
+      color: #d83f7c;
     }
-
-
-    /* LIKE */
 
     .like-wrap {
       justify-self: end;
     }
 
     .like-button {
-      border: none;
+      border: 0;
+      border-radius: 18px;
 
-      padding: 12px 22px;
-
-      border-radius: 12px;
+      padding: 16px 28px;
 
       background:
-        linear-gradient(
-          135deg,
-          #de5a7d,
-          #bd395e
-        );
+        linear-gradient(135deg, #cf4778, #e64b97);
 
-      color: white;
+      color: #fff;
+
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
 
       cursor: pointer;
 
       box-shadow:
-        0 8px 22px rgba(192,54,91,.3);
+        0 10px 24px rgba(207, 71, 120, .18);
 
       transition:
-        transform .25s ease,
-        box-shadow .25s ease;
+        transform .2s ease,
+        box-shadow .2s ease;
     }
 
     .like-button:hover {
       transform: translateY(-2px);
 
       box-shadow:
-        0 12px 28px rgba(192,54,91,.42);
+        0 13px 28px rgba(207, 71, 120, .26);
     }
 
 
@@ -252,11 +223,12 @@
     }
 
 
-    /* MALÝ NADPIS */
+    /* =========================================================
+       ÚVOD KAPITOLY
+    ========================================================= */
 
     .chapter-intro {
       text-align: center;
-
       margin-bottom: 28px;
     }
 
@@ -266,19 +238,14 @@
     }
 
     .chapter-intro h1 {
-      font-size:
-        clamp(30px, 4vw, 48px);
-
+      font-size: clamp(30px, 4vw, 48px);
       font-weight: 500;
-
       color: #fff0dd;
-
       margin-bottom: 8px;
     }
 
     .chapter-intro p {
       color: #d5b9aa;
-
       font-size: 15px;
       font-style: italic;
     }
@@ -291,7 +258,6 @@
     .reader-shell {
       width: min(920px, 100%);
       margin: 0 auto;
-
       position: relative;
     }
 
@@ -320,9 +286,7 @@
       position: absolute;
       inset: 10px;
 
-      border:
-        1px solid rgba(220,172,102,.18);
-
+      border: 1px solid rgba(220,172,102,.18);
       border-radius: 15px;
 
       pointer-events: none;
@@ -332,7 +296,6 @@
       position: relative;
 
       border-radius: 12px;
-
       overflow: hidden;
 
       background: #f1dfc7;
@@ -357,9 +320,6 @@
       transform: scale(.992);
     }
 
-
-    /* ČÍSLO STRANY */
-
     .page-status {
       text-align: center;
 
@@ -373,7 +333,7 @@
 
 
     /* =========================================================
-       TLAČÍTKA LISTOVÁNÍ
+       LISTOVÁNÍ
     ========================================================= */
 
     .reader-nav {
@@ -528,7 +488,6 @@
 
     .future-heading {
       text-align: center;
-
       margin-bottom: 43px;
     }
 
@@ -552,7 +511,7 @@
 
 
     /* =========================================================
-       OPRAVDOVĚJI VYPADAJÍCÍ KOŽENÉ KNIHY
+       KOŽENÉ KNIHY
     ========================================================= */
 
     .leather-library {
@@ -670,8 +629,6 @@
     }
 
 
-    /* ROHY KNIHY */
-
     .gold-corner {
       position: absolute;
 
@@ -714,9 +671,6 @@
       border-right: 2px solid;
     }
 
-
-    /* TEXT KNIHY */
-
     .book-chapter-number {
       position: relative;
       z-index: 3;
@@ -734,7 +688,9 @@
     }
 
 
-    /* ZÁMEK */
+    /* =========================================================
+       ZÁMEK
+    ========================================================= */
 
     .real-lock {
       position: relative;
@@ -794,9 +750,6 @@
 
       border-radius:
         24px 24px 0 0;
-
-      box-shadow:
-        inset 0 2px 4px rgba(255,255,255,.2);
     }
 
     .leather-book:hover .real-lock {
@@ -822,8 +775,6 @@
       font-style: italic;
     }
 
-
-    /* ODLIŠNÉ KOŽENÉ ODSTÍNY */
 
     .leather-red {
       background:
@@ -880,7 +831,6 @@
 
     .ending-quote .icons {
       font-size: 27px;
-
       margin-bottom: 15px;
     }
 
@@ -923,7 +873,6 @@
 
     .site-footer p {
       color: #a98d7e;
-
       font-size: 13px;
     }
 
@@ -940,17 +889,14 @@
 
       .simple-nav {
         order: 3;
-
         grid-column: 1 / -1;
-
-        padding-bottom: 6px;
+        padding-bottom: 7px;
       }
 
       .leather-library {
         grid-template-columns:
           repeat(2,1fr);
       }
-
     }
 
 
@@ -961,35 +907,29 @@
     @media (max-width: 650px) {
 
       .header-inner {
-        grid-template-columns:
-          1fr auto;
-
-        padding:
-          11px 15px;
+        min-height: 78px;
+        padding: 10px 18px;
       }
 
-      .brand-text span {
-        display: none;
+      .brand-top {
+        font-size: 17px;
       }
 
-      .brand-text strong {
-        font-size: 20px;
+      .brand-bottom {
+        font-size: 27px;
       }
 
-      .brand-paw {
-        font-size: 28px;
+      .brand-heart {
+        font-size: 22px;
       }
 
       .like-button {
-        padding:
-          10px 15px;
-
+        padding: 11px 14px;
         font-size: 13px;
       }
 
       .simple-nav {
-        gap: 25px;
-
+        gap: 30px;
         font-size: 14px;
       }
 
@@ -1004,7 +944,6 @@
 
       .page-frame {
         padding: 10px;
-
         border-radius: 14px;
       }
 
@@ -1031,24 +970,19 @@
         font-size: 13px;
       }
 
-      #prevBtn {
-        justify-self: stretch;
-      }
-
+      #prevBtn,
       #nextBtn {
         justify-self: stretch;
       }
 
       .leather-library {
         grid-template-columns: 1fr;
-
         max-width: 355px;
       }
 
       .leather-book {
         min-height: 335px;
       }
-
     }
 
   </style>
@@ -1059,7 +993,7 @@
 
 
   <!-- =========================================================
-       JEDNODUCHÁ HLAVIČKA
+       SPRÁVNÁ HLAVIČKA SVĚT CARMEN
   ========================================================== -->
 
   <header class="site-header">
@@ -1067,47 +1001,38 @@
     <div class="header-inner">
 
 
-      <!-- SVĚT CARMEN -->
+      <!-- LOGO -->
 
       <a href="index.html" class="brand">
 
-        <div class="brand-paw">
-          🐾
-        </div>
+        <span class="brand-top">
+          Svět
+        </span>
 
-        <div class="brand-text">
-
-          <strong>
-            Svět Carmen
-          </strong>
-
-          <span>
-            Tady každý příběh začíná srdcem.
-          </span>
-
-        </div>
+        <span class="brand-bottom">
+          Carmen
+          <span class="brand-heart">♡</span>
+        </span>
 
       </a>
 
 
-
-      <!-- JEN DOMŮ + SVĚT PŘÍBĚHŮ -->
+      <!-- MENU -->
 
       <nav class="simple-nav">
 
         <a href="index.html">
-          ⌂ Domů
+          Domů
         </a>
 
-        <a href="svet-pribehu.html">
-          ✧ Svět příběhů
+        <a href="svet.html">
+          Svět příběhů
         </a>
 
       </nav>
 
 
-
-      <!-- LÍBÍ SE MI -->
+      <!-- LIKE -->
 
       <div class="like-wrap">
 
@@ -1115,7 +1040,7 @@
           class="like-button"
           type="button"
         >
-          ♡ Líbí se mi
+          ♡ Líbí se mi 9
         </button>
 
       </div>
@@ -1151,8 +1076,6 @@
     <div class="reading-inner">
 
 
-      <!-- MALÝ ÚVOD -->
-
       <div class="chapter-intro">
 
         <div class="paw">
@@ -1177,7 +1100,6 @@
 
       <section class="reader-shell">
 
-
         <div class="page-frame">
 
           <div
@@ -1196,9 +1118,6 @@
         </div>
 
 
-
-        <!-- ČÍSLO STRANY -->
-
         <div
           class="page-status"
           id="pageStatus"
@@ -1207,11 +1126,7 @@
         </div>
 
 
-
-        <!-- NAVIGACE -->
-
         <div class="reader-nav">
-
 
           <button
             class="reader-btn"
@@ -1223,12 +1138,10 @@
           </button>
 
 
-
           <div
             class="page-dots"
             id="pageDots"
           ></div>
-
 
 
           <button
@@ -1239,9 +1152,7 @@
             Další stránka →
           </button>
 
-
         </div>
-
 
       </section>
 
@@ -1293,7 +1204,6 @@
         </div>
 
 
-
         <div class="leather-library">
 
 
@@ -1322,7 +1232,6 @@
           </article>
 
 
-
           <!-- KAPITOLA 3 -->
 
           <article class="leather-book leather-brown">
@@ -1346,7 +1255,6 @@
             </p>
 
           </article>
-
 
 
           <!-- KAPITOLA 4 -->
@@ -1374,7 +1282,6 @@
           </article>
 
 
-
           <!-- KAPITOLA 5 -->
 
           <article class="leather-book leather-blue">
@@ -1400,7 +1307,6 @@
           </article>
 
 
-
           <!-- KAPITOLA 6 -->
 
           <article class="leather-book leather-plum">
@@ -1424,7 +1330,6 @@
             </p>
 
           </article>
-
 
 
           <!-- KAPITOLA 7 -->
@@ -1475,7 +1380,6 @@
 
       </section>
 
-
     </div>
 
   </main>
@@ -1502,7 +1406,7 @@
 
 
   <!-- =========================================================
-       JAVASCRIPT – LISTOVÁNÍ STRÁNEK
+       LISTOVÁNÍ STRÁNEK
   ========================================================== -->
 
   <script>
@@ -1597,10 +1501,6 @@
       document.getElementById("chapterFinish");
 
 
-    /* =========================================================
-       VYTVOŘENÍ TEČEK
-    ========================================================= */
-
     pages.forEach((page, index) => {
 
       const dot =
@@ -1618,10 +1518,6 @@
     });
 
 
-
-    /* =========================================================
-       AKTUALIZACE STRANY
-    ========================================================= */
 
     function updatePage() {
 
@@ -1718,10 +1614,6 @@
 
 
 
-    /* =========================================================
-       DALŠÍ STRANA
-    ========================================================= */
-
     nextBtn.addEventListener(
       "click",
       () => {
@@ -1749,10 +1641,6 @@
 
 
 
-    /* =========================================================
-       PŘEDCHOZÍ STRANA
-    ========================================================= */
-
     prevBtn.addEventListener(
       "click",
       () => {
@@ -1771,10 +1659,6 @@
     );
 
 
-
-    /* =========================================================
-       KLÁVESNICE
-    ========================================================= */
 
     document.addEventListener(
       "keydown",
