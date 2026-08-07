@@ -1,10 +1,1311 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <title>Kapitoly MIA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MIA – Kapitoly | Svět Carmen</title>
+
+  <meta
+    name="description"
+    content="Kapitoly skutečného příběhu Mii. Příběhu, který napsal sám život."
+  >
+
+  <style>
+    /* =========================================================
+       ZÁKLAD
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 230, 204, 0.08), transparent 35%),
+        #24160f;
+      color: #fff7ed;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
+    /* =========================================================
+       HLAVIČKA SVĚTA CARMEN
+    ========================================================= */
+
+    .site-header {
+      position: relative;
+      z-index: 100;
+      width: 100%;
+      background: rgba(31, 20, 16, 0.98);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.28);
+    }
+
+    .header-inner {
+      max-width: 1450px;
+      min-height: 78px;
+      margin: 0 auto;
+      padding: 10px 28px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-paw {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+
+      font-size: 31px;
+      color: #d95072;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 500;
+      color: #fff7ef;
+      line-height: 1.05;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      font-style: italic;
+      color: #dfc5b8;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      font-size: 14px;
+    }
+
+    .main-nav a {
+      color: #f7ddd2;
+      padding: 10px 4px;
+      transition: 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: #ef6f8e;
+    }
+
+    .like-button {
+      flex-shrink: 0;
+      border: none;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #d84c70, #bd365d);
+      color: #fff;
+      padding: 12px 20px;
+      font-family: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 7px 22px rgba(201, 60, 95, 0.3);
+      transition: 0.25s ease;
+    }
+
+    .like-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(201, 60, 95, 0.42);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .mia-hero {
+      position: relative;
+      width: 100%;
+      background: #efe0cf;
+      overflow: hidden;
+    }
+
+    .mia-hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .hero-bottom-fade {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 120px;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(36, 22, 15, 0),
+          rgba(36, 22, 15, 0.35),
+          #24160f
+        );
+
+      pointer-events: none;
+    }
+
+
+    /* =========================================================
+       HLAVNÍ ČÁST KAPITOL
+    ========================================================= */
+
+    .chapters-section {
+      position: relative;
+      min-height: 100vh;
+      padding: 55px 25px 100px;
+
+      background:
+        radial-gradient(circle at 50% 8%, rgba(252, 192, 122, 0.14), transparent 33%),
+        radial-gradient(circle at 10% 55%, rgba(196, 65, 99, 0.07), transparent 28%),
+        radial-gradient(circle at 90% 60%, rgba(255, 208, 134, 0.08), transparent 28%),
+        linear-gradient(180deg, #25170f 0%, #311e13 45%, #20120d 100%);
+    }
+
+    .chapters-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.16;
+
+      background-image:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 54px,
+          rgba(255,255,255,0.025) 55px,
+          transparent 56px
+        );
+    }
+
+    .chapters-container {
+      position: relative;
+      z-index: 2;
+
+      width: min(1280px, 100%);
+      margin: 0 auto;
+    }
+
+    .chapters-heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .tiny-paw {
+      color: #df6885;
+      font-size: 25px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .chapters-heading h1 {
+      font-size: clamp(38px, 5vw, 67px);
+      font-weight: 500;
+      color: #fff4df;
+      text-shadow: 0 5px 20px rgba(0,0,0,.3);
+    }
+
+    .heading-line {
+      width: 110px;
+      height: 2px;
+      margin: 17px auto;
+      background: linear-gradient(90deg, transparent, #dc718a, transparent);
+    }
+
+    .chapters-heading p {
+      max-width: 690px;
+      margin: 0 auto;
+
+      color: #ead2c4;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+
+    /* =========================================================
+       KAPITOLA 1 – OTEVŘENÁ KNIHA
+    ========================================================= */
+
+    .chapter-one-wrap {
+      max-width: 1000px;
+      margin: 0 auto 75px;
+      position: relative;
+    }
+
+    .chapter-one-label {
+      text-align: center;
+      margin-bottom: 17px;
+      color: #e4a0ae;
+      font-style: italic;
+      letter-spacing: 0.08em;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .open-book {
+      position: relative;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      min-height: 450px;
+
+      border-radius: 22px 22px 14px 14px;
+
+      filter: drop-shadow(0 25px 30px rgba(0,0,0,.52));
+    }
+
+    .open-book::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+
+      left: 3%;
+      right: 3%;
+      bottom: -18px;
+      height: 38px;
+
+      background: #6d3d22;
+      border-radius: 50%;
+      filter: blur(8px);
+      opacity: 0.6;
+    }
+
+    .book-page {
+      position: relative;
+      overflow: hidden;
+
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,.62), transparent 58%),
+        linear-gradient(135deg, #f7e8ca, #ead0a5);
+
+      color: #533929;
+
+      border: 1px solid rgba(99, 60, 35, 0.25);
+    }
+
+    .book-page-left {
+      border-radius: 22px 5px 5px 18px;
+      box-shadow:
+        inset -16px 0 24px rgba(82,51,31,.12),
+        inset 9px 0 15px rgba(255,255,255,.28);
+    }
+
+    .book-page-right {
+      border-radius: 5px 22px 18px 5px;
+      box-shadow:
+        inset 16px 0 24px rgba(82,51,31,.12),
+        inset -9px 0 15px rgba(255,255,255,.25);
+    }
+
+    .book-page::after {
+      content: "";
+      position: absolute;
+      inset: 13px;
+      border: 1px solid rgba(133, 91, 55, 0.18);
+      pointer-events: none;
+    }
+
+    .book-spine {
+      position: absolute;
+      z-index: 10;
+      top: 5px;
+      bottom: 5px;
+      left: 50%;
+      width: 28px;
+      transform: translateX(-50%);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(91,56,34,.1),
+          rgba(74,43,27,.25),
+          rgba(255,255,255,.15),
+          rgba(77,45,28,.23),
+          rgba(91,56,34,.08)
+        );
+
+      pointer-events: none;
+    }
+
+    .left-page-content,
+    .right-page-content {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding: 54px 58px;
+    }
+
+    .chapter-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+
+      border: 8px solid rgba(255, 248, 229, 0.92);
+      transform: rotate(-2deg);
+
+      box-shadow:
+        0 8px 20px rgba(70, 44, 29, 0.25);
+
+      background:
+        linear-gradient(135deg, #d9be9b, #f3e2c3);
+
+      position: relative;
+    }
+
+    .chapter-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      filter: sepia(0.08) saturate(0.9);
+    }
+
+    .chapter-photo-note {
+      text-align: center;
+      margin-top: 19px;
+      color: #815d45;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    .right-page-content {
+      text-align: center;
+      align-items: center;
+    }
+
+    .chapter-number {
+      color: #bd4665;
+      font-size: 17px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .chapter-title {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.1;
+      font-weight: 500;
+      color: #873f4e;
+      margin-bottom: 22px;
+    }
+
+    .chapter-divider {
+      font-size: 22px;
+      color: #d3627c;
+      margin-bottom: 20px;
+    }
+
+    .chapter-description {
+      max-width: 360px;
+      margin-bottom: 29px;
+
+      font-size: 17px;
+      line-height: 1.65;
+      color: #634737;
+      font-style: italic;
+    }
+
+    .open-chapter-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      min-width: 210px;
+      padding: 15px 25px;
+
+      border-radius: 11px;
+
+      background:
+        linear-gradient(135deg, #dd597b, #bd3e61);
+
+      color: white;
+      font-size: 16px;
+
+      box-shadow:
+        0 8px 20px rgba(168, 47, 81, .30);
+
+      transition:
+        transform .28s ease,
+        box-shadow .28s ease,
+        background .28s ease;
+    }
+
+    .open-chapter-btn:hover {
+      transform: translateY(-4px) scale(1.02);
+
+      box-shadow:
+        0 13px 30px rgba(168, 47, 81, .42);
+
+      background:
+        linear-gradient(135deg, #eb6888, #c94468);
+    }
+
+    .page-heart {
+      position: absolute;
+      color: rgba(202, 72, 103, .28);
+      font-size: 30px;
+      font-style: normal;
+    }
+
+    .heart-one {
+      right: 28px;
+      top: 36px;
+      transform: rotate(12deg);
+    }
+
+    .heart-two {
+      left: 35px;
+      bottom: 30px;
+      transform: rotate(-10deg);
+    }
+
+
+    /* =========================================================
+       ZAMČENÉ KAPITOLY
+    ========================================================= */
+
+    .locked-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .locked-title h2 {
+      color: #f7e6d8;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .locked-title p {
+      color: #cdb3a6;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .locked-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    .locked-book {
+      position: relative;
+      min-height: 340px;
+
+      padding: 42px 25px 35px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      border-radius: 8px 18px 18px 8px;
+
+      border: 1px solid rgba(225, 181, 103, .38);
+
+      box-shadow:
+        -8px 10px 0 rgba(35, 19, 12, .78),
+        -12px 14px 25px rgba(0, 0, 0, .4),
+        inset 9px 0 14px rgba(0,0,0,.25),
+        inset -5px 0 8px rgba(255,255,255,.04);
+
+      transition:
+        transform .32s ease,
+        box-shadow .32s ease,
+        filter .32s ease;
+
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .locked-book::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+
+      border: 1px solid rgba(224, 181, 101, .45);
+      border-radius: 3px 12px 12px 3px;
+
+      pointer-events: none;
+    }
+
+    .locked-book::after {
+      content: "❦";
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      color: rgba(227, 185, 109, .6);
+      font-size: 21px;
+    }
+
+    .locked-book:hover {
+      transform: translateY(-10px) rotate(-1deg);
+
+      box-shadow:
+        -8px 14px 0 rgba(35, 19, 12, .72),
+        -12px 25px 35px rgba(0, 0, 0, .52),
+        inset 9px 0 14px rgba(0,0,0,.25);
+
+      filter: brightness(1.08);
+    }
+
+    .book-burgundy {
+      background:
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,.07), transparent 25%),
+        linear-gradient(135deg, #6c2738, #3d1721);
+    }
+
+    .book-blue {
+      background:
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,.07), transparent 25%),
+        linear-gradient(135deg, #234356, #102936);
+    }
+
+    .book-green {
+      background:
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,.07), transparent 25%),
+        linear-gradient(135deg, #35503a, #172d20);
+    }
+
+    .book-brown {
+      background:
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,.07), transparent 25%),
+        linear-gradient(135deg, #704521, #3b2413);
+    }
+
+    .book-plum {
+      background:
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,.07), transparent 25%),
+        linear-gradient(135deg, #63314b, #321728);
+    }
+
+    .book-night {
+      background:
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,.07), transparent 25%),
+        linear-gradient(135deg, #2d4354, #15232d);
+    }
+
+    .locked-chapter-number {
+      position: relative;
+      z-index: 2;
+
+      color: #e8c57c;
+      font-size: 25px;
+      margin-bottom: 27px;
+    }
+
+    .lock {
+      position: relative;
+      z-index: 2;
+
+      width: 64px;
+      height: 56px;
+
+      margin-bottom: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 10px;
+
+      color: #61421b;
+      font-size: 26px;
+
+      background:
+        linear-gradient(135deg, #f2ca68, #b98229);
+
+      border: 2px solid #ffdb85;
+
+      box-shadow:
+        0 0 0 4px rgba(111, 71, 24, .32),
+        0 6px 14px rgba(0,0,0,.4),
+        0 0 25px rgba(242,194,89,.15);
+
+      transition: .35s ease;
+    }
+
+    .lock::before {
+      content: "";
+      position: absolute;
+
+      width: 38px;
+      height: 34px;
+
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      border: 8px solid #cf9a40;
+      border-bottom: none;
+
+      border-radius: 24px 24px 0 0;
+    }
+
+    .locked-book:hover .lock {
+      transform: scale(1.08);
+
+      box-shadow:
+        0 0 0 4px rgba(111, 71, 24, .32),
+        0 6px 14px rgba(0,0,0,.4),
+        0 0 32px rgba(255, 210, 101, .52);
+    }
+
+    .lock-paw {
+      font-size: 23px;
+      filter: sepia(.8);
+    }
+
+    .locked-message {
+      position: relative;
+      z-index: 2;
+
+      max-width: 200px;
+
+      font-size: 15px;
+      line-height: 1.55;
+      font-style: italic;
+      color: #efdcc7;
+    }
+
+
+    /* =========================================================
+       ZÁVĚREČNÝ CITÁT
+    ========================================================= */
+
+    .ending-quote {
+      max-width: 850px;
+      margin: 85px auto 0;
+      padding: 38px 20px 0;
+
+      text-align: center;
+
+      border-top: 1px solid rgba(232, 146, 166, .25);
+    }
+
+    .ending-quote .hearts {
+      color: #db6c86;
+      font-size: 27px;
+      letter-spacing: 11px;
+      margin-bottom: 14px;
+    }
+
+    .ending-quote p {
+      font-size: clamp(20px, 3vw, 30px);
+      line-height: 1.5;
+      font-style: italic;
+      color: #f2d9c8;
+    }
+
+    .ending-quote span {
+      display: block;
+      margin-top: 14px;
+
+      font-size: 14px;
+      color: #b89888;
+      letter-spacing: .08em;
+    }
+
+
+    /* =========================================================
+       PATIČKA
+    ========================================================= */
+
+    .site-footer {
+      background: #160e0a;
+      padding: 42px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    .footer-paw {
+      color: #ce4a6b;
+      font-size: 27px;
+      margin-bottom: 10px;
+    }
+
+    .site-footer strong {
+      display: block;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .site-footer p {
+      color: #ad9588;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       MOBIL
+    ========================================================= */
+
+    @media (max-width: 1050px) {
+      .header-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .main-nav {
+        order: 3;
+        width: 100%;
+      }
+
+      .locked-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+
+    @media (max-width: 800px) {
+      .chapters-section {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .open-book {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+
+      .book-page-left {
+        border-radius: 20px 20px 4px 4px;
+      }
+
+      .book-page-right {
+        border-radius: 4px 4px 20px 20px;
+      }
+
+      .book-spine {
+        display: none;
+      }
+
+      .left-page-content,
+      .right-page-content {
+        padding: 40px 30px;
+      }
+
+      .chapter-photo {
+        max-width: 470px;
+        margin: 0 auto;
+      }
+    }
+
+
+    @media (max-width: 620px) {
+      .header-inner {
+        padding: 12px 14px;
+      }
+
+      .brand {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .main-nav {
+        gap: 2px 12px;
+      }
+
+      .main-nav a {
+        font-size: 12px;
+      }
+
+      .like-button {
+        padding: 10px 17px;
+      }
+
+      .hero-bottom-fade {
+        height: 60px;
+      }
+
+      .chapters-section {
+        padding-top: 35px;
+      }
+
+      .chapters-heading {
+        margin-bottom: 35px;
+      }
+
+      .locked-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+      }
+
+      .locked-book {
+        min-height: 300px;
+      }
+
+      .ending-quote {
+        margin-top: 65px;
+      }
+    }
+
+  </style>
 </head>
+
+
+
 <body>
-    <h1>Kapitoly MIA</h1>
+
+  <!-- =======================================================
+       HLAVIČKA
+  ======================================================== -->
+
+  <header class="site-header">
+
+    <div class="header-inner">
+
+      <a href="index.html" class="brand">
+
+        <div class="brand-paw">🐾</div>
+
+        <div class="brand-text">
+          <strong>Svět Carmen</strong>
+          <span>Tady každý příběh začíná srdcem.</span>
+        </div>
+
+      </a>
+
+
+      <nav class="main-nav">
+
+        <a href="index.html">⌂ Domů</a>
+
+        <a href="o-mne.html">♡ O mně</a>
+
+        <a href="svet-pribehu.html">✧ Svět příběhů</a>
+
+        <a href="denik.html">♧ Deník</a>
+
+        <a href="mia.html" class="active">🐾 MIA</a>
+
+        <a href="podpor-carmen.html">♡ Podpoř Carmen</a>
+
+        <a href="kontakt.html">✉ Kontakt</a>
+
+      </nav>
+
+
+      <button class="like-button" type="button">
+        ♡ Líbí se mi
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =======================================================
+       HERO
+       SOUBOR:
+       images/mia-hero.png
+  ======================================================== -->
+
+  <section class="mia-hero">
+
+    <img
+      src="images/mia-hero.png"
+      alt="MIA – Každá kapitola vypráví okamžik, který změnil život."
+    >
+
+    <div class="hero-bottom-fade"></div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       KAPITOLY
+  ======================================================== -->
+
+  <main class="chapters-section">
+
+    <div class="chapters-container">
+
+
+      <!-- NADPIS -->
+
+      <div class="chapters-heading">
+
+        <div class="tiny-paw">🐾</div>
+
+        <h1>Kapitoly Mii</h1>
+
+        <div class="heading-line"></div>
+
+        <p>
+          Každý příběh má svůj začátek.
+          Ten náš začal dnem, kdy se naše cesty protnuly
+          a navždy změnily.
+        </p>
+
+      </div>
+
+
+
+      <!-- ===================================================
+           KAPITOLA 1
+      ==================================================== -->
+
+      <section class="chapter-one-wrap">
+
+        <div class="chapter-one-label">
+          Příběh začíná tady
+        </div>
+
+
+        <div class="open-book">
+
+
+          <!-- LEVÁ STRANA -->
+
+          <div class="book-page book-page-left">
+
+            <div class="left-page-content">
+
+              <div class="chapter-photo">
+
+                <!--
+                  ZATÍM POUŽÍVÁME HERO OBRÁZEK.
+                  POZDĚJI SEM MŮŽEME DÁT SAMOSTATNÝ
+                  OBRÁZEK PRO KAPITOLU 1.
+                -->
+
+                <img
+                  src="images/mia-hero.png"
+                  alt="Mia – první kapitola"
+                >
+
+              </div>
+
+              <div class="chapter-photo-note">
+                „Některá setkání změní celý život.“
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- HŘBET KNIHY -->
+
+          <div class="book-spine"></div>
+
+
+
+          <!-- PRAVÁ STRANA -->
+
+          <div class="book-page book-page-right">
+
+            <span class="page-heart heart-one">♡</span>
+            <span class="page-heart heart-two">♡</span>
+
+
+            <div class="right-page-content">
+
+              <div class="chapter-number">
+                Kapitola 1
+              </div>
+
+
+              <h2 class="chapter-title">
+                Jak si mě<br>
+                vybrala Mia
+              </h2>
+
+
+              <div class="chapter-divider">
+                🐾
+              </div>
+
+
+              <p class="chapter-description">
+                Příběh o okamžiku, kdy do mého života
+                vstoupila Mia a začala se psát cesta,
+                o které jsem tehdy ještě nic netušila.
+              </p>
+
+
+              <!--
+                TADY JE ODKAZ NA PRVNÍ KAPITOLU.
+                Pokud se tvůj soubor jmenuje jinak,
+                stačí změnit href.
+              -->
+
+              <a
+                href="kapitola-1.html"
+                class="open-chapter-btn"
+              >
+                Otevřít kapitolu
+                <span>→</span>
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           DALŠÍ KAPITOLY
+      ==================================================== -->
+
+      <section>
+
+        <div class="locked-title">
+
+          <h2>Další kapitoly</h2>
+
+          <p>
+            Některé části příběhu ještě čekají,
+            až přijde jejich čas.
+          </p>
+
+        </div>
+
+
+
+        <div class="locked-grid">
+
+
+          <!-- KAPITOLA 2 -->
+
+          <article class="locked-book book-burgundy">
+
+            <div class="locked-chapter-number">
+              Kapitola 2
+            </div>
+
+            <div class="lock">
+              <span class="lock-paw">🐾</span>
+            </div>
+
+            <p class="locked-message">
+              Příběh ještě čeká<br>
+              na své otevření…
+            </p>
+
+          </article>
+
+
+
+          <!-- KAPITOLA 3 -->
+
+          <article class="locked-book book-blue">
+
+            <div class="locked-chapter-number">
+              Kapitola 3
+            </div>
+
+            <div class="lock">
+              <span class="lock-paw">🐾</span>
+            </div>
+
+            <p class="locked-message">
+              Příběh ještě čeká<br>
+              na své otevření…
+            </p>
+
+          </article>
+
+
+
+          <!-- KAPITOLA 4 -->
+
+          <article class="locked-book book-green">
+
+            <div class="locked-chapter-number">
+              Kapitola 4
+            </div>
+
+            <div class="lock">
+              <span class="lock-paw">🐾</span>
+            </div>
+
+            <p class="locked-message">
+              Příběh ještě čeká<br>
+              na své otevření…
+            </p>
+
+          </article>
+
+
+
+          <!-- KAPITOLA 5 -->
+
+          <article class="locked-book book-brown">
+
+            <div class="locked-chapter-number">
+              Kapitola 5
+            </div>
+
+            <div class="lock">
+              <span class="lock-paw">🐾</span>
+            </div>
+
+            <p class="locked-message">
+              Příběh ještě čeká<br>
+              na své otevření…
+            </p>
+
+          </article>
+
+
+
+          <!-- KAPITOLA 6 -->
+
+          <article class="locked-book book-plum">
+
+            <div class="locked-chapter-number">
+              Kapitola 6
+            </div>
+
+            <div class="lock">
+              <span class="lock-paw">🐾</span>
+            </div>
+
+            <p class="locked-message">
+              Příběh ještě čeká<br>
+              na své otevření…
+            </p>
+
+          </article>
+
+
+
+          <!-- KAPITOLA 7 -->
+
+          <article class="locked-book book-night">
+
+            <div class="locked-chapter-number">
+              Kapitola 7
+            </div>
+
+            <div class="lock">
+              <span class="lock-paw">🐾</span>
+            </div>
+
+            <p class="locked-message">
+              Příběh ještě čeká<br>
+              na své otevření…
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           ZÁVĚR
+      ==================================================== -->
+
+      <section class="ending-quote">
+
+        <div class="hearts">
+          ♡ 🐾 ♡
+        </div>
+
+        <p>
+          „Některé příběhy píše život sám.<br>
+          Stačí je jen otevřít.“
+        </p>
+
+        <span>
+          MIA · SKUTEČNÝ PŘÍBĚH
+        </span>
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+
+
+  <!-- =======================================================
+       PATIČKA
+  ======================================================== -->
+
+  <footer class="site-footer">
+
+    <div class="footer-paw">🐾</div>
+
+    <strong>Svět Carmen</strong>
+
+    <p>
+      Tady každý příběh začíná srdcem.<br>
+      © 2026 Svět Carmen
+    </p>
+
+  </footer>
+
+
+
 </body>
 </html>
