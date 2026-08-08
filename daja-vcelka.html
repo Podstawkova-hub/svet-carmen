@@ -113,6 +113,19 @@
       cursor: pointer;
       box-shadow: 0 8px 20px rgba(183, 43, 111, 0.23);
       white-space: nowrap;
+      transition: 0.2s ease;
+    }
+
+    .like-button:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .like-button:disabled {
+      cursor: default;
+    }
+
+    .like-button.is-liked {
+      background: linear-gradient(135deg, #a82b69, #d8488a);
     }
 
     /* =========================================================
@@ -121,7 +134,7 @@
 
     .hero-section {
       position: relative;
-      padding: 55px 20px 40px;
+      padding: 50px 20px 38px;
       overflow: hidden;
     }
 
@@ -212,13 +225,14 @@
       font-size: 18px;
       line-height: 1.7;
       max-width: 500px;
-      margin-bottom: 30px;
+      margin-bottom: 26px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+      margin-bottom: 18px;
     }
 
     .primary-button,
@@ -252,6 +266,39 @@
       background: rgba(255, 198, 47, 0.05);
     }
 
+    /* =========================================================
+       HYMNA PŘÍMO V HERO
+    ========================================================= */
+
+    .hero-music {
+      width: 100%;
+      max-width: 500px;
+      padding: 15px 17px;
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 48, 132, 0.10),
+          rgba(255, 198, 47, 0.07)
+        );
+
+      border: 1px solid rgba(255, 255, 255, 0.11);
+    }
+
+    .hero-music-title {
+      color: #f8e7ef;
+      font-weight: 800;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .hero-music audio {
+      width: 100%;
+      height: 42px;
+      display: block;
+    }
+
     .hero-image-wrap {
       position: relative;
       width: min(100%, 540px);
@@ -279,64 +326,17 @@
     }
 
     /* =========================================================
-       HYMNA
-    ========================================================= */
-
-    .music-section {
-      padding: 45px 20px 65px;
-    }
-
-    .music-card {
-      width: min(900px, 100%);
-      margin: 0 auto;
-      text-align: center;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255, 48, 132, 0.15),
-          rgba(255, 198, 47, 0.08)
-        );
-
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 26px;
-      padding: 38px 30px;
-      box-shadow: 0 20px 70px rgba(0,0,0,0.35);
-    }
-
-    .music-icon {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-
-    .music-card h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(31px, 4vw, 46px);
-      margin-bottom: 10px;
-    }
-
-    .music-card p {
-      color: #d7c9d0;
-      line-height: 1.6;
-      margin-bottom: 22px;
-    }
-
-    .music-card audio {
-      width: min(600px, 100%);
-    }
-
-    /* =========================================================
        ÚVOD ČTENÍ
     ========================================================= */
 
     .reader-section {
-      padding: 35px 20px 90px;
+      padding: 42px 20px 90px;
     }
 
     .reader-intro {
       width: min(900px, 100%);
       text-align: center;
-      margin: 0 auto 38px;
+      margin: 0 auto 34px;
     }
 
     .reader-intro .tiny {
@@ -388,6 +388,7 @@
       width: min(100%, 600px);
       border-radius: 30px;
       padding: 9px;
+
       background:
         linear-gradient(
           145deg,
@@ -493,6 +494,7 @@
       padding: 35px;
 
       border-radius: 28px;
+
       background:
         radial-gradient(circle at center, rgba(255, 44, 132, 0.18), transparent 65%),
         rgba(255,255,255,0.035);
@@ -597,6 +599,11 @@
         justify-content: center;
       }
 
+      .hero-music {
+        margin: 0 auto;
+        text-align: left;
+      }
+
       .hero-image-wrap {
         margin: 0 auto;
         width: min(100%, 470px);
@@ -625,10 +632,6 @@
 
       #nextButton {
         grid-row: 3;
-      }
-
-      .music-card {
-        padding: 30px 18px;
       }
     }
 
@@ -689,7 +692,11 @@
         <a href="index.html#denik">Deník Carmen</a>
       </nav>
 
-      <button class="like-button" type="button">
+      <button
+        class="like-button"
+        id="likeButton"
+        type="button"
+      >
         ♡ Líbí se mi
       </button>
 
@@ -742,6 +749,26 @@
 
           </div>
 
+
+          <!-- HYMNA JE TEĎ HNED POD TLAČÍTKY -->
+
+          <div class="hero-music" id="hymna">
+
+            <div class="hero-music-title">
+              🎵 Dájin narozeninový song
+            </div>
+
+            <audio controls preload="metadata">
+              <source
+                src="daja-vcelka-hymna.mp3.mp3"
+                type="audio/mpeg"
+              >
+
+              Tvůj prohlížeč nepodporuje přehrávání zvuku.
+            </audio>
+
+          </div>
+
         </div>
 
 
@@ -756,37 +783,6 @@
           >
 
         </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         HYMNA
-    ====================================================== -->
-
-    <section class="music-section" id="hymna">
-
-      <div class="music-card">
-
-        <div class="music-icon">🎵🐝</div>
-
-        <h2>Dájin narozeninový song</h2>
-
-        <p>
-          Než začneš listovat, pusť si narozeninovou hymnu.
-          Protože normální přání by bylo prostě moc jednoduché. 😂
-        </p>
-
-        <audio controls preload="metadata">
-          <source
-            src="daja-vcelka-hymna.mp3.mp3"
-            type="audio/mpeg"
-          >
-
-          Tvůj prohlížeč nepodporuje přehrávání zvuku.
-        </audio>
 
       </div>
 
@@ -913,10 +909,14 @@
 
 
   <!-- =======================================================
-       JAVASCRIPT – ČTEČKA
+       JAVASCRIPT
   ======================================================== -->
 
   <script>
+
+    /* =====================================================
+       STRÁNKY KOMIKSU
+    ===================================================== */
 
     const pages = [
       "daja-vcelka-01.png",
@@ -931,8 +931,11 @@
 
     let currentPage = 0;
 
-    const comicPage = document.getElementById("comicPage");
-    const comicFrame = document.getElementById("comicFrame");
+    const comicPage =
+      document.getElementById("comicPage");
+
+    const comicFrame =
+      document.getElementById("comicFrame");
 
     const currentPageNumber =
       document.getElementById("currentPageNumber");
@@ -967,12 +970,15 @@
           : "turn-prev"
       );
 
-      setTimeout(() => {
+      setTimeout(function () {
 
         comicPage.src = pages[currentPage];
 
         comicPage.alt =
-          `Dája a Včelka – strana ${currentPage + 1} z ${pages.length}`;
+          "Dája a Včelka – strana " +
+          (currentPage + 1) +
+          " z " +
+          pages.length;
 
         currentPageNumber.textContent =
           currentPage + 1;
@@ -1033,7 +1039,9 @@
     );
 
 
-    /* KLÁVESNICE */
+    /* =====================================================
+       KLÁVESNICE
+    ===================================================== */
 
     document.addEventListener(
       "keydown",
@@ -1051,7 +1059,9 @@
     );
 
 
-    /* SWIPE NA MOBILU */
+    /* =====================================================
+       SWIPE NA MOBILU
+    ===================================================== */
 
     let touchStartX = 0;
     let touchEndX = 0;
@@ -1097,9 +1107,206 @@
     );
 
 
-    /* VÝCHOZÍ STAV */
+    /* =====================================================
+       LÍBÍ SE MI
+       STEJNÝ SYSTÉM JAKO NA SVĚTĚ CARMEN
+       1x DENNĚ Z JEDNOHO PROHLÍŽEČE
+    ===================================================== */
 
-    updateReader();
+    (function () {
+
+      "use strict";
+
+      const SUPABASE_URL =
+        "https://lggboavbzzvoomveewtl.supabase.co";
+
+      const SUPABASE_KEY =
+        "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+
+      const PAGE_ID =
+        "daja-vcelka";
+
+      const likeButton =
+        document.getElementById("likeButton");
+
+      const storageKey =
+        "svetCarmenLike_" + PAGE_ID;
+
+
+      function getToday() {
+
+        const now = new Date();
+
+        const year =
+          now.getFullYear();
+
+        const month =
+          String(now.getMonth() + 1)
+            .padStart(2, "0");
+
+        const day =
+          String(now.getDate())
+            .padStart(2, "0");
+
+        return year + "-" + month + "-" + day;
+      }
+
+
+      async function callSupabase(functionName) {
+
+        const response = await fetch(
+
+          SUPABASE_URL +
+          "/rest/v1/rpc/" +
+          functionName,
+
+          {
+            method: "POST",
+
+            headers: {
+              apikey: SUPABASE_KEY,
+              "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+              requested_page_id: PAGE_ID
+            })
+          }
+        );
+
+
+        if (!response.ok) {
+          throw new Error(
+            await response.text()
+          );
+        }
+
+        return response.json();
+      }
+
+
+      function showReady(count) {
+
+        likeButton.textContent =
+          "♡ Líbí se mi " +
+          (Number(count) || 0);
+
+        likeButton.disabled = false;
+
+        likeButton.classList.remove(
+          "is-liked"
+        );
+      }
+
+
+      function showThankYou(count) {
+
+        likeButton.textContent =
+          "♥ Děkujeme " +
+          (Number(count) || 0);
+
+        likeButton.disabled = true;
+
+        likeButton.classList.add(
+          "is-liked"
+        );
+      }
+
+
+      async function loadLikes() {
+
+        try {
+
+          const count =
+            await callSupabase(
+              "get_page_likes"
+            );
+
+          if (
+            localStorage.getItem(storageKey) ===
+            getToday()
+          ) {
+
+            showThankYou(count);
+
+          } else {
+
+            showReady(count);
+          }
+
+        } catch (error) {
+
+          console.error(
+            "Počet srdcí se nepodařilo načíst:",
+            error
+          );
+
+          likeButton.textContent =
+            "♡ Líbí se mi";
+
+          likeButton.disabled = false;
+        }
+      }
+
+
+      likeButton.addEventListener(
+        "click",
+        async function () {
+
+          if (
+            likeButton.disabled ||
+            localStorage.getItem(storageKey) ===
+            getToday()
+          ) {
+            return;
+          }
+
+          likeButton.disabled = true;
+
+          likeButton.textContent =
+            "♡ Odesílám…";
+
+          try {
+
+            const newCount =
+              await callSupabase(
+                "add_page_like"
+              );
+
+            localStorage.setItem(
+              storageKey,
+              getToday()
+            );
+
+            showThankYou(newCount);
+
+          } catch (error) {
+
+            console.error(
+              "Srdce se nepodařilo odeslat:",
+              error
+            );
+
+            likeButton.textContent =
+              "♡ Zkusit znovu";
+
+            likeButton.disabled = false;
+          }
+        }
+      );
+
+
+      loadLikes();
+
+    })();
+
+
+    /* =====================================================
+       VÝCHOZÍ STAV ČTEČKY
+    ===================================================== */
+
+    prevButton.disabled = true;
+    nextButton.disabled = false;
 
   </script>
 
