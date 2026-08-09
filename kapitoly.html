@@ -251,6 +251,56 @@
     }
 
 
+
+    /* =========================================================
+       HYMNA KAPITOLY 1
+    ========================================================= */
+    .chapter-anthem {
+      width: min(760px, 100%);
+      margin: 0 auto 34px;
+      padding: 20px 24px;
+      text-align: center;
+      border: 1px solid rgba(226,115,142,.24);
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(226,115,142,.12), transparent 58%),
+        linear-gradient(135deg, rgba(82,40,29,.72), rgba(45,22,16,.82));
+      box-shadow:
+        0 18px 35px rgba(0,0,0,.22),
+        inset 0 0 0 1px rgba(255,235,218,.035);
+    }
+
+    .chapter-anthem .anthem-kicker {
+      margin-bottom: 6px;
+      color: #dc6684;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .chapter-anthem h2 {
+      margin-bottom: 6px;
+      color: #fff0dd;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .chapter-anthem p {
+      margin-bottom: 15px;
+      color: #d5b9aa;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    .chapter-anthem audio {
+      display: block;
+      width: min(560px, 100%);
+      margin: 0 auto;
+    }
+
     /* =========================================================
        JEDNA STRÁNKA KNIHY
     ========================================================= */
@@ -1096,6 +1146,23 @@
       </div>
 
 
+
+
+
+      <!-- =====================================================
+           HYMNA KAPITOLY 1
+      ====================================================== -->
+
+      <section class="chapter-anthem" aria-label="Hymna první kapitoly">
+        <div class="anthem-kicker">🎵 Hymna kapitoly</div>
+        <h2>Hymna první kapitoly</h2>
+        <p>Pusť si hudbu a otevři první stránku příběhu Mii.</p>
+
+        <audio controls preload="metadata">
+          <source src="mia-kapitola-01-hymna.mp3.mp3" type="audio/mpeg">
+          Tvůj prohlížeč nepodporuje přehrávání zvuku.
+        </audio>
+      </section>
 
       <!-- =====================================================
            ČTEČKA
