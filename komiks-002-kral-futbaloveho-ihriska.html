@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Komiks 002 – Kráľ futbalového ihriska | Lusssita & Monty | Svět Carmen</title>
+  <meta
+    name="description"
+    content="Druhý komiks Lusssity a Montyho ve Světě Carmen – Kráľ futbalového ihriska."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --pink:#f35ca8;
+      --pink-soft:#ff9dcc;
+      --deep:#a52d6f;
+      --cream:#fff8f2;
+      --paper:#f3dfbd;
+      --ink:#24151f;
+      --muted:#6e5060;
+      --dark:#211118;
+      --comic:"Bangers","Arial Black",sans-serif;
+      --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+      --hand:"Caveat","Segoe Print",cursive;
+      --sans:"Nunito",Arial,Helvetica,sans-serif;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      overflow-x:hidden;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 15% 8%,rgba(243,92,168,.16),transparent 26%),
+        radial-gradient(circle at 88% 10%,rgba(255,190,98,.15),transparent 23%),
+        linear-gradient(180deg,#fff9fc 0%,#ffeaf4 48%,#fff7ef 100%);
+      font-family:var(--sans);
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    button{
+      border:0;
+      font:inherit;
+    }
+
+    /* HORNÍ LIŠTA */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      min-height:78px;
+      padding:10px 5vw;
+      background:rgba(255,251,248,.97);
+      border-bottom:1px solid rgba(165,45,111,.11);
+      box-shadow:0 10px 35px rgba(89,39,67,.07);
+      backdrop-filter:blur(16px);
+    }
+
+    .brand{
+      justify-self:start;
+      color:#322129;
+      font-family:var(--serif);
+      font-size:16px;
+      line-height:.9;
+    }
+
+    .brand strong{
+      display:block;
+      color:var(--pink);
+      font-size:29px;
+      font-style:italic;
+      font-weight:500;
+    }
+
+    .main-nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:30px;
+    }
+
+    .main-nav a{
+      color:#624b57;
+      font-size:15px;
+      font-weight:800;
+    }
+
+    .main-nav a:hover{
+      color:var(--deep);
+    }
+
+    .like-button{
+      justify-self:end;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-width:155px;
+      padding:12px 20px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--deep),var(--pink));
+      border:0;
+      border-radius:999px;
+      box-shadow:0 12px 26px rgba(165,45,111,.24);
+      cursor:pointer;
+      font-size:14px;
+      font-weight:900;
+      white-space:nowrap;
+      transition:transform .2s ease,box-shadow .2s ease;
+    }
+
+    .like-button:hover:not(:disabled){
+      transform:translateY(-2px);
+      box-shadow:0 16px 34px rgba(165,45,111,.32);
+    }
+
+    .like-button.is-liked{
+      color:var(--deep);
+      background:#fff;
+      outline:2px solid var(--pink);
+    }
+
+    .like-button:disabled{
+      cursor:default;
+    }
+
+    /* HERO – JEN OBRÁZEK */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:#1d1118;
+    }
+    .hero img{
+      width:100%;
+      height:auto;
+      max-height:780px;
+      object-fit:cover;
+      object-position:center;
+    }
+    .hero::after{
+      position:absolute;
+      right:0;
+      bottom:-1px;
+      left:0;
+      height:100px;
+      content:"";
+      background:linear-gradient(180deg,transparent 0%,rgba(255,243,248,.6) 55%,#fff2f7 100%);
+      pointer-events:none;
+    }
+
+    .comic-intro{
+      padding:42px 20px 30px;
+      text-align:center;
+      background:linear-gradient(180deg,#fff2f7 0%,#fff9fb 100%);
+    }
+    .comic-intro h1{
+      margin-top:16px;
+      color:var(--deep);
+      font-family:var(--serif);
+      font-size:clamp(34px,5vw,60px);
+    }
+    .comic-intro p{
+      max-width:850px;
+      margin:14px auto 0;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.7;
+    }
+
+    /* ČTEČKA */
+    .reader-section{
+      padding:70px 20px 86px;
+    }
+
+    .reader-heading{
+      width:min(920px,92%);
+      margin:0 auto 34px;
+      text-align:center;
+    }
+
+    .reader-heading span{
+      display:inline-flex;
+      margin-bottom:13px;
+      padding:8px 14px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--deep),var(--pink));
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+
+    .reader-heading h2{
+      color:var(--deep);
+      font-family:var(--comic);
+      font-size:clamp(48px,7vw,82px);
+      line-height:.95;
+      letter-spacing:.03em;
+      text-shadow:
+        3px 3px 0 #fff,
+        6px 6px 0 rgba(243,92,168,.12);
+    }
+
+    .reader-heading p{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.65;
+    }
+
+    .comic-reader{
+      position:relative;
+      width:min(1320px,98%);
+      margin:0 auto;
+      padding:24px 24px 30px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px) 0 0/100% 34px,
+        linear-gradient(90deg,rgba(0,0,0,.025) 1px,transparent 1px) 0 0/34px 100%,
+        linear-gradient(135deg,#f3dfbd 0%,#fff8e8 52%,#ead2a9 100%);
+      border:7px solid #24151f;
+      border-radius:28px;
+      box-shadow:
+        16px 18px 0 rgba(165,45,111,.16),
+        0 30px 70px rgba(51,19,37,.24);
+    }
+
+
+    .page-stage{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:0;
+      padding:0;
+    }
+
+    .page-stage img{
+      width:min(100%,1050px);
+      max-width:1050px;
+      height:auto;
+      max-height:none;
+      object-fit:contain;
+      border:5px solid #1a1116;
+      border-radius:12px;
+      box-shadow:
+        12px 14px 0 rgba(0,0,0,.15),
+        0 28px 42px rgba(0,0,0,.27);
+      background:#fff;
+      transition:opacity .18s ease,transform .18s ease;
+    }
+
+    .page-stage.is-changing img{
+      opacity:.25;
+      transform:scale(.98);
+    }
+
+    .reader-controls{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:16px;
+      align-items:center;
+      margin-top:25px;
+    }
+
+    .reader-btn{
+      display:inline-flex;
+      padding:13px 20px;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--deep),var(--pink));
+      border:3px solid #24151f;
+      border-radius:999px;
+      box-shadow:5px 6px 0 #24151f;
+      cursor:pointer;
+      font-weight:900;
+      transition:transform .2s ease,opacity .2s ease;
+    }
+
+    .reader-btn:hover:not(:disabled){
+      transform:translateY(-3px);
+    }
+
+    .reader-btn:disabled{
+      opacity:.38;
+      cursor:not-allowed;
+    }
+
+    .page-counter{
+      min-width:155px;
+      padding:10px 15px;
+      color:#24151f;
+      background:#fff8ee;
+      border:3px solid #24151f;
+      border-radius:999px;
+      box-shadow:4px 5px 0 rgba(36,21,31,.16);
+      text-align:center;
+      font-family:var(--comic);
+      font-size:23px;
+      letter-spacing:.04em;
+    }
+
+    .reader-hint{
+      margin-top:22px;
+      color:#7b5968;
+      text-align:center;
+      font-family:var(--hand);
+      font-size:27px;
+    }
+
+    .thumbnails{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      margin-top:24px;
+      overflow-x:auto;
+      padding:4px 0;
+    }
+    .thumb{
+      flex:0 0 72px;
+      width:72px;
+      height:72px;
+      padding:4px;
+      border:3px solid rgba(41,25,34,.24);
+      border-radius:10px;
+      background:#fff;
+      cursor:pointer;
+      opacity:.62;
+      transition:.18s ease;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:5px;
+    }
+    .thumb:hover,.thumb.is-active{
+      opacity:1;
+      border-color:var(--pink);
+      transform:translateY(-3px);
+    }
+
+    .reader-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+      margin-top:36px;
+    }
+
+    .reader-actions a{
+      display:inline-flex;
+      padding:13px 22px;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      background:linear-gradient(135deg,var(--deep),var(--pink));
+      border-radius:999px;
+      box-shadow:0 11px 26px rgba(165,45,111,.22);
+      font-weight:900;
+      transition:transform .2s ease;
+    }
+
+    .reader-actions a:hover{
+      transform:translateY(-3px);
+    }
+
+    .ending{
+      width:min(850px,92%);
+      margin:0 auto;
+      padding:0 20px 80px;
+      text-align:center;
+    }
+
+    .ending-bubble{
+      position:relative;
+      display:inline-block;
+      padding:27px 33px;
+      background:#fff;
+      border:4px solid var(--ink);
+      border-radius:30px;
+      box-shadow:10px 10px 0 rgba(165,45,111,.16);
+    }
+
+    .ending-bubble::after{
+      position:absolute;
+      bottom:-27px;
+      left:80px;
+      width:36px;
+      height:36px;
+      content:"";
+      background:#fff;
+      border-right:4px solid var(--ink);
+      border-bottom:4px solid var(--ink);
+      transform:rotate(45deg);
+    }
+
+    .ending-bubble h2{
+      color:var(--deep);
+      font-family:var(--comic);
+      font-size:clamp(38px,5vw,58px);
+      letter-spacing:.03em;
+    }
+
+    .ending-bubble p{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.6;
+    }
+
+    footer{
+      padding:20px 20px 34px;
+      color:#9a7187;
+      text-align:center;
+      font-family:var(--hand);
+      font-size:27px;
+    }
+
+    @media(max-width:860px){
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:42px;
+        text-align:center;
+      }
+
+      .hero-copy p{
+        margin-right:auto;
+        margin-left:auto;
+      }
+
+      .hero-tags{
+        justify-content:center;
+      }
+
+      .page-stage{
+        min-height:520px;
+      }
+    }
+
+    @media(max-width:700px){
+      .topbar{
+        grid-template-columns:1fr auto;
+        min-height:70px;
+        padding:9px 4vw;
+      }
+
+      .main-nav{
+        display:none;
+      }
+
+      .brand strong{
+        font-size:25px;
+      }
+
+      .like-button{
+        min-width:auto;
+        padding:10px 13px;
+        font-size:12px;
+      }
+
+      .comic-hero{
+        padding:42px 12px 58px;
+      }
+
+      .hero-stamp{
+        left:-8px;
+        font-size:20px;
+      }
+
+      .comic-reader{
+        width:98%;
+        padding:24px 10px 25px;
+        border-width:4px;
+      }
+
+      .page-stage{
+        min-height:0;
+        padding:0;
+      }
+
+      .page-stage img{
+        width:100%;
+        max-width:100%;
+      }
+
+      .reader-controls{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .page-counter{
+        grid-column:1/-1;
+        grid-row:1;
+        justify-self:center;
+      }
+
+      .reader-btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+
+    <a class="brand" href="index.html">
+      Svět
+      <strong>Carmen♡</strong>
+    </a>
+
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <a href="index.html">Domů</a>
+      <a href="svet.html">Svět příběhů</a>
+      <a href="lusssita-monty.html">Lusssita &amp; Monty</a>
+    </nav>
+
+    <button
+      class="like-button"
+      id="likeButton"
+      type="button"
+      aria-label="Dát komiksu Kráľ futbalového ihriska srdce"
+      disabled
+    >
+      ♡ Líbí se mi…
+    </button>
+
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <img
+        src="komiks-002-kral-futbaloveho-ihriska-hero.png"
+        alt="Kráľ futbalového ihriska – Lusssita a Monty"
+      >
+    </section>
+
+    <section class="comic-intro">
+      <h1>Druhý komiks Lusssity a Montyho</h1>
+      <p>
+        Monty dorazí na fotbalové hřiště, ale míč ho příliš nezajímá.
+        Zato volný prostor, tráva a pořádná honička s paničkou? To je přesně jeho disciplína.
+        Čeká tě osm stran skutečné příhody, humoru a jednoho královsky spokojeného Montyho. 👑🐾
+      </p>
+    </section>
+
+    <section class="reader-section" id="cteni">
+
+      <div class="reader-heading">
+
+        <span>📖 Otevřený komiks</span>
+
+        <h2>Listuj příběhem</h2>
+
+        <p>
+          Hero je obálkou příběhu. Potom pokračuj šipkami jako v opravdovém komiksovém sešitě.
+        </p>
+
+      </div>
+
+      <div class="comic-reader">
+
+        <div class="page-stage" id="pageStage">
+
+          <img
+            id="comicPage"
+            src="komiks-002-kral-futbaloveho-ihriska-hero.png"
+            alt="Obálka komiksu Kráľ futbalového ihriska"
+          >
+
+        </div>
+
+        <div class="reader-controls">
+
+          <button
+            class="reader-btn"
+            id="prevPage"
+            type="button"
+            disabled
+          >
+            ← Předchozí
+          </button>
+
+          <div class="page-counter" id="pageCounter">
+            Obálka
+          </div>
+
+          <button
+            class="reader-btn"
+            id="nextPage"
+            type="button"
+          >
+            Další →
+          </button>
+
+        </div>
+
+        <div class="thumbnails" id="thumbnails" aria-label="Náhledy stran komiksu"></div>
+
+        <p class="reader-hint">
+          Můžeš použít také šipky na klávesnici. ♡
+        </p>
+
+        <div class="reader-actions">
+
+          <a href="komiksy-lusssita-monty.html">
+            📚 Zpět do archivu
+          </a>
+
+          <a href="lusssita-monty.html">
+            🐾 Lusssita &amp; Monty
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="ending">
+
+      <div class="ending-bubble">
+
+        <h2>Futbal ho nezaujal. Ihrisko áno.</h2>
+
+        <p>
+          Protože když je Monty na hřišti, pravidla určuje jeho výsost. 👑🐾
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    Jeden den. Jeden komiks. Jeden úsměv. ♡
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* =========================
+         ČTEČKA KOMIKSU
+         ========================= */
+
+      const pages = [
+        {
+          src:"komiks-002-kral-futbaloveho-ihriska-hero.png",
+          label:"Obálka",
+          alt:"Obálka komiksu Kráľ futbalového ihriska"
+        },
+        {
+          src:"komiks-002-kral-futbaloveho-ihriska-01.jpg.jpeg",
+          label:"Strana 1 / 8",
+          alt:"Komiks Kráľ futbalového ihriska – strana 1"
+        },
+        {
+          src:"komiks-002-kral-futbaloveho-ihriska-02.jpg.jpeg",
+          label:"Strana 2 / 8",
+          alt:"Komiks Kráľ futbalového ihriska – strana 2"
+        },
+        {
+          src:"komiks-002-kral-futbaloveho-ihriska-03.jpg.jpeg",
+          label:"Strana 3 / 8",
+          alt:"Komiks Kráľ futbalového ihriska – strana 3"
+        },
+        {
+          src:"komiks-002-kral-futbaloveho-ihriska-04.jpg.jpeg",
+          label:"Strana 4 / 8",
+          alt:"Komiks Kráľ futbalového ihriska – strana 4"
+        },
+        {
+          src:"komiks-002-kral-futbaloveho-ihriska-05.jpg.jpeg",
+          label:"Strana 5 / 8",
+          alt:"Komiks Kráľ futbalového ihriska – strana 5"
+        },
+        {
+          src:"komiks-002-kral-futbaloveho-ihriska-06.jpg.jpeg",
+          label:"Strana 6 / 8",
+          alt:"Komiks Kráľ futbalového ihriska – strana 6"
+        },
+        {
+          src:"komiks-002-kral-futbaloveho-ihriska-07.jpg.jpeg",
+          label:"Strana 7 / 8",
+          alt:"Komiks Kráľ futbalového ihriska – strana 7"
+        },
+        {
+          src:"komiks-002-kral-futbaloveho-ihriska-08.jpg.jpeg",
+          label:"Strana 8 / 8",
+          alt:"Komiks Kráľ futbalového ihriska – strana 8"
+        }
+      ];
+
+      const pageStage = document.getElementById("pageStage");
+      const comicPage = document.getElementById("comicPage");
+      const pageCounter = document.getElementById("pageCounter");
+      const prevPage = document.getElementById("prevPage");
+      const nextPage = document.getElementById("nextPage");
+      const thumbnails = document.getElementById("thumbnails");
+
+      let currentPage = 0;
+
+      function updateThumbnails(){
+        thumbnails.querySelectorAll(".thumb").forEach(function(thumb,index){
+          thumb.classList.toggle("is-active",index===currentPage);
+        });
+      }
+
+      function renderPage(index) {
+        const page = pages[index];
+
+        pageStage.classList.add("is-changing");
+
+        window.setTimeout(function () {
+          comicPage.src = page.src;
+          comicPage.alt = page.alt;
+          pageCounter.textContent = page.label;
+
+          prevPage.disabled = index === 0;
+          nextPage.disabled = index === pages.length - 1;
+
+          nextPage.textContent =
+            index === pages.length - 1
+              ? "Konec příběhu ♡"
+              : "Další →";
+
+          updateThumbnails();
+          pageStage.classList.remove("is-changing");
+        }, 150);
+      }
+
+      pages.forEach(function(page,index){
+        const button = document.createElement("button");
+        const image = document.createElement("img");
+
+        button.type = "button";
+        button.className = "thumb";
+        button.setAttribute("aria-label","Otevřít " + page.label);
+
+        image.src = page.src;
+        image.alt = page.alt;
+
+        button.appendChild(image);
+
+        button.addEventListener("click",function(){
+          currentPage = index;
+          renderPage(currentPage);
+        });
+
+        thumbnails.appendChild(button);
+      });
+
+      prevPage.addEventListener("click", function () {
+        if (currentPage > 0) {
+          currentPage -= 1;
+          renderPage(currentPage);
+        }
+      });
+
+      nextPage.addEventListener("click", function () {
+        if (currentPage < pages.length - 1) {
+          currentPage += 1;
+          renderPage(currentPage);
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowLeft" && currentPage > 0) {
+          currentPage -= 1;
+          renderPage(currentPage);
+        }
+
+        if (
+          event.key === "ArrowRight" &&
+          currentPage < pages.length - 1
+        ) {
+          currentPage += 1;
+          renderPage(currentPage);
+        }
+      });
+
+      renderPage(currentPage);
+
+      /* =========================
+         LÍBÍ SE MI – SUPABASE
+         ========================= */
+
+      const SUPABASE_URL =
+        "https://lggboavbzzvoomveewtl.supabase.co";
+
+      const SUPABASE_KEY =
+        "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+
+      const PAGE_ID =
+        "komiks-002-kral-futbaloveho-ihriska";
+
+      const likeButton =
+        document.getElementById("likeButton");
+
+      const storageKey =
+        `svetCarmenLike_${PAGE_ID}`;
+
+      function getToday() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      }
+
+      async function callSupabase(functionName) {
+        const response = await fetch(
+          `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
+          {
+            method:"POST",
+            headers:{
+              apikey:SUPABASE_KEY,
+              "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+              requested_page_id:PAGE_ID
+            })
+          }
+        );
+
+        if(!response.ok){
+          throw new Error(await response.text());
+        }
+
+        return response.json();
+      }
+
+      function showReady(count){
+        likeButton.textContent =
+          `♡ Líbí se mi ${Number(count) || 0}`;
+        likeButton.disabled = false;
+        likeButton.classList.remove("is-liked");
+      }
+
+      function showThankYou(count){
+        likeButton.textContent =
+          `♥ Děkujeme ${Number(count) || 0}`;
+        likeButton.disabled = true;
+        likeButton.classList.add("is-liked");
+      }
+
+      async function loadLikes(){
+        try{
+          const count =
+            await callSupabase("get_page_likes");
+
+          if(
+            localStorage.getItem(storageKey) === getToday()
+          ){
+            showThankYou(count);
+          }else{
+            showReady(count);
+          }
+        }catch(error){
+          console.error(
+            "Počet srdcí se nepodařilo načíst:",
+            error
+          );
+
+          likeButton.textContent = "♡ Líbí se mi";
+          likeButton.disabled = false;
+        }
+      }
+
+      likeButton.addEventListener(
+        "click",
+        async function(){
+          if(
+            likeButton.disabled ||
+            localStorage.getItem(storageKey) === getToday()
+          ){
+            return;
+          }
+
+          likeButton.disabled = true;
+          likeButton.textContent = "♡ Odesílám…";
+
+          try{
+            const newCount =
+              await callSupabase("add_page_like");
+
+            localStorage.setItem(
+              storageKey,
+              getToday()
+            );
+
+            showThankYou(newCount);
+          }catch(error){
+            console.error(
+              "Srdce se nepodařilo odeslat:",
+              error
+            );
+
+            likeButton.textContent = "♡ Zkusit znovu";
+            likeButton.disabled = false;
+          }
+        }
+      );
+
+      loadLikes();
+    })();
+  </script>
+
+</body>
+</htm
