@@ -806,7 +806,11 @@
         0 0 28px rgba(234,190,84,.32),
         inset 0 2px 5px rgba(255,255,255,.35);
     }
-
+/* ODEMČENÝ ZÁMEK – KAPITOLA 2 */
+.real-lock.unlocked::before {
+  transform: translateX(18px) rotate(28deg);
+  transform-origin: left bottom;
+}
     .locked-text {
       position: relative;
       z-index: 3;
@@ -1288,7 +1292,7 @@
     Kapitola 2
   </div>
 
-  <div class="real-lock">
+  <div class="real-lock unlocked">
     🐾
   </div>
 
