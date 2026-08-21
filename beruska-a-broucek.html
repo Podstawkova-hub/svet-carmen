@@ -8,7 +8,7 @@
 
   <meta
     name="description"
-    content="Beruška a Brouček – komiksová série Světa Carmen o skutečném přátelství, které překonává vzdálenost i těžké chvíle."
+    content="Beruška a Brouček – komiksová série Světa Carmen o skutečném přátelství."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,6 @@
       --pink:#f35ca8;
       --pink-light:#ff92c8;
       --deep:#a52d6f;
-      --cream:#fff9f2;
       --text:#3b2230;
 
       --serif:
@@ -94,9 +93,7 @@
       font:inherit;
     }
 
-    /* =========================================
-       HORNÍ LIŠTA
-       ========================================= */
+    /* HORNÍ LIŠTA */
 
     .topbar{
       position:sticky;
@@ -121,9 +118,7 @@
 
     .brand{
       justify-self:start;
-
       color:#322129;
-
       font-family:var(--serif);
       font-size:16px;
       line-height:.9;
@@ -131,9 +126,7 @@
 
     .brand strong{
       display:block;
-
       color:var(--pink);
-
       font-size:29px;
       font-style:italic;
       font-weight:500;
@@ -150,12 +143,9 @@
 
     .main-nav a{
       position:relative;
-
       color:#624b57;
-
       font-size:15px;
       font-weight:700;
-
       transition:color .2s ease;
     }
 
@@ -166,7 +156,6 @@
       left:50%;
 
       height:2px;
-
       content:"";
 
       background:
@@ -240,9 +229,7 @@
       cursor:default;
     }
 
-    /* =========================================
-       HERO
-       ========================================= */
+    /* HERO */
 
     .hero{
       width:min(1500px,94%);
@@ -273,9 +260,7 @@
       transform:scale(1.012);
     }
 
-    /* =========================================
-       ÚVOD
-       ========================================= */
+    /* ÚVOD */
 
     .intro{
       width:min(1000px,92%);
@@ -289,9 +274,11 @@
       margin-bottom:10px;
 
       color:var(--pink);
+
       font-family:Arial, Helvetica, sans-serif;
       font-size:13px;
       font-weight:800;
+
       letter-spacing:.14em;
       text-transform:uppercase;
     }
@@ -316,13 +303,11 @@
       line-height:1.65;
     }
 
-    /* =========================================
-       VÝBĚR DÍLŮ
-       ========================================= */
+    /* VÝBĚR DÍLŮ */
 
     .series{
       width:min(1250px,92%);
-      margin:10px auto 80px;
+      margin:10px auto 70px;
     }
 
     .series-heading{
@@ -408,6 +393,7 @@
       font-family:Arial, Helvetica, sans-serif;
       font-size:12px;
       font-weight:800;
+
       letter-spacing:.08em;
       text-transform:uppercase;
     }
@@ -420,6 +406,8 @@
       font-family:var(--serif);
       font-size:clamp(27px,3vw,38px);
       font-weight:600;
+
+      text-align:center;
     }
 
     .volume-card p{
@@ -427,8 +415,11 @@
       margin:0 auto 20px;
 
       color:#624653;
+
       font-size:17px;
       line-height:1.55;
+
+      text-align:center;
     }
 
     .open-book{
@@ -471,154 +462,10 @@
         0 17px 34px rgba(165,45,111,.31);
     }
 
-    /* =========================================
-       JEDNOTLIVÉ DÍLY
-       ========================================= */
-
-    .story-section{
-      padding:70px 14px 85px;
-      scroll-margin-top:95px;
-    }
-
-    .story-section.alt{
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,.4),
-          rgba(255,231,243,.55)
-        );
-    }
-
-    .story-heading{
-      width:min(900px,92%);
-      margin:0 auto 34px;
-      text-align:center;
-    }
-
-    .story-heading .number{
-      margin-bottom:8px;
-
-      color:var(--pink);
-
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:.13em;
-      text-transform:uppercase;
-    }
-
-    .story-heading h2{
-      margin-bottom:12px;
-
-      color:var(--deep);
-
-      font-family:var(--serif);
-      font-size:clamp(36px,5vw,58px);
-      font-weight:600;
-    }
-
-    .story-heading p{
-      max-width:760px;
-      margin:0 auto;
-
-      color:#624653;
-
-      font-size:18px;
-      line-height:1.65;
-    }
-
-    /* =========================================
-       HUDBA – POUZE DÍL 001
-       ========================================= */
-
-    .music{
-      width:min(760px,92%);
-      margin:0 auto 38px;
-      padding:24px;
-
-      text-align:center;
-
-      background:rgba(255,255,255,.7);
-
-      border:1px solid rgba(165,45,111,.12);
-      border-radius:24px;
-
-      box-shadow:
-        0 12px 32px rgba(108,43,79,.11);
-    }
-
-    .music-title{
-      margin-bottom:13px;
-
-      color:var(--deep);
-
-      font-family:var(--serif);
-      font-size:23px;
-      font-weight:600;
-    }
-
-    audio{
-      width:min(100%,560px);
-    }
-
-    /* =========================================
-       STRÁNKY KOMIKSU
-       ========================================= */
-
-    .book{
-      width:min(1050px,96%);
-      margin:0 auto;
-    }
-
-    .page{
-      margin:26px auto;
-      padding:10px;
-
-      background:#fff;
-
-      border:1px solid rgba(165,45,111,.08);
-      border-radius:22px;
-
-      box-shadow:
-        0 12px 34px rgba(105,42,75,.16);
-    }
-
-    .page img{
-      width:100%;
-      height:auto;
-
-      border-radius:16px;
-    }
-
-    .story-return{
-      display:inline-flex;
-
-      margin-top:38px;
-      padding:12px 21px;
-
-      align-items:center;
-      justify-content:center;
-
-      color:var(--deep);
-      background:#fff;
-
-      border:2px solid var(--pink-light);
-      border-radius:999px;
-
-      box-shadow:
-        0 8px 20px rgba(165,45,111,.11);
-
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:14px;
-      font-weight:800;
-    }
-
-    /* =========================================
-       ZÁVĚR
-       ========================================= */
+    /* ZÁVĚR */
 
     .page-ending{
-      padding:45px 20px 70px;
+      padding:10px 20px 70px;
       text-align:center;
     }
 
@@ -630,12 +477,9 @@
       font-weight:700;
     }
 
-    /* =========================================
-       TABLET
-       ========================================= */
+    /* TABLET */
 
     @media(max-width:900px){
-
       .main-nav{
         gap:18px;
       }
@@ -650,12 +494,9 @@
       }
     }
 
-    /* =========================================
-       MOBIL
-       ========================================= */
+    /* MOBIL */
 
     @media(max-width:700px){
-
       .topbar{
         grid-template-columns:1fr auto;
         min-height:70px;
@@ -698,7 +539,6 @@
       .hero-image{
         width:100%;
         height:auto;
-
         object-fit:contain;
       }
 
@@ -718,34 +558,13 @@
         padding:16px;
         border-radius:24px;
       }
-
-      .story-section{
-        padding:55px 6px 70px;
-      }
-
-      .book{
-        width:100%;
-      }
-
-      .page{
-        margin:18px auto;
-        padding:5px;
-
-        border-radius:14px;
-      }
-
-      .page img{
-        border-radius:10px;
-      }
     }
   </style>
 </head>
 
-<body id="top">
+<body>
 
-  <!-- =========================================
-       HORNÍ LIŠTA
-       ========================================= -->
+  <!-- HORNÍ LIŠTA -->
 
   <header class="topbar">
 
@@ -774,9 +593,7 @@
 
   <main>
 
-    <!-- =========================================
-         HERO
-         ========================================= -->
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -789,9 +606,7 @@
     </section>
 
 
-    <!-- =========================================
-         ÚVOD
-         ========================================= -->
+    <!-- ÚVOD -->
 
     <section class="intro">
 
@@ -809,11 +624,9 @@
     </section>
 
 
-    <!-- =========================================
-         VÝBĚR DÍLŮ
-         ========================================= -->
+    <!-- VÝBĚR DÍLŮ -->
 
-    <section class="series" id="dily">
+    <section class="series">
 
       <div class="series-heading">
 
@@ -852,7 +665,7 @@
 
           <a
             class="open-book"
-            href="#dil-001"
+            href="beruska-a-broucek-001.html"
           >
             📖 Otevřít díl 001
           </a>
@@ -883,7 +696,7 @@
 
           <a
             class="open-book"
-            href="#dil-002"
+            href="beruska-a-broucek-002.html"
           >
             ❤️ Otevřít díl 002
           </a>
@@ -895,312 +708,12 @@
     </section>
 
 
-    <!-- =========================================
-         DÍL 001
-         ========================================= -->
-
-    <section
-      class="story-section alt"
-      id="dil-001"
-    >
-
-      <div class="story-heading">
-
-        <div class="number">
-          BERUŠKA A BROUČEK • DÍL 001
-        </div>
-
-        <h2>Tady to všechno začalo</h2>
-
-        <p>
-          Původní první vydání Berušky a Broučka.
-          První díl zůstává přesně takový, jak vznikl.
-        </p>
-
-      </div>
-
-
-      <!-- HUDBA DÍLU 001 -->
-
-      <section class="music">
-
-        <div class="music-title">
-          🎵 Hymna Berušky a Broučka
-        </div>
-
-        <audio controls>
-          <source
-            src="Ladybug%20Little%20Bug%20-%20navrh.mp3"
-            type="audio/mpeg"
-          >
-
-          Tvůj prohlížeč nepodporuje přehrávání hudby.
-        </audio>
-
-      </section>
-
-
-      <div class="book">
-
-        <div class="page">
-          <img
-            src="obalka.png"
-            alt="Obálka komiksu Beruška a Brouček – Díl 001"
-          >
-        </div>
-
-        <div class="page">
-          <img src="strana-1.png" alt="Díl 001 – strana 1">
-        </div>
-
-        <div class="page">
-          <img src="strana-2.png" alt="Díl 001 – strana 2">
-        </div>
-
-        <div class="page">
-          <img src="strana-3.png" alt="Díl 001 – strana 3">
-        </div>
-
-        <div class="page">
-          <img src="strana-4.png" alt="Díl 001 – strana 4">
-        </div>
-
-        <div class="page">
-          <img src="strana-5.png" alt="Díl 001 – strana 5">
-        </div>
-
-        <div class="page">
-          <img src="strana-6.png" alt="Díl 001 – strana 6">
-        </div>
-
-        <div class="page">
-          <img src="strana-7.png" alt="Díl 001 – strana 7">
-        </div>
-
-        <div class="page">
-          <img src="strana-8.png" alt="Díl 001 – strana 8">
-        </div>
-
-        <div class="page">
-          <img src="strana-9.png" alt="Díl 001 – strana 9">
-        </div>
-
-        <div class="page">
-          <img src="strana-10.png" alt="Díl 001 – strana 10">
-        </div>
-
-        <div class="page">
-          <img src="stranka-11.png" alt="Díl 001 – strana 11">
-        </div>
-
-        <div class="page">
-          <img src="strana-12.png" alt="Díl 001 – strana 12">
-        </div>
-
-        <div class="page">
-          <img src="zadni-strana.png" alt="Díl 001 – zadní strana">
-        </div>
-
-      </div>
-
-
-      <a
-        class="story-return"
-        href="#dily"
-      >
-        ↑ Zpět k výběru dílů
-      </a>
-
-    </section>
-
-
-    <!-- =========================================
-         DÍL 002
-         ========================================= -->
-
-    <section
-      class="story-section"
-      id="dil-002"
-    >
-
-      <div class="story-heading">
-
-        <div class="number">
-          BERUŠKA A BROUČEK • DÍL 002
-        </div>
-
-        <h2>Záchrana Broučka</h2>
-
-        <p>
-          Skutečný příběh jednoho večera,
-          kdy vzdálenost mezi Prahou a Vídní přestala znamenat vůbec nic.
-        </p>
-
-      </div>
-
-
-      <!-- DÍL 002 ZATÍM NEMÁ HYMNU -->
-
-
-      <div class="book">
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-obalka.png"
-            alt="Obálka dílu 002 – Záchrana Broučka"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-01.png"
-            alt="Díl 002 – strana 1"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-02.png"
-            alt="Díl 002 – strana 2"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-03.png"
-            alt="Díl 002 – strana 3"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-04.png"
-            alt="Díl 002 – strana 4"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-05.png"
-            alt="Díl 002 – strana 5"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-06.png"
-            alt="Díl 002 – strana 6"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-07.png"
-            alt="Díl 002 – strana 7"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-08.png"
-            alt="Díl 002 – strana 8"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-09.png"
-            alt="Díl 002 – strana 9"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-10.png"
-            alt="Díl 002 – strana 10"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-11.png"
-            alt="Díl 002 – strana 11"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-12.png"
-            alt="Díl 002 – strana 12"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-13.png"
-            alt="Díl 002 – strana 13"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-14.png"
-            alt="Díl 002 – strana 14"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-15.png"
-            alt="Díl 002 – strana 15"
-            loading="lazy"
-          >
-        </div>
-
-        <div class="page">
-          <img
-            src="beruska-a-broucek-002-16.png"
-            alt="Díl 002 – strana 16 – Konec"
-            loading="lazy"
-          >
-        </div>
-
-      </div>
-
-
-      <a
-        class="story-return"
-        href="#dily"
-      >
-        ↑ Zpět k výběru dílů
-      </a>
-
-    </section>
-
-
-    <!-- =========================================
-         ZÁVĚR
-         ========================================= -->
+    <!-- KONEC HLAVNÍ STRÁNKY -->
 
     <section class="page-ending">
 
       <p>
-        Beruška a Brouček — přátelství, které píše skutečné příběhy. ♡
+        Dva díly. Jedno přátelství. ♡
       </p>
 
     </section>
@@ -1208,9 +721,7 @@
   </main>
 
 
-  <!-- =========================================
-       SRDÍČKA
-       ========================================= -->
+  <!-- SRDÍČKA -->
 
   <script>
   (function () {
