@@ -6,300 +6,1409 @@
 
   <title>Beruška a Brouček | Svět Carmen</title>
 
+  <meta
+    name="description"
+    content="Beruška a Brouček – komiksová série Světa Carmen o skutečném přátelství, které překonává vzdálenost i těžké chvíle."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
   <style>
     :root{
-      --pink:#ff74b8;
+      --pink:#f35ca8;
+      --pink-light:#ff92c8;
       --deep:#a52d6f;
+      --cream:#fff9f2;
       --text:#3b2230;
+
+      --serif:
+        "Playfair Display",
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      --hand:
+        "Caveat",
+        "Segoe Print",
+        cursive;
     }
 
     *{
+      margin:0;
+      padding:0;
       box-sizing:border-box;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
-      margin:0;
-      font-family:Georgia, "Times New Roman", serif;
-      background:linear-gradient(180deg,#fff3fb,#ffe1f1,#fff8ec);
+      min-height:100vh;
+      overflow-x:hidden;
+
       color:var(--text);
-      text-align:center;
+
+      background:
+        radial-gradient(
+          circle at 10% 7%,
+          rgba(255,166,207,.22),
+          transparent 27%
+        ),
+        radial-gradient(
+          circle at 92% 13%,
+          rgba(255,218,166,.22),
+          transparent 28%
+        ),
+        linear-gradient(
+          180deg,
+          #fff8fb 0%,
+          #ffeaf4 46%,
+          #fff8ef 100%
+        );
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
     }
 
-    header{
-      padding:35px 18px 20px;
-    }
-
-    h1{
-      margin:0;
-      color:var(--deep);
-      font-size:34px;
-    }
-
-    p{
-      max-width:820px;
-      margin:12px auto;
-      font-size:18px;
-      line-height:1.6;
-    }
-
-    .top-actions{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:16px;
-    }
-
-    .back{
-      display:inline-block;
-      padding:10px 18px;
-      border-radius:999px;
-      background:var(--deep);
-      color:white;
+    a{
+      color:inherit;
       text-decoration:none;
-      font-weight:bold;
     }
 
-    .story-like-btn{
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    button{
       border:0;
-      border-radius:999px;
-      padding:10px 18px;
+      font:inherit;
+    }
+
+    /* =========================================
+       HORNÍ LIŠTA
+       ========================================= */
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+
+      min-height:78px;
+      padding:10px 5vw;
+
+      background:rgba(255,251,248,.97);
+      border-bottom:1px solid rgba(165,45,111,.12);
+
+      box-shadow:
+        0 10px 35px rgba(89,39,67,.08);
+
+      backdrop-filter:blur(16px);
+    }
+
+    .brand{
+      justify-self:start;
+
+      color:#322129;
+
+      font-family:var(--serif);
+      font-size:16px;
+      line-height:.9;
+    }
+
+    .brand strong{
+      display:block;
+
+      color:var(--pink);
+
+      font-size:29px;
+      font-style:italic;
+      font-weight:500;
+    }
+
+    .main-nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:30px;
+
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    .main-nav a{
+      position:relative;
+
+      color:#624b57;
+
+      font-size:15px;
+      font-weight:700;
+
+      transition:color .2s ease;
+    }
+
+    .main-nav a::after{
+      position:absolute;
+      right:50%;
+      bottom:-10px;
+      left:50%;
+
+      height:2px;
+
+      content:"";
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--deep),
+          var(--pink)
+        );
+
+      transition:
+        right .25s ease,
+        left .25s ease;
+    }
+
+    .main-nav a:hover{
+      color:var(--deep);
+    }
+
+    .main-nav a:hover::after{
+      right:0;
+      left:0;
+    }
+
+    .top-like-btn{
+      justify-self:end;
+
+      min-width:145px;
+      padding:11px 18px;
+
       color:#fff;
-      background:linear-gradient(135deg,var(--deep),var(--pink));
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--deep),
+          var(--pink)
+        );
+
+      border-radius:999px;
+
+      box-shadow:
+        0 10px 25px rgba(165,45,111,.24);
+
       cursor:pointer;
-      box-shadow:0 9px 23px rgba(165,45,111,.21);
+
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:14px;
+      font-weight:700;
+
+      white-space:nowrap;
+
       transition:
         transform .2s ease,
         box-shadow .2s ease;
-      white-space:nowrap;
-      font:inherit;
-      font-weight:bold;
     }
 
-    .story-like-btn:hover:not(:disabled){
-      transform:translateY(-1px);
-      box-shadow:0 13px 28px rgba(165,45,111,.27);
+    .top-like-btn:hover:not(:disabled){
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 15px 33px rgba(165,45,111,.32);
     }
 
-    .story-like-btn.is-liked{
+    .top-like-btn.is-liked{
       color:var(--deep);
       background:#fff;
       outline:2px solid var(--pink);
     }
 
-    .story-like-btn:disabled{
+    .top-like-btn:disabled{
       cursor:default;
     }
 
+    /* =========================================
+       HERO
+       ========================================= */
+
+    .hero{
+      width:min(1500px,94%);
+      margin:28px auto 0;
+
+      overflow:hidden;
+
+      border:1px solid rgba(255,255,255,.65);
+      border-radius:34px;
+
+      background:#f5c8d5;
+
+      box-shadow:
+        0 28px 70px rgba(84,35,61,.22);
+    }
+
+    .hero-image{
+      width:100%;
+      height:auto;
+
+      object-fit:cover;
+      object-position:center;
+
+      transition:transform 1s ease;
+    }
+
+    .hero:hover .hero-image{
+      transform:scale(1.012);
+    }
+
+    /* =========================================
+       ÚVOD
+       ========================================= */
+
+    .intro{
+      width:min(1000px,92%);
+      margin:0 auto;
+      padding:48px 20px 34px;
+      text-align:center;
+    }
+
+    .intro-kicker{
+      display:block;
+      margin-bottom:10px;
+
+      color:var(--pink);
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .intro h1{
+      margin-bottom:15px;
+
+      color:var(--deep);
+
+      font-family:var(--serif);
+      font-size:clamp(42px,6vw,72px);
+      font-weight:600;
+    }
+
+    .intro p{
+      max-width:820px;
+      margin:0 auto;
+
+      color:#59404d;
+
+      font-size:clamp(17px,2vw,21px);
+      line-height:1.65;
+    }
+
+    /* =========================================
+       VÝBĚR DÍLŮ
+       ========================================= */
+
+    .series{
+      width:min(1250px,92%);
+      margin:10px auto 80px;
+    }
+
+    .series-heading{
+      margin-bottom:38px;
+      text-align:center;
+    }
+
+    .series-heading h2{
+      margin-bottom:10px;
+
+      color:var(--deep);
+
+      font-family:var(--serif);
+      font-size:clamp(36px,5vw,58px);
+      font-weight:600;
+    }
+
+    .series-heading p{
+      max-width:760px;
+      margin:0 auto;
+
+      color:#654653;
+      font-size:18px;
+      line-height:1.6;
+    }
+
+    .volumes{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:34px;
+    }
+
+    .volume-card{
+      display:flex;
+      padding:24px;
+
+      flex-direction:column;
+
+      background:rgba(255,255,255,.76);
+
+      border:1px solid rgba(255,255,255,.85);
+      border-radius:30px;
+
+      box-shadow:
+        0 20px 48px rgba(100,42,74,.15);
+
+      backdrop-filter:blur(8px);
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .volume-card:hover{
+      transform:translateY(-5px);
+
+      box-shadow:
+        0 28px 62px rgba(100,42,74,.21);
+    }
+
+    .volume-cover{
+      width:100%;
+      height:auto;
+
+      border-radius:20px;
+
+      box-shadow:
+        0 18px 38px rgba(51,20,38,.22);
+    }
+
+    .volume-number{
+      display:inline-block;
+
+      margin:23px auto 8px;
+      padding:7px 13px;
+
+      color:var(--deep);
+      background:#fff0f7;
+
+      border:1px solid rgba(165,45,111,.16);
+      border-radius:999px;
+
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .volume-card h3{
+      margin-bottom:10px;
+
+      color:var(--deep);
+
+      font-family:var(--serif);
+      font-size:clamp(27px,3vw,38px);
+      font-weight:600;
+    }
+
+    .volume-card p{
+      max-width:470px;
+      margin:0 auto 20px;
+
+      color:#624653;
+      font-size:17px;
+      line-height:1.55;
+    }
+
+    .open-book{
+      display:inline-flex;
+
+      margin-top:auto;
+      padding:13px 23px;
+
+      align-self:center;
+      align-items:center;
+      justify-content:center;
+
+      color:white;
+
+      background:
+        linear-gradient(
+          90deg,
+          #bd2e76,
+          var(--pink)
+        );
+
+      border-radius:999px;
+
+      box-shadow:
+        0 12px 28px rgba(165,45,111,.24);
+
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:15px;
+      font-weight:800;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .open-book:hover{
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 17px 34px rgba(165,45,111,.31);
+    }
+
+    /* =========================================
+       JEDNOTLIVÉ DÍLY
+       ========================================= */
+
+    .story-section{
+      padding:70px 14px 85px;
+      scroll-margin-top:95px;
+    }
+
+    .story-section.alt{
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.4),
+          rgba(255,231,243,.55)
+        );
+    }
+
+    .story-heading{
+      width:min(900px,92%);
+      margin:0 auto 34px;
+      text-align:center;
+    }
+
+    .story-heading .number{
+      margin-bottom:8px;
+
+      color:var(--pink);
+
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+    }
+
+    .story-heading h2{
+      margin-bottom:12px;
+
+      color:var(--deep);
+
+      font-family:var(--serif);
+      font-size:clamp(36px,5vw,58px);
+      font-weight:600;
+    }
+
+    .story-heading p{
+      max-width:760px;
+      margin:0 auto;
+
+      color:#624653;
+
+      font-size:18px;
+      line-height:1.65;
+    }
+
+    /* =========================================
+       HUDBA – POUZE DÍL 001
+       ========================================= */
+
     .music{
-      margin:22px auto;
-      padding:15px;
+      width:min(760px,92%);
+      margin:0 auto 38px;
+      padding:24px;
+
+      text-align:center;
+
+      background:rgba(255,255,255,.7);
+
+      border:1px solid rgba(165,45,111,.12);
+      border-radius:24px;
+
+      box-shadow:
+        0 12px 32px rgba(108,43,79,.11);
+    }
+
+    .music-title{
+      margin-bottom:13px;
+
+      color:var(--deep);
+
+      font-family:var(--serif);
+      font-size:23px;
+      font-weight:600;
     }
 
     audio{
-      width:min(90%,520px);
+      width:min(100%,560px);
     }
 
+    /* =========================================
+       STRÁNKY KOMIKSU
+       ========================================= */
+
     .book{
-      max-width:980px;
-      margin:0 auto 40px;
-      padding:10px;
+      width:min(1050px,96%);
+      margin:0 auto;
     }
 
     .page{
-      margin:24px auto;
+      margin:26px auto;
       padding:10px;
-      background:white;
+
+      background:#fff;
+
+      border:1px solid rgba(165,45,111,.08);
       border-radius:22px;
-      box-shadow:0 8px 28px rgba(165,45,111,.18);
+
+      box-shadow:
+        0 12px 34px rgba(105,42,75,.16);
     }
 
     .page img{
       width:100%;
       height:auto;
-      display:block;
+
       border-radius:16px;
     }
 
-    footer{
-      padding:30px 15px 45px;
-      color:#7b4a60;
+    .story-return{
+      display:inline-flex;
+
+      margin-top:38px;
+      padding:12px 21px;
+
+      align-items:center;
+      justify-content:center;
+
+      color:var(--deep);
+      background:#fff;
+
+      border:2px solid var(--pink-light);
+      border-radius:999px;
+
+      box-shadow:
+        0 8px 20px rgba(165,45,111,.11);
+
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:14px;
+      font-weight:800;
     }
 
-    @media(max-width:600px){
-      h1{
-        font-size:30px;
+    /* =========================================
+       ZÁVĚR
+       ========================================= */
+
+    .page-ending{
+      padding:45px 20px 70px;
+      text-align:center;
+    }
+
+    .page-ending p{
+      color:var(--deep);
+
+      font-family:var(--hand);
+      font-size:clamp(29px,4vw,46px);
+      font-weight:700;
+    }
+
+    /* =========================================
+       TABLET
+       ========================================= */
+
+    @media(max-width:900px){
+
+      .main-nav{
+        gap:18px;
       }
 
-      p{
-        font-size:17px;
+      .hero{
+        width:96%;
+        border-radius:26px;
       }
 
-      .back,
-      .story-like-btn{
-        width:min(100%,320px);
+      .volumes{
+        gap:25px;
+      }
+    }
+
+    /* =========================================
+       MOBIL
+       ========================================= */
+
+    @media(max-width:700px){
+
+      .topbar{
+        grid-template-columns:1fr auto;
+        min-height:70px;
+        padding:9px 4vw;
+      }
+
+      .brand{
+        font-size:14px;
+      }
+
+      .brand strong{
+        font-size:25px;
+      }
+
+      .main-nav{
+        display:none;
+      }
+
+      .top-like-btn{
+        min-width:0;
+        max-width:136px;
+        padding:10px 13px;
+
+        overflow:hidden;
+
+        font-size:12px;
+        text-overflow:ellipsis;
+      }
+
+      .hero{
+        width:100%;
+        margin-top:0;
+
+        border:0;
+        border-radius:0;
+
+        box-shadow:none;
+      }
+
+      .hero-image{
+        width:100%;
+        height:auto;
+
+        object-fit:contain;
+      }
+
+      .hero:hover .hero-image{
+        transform:none;
+      }
+
+      .intro{
+        padding-top:34px;
+      }
+
+      .volumes{
+        grid-template-columns:1fr;
+      }
+
+      .volume-card{
+        padding:16px;
+        border-radius:24px;
+      }
+
+      .story-section{
+        padding:55px 6px 70px;
+      }
+
+      .book{
+        width:100%;
+      }
+
+      .page{
+        margin:18px auto;
+        padding:5px;
+
+        border-radius:14px;
+      }
+
+      .page img{
+        border-radius:10px;
       }
     }
   </style>
 </head>
 
-<body>
+<body id="top">
 
-<header>
-  <h1>Beruška a Brouček</h1>
+  <!-- =========================================
+       HORNÍ LIŠTA
+       ========================================= -->
 
-  <p>
-    Komiks věnovaný Eny od Carmen. Příběh o přátelství, které nevzniklo náhodou,
-    ale díky jednomu obyčejnému okamžiku, který změnil všechno.
-  </p>
+  <header class="topbar">
 
-  <div class="top-actions">
-    <a class="back" href="svet.html">
-      ← Zpět do Světa Carmen
+    <a class="brand" href="index.html">
+      Svět
+      <strong>Carmen♡</strong>
     </a>
 
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <a href="index.html">Domů</a>
+      <a href="svet.html">Svět příběhů</a>
+    </nav>
+
     <button
-      class="story-like-btn"
+      class="top-like-btn"
       id="likeButton"
       type="button"
       aria-label="Dát příběhu Beruška a Brouček srdce"
       disabled
     >
-      ♡ Líbí se mi tento příběh…
+      ♡ Líbí se mi…
     </button>
-  </div>
-</header>
 
-<section class="music">
-  <p>Hudba ke komiksu:</p>
+  </header>
 
-  <audio controls>
-    <source src="Ladybug%20Little%20Bug%20-%20navrh.mp3" type="audio/mpeg">
-    Tvůj prohlížeč nepodporuje přehrávání hudby.
-  </audio>
-</section>
 
-<main class="book">
-  <div class="page"><img src="obalka.png" alt="Obálka komiksu Beruška a Brouček"></div>
-  <div class="page"><img src="strana-1.png" alt="Strana 1"></div>
-  <div class="page"><img src="strana-2.png" alt="Strana 2"></div>
-  <div class="page"><img src="strana-3.png" alt="Strana 3"></div>
-  <div class="page"><img src="strana-4.png" alt="Strana 4"></div>
-  <div class="page"><img src="strana-5.png" alt="Strana 5"></div>
-  <div class="page"><img src="strana-6.png" alt="Strana 6"></div>
-  <div class="page"><img src="strana-7.png" alt="Strana 7"></div>
-  <div class="page"><img src="strana-8.png" alt="Strana 8"></div>
-  <div class="page"><img src="strana-9.png" alt="Strana 9"></div>
-  <div class="page"><img src="strana-10.png" alt="Strana 10"></div>
-  <div class="page"><img src="stranka-11.png" alt="Strana 11"></div>
-  <div class="page"><img src="strana-12.png" alt="Strana 12"></div>
-  <div class="page"><img src="zadni-strana.png" alt="Zadní strana"></div>
-</main>
+  <main>
 
-<footer>
-  <p>Vytvořeno srdcem pro Eny. 🐞</p>
-</footer>
+    <!-- =========================================
+         HERO
+         ========================================= -->
 
-<script>
-(function () {
-  "use strict";
+    <section class="hero">
 
-  const SUPABASE_URL = "https://lggboavbzzvoomveewtl.supabase.co";
-  const SUPABASE_KEY = "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
-  const PAGE_ID = "beruska-a-broucek";
+      <img
+        class="hero-image"
+        src="beruska-a-broucek-hero.png"
+        alt="Beruška a Brouček"
+      >
 
-  const likeButton = document.getElementById("likeButton");
-  const storageKey = `svetCarmenLike_${PAGE_ID}`;
+    </section>
 
-  function getToday() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  }
 
-  async function callSupabase(functionName) {
-    const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
-      {
-        method: "POST",
-        headers: {
-          apikey: SUPABASE_KEY,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          requested_page_id: PAGE_ID
-        })
+    <!-- =========================================
+         ÚVOD
+         ========================================= -->
+
+    <section class="intro">
+
+      <span class="intro-kicker">
+        Komiksová série Světa Carmen
+      </span>
+
+      <h1>Beruška a Brouček</h1>
+
+      <p>
+        Příběhy o přátelství, které dokáže překonat vzdálenost,
+        strach i chvíle, kdy jde opravdu o všechno.
+      </p>
+
+    </section>
+
+
+    <!-- =========================================
+         VÝBĚR DÍLŮ
+         ========================================= -->
+
+    <section class="series" id="dily">
+
+      <div class="series-heading">
+
+        <h2>Vyber si příběh</h2>
+
+        <p>
+          Každý díl zachycuje jeden skutečný okamžik,
+          který spojil Berušku a Broučka ještě o trochu víc.
+        </p>
+
+      </div>
+
+
+      <div class="volumes">
+
+        <!-- DÍL 001 -->
+
+        <article class="volume-card">
+
+          <img
+            class="volume-cover"
+            src="obalka.png"
+            alt="Beruška a Brouček – Díl 001"
+          >
+
+          <span class="volume-number">
+            Díl 001
+          </span>
+
+          <h3>Tady to všechno začalo</h3>
+
+          <p>
+            První příběh Berušky a Broučka.
+            Původní vydání, kterým začal jejich společný komiksový svět.
+          </p>
+
+          <a
+            class="open-book"
+            href="#dil-001"
+          >
+            📖 Otevřít díl 001
+          </a>
+
+        </article>
+
+
+        <!-- DÍL 002 -->
+
+        <article class="volume-card">
+
+          <img
+            class="volume-cover"
+            src="beruska-a-broucek-002-obalka.png"
+            alt="Beruška a Brouček – Díl 002 – Záchrana Broučka"
+          >
+
+          <span class="volume-number">
+            Díl 002
+          </span>
+
+          <h3>Záchrana Broučka</h3>
+
+          <p>
+            Jeden večer. Dvě města.
+            A jedno rozhodnutí, které přišlo za pět minut dvanáct.
+          </p>
+
+          <a
+            class="open-book"
+            href="#dil-002"
+          >
+            ❤️ Otevřít díl 002
+          </a>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         DÍL 001
+         ========================================= -->
+
+    <section
+      class="story-section alt"
+      id="dil-001"
+    >
+
+      <div class="story-heading">
+
+        <div class="number">
+          BERUŠKA A BROUČEK • DÍL 001
+        </div>
+
+        <h2>Tady to všechno začalo</h2>
+
+        <p>
+          Původní první vydání Berušky a Broučka.
+          První díl zůstává přesně takový, jak vznikl.
+        </p>
+
+      </div>
+
+
+      <!-- HUDBA DÍLU 001 -->
+
+      <section class="music">
+
+        <div class="music-title">
+          🎵 Hymna Berušky a Broučka
+        </div>
+
+        <audio controls>
+          <source
+            src="Ladybug%20Little%20Bug%20-%20navrh.mp3"
+            type="audio/mpeg"
+          >
+
+          Tvůj prohlížeč nepodporuje přehrávání hudby.
+        </audio>
+
+      </section>
+
+
+      <div class="book">
+
+        <div class="page">
+          <img
+            src="obalka.png"
+            alt="Obálka komiksu Beruška a Brouček – Díl 001"
+          >
+        </div>
+
+        <div class="page">
+          <img src="strana-1.png" alt="Díl 001 – strana 1">
+        </div>
+
+        <div class="page">
+          <img src="strana-2.png" alt="Díl 001 – strana 2">
+        </div>
+
+        <div class="page">
+          <img src="strana-3.png" alt="Díl 001 – strana 3">
+        </div>
+
+        <div class="page">
+          <img src="strana-4.png" alt="Díl 001 – strana 4">
+        </div>
+
+        <div class="page">
+          <img src="strana-5.png" alt="Díl 001 – strana 5">
+        </div>
+
+        <div class="page">
+          <img src="strana-6.png" alt="Díl 001 – strana 6">
+        </div>
+
+        <div class="page">
+          <img src="strana-7.png" alt="Díl 001 – strana 7">
+        </div>
+
+        <div class="page">
+          <img src="strana-8.png" alt="Díl 001 – strana 8">
+        </div>
+
+        <div class="page">
+          <img src="strana-9.png" alt="Díl 001 – strana 9">
+        </div>
+
+        <div class="page">
+          <img src="strana-10.png" alt="Díl 001 – strana 10">
+        </div>
+
+        <div class="page">
+          <img src="stranka-11.png" alt="Díl 001 – strana 11">
+        </div>
+
+        <div class="page">
+          <img src="strana-12.png" alt="Díl 001 – strana 12">
+        </div>
+
+        <div class="page">
+          <img src="zadni-strana.png" alt="Díl 001 – zadní strana">
+        </div>
+
+      </div>
+
+
+      <a
+        class="story-return"
+        href="#dily"
+      >
+        ↑ Zpět k výběru dílů
+      </a>
+
+    </section>
+
+
+    <!-- =========================================
+         DÍL 002
+         ========================================= -->
+
+    <section
+      class="story-section"
+      id="dil-002"
+    >
+
+      <div class="story-heading">
+
+        <div class="number">
+          BERUŠKA A BROUČEK • DÍL 002
+        </div>
+
+        <h2>Záchrana Broučka</h2>
+
+        <p>
+          Skutečný příběh jednoho večera,
+          kdy vzdálenost mezi Prahou a Vídní přestala znamenat vůbec nic.
+        </p>
+
+      </div>
+
+
+      <!-- DÍL 002 ZATÍM NEMÁ HYMNU -->
+
+
+      <div class="book">
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-obalka.png"
+            alt="Obálka dílu 002 – Záchrana Broučka"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-01.png"
+            alt="Díl 002 – strana 1"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-02.png"
+            alt="Díl 002 – strana 2"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-03.png"
+            alt="Díl 002 – strana 3"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-04.png"
+            alt="Díl 002 – strana 4"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-05.png"
+            alt="Díl 002 – strana 5"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-06.png"
+            alt="Díl 002 – strana 6"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-07.png"
+            alt="Díl 002 – strana 7"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-08.png"
+            alt="Díl 002 – strana 8"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-09.png"
+            alt="Díl 002 – strana 9"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-10.png"
+            alt="Díl 002 – strana 10"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-11.png"
+            alt="Díl 002 – strana 11"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-12.png"
+            alt="Díl 002 – strana 12"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-13.png"
+            alt="Díl 002 – strana 13"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-14.png"
+            alt="Díl 002 – strana 14"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-15.png"
+            alt="Díl 002 – strana 15"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="page">
+          <img
+            src="beruska-a-broucek-002-16.png"
+            alt="Díl 002 – strana 16 – Konec"
+            loading="lazy"
+          >
+        </div>
+
+      </div>
+
+
+      <a
+        class="story-return"
+        href="#dily"
+      >
+        ↑ Zpět k výběru dílů
+      </a>
+
+    </section>
+
+
+    <!-- =========================================
+         ZÁVĚR
+         ========================================= -->
+
+    <section class="page-ending">
+
+      <p>
+        Beruška a Brouček — přátelství, které píše skutečné příběhy. ♡
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+       SRDÍČKA
+       ========================================= -->
+
+  <script>
+  (function () {
+    "use strict";
+
+    const SUPABASE_URL =
+      "https://lggboavbzzvoomveewtl.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+
+    const PAGE_ID =
+      "beruska-a-broucek";
+
+    const likeButton =
+      document.getElementById("likeButton");
+
+    const storageKey =
+      `svetCarmenLike_${PAGE_ID}`;
+
+
+    function getToday() {
+
+      const now =
+        new Date();
+
+      const year =
+        now.getFullYear();
+
+      const month =
+        String(now.getMonth() + 1)
+          .padStart(2, "0");
+
+      const day =
+        String(now.getDate())
+          .padStart(2, "0");
+
+      return `${year}-${month}-${day}`;
+    }
+
+
+    async function callSupabase(functionName) {
+
+      const response =
+        await fetch(
+          `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
+          {
+            method:"POST",
+
+            headers:{
+              apikey:SUPABASE_KEY,
+              "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+              requested_page_id:PAGE_ID
+            })
+          }
+        );
+
+
+      if(!response.ok){
+
+        throw new Error(
+          await response.text()
+        );
+      }
+
+
+      return response.json();
+    }
+
+
+    function showReady(count){
+
+      likeButton.textContent =
+        `♡ Líbí se mi ${Number(count) || 0}`;
+
+      likeButton.disabled =
+        false;
+
+      likeButton.classList.remove(
+        "is-liked"
+      );
+    }
+
+
+    function showThankYou(count){
+
+      likeButton.textContent =
+        `♥ Děkujeme ${Number(count) || 0}`;
+
+      likeButton.disabled =
+        true;
+
+      likeButton.classList.add(
+        "is-liked"
+      );
+    }
+
+
+    async function loadLikes(){
+
+      try{
+
+        const count =
+          await callSupabase(
+            "get_page_likes"
+          );
+
+
+        if(
+          localStorage.getItem(storageKey) ===
+          getToday()
+        ){
+
+          showThankYou(count);
+
+        }else{
+
+          showReady(count);
+        }
+
+
+      }catch(error){
+
+        console.error(
+          "Počet srdcí se nepodařilo načíst:",
+          error
+        );
+
+        likeButton.textContent =
+          "♡ Líbí se mi";
+
+        likeButton.disabled =
+          false;
+      }
+    }
+
+
+    likeButton.addEventListener(
+      "click",
+      async function(){
+
+        if(
+          likeButton.disabled ||
+          localStorage.getItem(storageKey) ===
+          getToday()
+        ){
+          return;
+        }
+
+
+        likeButton.disabled =
+          true;
+
+        likeButton.textContent =
+          "♡ Odesílám…";
+
+
+        try{
+
+          const newCount =
+            await callSupabase(
+              "add_page_like"
+            );
+
+
+          localStorage.setItem(
+            storageKey,
+            getToday()
+          );
+
+
+          showThankYou(newCount);
+
+
+        }catch(error){
+
+          console.error(
+            "Srdce se nepodařilo odeslat:",
+            error
+          );
+
+          likeButton.textContent =
+            "♡ Zkusit znovu";
+
+          likeButton.disabled =
+            false;
+        }
       }
     );
 
-    if (!response.ok) {
-      throw new Error(await response.text());
-    }
 
-    return response.json();
-  }
+    loadLikes();
 
-  function showReady(count) {
-    likeButton.textContent =
-      `♡ Líbí se mi tento příběh ${Number(count) || 0}`;
-
-    likeButton.disabled = false;
-    likeButton.classList.remove("is-liked");
-  }
-
-  function showThankYou(count) {
-    likeButton.textContent =
-      `♥ Děkujeme ${Number(count) || 0}`;
-
-    likeButton.disabled = true;
-    likeButton.classList.add("is-liked");
-  }
-
-  async function loadLikes() {
-    try {
-      const count = await callSupabase("get_page_likes");
-
-      if (localStorage.getItem(storageKey) === getToday()) {
-        showThankYou(count);
-      } else {
-        showReady(count);
-      }
-    } catch (error) {
-      console.error("Počet srdcí se nepodařilo načíst:", error);
-      likeButton.textContent = "♡ Líbí se mi tento příběh";
-      likeButton.disabled = false;
-    }
-  }
-
-  likeButton.addEventListener("click", async function () {
-    if (
-      likeButton.disabled ||
-      localStorage.getItem(storageKey) === getToday()
-    ) {
-      return;
-    }
-
-    likeButton.disabled = true;
-    likeButton.textContent = "♡ Odesílám…";
-
-    try {
-      const newCount = await callSupabase("add_page_like");
-
-      localStorage.setItem(storageKey, getToday());
-      showThankYou(newCount);
-    } catch (error) {
-      console.error("Srdce se nepodařilo odeslat:", error);
-      likeButton.textContent = "♡ Zkusit znovu";
-      likeButton.disabled = false;
-    }
-  });
-
-  loadLikes();
-})();
-</script>
+  })();
+  </script>
 
 </body>
 </html>
