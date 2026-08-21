@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="cs">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Beruška a Brouček – Díl 002 | Svět Carmen</title>
+
+  <style>
+    :root{
+      --pink:#ff4fa3;
+      --pink-light:#ff8ac3;
+      --deep:#b62c72;
+      --text:#4a2b3a;
+      --cream:#fffaf7;
+      --white:#ffffff;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--text);
+
+      background:
+        linear-gradient(
+          180deg,
+          #fff7f4 0%,
+          #ffeaf1 35%,
+          #ffe4ee 70%,
+          #fff8f3 100%
+        );
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    /* =========================
+       HORNÍ LIŠTA
+    ========================= */
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+
+      background:rgba(255,250,247,.96);
+      backdrop-filter:blur(10px);
+
+      border-bottom:1px solid rgba(182,44,114,.08);
+    }
+
+    .nav{
+      max-width:1500px;
+      margin:auto;
+
+      min-height:82px;
+      padding:12px 28px;
+
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:20px;
+    }
+
+    .logo{
+      justify-self:start;
+
+      color:#34252c;
+      text-decoration:none;
+
+      line-height:.8;
+    }
+
+    .logo-small{
+      display:block;
+      font-size:16px;
+    }
+
+    .logo-carmen{
+      display:block;
+
+      color:var(--pink);
+      font-size:34px;
+      font-style:italic;
+    }
+
+    .nav-links{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:34px;
+    }
+
+    .nav-links a{
+      color:#59434d;
+      text-decoration:none;
+
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:16px;
+      font-weight:700;
+
+      transition:.2s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--pink);
+    }
+
+    .top-like-btn{
+      justify-self:end;
+
+      min-width:155px;
+
+      padding:12px 20px;
+
+      border:2px solid var(--pink);
+      border-radius:999px;
+
+      background:#fff;
+      color:var(--deep);
+
+      cursor:pointer;
+
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:14px;
+      font-weight:700;
+
+      box-shadow:
+        0 8px 20px rgba(182,44,114,.12);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+
+      white-space:nowrap;
+    }
+
+    .top-like-btn:hover:not(:disabled){
+      transform:translateY(-1px);
+
+      box-shadow:
+        0 12px 25px rgba(182,44,114,.20);
+    }
+
+    .top-like-btn.is-liked{
+      color:var(--deep);
+      background:#fff;
+      border-color:var(--pink);
+    }
+
+    .top-like-btn:disabled{
+      cursor:default;
+    }
+
+    /* =========================
+       HLAVIČKA DÍLU
+    ========================= */
+
+    .episode-header{
+      text-align:center;
+
+      padding:
+        64px 20px
+        32px;
+    }
+
+    .episode-label{
+      margin-bottom:18px;
+
+      color:var(--pink);
+
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:15px;
+      font-weight:800;
+
+      letter-spacing:3px;
+      text-transform:uppercase;
+    }
+
+    .episode-header h1{
+      margin:0;
+
+      color:var(--deep);
+
+      font-size:clamp(
+        48px,
+        6vw,
+        78px
+      );
+
+      line-height:1.05;
+    }
+
+    .episode-description{
+      max-width:850px;
+
+      margin:
+        22px auto
+        0;
+
+      font-size:20px;
+      line-height:1.6;
+    }
+
+    /* =========================
+       KOMIKS
+    ========================= */
+
+    .comic{
+      width:min(
+        1160px,
+        calc(100% - 32px)
+      );
+
+      margin:
+        12px auto
+        0;
+    }
+
+    .comic-label{
+      margin-bottom:26px;
+
+      text-align:center;
+
+      color:var(--pink);
+
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:15px;
+      font-weight:800;
+
+      letter-spacing:3px;
+      text-transform:uppercase;
+    }
+
+    .comic-page{
+      margin:
+        0 auto
+        34px;
+
+      padding:12px;
+
+      background:#fff;
+
+      border-radius:24px;
+
+      box-shadow:
+        0 10px 32px
+        rgba(182,44,114,.15);
+    }
+
+    .comic-page img{
+      display:block;
+
+      width:100%;
+      height:auto;
+
+      border-radius:16px;
+    }
+
+    /* =========================
+       KONEC DÍLU
+    ========================= */
+
+    .episode-end{
+      text-align:center;
+
+      padding:
+        38px 20px
+        65px;
+    }
+
+    .episode-end-heart{
+      margin-bottom:10px;
+
+      color:var(--pink);
+
+      font-size:34px;
+    }
+
+    .episode-end p{
+      margin:
+        0 auto
+        24px;
+
+      font-size:19px;
+    }
+
+    .back-series{
+      display:inline-block;
+
+      padding:
+        13px
+        25px;
+
+      border-radius:999px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--deep),
+          var(--pink)
+        );
+
+      color:#fff;
+
+      text-decoration:none;
+
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:700;
+
+      box-shadow:
+        0 10px 25px
+        rgba(182,44,114,.22);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .back-series:hover{
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 14px 30px
+        rgba(182,44,114,.28);
+    }
+
+    footer{
+      padding:
+        25px 15px
+        40px;
+
+      text-align:center;
+
+      color:#8a6475;
+
+      font-size:15px;
+    }
+
+    /* =========================
+       MOBIL
+    ========================= */
+
+    @media(max-width:760px){
+
+      .nav{
+        grid-template-columns:
+          1fr auto;
+
+        padding:
+          10px
+          16px;
+      }
+
+      .logo-carmen{
+        font-size:28px;
+      }
+
+      .nav-links{
+        grid-column:
+          1 / -1;
+
+        grid-row:2;
+
+        gap:24px;
+
+        padding:
+          8px 0
+          5px;
+      }
+
+      .top-like-btn{
+        min-width:auto;
+
+        padding:
+          10px
+          14px;
+      }
+
+      .episode-header{
+        padding-top:45px;
+      }
+
+      .episode-header h1{
+        font-size:44px;
+      }
+
+      .episode-description{
+        font-size:18px;
+      }
+
+      .comic-page{
+        padding:7px;
+        border-radius:17px;
+      }
+
+      .comic-page img{
+        border-radius:12px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     HORNÍ LIŠTA
+========================= -->
+
+<header class="site-header">
+
+  <nav class="nav">
+
+    <a
+      class="logo"
+      href="index.html"
+      aria-label="Svět Carmen – domů"
+    >
+      <span class="logo-small">
+        Svět
+      </span>
+
+      <span class="logo-carmen">
+        Carmen♡
+      </span>
+    </a>
+
+
+    <div class="nav-links">
+
+      <a href="index.html">
+        Domů
+      </a>
+
+      <a href="svet.html">
+        Svět příběhů
+      </a>
+
+    </div>
+
+
+    <button
+      class="top-like-btn"
+      id="likeButton"
+      type="button"
+      aria-label="Dát dílu Beruška a Brouček 002 srdce"
+      disabled
+    >
+      ♡ Líbí se mi
+    </button>
+
+  </nav>
+
+</header>
+
+
+
+<!-- =========================
+     ÚVOD DÍLU
+========================= -->
+
+<section class="episode-header">
+
+  <div class="episode-label">
+    Beruška a Brouček • Díl 002
+  </div>
+
+  <h1>
+    Záchrana Broučka
+  </h1>
+
+  <p class="episode-description">
+    Jeden večer. Dvě města.
+    A jedno rozhodnutí, které přišlo za pět minut dvanáct.
+  </p>
+
+</section>
+
+
+
+<!-- =========================
+     KOMIKS – DÍL 002
+========================= -->
+
+<main class="comic">
+
+  <div class="comic-label">
+    Díl 002 • Záchrana Broučka
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-obalka.png"
+      alt="Obálka Beruška a Brouček – Díl 002 – Záchrana Broučka"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-01.png"
+      alt="Beruška a Brouček – Díl 002 – strana 1"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-02.png"
+      alt="Beruška a Brouček – Díl 002 – strana 2"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-03.png"
+      alt="Beruška a Brouček – Díl 002 – strana 3"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-04.png"
+      alt="Beruška a Brouček – Díl 002 – strana 4"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-05.png"
+      alt="Beruška a Brouček – Díl 002 – strana 5"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-06.png"
+      alt="Beruška a Brouček – Díl 002 – strana 6"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-07.png"
+      alt="Beruška a Brouček – Díl 002 – strana 7"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-08.png"
+      alt="Beruška a Brouček – Díl 002 – strana 8"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-09.png"
+      alt="Beruška a Brouček – Díl 002 – strana 9"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-10.png"
+      alt="Beruška a Brouček – Díl 002 – strana 10"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-11.png"
+      alt="Beruška a Brouček – Díl 002 – strana 11"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-12.png"
+      alt="Beruška a Brouček – Díl 002 – strana 12"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-13.png"
+      alt="Beruška a Brouček – Díl 002 – strana 13"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-14.png"
+      alt="Beruška a Brouček – Díl 002 – strana 14"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-15.png"
+      alt="Beruška a Brouček – Díl 002 – strana 15"
+      loading="lazy"
+    >
+  </div>
+
+
+  <div class="comic-page">
+    <img
+      src="beruska-a-broucek-002-16.png"
+      alt="Beruška a Brouček – Díl 002 – strana 16 – Konec"
+      loading="lazy"
+    >
+  </div>
+
+</main>
+
+
+
+<!-- =========================
+     KONEC DÍLU
+========================= -->
+
+<section class="episode-end">
+
+  <div class="episode-end-heart">
+    ♡
+  </div>
+
+  <p>
+    Podruhé narozená. Zachráněná za pět minut dvanáct. ❤️
+  </p>
+
+  <a
+    class="back-series"
+    href="beruska-a-broucek.html"
+  >
+    ← Zpět na Berušku a Broučka
+  </a>
+
+</section>
+
+
+
+<footer>
+
+  Vytvořeno srdcem pro Eny. 🐞❤️
+
+</footer>
+
+
+
+<!-- =========================
+     SRDÍČKA
+========================= -->
+
+<script>
+
+(function () {
+
+  "use strict";
+
+
+  const SUPABASE_URL =
+    "https://lggboavbzzvoomveewtl.supabase.co";
+
+
+  const SUPABASE_KEY =
+    "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+
+
+  const PAGE_ID =
+    "beruska-a-broucek-002";
+
+
+  const likeButton =
+    document.getElementById(
+      "likeButton"
+    );
+
+
+  const storageKey =
+    `svetCarmenLike_${PAGE_ID}`;
+
+
+
+  function getToday() {
+
+    const now =
+      new Date();
+
+
+    const year =
+      now.getFullYear();
+
+
+    const month =
+      String(
+        now.getMonth() + 1
+      ).padStart(
+        2,
+        "0"
+      );
+
+
+    const day =
+      String(
+        now.getDate()
+      ).padStart(
+        2,
+        "0"
+      );
+
+
+    return (
+      `${year}-${month}-${day}`
+    );
+
+  }
+
+
+
+  async function callSupabase(
+    functionName
+  ) {
+
+    const response =
+      await fetch(
+
+        `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
+
+        {
+
+          method:
+            "POST",
+
+          headers:{
+
+            apikey:
+              SUPABASE_KEY,
+
+            "Content-Type":
+              "application/json"
+
+          },
+
+          body:
+            JSON.stringify({
+
+              requested_page_id:
+                PAGE_ID
+
+            })
+
+        }
+
+      );
+
+
+    if(
+      !response.ok
+    ){
+
+      throw new Error(
+        await response.text()
+      );
+
+    }
+
+
+    return response.json();
+
+  }
+
+
+
+  function showReady(
+    count
+  ){
+
+    likeButton.textContent =
+      `♡ Líbí se mi ${Number(count) || 0}`;
+
+
+    likeButton.disabled =
+      false;
+
+
+    likeButton.classList.remove(
+      "is-liked"
+    );
+
+  }
+
+
+
+  function showThankYou(
+    count
+  ){
+
+    likeButton.textContent =
+      `♥ Děkujeme ${Number(count) || 0}`;
+
+
+    likeButton.disabled =
+      true;
+
+
+    likeButton.classList.add(
+      "is-liked"
+    );
+
+  }
+
+
+
+  async function loadLikes(){
+
+    try{
+
+      const count =
+        await callSupabase(
+          "get_page_likes"
+        );
+
+
+      if(
+        localStorage.getItem(
+          storageKey
+        ) === getToday()
+      ){
+
+        showThankYou(
+          count
+        );
+
+      }
+
+      else{
+
+        showReady(
+          count
+        );
+
+      }
+
+    }
+
+    catch(error){
+
+      console.error(
+        "Počet srdcí se nepodařilo načíst:",
+        error
+      );
+
+
+      likeButton.textContent =
+        "♡ Líbí se mi";
+
+
+      likeButton.disabled =
+        false;
+
+    }
+
+  }
+
+
+
+  likeButton.addEventListener(
+
+    "click",
+
+    async function () {
+
+
+      if(
+
+        likeButton.disabled ||
+
+        localStorage.getItem(
+          storageKey
+        ) === getToday()
+
+      ){
+
+        return;
+
+      }
+
+
+      likeButton.disabled =
+        true;
+
+
+      likeButton.textContent =
+        "♡ Odesílám…";
+
+
+      try{
+
+        const newCount =
+          await callSupabase(
+            "add_page_like"
+          );
+
+
+        localStorage.setItem(
+          storageKey,
+          getToday()
+        );
+
+
+        showThankYou(
+          newCount
+        );
+
+      }
+
+      catch(error){
+
+        console.error(
+          "Srdce se nepodařilo odeslat:",
+          error
+        );
+
+
+        likeButton.textContent =
+          "♡ Zkusit znovu";
+
+
+        likeButton.disabled =
+          false;
+
+      }
+
+    }
+
+  );
+
+
+  loadLikes();
+
+
+})();
+
+</script>
+
+
+</body>
+
+</html>
