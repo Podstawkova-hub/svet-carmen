@@ -1,0 +1,3035 @@
+<!doctype html>
+<html lang="cs">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Buchta v Praze – komiksový speciál Světa Carmen. Jeden víkend, dvě kamarádky a jedna legenda."
+  >
+
+  <title>
+    Buchta v Praze | Speciál | Svět Carmen
+  </title>
+
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Allura&family=Marck+Script&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <style>
+
+    :root {
+
+      --ink: #2b1824;
+
+      --deep: #a22f70;
+
+      --pink: #ef6fab;
+
+      --bright-pink: #ff3f91;
+
+      --soft-pink: #fff1f7;
+
+      --cream: #fffaf7;
+
+      --yellow: #ffc94f;
+
+      --line: rgba(162,47,112,.15);
+
+      --shadow:
+        0 24px 65px rgba(105,37,78,.17);
+
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      margin: 0;
+
+      color: var(--ink);
+
+      font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+      background:
+
+        radial-gradient(
+          circle at 10% 5%,
+          rgba(255,105,170,.20),
+          transparent 30%
+        ),
+
+        radial-gradient(
+          circle at 92% 18%,
+          rgba(255,204,94,.16),
+          transparent 27%
+        ),
+
+        linear-gradient(
+          180deg,
+          #fffafd 0%,
+          #fff1f7 60%,
+          #fff9f4 100%
+        );
+
+      min-height: 100vh;
+
+      overflow-x: hidden;
+
+    }
+
+
+    img {
+
+      display: block;
+
+      max-width: 100%;
+
+    }
+
+
+    button {
+
+      font: inherit;
+
+    }
+
+
+    a {
+
+      color: inherit;
+
+    }
+
+
+
+    /* =========================================================
+       HORNÍ NAVIGACE
+    ========================================================= */
+
+
+    .site-nav {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 1000;
+
+      height: 76px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 25px;
+
+      padding:
+        0 clamp(28px, 5vw, 88px);
+
+      background:
+        rgba(255,255,255,.94);
+
+      backdrop-filter:
+        blur(14px);
+
+      -webkit-backdrop-filter:
+        blur(14px);
+
+      border-bottom:
+        1px solid var(--line);
+
+    }
+
+
+    .brand {
+
+      color:
+        var(--deep);
+
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(24px, 2vw, 33px);
+
+      font-weight:
+        700;
+
+      text-decoration:
+        none;
+
+      white-space:
+        nowrap;
+
+    }
+
+
+    .nav-links {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap:
+        clamp(16px, 2vw, 35px);
+
+      flex: 1;
+
+    }
+
+
+    .nav-links a {
+
+      color:
+        #7d375e;
+
+      font-size:
+        15px;
+
+      font-weight:
+        600;
+
+      text-decoration:
+        none;
+
+      white-space:
+        nowrap;
+
+      transition:
+        color .2s ease;
+
+    }
+
+
+    .nav-links a:hover,
+    .nav-links a.active {
+
+      color:
+        var(--deep);
+
+    }
+
+
+
+    /* =========================================================
+       LÍBÍ SE MI
+    ========================================================= */
+
+
+    .top-like-btn {
+
+      border: 0;
+
+      border-radius:
+        11px;
+
+      padding:
+        12px 21px;
+
+      color:
+        white;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          var(--deep),
+          var(--pink)
+        );
+
+      cursor:
+        pointer;
+
+      box-shadow:
+        0 9px 23px
+        rgba(159,47,108,.21);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+      white-space:
+        nowrap;
+
+    }
+
+
+    .top-like-btn:hover:not(:disabled) {
+
+      transform:
+        translateY(-1px);
+
+      box-shadow:
+        0 13px 28px
+        rgba(159,47,108,.27);
+
+    }
+
+
+    .top-like-btn.is-liked {
+
+      color:
+        var(--deep);
+
+      background:
+        white;
+
+      outline:
+        2px solid var(--pink);
+
+    }
+
+
+    .top-like-btn:disabled {
+
+      cursor:
+        default;
+
+    }
+
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+
+    .hero-section {
+
+      position:
+        relative;
+
+      padding:
+        60px 22px 55px;
+
+      overflow:
+        hidden;
+
+    }
+
+
+    .hero-section::before {
+
+      content: "";
+
+      position:
+        absolute;
+
+      width:
+        450px;
+
+      height:
+        450px;
+
+      top:
+        -170px;
+
+      left:
+        -180px;
+
+      border-radius:
+        50%;
+
+      background:
+        rgba(255,72,146,.18);
+
+      filter:
+        blur(60px);
+
+      pointer-events:
+        none;
+
+    }
+
+
+    .hero-section::after {
+
+      content: "";
+
+      position:
+        absolute;
+
+      width:
+        410px;
+
+      height:
+        410px;
+
+      right:
+        -160px;
+
+      bottom:
+        -120px;
+
+      border-radius:
+        50%;
+
+      background:
+        rgba(255,200,70,.18);
+
+      filter:
+        blur(60px);
+
+      pointer-events:
+        none;
+
+    }
+
+
+    .hero-inner {
+
+      position:
+        relative;
+
+      z-index:
+        1;
+
+      width:
+        min(1240px, 100%);
+
+      margin:
+        0 auto;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        minmax(300px, .88fr)
+        minmax(340px, 1.12fr);
+
+      align-items:
+        center;
+
+      gap:
+        clamp(40px, 6vw, 80px);
+
+    }
+
+
+    .hero-copy {
+
+      max-width:
+        560px;
+
+    }
+
+
+    .special-badge {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap:
+        8px;
+
+      margin-bottom:
+        23px;
+
+      padding:
+        9px 15px;
+
+      color:
+        white;
+
+      font-size:
+        13px;
+
+      font-weight:
+        800;
+
+      letter-spacing:
+        .05em;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #ef4b96,
+          #c62f75
+        );
+
+      border-radius:
+        999px;
+
+      box-shadow:
+        0 10px 25px
+        rgba(220,55,124,.24);
+
+    }
+
+
+    .hero-copy h1 {
+
+      margin:
+        0 0 18px;
+
+      color:
+        var(--deep);
+
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(55px, 7vw, 94px);
+
+      line-height:
+        .94;
+
+      letter-spacing:
+        -.04em;
+
+    }
+
+
+    .hero-subtitle {
+
+      margin:
+        0 0 18px;
+
+      color:
+        #5d3349;
+
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(23px, 2.6vw, 34px);
+
+      font-weight:
+        700;
+
+      line-height:
+        1.25;
+
+    }
+
+
+    .hero-text {
+
+      margin:
+        0;
+
+      color:
+        #68505d;
+
+      font-size:
+        17px;
+
+      line-height:
+        1.75;
+
+    }
+
+
+    .hero-actions {
+
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        12px;
+
+      margin-top:
+        27px;
+
+    }
+
+
+    .primary-button {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      min-height:
+        52px;
+
+      padding:
+        14px 25px;
+
+      color:
+        white;
+
+      font-weight:
+        800;
+
+      text-decoration:
+        none;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #a52e70,
+          #ef76ad
+        );
+
+      border-radius:
+        999px;
+
+      box-shadow:
+        0 14px 32px
+        rgba(159,47,108,.24);
+
+      transition:
+        transform .2s ease;
+
+    }
+
+
+    .primary-button:hover {
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+
+    /* =========================================================
+       HYMNA
+    ========================================================= */
+
+
+    .hero-music {
+
+      width:
+        100%;
+
+      max-width:
+        420px;
+
+      margin-top:
+        28px;
+
+    }
+
+
+    .hero-music-title {
+
+      margin-bottom:
+        10px;
+
+      color:
+        #79445f;
+
+      font-size:
+        16px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .hero-music audio {
+
+      display:
+        block;
+
+      width:
+        100%;
+
+      height:
+        42px;
+
+    }
+
+
+
+    /* =========================================================
+       HERO OBRÁZEK
+    ========================================================= */
+
+
+    .hero-image-wrap {
+
+      position:
+        relative;
+
+      width:
+        min(100%, 620px);
+
+      margin-left:
+        auto;
+
+    }
+
+
+    .hero-image-glow {
+
+      position:
+        absolute;
+
+      inset:
+        8%;
+
+      border-radius:
+        45px;
+
+      background:
+
+        radial-gradient(
+          circle at top,
+          rgba(255,61,146,.35),
+          transparent 48%
+        ),
+
+        radial-gradient(
+          circle at bottom,
+          rgba(255,198,68,.25),
+          transparent 55%
+        );
+
+      filter:
+        blur(38px);
+
+    }
+
+
+    .hero-image {
+
+      position:
+        relative;
+
+      width:
+        100%;
+
+      border-radius:
+        32px;
+
+      border:
+        3px solid
+        rgba(255,255,255,.8);
+
+      box-shadow:
+        0 32px 80px
+        rgba(112,45,80,.25);
+
+    }
+
+
+
+    /* =========================================================
+       PŘECHOD / CITÁT
+    ========================================================= */
+
+
+    .memory-line {
+
+      padding:
+        34px 20px;
+
+      text-align:
+        center;
+
+      background:
+        rgba(255,255,255,.46);
+
+      border-top:
+        1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
+
+    }
+
+
+    .memory-line p {
+
+      margin:
+        0;
+
+      color:
+        var(--deep);
+
+      font-family:
+        "Marck Script",
+        cursive;
+
+      font-size:
+        clamp(34px, 4vw, 56px);
+
+      font-weight:
+        700;
+
+      line-height:
+        1.12;
+
+    }
+
+
+
+    /* =========================================================
+       ČTEČKA – ÚVOD
+    ========================================================= */
+
+
+    .reader-section {
+
+      padding:
+        65px 20px 90px;
+
+    }
+
+
+    .reader-intro {
+
+      width:
+        min(900px, 100%);
+
+      margin:
+        0 auto 40px;
+
+      text-align:
+        center;
+
+    }
+
+
+    .reader-intro .tiny {
+
+      margin-bottom:
+        11px;
+
+      color:
+        #c13a78;
+
+      font-size:
+        13px;
+
+      font-weight:
+        900;
+
+      letter-spacing:
+        .12em;
+
+      text-transform:
+        uppercase;
+
+    }
+
+
+    .reader-intro h2 {
+
+      margin:
+        0 0 14px;
+
+      color:
+        var(--deep);
+
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(39px, 5vw, 62px);
+
+      line-height:
+        1.08;
+
+    }
+
+
+    .reader-intro p {
+
+      margin:
+        0;
+
+      color:
+        #725767;
+
+      font-size:
+        17px;
+
+      line-height:
+        1.7;
+
+    }
+
+
+
+    /* =========================================================
+       ČTEČKA
+    ========================================================= */
+
+
+    .reader-shell {
+
+      width:
+        min(1180px, 100%);
+
+      margin:
+        0 auto;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        150px
+        minmax(280px, 680px)
+        150px;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      gap:
+        24px;
+
+    }
+
+
+    .reader-middle {
+
+      min-width:
+        0;
+
+    }
+
+
+    .comic-stage {
+
+      position:
+        relative;
+
+      width:
+        100%;
+
+      display:
+        flex;
+
+      justify-content:
+        center;
+
+      perspective:
+        1500px;
+
+    }
+
+
+    .comic-frame {
+
+      position:
+        relative;
+
+      width:
+        min(100%, 650px);
+
+      padding:
+        8px;
+
+      border-radius:
+        30px;
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #ff4b98,
+          #ffc957 42%,
+          #ff7cb4 72%,
+          #b53b78
+        );
+
+      box-shadow:
+
+        0 30px 80px
+        rgba(103,44,76,.28),
+
+        0 0 45px
+        rgba(239,111,171,.16);
+
+      transition:
+        transform .32s ease,
+        opacity .32s ease;
+
+    }
+
+
+    .comic-frame.turn-next {
+
+      transform:
+        rotateY(-15deg)
+        translateX(-20px);
+
+      opacity:
+        0;
+
+    }
+
+
+    .comic-frame.turn-prev {
+
+      transform:
+        rotateY(15deg)
+        translateX(20px);
+
+      opacity:
+        0;
+
+    }
+
+
+    .comic-page {
+
+      width:
+        100%;
+
+      border-radius:
+        23px;
+
+      background:
+        white;
+
+      user-select:
+        none;
+
+      -webkit-user-drag:
+        none;
+
+    }
+
+
+
+    /* =========================================================
+       TLAČÍTKA
+    ========================================================= */
+
+
+    .reader-button {
+
+      min-height:
+        58px;
+
+      padding:
+        13px 16px;
+
+      border:
+        1px solid
+        rgba(159,47,108,.17);
+
+      border-radius:
+        999px;
+
+      color:
+        var(--deep);
+
+      font-size:
+        14px;
+
+      font-weight:
+        800;
+
+      background:
+        rgba(255,255,255,.88);
+
+      box-shadow:
+        0 12px 30px
+        rgba(105,37,78,.12);
+
+      cursor:
+        pointer;
+
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease;
+
+    }
+
+
+    .reader-button:hover:not(:disabled) {
+
+      color:
+        white;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #a72f71,
+          #ef78ad
+        );
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .reader-button:disabled {
+
+      opacity:
+        .28;
+
+      cursor:
+        default;
+
+    }
+
+
+
+    /* =========================================================
+       POČÍTADLO STRAN
+    ========================================================= */
+
+
+    .page-counter {
+
+      margin-top:
+        20px;
+
+      text-align:
+        center;
+
+      color:
+        #816273;
+
+      font-size:
+        15px;
+
+      font-weight:
+        700;
+
+    }
+
+
+    .page-counter strong {
+
+      color:
+        var(--bright-pink);
+
+      font-size:
+        21px;
+
+    }
+
+
+    .reader-help {
+
+      width:
+        min(800px, 100%);
+
+      margin:
+        25px auto 0;
+
+      color:
+        #927485;
+
+      font-size:
+        14px;
+
+      line-height:
+        1.7;
+
+      text-align:
+        center;
+
+    }
+
+
+    .reader-help span {
+
+      color:
+        var(--deep);
+
+      font-weight:
+        800;
+
+    }
+
+
+
+    /* =========================================================
+       ZÁVĚR
+    ========================================================= */
+
+
+    .ending {
+
+      display:
+        none;
+
+      width:
+        min(850px, 100%);
+
+      margin:
+        55px auto 0;
+
+      padding:
+        35px 28px;
+
+      text-align:
+        center;
+
+      background:
+        rgba(255,255,255,.70);
+
+      border:
+        1px solid var(--line);
+
+      border-radius:
+        30px;
+
+      box-shadow:
+        var(--shadow);
+
+    }
+
+
+    .ending.visible {
+
+      display:
+        block;
+
+      animation:
+        endingIn .5s ease forwards;
+
+    }
+
+
+    @keyframes endingIn {
+
+      from {
+
+        opacity:
+          0;
+
+        transform:
+          translateY(14px);
+
+      }
+
+      to {
+
+        opacity:
+          1;
+
+        transform:
+          translateY(0);
+
+      }
+
+    }
+
+
+    .ending .heart {
+
+      font-size:
+        45px;
+
+      margin-bottom:
+        8px;
+
+    }
+
+
+    .ending h3 {
+
+      margin:
+        0 0 12px;
+
+      color:
+        var(--deep);
+
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(32px, 4vw, 48px);
+
+    }
+
+
+    .ending p {
+
+      margin:
+        0;
+
+      color:
+        #725565;
+
+      font-size:
+        17px;
+
+      line-height:
+        1.75;
+
+    }
+
+
+    .ending strong {
+
+      color:
+        var(--bright-pink);
+
+    }
+
+
+
+    /* =========================================================
+       ZPĚT NA SPECIÁLY
+    ========================================================= */
+
+
+    .back-specials {
+
+      margin-top:
+        35px;
+
+      text-align:
+        center;
+
+    }
+
+
+    .back-specials a {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      padding:
+        13px 23px;
+
+      color:
+        var(--deep);
+
+      font-weight:
+        800;
+
+      text-decoration:
+        none;
+
+      background:
+        rgba(255,255,255,.75);
+
+      border:
+        1px solid var(--line);
+
+      border-radius:
+        999px;
+
+    }
+
+
+
+    /* =========================================================
+       PATIČKA
+    ========================================================= */
+
+
+    footer {
+
+      padding:
+        32px 20px 42px;
+
+      color:
+        #846575;
+
+      font-size:
+        14px;
+
+      text-align:
+        center;
+
+      border-top:
+        1px solid var(--line);
+
+    }
+
+
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+
+    @media (max-width: 980px) {
+
+
+      .site-nav {
+
+        padding:
+          0 24px;
+
+      }
+
+
+      .nav-links {
+
+        gap:
+          15px;
+
+      }
+
+
+      .hero-inner {
+
+        grid-template-columns:
+          1fr;
+
+        gap:
+          38px;
+
+      }
+
+
+      .hero-copy {
+
+        margin:
+          0 auto;
+
+        text-align:
+          center;
+
+      }
+
+
+      .special-badge {
+
+        justify-content:
+          center;
+
+      }
+
+
+      .hero-actions {
+
+        justify-content:
+          center;
+
+      }
+
+
+      .hero-music {
+
+        margin-left:
+          auto;
+
+        margin-right:
+          auto;
+
+      }
+
+
+      .hero-image-wrap {
+
+        margin:
+          0 auto;
+
+        width:
+          min(100%, 570px);
+
+      }
+
+
+      .reader-shell {
+
+        grid-template-columns:
+          120px
+          minmax(280px, 650px)
+          120px;
+
+      }
+
+    }
+
+
+
+    /* =========================================================
+       MOBIL
+    ========================================================= */
+
+
+    @media (max-width: 700px) {
+
+
+      .site-nav {
+
+        height:
+          auto;
+
+        min-height:
+          68px;
+
+        padding:
+          12px 16px;
+
+        display:
+          grid;
+
+        grid-template-columns:
+          1fr auto;
+
+        gap:
+          12px;
+
+      }
+
+
+      .brand {
+
+        align-self:
+          center;
+
+      }
+
+
+      .top-like-btn {
+
+        align-self:
+          center;
+
+        padding:
+          10px 14px;
+
+        font-size:
+          13px;
+
+      }
+
+
+      .nav-links {
+
+        display:
+          flex;
+
+        grid-column:
+          1 / -1;
+
+        width:
+          100%;
+
+        justify-content:
+          center;
+
+        flex-wrap:
+          wrap;
+
+        gap:
+          8px 16px;
+
+        padding-top:
+          8px;
+
+        border-top:
+          1px solid var(--line);
+
+      }
+
+
+      .nav-links a {
+
+        font-size:
+          13px;
+
+        white-space:
+          nowrap;
+
+      }
+
+
+      .hero-section {
+
+        padding:
+          42px 14px 42px;
+
+      }
+
+
+      .hero-copy h1 {
+
+        font-size:
+          clamp(50px, 16vw, 72px);
+
+      }
+
+
+      .hero-subtitle {
+
+        font-size:
+          24px;
+
+      }
+
+
+      .hero-image {
+
+        border-radius:
+          23px;
+
+      }
+
+
+      .reader-section {
+
+        padding:
+          50px 12px 70px;
+
+      }
+
+
+      .reader-shell {
+
+        grid-template-columns:
+          1fr;
+
+        gap:
+          14px;
+
+      }
+
+
+      .reader-middle {
+
+        grid-row:
+          1;
+
+      }
+
+
+      #prevButton {
+
+        grid-row:
+          2;
+
+      }
+
+
+      #nextButton {
+
+        grid-row:
+          3;
+
+      }
+
+
+      .reader-button {
+
+        width:
+          100%;
+
+        min-height:
+          52px;
+
+        border-radius:
+          15px;
+
+        font-size:
+          15px;
+
+      }
+
+
+      .comic-frame {
+
+        padding:
+          5px;
+
+        border-radius:
+          21px;
+
+      }
+
+
+      .comic-page {
+
+        border-radius:
+          16px;
+
+      }
+
+
+      .ending {
+
+        padding:
+          28px 18px;
+
+      }
+
+    }
+
+
+
+    /* =========================================================
+       MALÝ MOBIL
+    ========================================================= */
+
+
+    @media (max-width: 420px) {
+
+
+      .nav-links {
+
+        gap:
+          7px 12px;
+
+      }
+
+
+      .nav-links a {
+
+        font-size:
+          12px;
+
+      }
+
+
+      .top-like-btn {
+
+        padding:
+          9px 11px;
+
+        font-size:
+          12px;
+
+      }
+
+
+      .reader-intro h2 {
+
+        font-size:
+          38px;
+
+      }
+
+    }
+
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+
+  <!-- =======================================================
+       NAVIGACE
+  ======================================================== -->
+
+
+  <nav
+    class="site-nav"
+    aria-label="Hlavní navigace"
+  >
+
+
+    <a
+      class="brand"
+      href="index.html"
+    >
+      Svět Carmen
+    </a>
+
+
+    <div class="nav-links">
+
+
+      <a href="carmen.html">
+        O Carmen
+      </a>
+
+
+      <a href="svet.html">
+        Svět příběhů
+      </a>
+
+
+      <a
+        href="specialy.html"
+        class="active"
+      >
+        ✨ Speciály
+      </a>
+
+
+      <a href="index.html#denik">
+        Deník Carmen
+      </a>
+
+
+      <a href="kontakt.html">
+        Kontakt
+      </a>
+
+
+    </div>
+
+
+    <button
+      class="top-like-btn"
+      id="likeButton"
+      type="button"
+      aria-label="Dát speciálu Buchta v Praze srdce"
+      disabled
+    >
+
+      ♡ Líbí se mi…
+
+    </button>
+
+
+  </nav>
+
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+
+  <main>
+
+
+    <section class="hero-section">
+
+
+      <div class="hero-inner">
+
+
+        <div class="hero-copy">
+
+
+          <div class="special-badge">
+
+            🍰 SPECIÁL SVĚTA CARMEN
+
+          </div>
+
+
+          <h1>
+
+            Buchta<br>
+            v Praze
+
+          </h1>
+
+
+          <div class="hero-subtitle">
+
+            Příběh jednoho přátelství
+            a jednoho nezapomenutelného víkendu.
+
+          </div>
+
+
+          <p class="hero-text">
+
+            Jeden víkend.
+            Dvě kamarádky.
+            Praha.
+            Spousta smíchu,
+            trochu chaosu,
+            několik legendárních hlášek
+            a vzpomínky,
+            které zůstaly.
+
+          </p>
+
+
+          <div class="hero-actions">
+
+
+            <a
+              href="#komiks"
+              class="primary-button"
+            >
+
+              📖 Otevřít komiks
+
+            </a>
+
+
+          </div>
+
+
+
+          <!-- HYMNA -->
+
+
+          <div
+            class="hero-music"
+            id="hymna"
+          >
+
+
+            <div class="hero-music-title">
+
+              🎵 Hymna – Buchta v Praze
+
+            </div>
+
+
+            <audio
+              controls
+              preload="metadata"
+            >
+
+
+              <source
+                src="buchta-v-praze-hymna.mp3"
+                type="audio/mpeg"
+              >
+
+
+              Tvůj prohlížeč
+              nepodporuje přehrávání zvuku.
+
+
+            </audio>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- HERO OBRÁZEK -->
+
+
+        <div class="hero-image-wrap">
+
+
+          <div class="hero-image-glow"></div>
+
+
+          <img
+            src="buchta-v-praze-hero.png"
+            alt="Buchta v Praze – komiksový speciál Světa Carmen"
+            class="hero-image"
+          >
+
+
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CITÁT
+    ====================================================== -->
+
+
+    <section class="memory-line">
+
+
+      <p>
+
+        Jeden víkend.
+        Dvě kamarádky.
+        Jedna legenda. ❤️
+
+      </p>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         KOMIKSOVÁ ČTEČKA
+    ====================================================== -->
+
+
+    <section
+      class="reader-section"
+      id="komiks"
+    >
+
+
+      <div class="reader-intro">
+
+
+        <div class="tiny">
+
+          Komiksový speciál
+
+        </div>
+
+
+        <h2>
+
+          Tak jo, Buchto…
+          jedeme od začátku. 😂
+
+        </h2>
+
+
+        <p>
+
+          Listuj příběhem
+          stránku po stránce.
+          Na mobilu můžeš také
+          přejet prstem
+          doleva nebo doprava.
+
+        </p>
+
+
+      </div>
+
+
+
+      <div class="reader-shell">
+
+
+        <!-- PŘEDCHOZÍ -->
+
+
+        <button
+          class="reader-button"
+          id="prevButton"
+          type="button"
+          aria-label="Předchozí stránka"
+        >
+
+          ← Předchozí
+
+        </button>
+
+
+
+        <!-- PROSTŘEDEK -->
+
+
+        <div class="reader-middle">
+
+
+          <div
+            class="comic-stage"
+            id="comicStage"
+          >
+
+
+            <div
+              class="comic-frame"
+              id="comicFrame"
+            >
+
+
+              <img
+                src="buchta-v-praze-01.png"
+                alt="Buchta v Praze – strana 1 z 32"
+                class="comic-page"
+                id="comicPage"
+              >
+
+
+            </div>
+
+
+          </div>
+
+
+
+          <div class="page-counter">
+
+            STRÁNKA
+
+            <strong id="currentPageNumber">
+
+              1
+
+            </strong>
+
+            /
+
+            <span id="totalPages">
+
+              32
+
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- DALŠÍ -->
+
+
+        <button
+          class="reader-button"
+          id="nextButton"
+          type="button"
+          aria-label="Další stránka"
+        >
+
+          Další →
+
+        </button>
+
+
+      </div>
+
+
+
+      <div class="reader-help">
+
+        <span>Tip:</span>
+
+        Na počítači můžeš použít
+        i šipky na klávesnici
+        ← →
+
+      </div>
+
+
+
+      <!-- ===================================================
+           KONEC
+      ==================================================== -->
+
+
+      <div
+        class="ending"
+        id="ending"
+      >
+
+
+        <div class="heart">
+
+          ❤️
+
+        </div>
+
+
+        <h3>
+
+          Jeden víkend.
+          Navždy náš.
+
+        </h3>
+
+
+        <p>
+
+          Poslední stránka skončila,
+          ale vzpomínky zůstávají.
+
+          <br><br>
+
+          <strong>
+
+            Díky za tenhle
+            nezapomenutelný víkend,
+            Buchto. ❤️
+
+          </strong>
+
+        </p>
+
+
+      </div>
+
+
+
+      <div class="back-specials">
+
+
+        <a href="specialy.html">
+
+          ← Zpět na Speciály
+
+        </a>
+
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =======================================================
+       PATIČKA
+  ======================================================== -->
+
+
+  <footer>
+
+    <strong>
+      Svět Carmen
+    </strong>
+
+    · Příběhy,
+    které mají srdce. ❤️
+
+  </footer>
+
+
+
+  <!-- =======================================================
+       JAVASCRIPT – ČTEČKA
+  ======================================================== -->
+
+
+  <script>
+
+
+    const pages = [
+
+
+      "buchta-v-praze-01.png",
+
+      "buchta-v-praze-02.png",
+
+      "buchta-v-praze-03.png",
+
+      "buchta-v-praze-04.png",
+
+      "buchta-v-praze-05.png",
+
+      "buchta-v-praze-06.png",
+
+      "buchta-v-praze-07.png",
+
+      "buchta-v-praze-08.png",
+
+      "buchta-v-praze-09.png",
+
+      "buchta-v-praze-10.png",
+
+      "buchta-v-praze-11.png",
+
+      "buchta-v-praze-12.png",
+
+      "buchta-v-praze-13.png",
+
+      "buchta-v-praze-14.png",
+
+      "buchta-v-praze-15.png",
+
+      "buchta-v-praze-16.png",
+
+      "buchta-v-praze-17.png",
+
+      "buchta-v-praze-18.png",
+
+      "buchta-v-praze-19.png",
+
+      "buchta-v-praze-20.png",
+
+      "buchta-v-praze-21.png",
+
+      "buchta-v-praze-22.png",
+
+      "buchta-v-praze-23.png",
+
+      "buchta-v-praze-24.png",
+
+      "buchta-v-praze-25.png",
+
+      "buchta-v-praze-26.png",
+
+      "buchta-v-praze-27.png",
+
+      "buchta-v-praze-28.png",
+
+      "buchta-v-praze-29.png",
+
+      "buchta-v-praze-30.png",
+
+      "buchta-v-praze-31.png",
+
+      "buchta-v-praze-32.png"
+
+
+    ];
+
+
+
+    let currentPage = 0;
+
+
+
+    const comicPage =
+      document.getElementById(
+        "comicPage"
+      );
+
+
+    const comicFrame =
+      document.getElementById(
+        "comicFrame"
+      );
+
+
+    const currentPageNumber =
+      document.getElementById(
+        "currentPageNumber"
+      );
+
+
+    const totalPages =
+      document.getElementById(
+        "totalPages"
+      );
+
+
+    const prevButton =
+      document.getElementById(
+        "prevButton"
+      );
+
+
+    const nextButton =
+      document.getElementById(
+        "nextButton"
+      );
+
+
+    const ending =
+      document.getElementById(
+        "ending"
+      );
+
+
+    totalPages.textContent =
+      pages.length;
+
+
+
+    function updateReader(
+      direction = "next"
+    ) {
+
+
+      comicFrame.classList.remove(
+        "turn-next",
+        "turn-prev"
+      );
+
+
+      void comicFrame.offsetWidth;
+
+
+      comicFrame.classList.add(
+
+        direction === "next"
+
+          ? "turn-next"
+
+          : "turn-prev"
+
+      );
+
+
+      setTimeout(
+        function () {
+
+
+          comicPage.src =
+            pages[currentPage];
+
+
+          comicPage.alt =
+            "Buchta v Praze – strana " +
+            (currentPage + 1) +
+            " z " +
+            pages.length;
+
+
+          currentPageNumber.textContent =
+            currentPage + 1;
+
+
+          prevButton.disabled =
+            currentPage === 0;
+
+
+          nextButton.disabled =
+            currentPage ===
+            pages.length - 1;
+
+
+          if (
+            currentPage ===
+            pages.length - 1
+          ) {
+
+
+            ending.classList.add(
+              "visible"
+            );
+
+
+          } else {
+
+
+            ending.classList.remove(
+              "visible"
+            );
+
+
+          }
+
+
+          comicFrame.classList.remove(
+            "turn-next",
+            "turn-prev"
+          );
+
+
+        },
+        230
+      );
+
+
+    }
+
+
+
+    function nextPage() {
+
+
+      if (
+        currentPage >=
+        pages.length - 1
+      ) {
+
+        return;
+
+      }
+
+
+      currentPage++;
+
+
+      updateReader(
+        "next"
+      );
+
+
+    }
+
+
+
+    function prevPage() {
+
+
+      if (
+        currentPage <= 0
+      ) {
+
+        return;
+
+      }
+
+
+      currentPage--;
+
+
+      updateReader(
+        "prev"
+      );
+
+
+    }
+
+
+
+    prevButton.addEventListener(
+      "click",
+      prevPage
+    );
+
+
+    nextButton.addEventListener(
+      "click",
+      nextPage
+    );
+
+
+
+    /* =====================================================
+       KLÁVESNICE
+    ===================================================== */
+
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+
+
+        if (
+          event.key ===
+          "ArrowRight"
+        ) {
+
+          nextPage();
+
+        }
+
+
+        if (
+          event.key ===
+          "ArrowLeft"
+        ) {
+
+          prevPage();
+
+        }
+
+
+      }
+    );
+
+
+
+    /* =====================================================
+       SWIPE NA MOBILU
+    ===================================================== */
+
+
+    let touchStartX = 0;
+
+    let touchEndX = 0;
+
+
+    const comicStage =
+      document.getElementById(
+        "comicStage"
+      );
+
+
+
+    comicStage.addEventListener(
+      "touchstart",
+      function (event) {
+
+
+        touchStartX =
+          event.changedTouches[0]
+            .screenX;
+
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+
+    comicStage.addEventListener(
+      "touchend",
+      function (event) {
+
+
+        touchEndX =
+          event.changedTouches[0]
+            .screenX;
+
+
+        const distance =
+          touchEndX -
+          touchStartX;
+
+
+        if (
+          Math.abs(distance) <
+          50
+        ) {
+
+          return;
+
+        }
+
+
+        if (
+          distance < 0
+        ) {
+
+
+          nextPage();
+
+
+        } else {
+
+
+          prevPage();
+
+
+        }
+
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+
+    /* =====================================================
+       VÝCHOZÍ STAV
+    ===================================================== */
+
+
+    prevButton.disabled =
+      true;
+
+
+    nextButton.disabled =
+      false;
+
+
+  </script>
+
+
+
+  <!-- =======================================================
+       LÍBÍ SE MI – SUPABASE
+  ======================================================== -->
+
+
+  <script>
+
+
+    (function () {
+
+
+      "use strict";
+
+
+      const SUPABASE_URL =
+
+        "https://lggboavbzzvoomveewtl.supabase.co";
+
+
+      const SUPABASE_KEY =
+
+        "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+
+
+      const PAGE_ID =
+
+        "buchta-v-praze";
+
+
+      const likeButton =
+
+        document.getElementById(
+          "likeButton"
+        );
+
+
+      const storageKey =
+
+        "svetCarmenLike_" +
+        PAGE_ID;
+
+
+
+      function getToday() {
+
+
+        const now =
+          new Date();
+
+
+        const year =
+          now.getFullYear();
+
+
+        const month =
+          String(
+            now.getMonth() + 1
+          ).padStart(
+            2,
+            "0"
+          );
+
+
+        const day =
+          String(
+            now.getDate()
+          ).padStart(
+            2,
+            "0"
+          );
+
+
+        return (
+          year +
+          "-" +
+          month +
+          "-" +
+          day
+        );
+
+
+      }
+
+
+
+      async function callSupabase(
+        functionName
+      ) {
+
+
+        const response =
+          await fetch(
+
+
+            SUPABASE_URL +
+            "/rest/v1/rpc/" +
+            functionName,
+
+
+            {
+
+
+              method:
+                "POST",
+
+
+              headers: {
+
+
+                apikey:
+                  SUPABASE_KEY,
+
+
+                "Content-Type":
+                  "application/json"
+
+
+              },
+
+
+              body:
+                JSON.stringify({
+
+
+                  requested_page_id:
+                    PAGE_ID
+
+
+                })
+
+
+            }
+
+
+          );
+
+
+        if (
+          !response.ok
+        ) {
+
+
+          throw new Error(
+            await response.text()
+          );
+
+
+        }
+
+
+        return response.json();
+
+
+      }
+
+
+
+      function showReady(
+        count
+      ) {
+
+
+        likeButton.textContent =
+
+          "♡ Líbí se mi " +
+
+          (
+            Number(count) || 0
+          );
+
+
+        likeButton.disabled =
+          false;
+
+
+        likeButton.classList.remove(
+          "is-liked"
+        );
+
+
+      }
+
+
+
+      function showThankYou(
+        count
+      ) {
+
+
+        likeButton.textContent =
+
+          "♥ Děkujeme " +
+
+          (
+            Number(count) || 0
+          );
+
+
+        likeButton.disabled =
+          true;
+
+
+        likeButton.classList.add(
+          "is-liked"
+        );
+
+
+      }
+
+
+
+      async function loadLikes() {
+
+
+        try {
+
+
+          const count =
+
+            await callSupabase(
+              "get_page_likes"
+            );
+
+
+          if (
+
+            localStorage.getItem(
+              storageKey
+            ) ===
+
+            getToday()
+
+          ) {
+
+
+            showThankYou(
+              count
+            );
+
+
+          } else {
+
+
+            showReady(
+              count
+            );
+
+
+          }
+
+
+        } catch (error) {
+
+
+          console.error(
+
+            "Počet srdcí se nepodařilo načíst:",
+
+            error
+
+          );
+
+
+          likeButton.textContent =
+            "♡ Líbí se mi";
+
+
+          likeButton.disabled =
+            false;
+
+
+        }
+
+
+      }
+
+
+
+      likeButton.addEventListener(
+        "click",
+        async function () {
+
+
+          if (
+
+            likeButton.disabled ||
+
+            localStorage.getItem(
+              storageKey
+            ) ===
+            getToday()
+
+          ) {
+
+
+            return;
+
+
+          }
+
+
+          likeButton.disabled =
+            true;
+
+
+          likeButton.textContent =
+            "♡ Odesílám…";
+
+
+          try {
+
+
+            const newCount =
+
+              await callSupabase(
+                "add_page_like"
+              );
+
+
+            localStorage.setItem(
+
+              storageKey,
+
+              getToday()
+
+            );
+
+
+            showThankYou(
+              newCount
+            );
+
+
+          } catch (error) {
+
+
+            console.error(
+
+              "Srdce se nepodařilo odeslat:",
+
+              error
+
+            );
+
+
+            likeButton.textContent =
+              "♡ Zkusit znovu";
+
+
+            likeButton.disabled =
+              false;
+
+
+          }
+
+
+        }
+      );
+
+
+
+      loadLikes();
+
+
+    })();
+
+
+  </script>
+
+
+</body>
+
+</html>
