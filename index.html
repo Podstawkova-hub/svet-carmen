@@ -411,10 +411,18 @@ width: fit-content;
     }
 
     @media (max-width: 700px) {
-      .site-nav {
-        height: 68px;
-      }
-      .nav-links { display: none; }
+   .site-nav {
+  height: auto;
+  min-height: 68px;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  padding: 8px 12px 12px;
+}
       .hero-copy { padding: 48px 6vw 34px; }
       .hero h1 { font-size: clamp(54px, 18vw, 76px); }
       .hero-visual { min-height: 380px; }
