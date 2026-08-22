@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Speciály Světa Carmen – příběhy, které si zaslouží vlastní místo."
+  >
+
+  <title>Speciály | Svět Carmen</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Allura&family=Marck+Script&family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --ink: #2a1724;
+      --deep: #9f2f6c;
+      --pink: #ef78ad;
+      --soft-pink: #fff2f8;
+      --cream: #fffaf6;
+      --line: rgba(159, 47, 108, 0.14);
+      --shadow: 0 24px 60px rgba(105, 37, 78, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Inter", Arial, sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 15% 5%,
+          rgba(239,120,173,.18),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          #fffafc 0%,
+          #fff2f8 65%,
+          #fffaf5 100%
+        );
+
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+
+    /* =========================================================
+       HORNÍ NAVIGACE
+    ========================================================= */
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 clamp(28px, 5vw, 88px);
+
+      background: rgba(255,255,255,.92);
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      color: var(--deep);
+
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(24px, 2vw, 33px);
+      font-weight: 700;
+
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+
+      gap: clamp(18px, 2.2vw, 38px);
+    }
+
+    .nav-links a {
+      color: #7d375e;
+
+      font-size: 15px;
+      font-weight: 600;
+
+      text-decoration: none;
+
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--deep);
+    }
+
+
+    /* =========================================================
+       LÍBÍ SE MI
+    ========================================================= */
+
+    .top-like-btn {
+      border: 0;
+      border-radius: 11px;
+
+      padding: 12px 21px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--deep),
+          var(--pink)
+        );
+
+      cursor: pointer;
+
+      box-shadow:
+        0 9px 23px rgba(159,47,108,.21);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+      white-space: nowrap;
+    }
+
+    .top-like-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+
+      box-shadow:
+        0 13px 28px rgba(159,47,108,.26);
+    }
+
+    .top-like-btn.is-liked {
+      color: var(--deep);
+      background: white;
+
+      outline: 2px solid var(--pink);
+    }
+
+    .top-like-btn:disabled {
+      cursor: default;
+    }
+
+
+    /* =========================================================
+       HERO SPECIÁLŮ
+    ========================================================= */
+
+    .specials-hero {
+      position: relative;
+
+      padding:
+        clamp(70px, 9vw, 125px)
+        24px
+        clamp(60px, 7vw, 95px);
+
+      text-align: center;
+
+      overflow: hidden;
+    }
+
+    .specials-hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 430px;
+      height: 430px;
+
+      left: -170px;
+      top: -120px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(239,120,173,.20);
+
+      filter: blur(60px);
+
+      pointer-events: none;
+    }
+
+    .specials-hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 380px;
+      height: 380px;
+
+      right: -150px;
+      bottom: -120px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,197,231,.30);
+
+      filter: blur(65px);
+
+      pointer-events: none;
+    }
+
+    .specials-hero-inner {
+      position: relative;
+      z-index: 1;
+
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
+    .special-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-bottom: 22px;
+
+      padding: 10px 18px;
+
+      color: #87315d;
+
+      font-size: 14px;
+      font-weight: 800;
+
+      background:
+        rgba(239,120,173,.18);
+
+      border:
+        1px solid rgba(239,120,173,.32);
+
+      border-radius: 999px;
+    }
+
+    .specials-hero h1 {
+      margin: 0;
+
+      color: var(--deep);
+
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(55px, 8vw, 105px);
+
+      line-height: .95;
+    }
+
+    .specials-hero .subtitle {
+      margin:
+        26px auto 0;
+
+      max-width: 760px;
+
+      color: #553645;
+
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(22px, 2.5vw, 34px);
+
+      line-height: 1.35;
+    }
+
+    .specials-hero .intro-text {
+      max-width: 680px;
+
+      margin:
+        22px auto 0;
+
+      color: #705363;
+
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+
+    /* =========================================================
+       SPECIÁLY – KARTY
+    ========================================================= */
+
+    .specials-section {
+      padding:
+        25px
+        clamp(20px, 6vw, 90px)
+        100px;
+    }
+
+    .specials-grid {
+      width:
+        min(1250px, 100%);
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 38px;
+    }
+
+    .special-card {
+      overflow: hidden;
+
+      background:
+        rgba(255,255,255,.83);
+
+      border:
+        1px solid rgba(159,47,108,.13);
+
+      border-radius: 32px;
+
+      box-shadow:
+        0 26px 65px
+        rgba(105,37,78,.15);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .special-card:hover {
+      transform:
+        translateY(-6px);
+
+      box-shadow:
+        0 34px 80px
+        rgba(105,37,78,.20);
+    }
+
+    .special-image-wrap {
+      position: relative;
+
+      aspect-ratio: 1 / 1;
+
+      overflow: hidden;
+
+      background:
+        #f9dce9;
+    }
+
+    .special-image {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform .35s ease;
+    }
+
+    .special-card:hover
+    .special-image {
+      transform:
+        scale(1.025);
+    }
+
+    .special-card-content {
+      padding:
+        32px
+        34px
+        36px;
+    }
+
+    .special-card-tag {
+      display: inline-flex;
+
+      margin-bottom: 15px;
+
+      padding:
+        8px
+        13px;
+
+      color:
+        var(--deep);
+
+      font-size:
+        13px;
+
+      font-weight:
+        800;
+
+      letter-spacing:
+        .05em;
+
+      text-transform:
+        uppercase;
+
+      background:
+        #fff0f7;
+
+      border-radius:
+        999px;
+    }
+
+    .special-card h2 {
+      margin:
+        0 0 12px;
+
+      color:
+        var(--deep);
+
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(34px, 4vw, 52px);
+
+      line-height:
+        1.05;
+    }
+
+    .special-card-subtitle {
+      margin:
+        0 0 16px;
+
+      color:
+        #70435c;
+
+      font-size:
+        18px;
+
+      font-weight:
+        700;
+
+      line-height:
+        1.5;
+    }
+
+    .special-card-text {
+      margin:
+        0 0 26px;
+
+      color:
+        #5c4954;
+
+      font-size:
+        16px;
+
+      line-height:
+        1.75;
+    }
+
+    .special-button {
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      min-height:
+        52px;
+
+      padding:
+        14px
+        25px;
+
+      color:
+        white;
+
+      font-weight:
+        800;
+
+      text-decoration:
+        none;
+
+      background:
+        linear-gradient(
+          135deg,
+          #a42f70,
+          #ee79af
+        );
+
+      border-radius:
+        999px;
+
+      box-shadow:
+        0 14px 32px
+        rgba(159,47,108,.23);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .special-button:hover {
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 18px 38px
+        rgba(159,47,108,.29);
+    }
+
+
+    /* =========================================================
+       BUDOUCÍ SPECIÁLY
+    ========================================================= */
+
+    .future-note {
+      width:
+        min(800px, 100%);
+
+      margin:
+        60px auto 0;
+
+      padding:
+        30px;
+
+      text-align:
+        center;
+
+      color:
+        #765365;
+
+      background:
+        rgba(255,255,255,.52);
+
+      border:
+        1px dashed
+        rgba(159,47,108,.24);
+
+      border-radius:
+        26px;
+    }
+
+    .future-note strong {
+      display: block;
+
+      margin-bottom:
+        8px;
+
+      color:
+        var(--deep);
+
+      font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+      font-size:
+        24px;
+    }
+
+    .future-note p {
+      margin: 0;
+
+      font-size:
+        16px;
+
+      line-height:
+        1.65;
+    }
+
+
+    /* =========================================================
+       PATIČKA
+    ========================================================= */
+
+    footer {
+      padding:
+        28px
+        7vw
+        38px;
+
+      color:
+        #7d4964;
+
+      font-size:
+        14px;
+
+      text-align:
+        center;
+
+      border-top:
+        1px solid
+        rgba(159,47,108,.09);
+    }
+
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 980px) {
+
+      .site-nav {
+        padding:
+          0 24px;
+      }
+
+      .nav-links {
+        gap:
+          16px;
+      }
+
+      .specials-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .special-card {
+        width:
+          min(650px, 100%);
+
+        margin:
+          0 auto;
+      }
+    }
+
+
+    /* =========================================================
+       MOBIL
+    ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .site-nav {
+        height: auto;
+        min-height: 68px;
+
+        padding:
+          12px 16px;
+
+        display: grid;
+
+        grid-template-columns:
+          1fr auto;
+
+        gap:
+          12px;
+      }
+
+      .brand {
+        align-self:
+          center;
+      }
+
+      .top-like-btn {
+        align-self:
+          center;
+
+        padding:
+          10px 14px;
+
+        font-size:
+          13px;
+      }
+
+      .nav-links {
+        display: flex;
+
+        grid-column:
+          1 / -1;
+
+        width: 100%;
+
+        justify-content:
+          center;
+
+        flex-wrap:
+          wrap;
+
+        gap:
+          8px 16px;
+
+        padding-top:
+          8px;
+
+        border-top:
+          1px solid
+          var(--line);
+      }
+
+      .nav-links a {
+        font-size:
+          13px;
+
+        white-space:
+          nowrap;
+      }
+
+      .specials-hero {
+        padding:
+          55px 18px 48px;
+      }
+
+      .specials-section {
+        padding:
+          10px
+          14px
+          70px;
+      }
+
+      .special-card {
+        border-radius:
+          24px;
+      }
+
+      .special-card-content {
+        padding:
+          25px
+          23px
+          29px;
+      }
+
+      .special-image-wrap {
+        aspect-ratio:
+          1 / 1;
+      }
+
+      .special-button {
+        width:
+          100%;
+      }
+
+      .future-note {
+        margin-top:
+          38px;
+
+        padding:
+          24px 18px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =======================================================
+       NAVIGACE
+  ======================================================== -->
+
+  <nav
+    class="site-nav"
+    aria-label="Hlavní navigace"
+  >
+
+    <a
+      class="brand"
+      href="index.html"
+    >
+      Svět Carmen
+    </a>
+
+
+    <div class="nav-links">
+
+      <a href="carmen.html">
+        O Carmen
+      </a>
+
+      <a href="svet.html">
+        Svět příběhů
+      </a>
+
+      <a
+        href="specialy.html"
+        class="active"
+      >
+        ✨ Speciály
+      </a>
+
+      <a href="index.html#denik">
+        Deník Carmen
+      </a>
+
+      <a href="kontakt.html">
+        Kontakt
+      </a>
+
+    </div>
+
+
+    <button
+      class="top-like-btn"
+      id="likeButton"
+      type="button"
+      aria-label="Dát stránce Speciály srdce"
+      disabled
+    >
+      ♡ Líbí se mi…
+    </button>
+
+  </nav>
+
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <main>
+
+    <section class="specials-hero">
+
+      <div class="specials-hero-inner">
+
+        <div class="special-badge">
+          ✨ SPECIÁLY SVĚTA CARMEN
+        </div>
+
+        <h1>
+          Speciály
+        </h1>
+
+        <p class="subtitle">
+          Příběhy, které si zaslouží vlastní místo.
+        </p>
+
+        <p class="intro-text">
+          Některé příběhy nevzniknou jako série.
+          Přijdou nečekaně, zůstanou v srdci
+          a zaslouží si svůj vlastní prostor.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         KARTY SPECIÁLŮ
+    ====================================================== -->
+
+    <section class="specials-section">
+
+      <div class="specials-grid">
+
+
+        <!-- =================================================
+             BUCHTA V PRAZE
+        ================================================== -->
+
+        <article class="special-card">
+
+          <div class="special-image-wrap">
+
+            <img
+              src="buchta-v-praze-hero.png"
+              alt="Buchta v Praze"
+              class="special-image"
+            >
+
+          </div>
+
+
+          <div class="special-card-content">
+
+            <div class="special-card-tag">
+              Komiksový speciál
+            </div>
+
+            <h2>
+              Buchta v Praze
+            </h2>
+
+            <p class="special-card-subtitle">
+              Příběh jednoho přátelství
+              a jednoho nezapomenutelného víkendu.
+            </p>
+
+            <p class="special-card-text">
+              Jeden víkend.
+              Dvě kamarádky.
+              Praha.
+              Spousta smíchu,
+              několik legendárních momentů
+              a vzpomínky,
+              které už nikdo nevezme.
+            </p>
+
+            <a
+              href="buchta-v-praze.html"
+              class="special-button"
+            >
+              🍰 Otevřít speciál
+            </a>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+
+
+      <!-- ===================================================
+           PRO DALŠÍ SPECIÁLY
+      ==================================================== -->
+
+      <div class="future-note">
+
+        <strong>
+          Další speciály teprve přijdou. ❤️
+        </strong>
+
+        <p>
+          Každý z nich bude mít svůj vlastní příběh,
+          vlastní atmosféru
+          a své místo ve Světě Carmen.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =======================================================
+       PATIČKA
+  ======================================================== -->
+
+  <footer>
+
+    © Svět Carmen
+    · Speciály, které vznikají srdcem. ❤️
+
+  </footer>
+
+
+
+  <!-- =======================================================
+       LÍBÍ SE MI – SUPABASE
+  ======================================================== -->
+
+  <script>
+
+    (function () {
+
+      "use strict";
+
+
+      const SUPABASE_URL =
+        "https://lggboavbzzvoomveewtl.supabase.co";
+
+
+      const SUPABASE_KEY =
+        "sb_publishable_3Z7UGlah1I0yJE7gHQQ57A_1XNEeauM";
+
+
+      const PAGE_ID =
+        "specialy";
+
+
+      const likeButton =
+        document.getElementById("likeButton");
+
+
+      const storageKey =
+        "svetCarmenLike_" + PAGE_ID;
+
+
+
+      function getToday() {
+
+        const now =
+          new Date();
+
+
+        const year =
+          now.getFullYear();
+
+
+        const month =
+          String(
+            now.getMonth() + 1
+          ).padStart(
+            2,
+            "0"
+          );
+
+
+        const day =
+          String(
+            now.getDate()
+          ).padStart(
+            2,
+            "0"
+          );
+
+
+        return (
+          year +
+          "-" +
+          month +
+          "-" +
+          day
+        );
+      }
+
+
+
+      async function callSupabase(
+        functionName
+      ) {
+
+        const response =
+          await fetch(
+
+            SUPABASE_URL +
+            "/rest/v1/rpc/" +
+            functionName,
+
+            {
+
+              method:
+                "POST",
+
+              headers: {
+
+                apikey:
+                  SUPABASE_KEY,
+
+                "Content-Type":
+                  "application/json"
+
+              },
+
+              body:
+                JSON.stringify({
+
+                  requested_page_id:
+                    PAGE_ID
+
+                })
+
+            }
+
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            await response.text()
+          );
+
+        }
+
+
+        return response.json();
+      }
+
+
+
+      function showReady(
+        count
+      ) {
+
+        likeButton.textContent =
+          "♡ Líbí se mi " +
+          (Number(count) || 0);
+
+
+        likeButton.disabled =
+          false;
+
+
+        likeButton.classList.remove(
+          "is-liked"
+        );
+      }
+
+
+
+      function showThankYou(
+        count
+      ) {
+
+        likeButton.textContent =
+          "♥ Děkujeme " +
+          (Number(count) || 0);
+
+
+        likeButton.disabled =
+          true;
+
+
+        likeButton.classList.add(
+          "is-liked"
+        );
+      }
+
+
+
+      async function loadLikes() {
+
+        try {
+
+          const count =
+            await callSupabase(
+              "get_page_likes"
+            );
+
+
+          if (
+            localStorage.getItem(
+              storageKey
+            ) ===
+            getToday()
+          ) {
+
+            showThankYou(
+              count
+            );
+
+          } else {
+
+            showReady(
+              count
+            );
+
+          }
+
+
+        } catch (error) {
+
+          console.error(
+            "Počet srdcí se nepodařilo načíst:",
+            error
+          );
+
+
+          likeButton.textContent =
+            "♡ Líbí se mi";
+
+
+          likeButton.disabled =
+            false;
+
+        }
+
+      }
+
+
+
+      likeButton.addEventListener(
+        "click",
+        async function () {
+
+          if (
+            likeButton.disabled ||
+            localStorage.getItem(
+              storageKey
+            ) ===
+            getToday()
+          ) {
+            return;
+          }
+
+
+          likeButton.disabled =
+            true;
+
+
+          likeButton.textContent =
+            "♡ Odesílám…";
+
+
+          try {
+
+            const newCount =
+              await callSupabase(
+                "add_page_like"
+              );
+
+
+            localStorage.setItem(
+              storageKey,
+              getToday()
+            );
+
+
+            showThankYou(
+              newCount
+            );
+
+
+          } catch (error) {
+
+            console.error(
+              "Srdce se nepodařilo odeslat:",
+              error
+            );
+
+
+            likeButton.textContent =
+              "♡ Zkusit znovu";
+
+
+            likeButton.disabled =
+              false;
+
+          }
+
+        }
+      );
+
+
+      loadLikes();
+
+    })();
+
+  </script>
+
+
+</body>
+</html>
